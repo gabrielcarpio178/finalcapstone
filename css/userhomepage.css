@@ -49,6 +49,10 @@
   background-color: white;
 }
 
+.bell{
+  cursor: pointer;
+}
+
 @media screen and (min-width: 320px) {
   .bell {
     position: relative;

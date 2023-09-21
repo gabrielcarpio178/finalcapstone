@@ -1,0 +1,107 @@
+/* *{
+    outline: 1px solid;
+} */
+.label-content h1{
+    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+}
+.wallet-balance{
+    background-color: white;
+    box-shadow: 0 1px 1px 1px #616161;
+    padding: 10px;
+    width: 200px;
+}
+.wallet-balance b{
+    font-size: 1.5em;
+    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+}
+
+.payment{
+    box-shadow: 0 1px 1px 1px #616161; 
+    padding: 25px;
+    width: 75%;
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.non-bago-color, .cert_e-color, .cert_t-color{
+    position: absolute;  
+    width: 20px;
+    height: 75px;
+    top: 0px;
+    left: 0px;
+}
+.non-bago-color{
+    background-color: rgba(0, 174, 255, 0.253);
+}
+.cert_e-color{
+    background-color: rgba(247, 0, 255, 0.253);
+}
+.cert_t-color{
+    background-color: rgba(255, 0, 55, 0.253);
+}
+@media screen and (min-width: 320px) {
+    .content-info {
+        padding: 100px 10px 0px 10px;
+    }
+
+    .label{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .label-content{
+        align-self: right;
+    }
+    .wallet-balance{
+        align-self: center;
+        text-align: center;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .payment-method{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .payment{
+        width: 100%;
+    }
+
+}
+@media screen and (min-width: 760px) {
+    .content-info {
+        padding-top: 110px;
+    }
+}
+@media screen and (min-width: 1020px) {
+    .content-info{
+        padding: 20px 0px 0px 120px;
+    }
+
+    .label{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .info{
+        margin-top: 100px;
+        display: flex;
+        flex-direction: row;
+    }
+    .method{
+        width: 50%;
+    }
+    .payment-method{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .payment{
+        width: 75%;
+    }
+}

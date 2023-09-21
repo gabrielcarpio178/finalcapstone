@@ -1,0 +1,52 @@
+/* * {
+  outline: 1px solid black;
+} */
+
+.information {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 1px 1px #616161;
+  height: 20vh;
+  width: 100%;
+  color: white;
+  padding: 20px;
+  border-radius: 5px/5px;
+}
+.date,
+.year {
+  align-self: flex-end;
+}
+.number {
+  color: #fff;
+  font-weight: bold;
+  font-size: 40px;
+}
+.graph {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+}
+.graph-info #bar {
+  width: 450px !important;
+  height: 350px !important;
+}
+.graph-info #doughnut {
+  width: 400px !important;
+  height: 400px !important;
+}
+@media screen and (min-width: 1020px) {
+  .content {
+    position: absolute;
+    left: 20%;
+    top: 15%;
+  }
+}

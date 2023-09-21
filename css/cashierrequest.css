@@ -1,0 +1,26 @@
+.contents {
+  position: absolute;
+  inset: 100px 0px 0px 280px;
+}
+
+.label-request {
+  font-size: 1.5em;
+}
+ul {
+  list-style: none;
+}
+.content-menu {
+  background-color: rgba(112, 108, 108, 0.137);
+  padding: 10px;
+  width: 85%;
+}
+
+#non_bago,
+#cash_out,
+#request {
+  cursor: pointer;
+}
+
+.fucos-class {
+  color: blue;
+}

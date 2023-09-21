@@ -1,0 +1,69 @@
+<?php 
+session_start();
+require('Dbconnection.php');
+if(isset($_POST['order_num'])){
+
+    $order_num = $_POST['order_num'];
+    $teller_id = $_SESSION['id'];
+
+    try {
+        $ordersql = mysqli_query($connect, "SELECT order_quantity, order_time, user_id, product_id FROM order_tb WHERE teller_id = '$teller_id' AND order_num = '$order_num';");
+        $orderrow = mysqli_fetch_assoc($ordersql);    
+        
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    $order_product_id = array();
+    $order_quantity = array();
+    do{
+        $order_quantity[] = $orderrow['order_quantity'];
+        $order_product_id[] = $orderrow['product_id'];
+    }while($orderrow = mysqli_fetch_array($ordersql));
+
+    
+    try {
+        $sqlselectall = mysqli_query($connect, "SELECT product_id, quantity FROM product_tb WHERE teller_id = '$teller_id';");
+        $selectallrow = mysqli_fetch_assoc($sqlselectall);
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    $allproduct_id = array();
+    $allqty = array();
+    do{
+        $allproduct_id[] = $selectallrow['product_id'];
+        $allqty[] = $selectallrow['quantity'];
+    }while($selectallrow = mysqli_fetch_array($sqlselectall));
+    
+    $num_of_product = count($allproduct_id);
+    $num_of_order = count($order_product_id);
+
+    for($x = 0; $x < $num_of_order; $x++){
+        for($i = 0; $i < $num_of_product; $i++){
+            if($order_product_id[$x]==$allproduct_id[$i]){
+
+                $_product_id = $order_product_id[$x];
+                $result = $allqty[$i] + $order_quantity[$x];
+
+                try {
+                    mysqli_query($connect, "UPDATE `product_tb` SET `quantity`='$result' WHERE product_id = '$_product_id' AND teller_id = '$teller_id';");
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+
+            }
+        
+        }           
+    }
+
+    try {
+        mysqli_query($connect, "UPDATE `order_tb` SET `statues` = NULL WHERE `teller_id`='$teller_id' AND `order_num`='$order_num';");
+        echo "success";
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+    
+
+}
+?>

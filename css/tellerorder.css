@@ -1,0 +1,116 @@
+/**{
+            outline: 1px solid;
+        }*/
+
+thead tr,
+tbody tr {
+  text-align: center;
+  cursor: pointer;
+}
+
+.fucos-info {
+  border-top: 1px solid #c1c1c1;
+  border-left: 1px solid #c1c1c1;
+  border-right: 1px solid #c1c1c1;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  background-color: white;
+  font-weight: bold;
+}
+
+.number {
+  border-radius: 50%;
+  text-align: center;
+}
+.approved-number {
+  background-color: #00c0ff;
+}
+.pending-number {
+  background-color: red;
+}
+.info-type{
+  cursor: pointer;
+}
+
+@media screen and (min-width: 320px) {
+  .container-fluid {
+    padding-top: 100px;
+  }
+  .order-label {
+    font-size: 15px;
+  }
+  .search-order {
+    margin-left: 20px;
+  }
+  .info-type {
+    font-size: 0.6em;
+  }
+  .number {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .personnel-action {
+    width: 20%;
+  }
+  .personnel-action,
+  .student-action {
+    font-size: 0.5em;
+    padding-top: 1vh;
+    width: 16.67%;
+    text-align: center;
+  }
+  .student-id,
+  .student-name,
+  .student-course,
+  .student-time,
+  .student-time_label,
+  .student-reserve {
+    width: 20%;
+    height: 5vh;
+    text-align: center;
+    padding-top: 1vh;
+    font-size: 0.6em;
+  }
+  .personnel-name,
+  .personnel-department,
+  .personnel-time,
+  .personnel-action,
+  .personnel-time_label,
+  .personnel-reserve {
+    width: 33.33%;
+    height: 5vh;
+    text-align: center;
+    padding-top: 1vh;
+    font-size: 0.6em;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .container-fluid {
+    padding: 50px 30px 0px 320px;
+  }
+  .info-type {
+    font-size: 1em;
+  }
+  .personnel-action,
+  .student-action {
+    font-size: 1em;
+  }
+  .student-id,
+  .student-name,
+  .student-course,
+  .student-time,
+  .student-time_label,
+  .student-reserve {
+    font-size: 1em;
+    padding-top: 0.5vh;
+  }
+  .personnel-name,
+  .personnel-department,
+  .personnel-time,
+  .personnel-action,
+  .personnel-time_label,
+  .personnel-reserve {
+    font-size: 1em;
+    padding-top: 0.5vh;
+  }
+}

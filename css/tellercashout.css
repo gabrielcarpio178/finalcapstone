@@ -1,0 +1,125 @@
+/* * {
+  outline: 1px solid;
+} */
+.wallet-balance {
+  background-color: white;
+  box-shadow: 0 1px 1px 1px #616161;
+  border-radius: 10px/10px;
+  font-weight: bold;
+}
+.label-amount {
+  text-align: center;
+}
+.form-control {
+  height: 50px;
+  width: 280px;
+  font-size: 30px;
+  text-align: center;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background-color: #2a325470;
+  box-shadow: 0 1px 1px 1px #616161;
+  border-radius: 10px/10px;
+  font-weight: bold;
+  gap: 10px;
+}
+.label-input {
+  align-self: start;
+  margin-left: 20px;
+}
+.col-lg-3 {
+  background-color: rgba(0, 119, 255, 0.466);
+  height: 100vh;
+}
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.success-message img {
+  max-width: 130px;
+  margin-top: 35px;
+}
+.message {
+  font-size: 2em;
+}
+.name {
+  font-size: 1.5em;
+}
+.amount-cashout {
+  font-size: 1.3em;
+}
+@media screen and (min-width: 320px) {
+  .cashout-info {
+    padding-top: 100px;
+  }
+  .wallet-balance {
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 25%;
+    padding: 15px;
+  }
+  .success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    color: white;
+  }
+  .label-wallet-balance{
+    text-align: center;
+  }
+  .input-group {
+    width: 60%;
+    height: 225px;
+    margin-top: 25px;
+    padding: 10px;
+  }
+  .input-group #amount, #password{
+    width: 75%;
+    margin-left: 12%;
+  }
+  .col-lg-3 {
+    position: fixed;
+    margin-top: 85px;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .cashout-info {
+    padding: 100px 0px 0px 320px;
+  }
+  .wallet-balance {
+    width: 300px;
+    margin-top: 50px;
+    padding: 15px;
+  }
+  #message-info{
+    margin: 0px;
+  }
+  .success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+    color: white;
+  }
+  .label-amount {
+    font-size: 40px;
+    padding: 1px;
+  }
+  .input-group {
+    width: 400px;
+    height: 200px;
+    margin-top: 100px;
+  }
+  .col-lg-3 {
+    position: static;
+    display: none;
+  }
+}

@@ -1,0 +1,184 @@
+/**{
+            outline: 1px solid;
+        }*/
+        .announcement {
+          background-color: #2a325441;
+          border-radius: 15px/15px;
+          box-shadow: 0 1px 1px 1px #616161;
+        }
+        .message .welcome {
+          color: black;
+        }
+        .menu {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-radius: 15px/15px;
+          box-shadow: 0 1px 1px 1px #616161;
+          cursor: pointer;
+        }
+        .menu:hover {
+          transform: scale(1.1) translateY(3px);
+          transition: 0.3s;
+        }
+        .menu p {
+          margin-top: 5px;
+        }
+        #cash_out {
+          background-color: #ffde81;
+        }
+        #menu-teller {
+          background-color: #90b7b6;
+        }
+        #order-teller {
+          background-color: #fda784;
+        }
+        .wallet-balance,
+        .collection,
+        .summary-income {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          border-radius: 15px/15px;
+          box-shadow: 0 1px 1px 1px #616161d3;
+          background-color: white;
+        }
+        .summary-income:hover {
+          cursor: pointer;
+          transform: scale(1.1) translateY(3px);
+          transition: 0.3s;
+        }
+        
+        .collection-balance,
+        .balance-amount {
+          color: black;
+          font-size: 2em;
+          font-weight: bold;
+        }
+        
+        @media screen and (min-width: 320px) {
+          .home-info {
+            padding-top: 100px;
+          }
+          .announcement {
+            height: 150px;
+            width: 100%;
+            padding: 15px;
+          }
+          .message .welcome {
+            font-size: 1em;
+          }
+          .announcement .logo {
+            max-width: 4em;
+          }
+          .menus {
+            margin-top: 60px;
+          }
+          .menu {
+            width: 80px;
+            height: 80px;
+          }
+          .menu img {
+            max-width: 3em;
+          }
+          .teller-info {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+          .wallet-balance {
+            height: 100px;
+            width: 150px;
+          }
+          .collection {
+            height: 100px;
+            width: 150px;
+          }
+          #graph_image {
+            width: 40px;
+          }
+        }
+        
+        @media screen and (min-width: 760px) {
+          .home-info {
+            padding: 130px 30px 0px 30px;
+          }
+          .announcement {
+            height: 170px;
+          }
+          .message .welcome {
+            font-size: 2em;
+          }
+          .announcement .logo {
+            max-width: 6em;
+          }
+          .menu {
+            width: 130px;
+            height: 130px;
+          }
+          .menu img {
+            max-width: 4em;
+          }
+          .wallet-balance {
+            height: 120px;
+            width: 150px;
+          }
+          .teller-info {
+            display: flex;
+            justify-content: space-evenly;
+          }
+          .collection {
+            height: 120px;
+            width: 150px;
+          }
+        }
+        @media screen and (min-width: 1020px) {
+          .home-info {
+            padding-top: 50px;
+            padding-left: 300px;
+          }
+          .announcement {
+            height: 160px;
+            width: 100%;
+            padding: 15px;
+          }
+          .message .welcome {
+            font-size: 2em;
+          }
+          .announcement .logo {
+            max-width: 9em;
+          }
+          .menus {
+            margin-top: 90px;
+          }
+          .menu {
+            width: 120px;
+            height: 120px;
+          }
+          .menu img {
+            max-width: 3em;
+          }
+          .teller-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+          .wallet-balance,
+          .collection {
+            margin: 6px 0px 40px 0px;
+          }
+          .wallet-balance {
+            height: 120px;
+            width: auto;
+          }
+          .collection {
+            height: 120px;
+            width: auto;
+          }
+          #graph_image {
+            width: 70px;
+          }
+        }
+        

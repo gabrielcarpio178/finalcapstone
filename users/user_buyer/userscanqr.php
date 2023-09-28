@@ -24,24 +24,149 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
 
     <div id="navbar"></div>
 
-    <div class="container-fluid">
+    <div class="d-flex flex-row container-fluid">
 
-        <div class="content-info">
+        <div class="content-info w-100 mb-5">
             <h1 class="content-label">QR CODE SCAN</h1>
+            <div class="input_search_result w-25">
+                <input type="text" name="search_canteen" id="search_canteen" class="form-control" placeholder="Search Canteen Staff">
+                <div class="result">
+                </div>
+            </div>
+            
+            
+            <div class="demo-btnscan">
+                <div class="qr_instruction">
 
-            <div class="qr_instruction">
-                <img src="../../image/qr_instruction.png">
+                    <div class="label_instruction">
+                        <img src="../../image/step_1.png" class="instruction_image">
+                        <p>GET THE QR CODE OF A SPECIFIC CANTEEN STORE</p>
+                        <p>1</p>
+                    </div>
+
+                    <div class="label_instruction">
+                        <img src="../../image/step_2.png" class="instruction_image">
+                        <p>SCAN QR CODE</p>
+                        <p>2</p>
+                    </div>
+
+                    <div class="label_instruction">
+                        <img src="../../image/step_3.png" class="instruction_image">
+                        <p>WAIT FOR PAYMENT PAGE TO LOAD</p>
+                        <p>3</p>
+                    </div>
+
+                    <div class="label_instruction">
+                        <img src="../../image/step_4.png" class="instruction_image">
+                        <p>INPUT PAYMENT</p>
+                        <p>4</p>
+                    </div>
+
+                    <div class="label_instruction">
+                        <img src="../../image/step_5.png" class="step_5">
+                        <p>ENTER PASSWORD FOR VERIFICATION</p>
+                        <p>5</p>
+                    </div>
+
+                </div>
+
+                <div id="btnscan_qr" class="scan-qr">
+                    <img src="../../image/qrcode.png">
+                </div>
             </div>
 
-            <div id="btnscan_qr" class="scan-qr">
-                <img src="../../image/qrcode.png">
+             <main>
+                <div id="reader"></div>
+            </main>
+            <div class="alert alert-dismissible alert-danger" style="display: none">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Invalid Qr</strong>
             </div>
+
+            <div id="result" class="show" style="display: none;">
+                <div class="label-input">
+                    Canteen Store
+                </div>
+                <div class="teller-store fw-bold">
+                    
+                </div>
+                <form id="input_balance">
+                    <input type="hidden" value="<?=$_SESSION['id'] ?>" class="form-control" name="user_id" id="user_id">
+                    <input type="hidden" id="balance_amount">
+                    <label for="input-amount">Enter Amount:</label>
+                    <div class="peso-sign-input">
+                        <div class="peso-sign">₱</div>
+                        <input type="number" class="form-control" name="input_amount" id="input_amount">
+                    </div>
+                    
+                    <input type="submit" class="btn btn-primary w-100" value="Send">
+
+                </form>    
+            </div>
+
+            <div id="result_password" class="show_passowrd" style="display: none;">
+                <div class="label-password">
+                    Please enter your password
+                </div>
+                <div id="input_password_form">
+                    <div class="pass-icon">
+                        <input type="password" class="form-control mt-3" name="input_password" id="input_password">
+                        <div class="icon-pass">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </div>
+                    </div>
+                    
+                    <input type="submit" class="btn btn-primary w-100 mt-3" id="submit_password" value="Proceed">
+                </div>    
+            </div>
+
+        </div>
+
+        <div class="success-message" style="display: none">
+
+            <div class="title-label">
+                BCC Digital Payment System           
+            </div>
+            <div class="icon-success">
+                <img src="../../image/sweet_success.jfif" class="sweet_success">
+                <b>Success</b>
+            </div>
+            <div class="teller-label">
+                <p>You've successfully sent payment to</p>
+                <b id="canteen_staff_name"></b>
+            </div>
+
+            <div class="show-amount">
+                <div class="data-amount">
+                    <p>₱</p>
+                    <p class="inserted-amount"></p>
+                </div>
+                <div class="label-total">
+                    Total amount
+                </div>
+            </div>
+
+            <div class="label-amount">
+                <div class="data-show">
+                    <p class="label-show">Date and Time:</p>
+                    <p id="datetime"></p>
+                </div>
+                <div class="data-show">
+                    <p class="label-show">Reference Number:</p>
+                    <p id="ref_num"></p>
+                </div>
+            </div>
+            <div class="btn-ok">
+                <button class="btn btn-primary" id="success_okay">Okay</button>
+            </div>
+
+
         </div>
 
     </div>
     
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="../../js/userscanqr.js"></script>

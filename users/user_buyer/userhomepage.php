@@ -24,17 +24,8 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
     }
     
     try{
-        
         $getuser = mysqli_query($connect, "SELECT user_tb.*, ".$tablerow." FROM user_tb INNER JOIN ".$table." ON user_tb.user_id = ".$userid." WHERE user_tb.user_id='$id'");
-        $getamount = mysqli_query($connect, "SELECT SUM(amount) AS totalAmount FROM cashierTransaction_tb WHERE user_id='$id';");
-        $totalAmount = mysqli_fetch_assoc($getamount);
         $row = mysqli_fetch_assoc($getuser);
-        $row['amount'] = $totalAmount['totalAmount'];
-        if($row['amount']==NULL){
-            $_SESSION['amount'] = 0;
-        }else{
-            $_SESSION['amount'] = $row['amount'];
-        }
     }catch(\Throwable $th){
         echo $th;
     }
@@ -74,10 +65,29 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                 
                 <div class="d-flex flex-column-reverse flex-lg-row mt-lg-5 categories">
 
-                    <div class="bell">
-                        <i class="fa-solid fa-bell"></i>
-                        <div class="count-number">0</div>
+                    <div class="notification-bell">
+                        <input type="hidden" value="<?=$id ?>" id="user_id">
+                        <div class="bell">
+                            <i class="fa-solid fa-bell"></i>
+                            <div class="count-number"></div>
+                        </div>
+
+                        <div class="notification">
+                            <div class="noti-label">
+                                <center><h3>Notification</h3></center>
+                            </div>
+                            <div class="noti-data">
+                                
+                            </div>
+                            <div class="button">
+                                Clear Notification
+                            </div>
+                        </div>
+
+                        
+
                     </div>
+
                     
                    <div class="d-flex flex-row flex-lg-column justify-content-around">
                         
@@ -128,7 +138,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                                    WALLET BALANCE
                                </div>
                                <div class="balance">
-                                   <h1><?php echo ($row['amount']!=NULL)?$row['amount']:"0"; ?></h1>
+                                   <h1 class="balance_amount"></h1>
                                
                                </div>
                                
@@ -229,5 +239,6 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" crossorigin="anonymous"></script>
 <script src="../../js/userhomepage.js"></script>
 </html>

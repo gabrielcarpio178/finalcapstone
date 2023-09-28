@@ -281,5 +281,5 @@ function edit(id, usertype){
 }
 
 function viewqr(id){
-  window.open('../../controller/Dbtellerprintqr.php?teller_id='+id);
+  window.open('../../pdf.php?teller_id='+id);
 }

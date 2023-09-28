@@ -9,7 +9,6 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
 }else{
    $id = $_SESSION['id'];
    $firstname = $_SESSION['firstname'];
-   $amount = $_SESSION['amount'];
    try{
        $query = mysqli_query($connect, "SELECT * FROM telleruser_tb;");
        $teller = mysqli_fetch_assoc($query);
@@ -99,7 +98,8 @@ user-scalable=no">
             </div>
             
             <div class="col col-lg-3 orders">
-                
+                <input type="hidden" value="<?=$_SESSION['id'] ?>" id="user_id">
+                <input type="hidden" id="balance_amount">
                 <div class="d-flex flex-column order">
                     <i class="fa-solid fa-x" id="close"></i>
                     <div class="d-flex flex-row justify-content-between profile-info mt-3 p-3">

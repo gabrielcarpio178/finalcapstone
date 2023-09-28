@@ -4,7 +4,6 @@ require('Dbconnection.php');
 if(isset($_POST['product_id'])){
     $product_id = $_POST['product_id'];
     $id = $_SESSION['id'];
-    $amount = $_SESSION['amount'];
     try{
         $sql = mysqli_query($connect, "SELECT product_tb.product_id, product_tb.product_name, category_tb.category_name, product_tb.price, product_tb.quantity, product_tb.image, telleruser_tb.teller_id, telleruser_tb.store_name FROM telleruser_tb JOIN category_tb ON telleruser_tb.teller_id = category_tb.teller_id JOIN product_tb ON category_tb.category_id = product_tb.category_id WHERE product_tb.product_id = '$product_id';");
         $order = mysqli_fetch_assoc($sql);       

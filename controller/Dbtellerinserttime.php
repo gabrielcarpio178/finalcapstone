@@ -7,7 +7,7 @@ if(isset($_POST['deadline'])&&isset($_POST['order_date'])){;
     $order_date = $_POST['order_date'];
     $id = $_SESSION['id'];
     try{
-        mysqli_query($connect, "UPDATE `order_tb` set `deadline_time`='$new_datetime', `statues` = 'ACCEPTED' WHERE order_time = '$order_date' AND `teller_id` = '$id';");
+        mysqli_query($connect, "UPDATE `order_tb` set `deadline_time`='$new_datetime', `statues` = 'ACCEPTED', `num_noti` = '0' WHERE order_time = '$order_date' AND `teller_id` = '$id';");
         echo $new_datetime;
     }catch(\Throwable $th){
         echo $th;

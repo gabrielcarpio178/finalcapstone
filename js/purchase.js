@@ -40,7 +40,7 @@ $(document).ready(function () {
       },
     });
   });
-
+  getbalance();
   submit();
 
   $("#user_order").on("click", function () {
@@ -169,7 +169,10 @@ function minusquantity(id) {
 }
 
 //show total amount
+
 function total_amount() {
+  var balance = $("#balance_amount").val();
+  let valid = false;
   let total = 0;
   for (let x = 0; x < selected_list.length; x++) {
     var qty = parseInt($("#numqty_" + selected_list[x]).val());
@@ -178,11 +181,13 @@ function total_amount() {
     total = total + result;
   }
 
-  // if(<?=$amount ?> < total){
-  //     $(".total-amount").addClass('not-enough');
-  // }else{
-  //      $(".total-amount").removeClass('not-enough');
-  // }
+  if(balance < total){
+    $(".total-amount").addClass('not-enough');
+    valid = true;
+  }else{
+    $(".total-amount").removeClass('not-enough');
+    valid = false;
+  }
   if (typeof total === "number") {
     $(".total-amount").text("Total: " + total + ".00");
   }else if(total<0){
@@ -190,17 +195,43 @@ function total_amount() {
   } else {
     $(".total-amount").text("Total: " + 0 + ".00");
   }
+
+  return valid;
 }
+
+function getbalance(){
+
+  var user_id = $("#user_id").val();
+  
+  $.ajax({
+    url: '../../controller/Dbgetuserbalance.php',
+    type: 'POST',
+    data: {user_id:user_id},
+    cache: false,
+    success: function(res){
+      $("#balance_amount").val(res);
+    }
+  });
+}
+
 
 function submit(){
   
   $("#submit_order").on("submit", function (e) {
     e.preventDefault();
-    
-    if(selected_list.length==0){
+    if(total_amount()==true){
       Swal.fire({
         position: 'center',
-        icon: 'error',
+        icon: 'warning',
+        title: 'Insufficient Balance',
+        showConfirmButton: false,
+        timer: 1000
+      });
+    }
+    else if(selected_list.length==0){
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
         title: 'Empty Order',
         showConfirmButton: false,
         timer: 1000
@@ -236,3 +267,6 @@ function submit(){
   });
 
 }
+
+
+

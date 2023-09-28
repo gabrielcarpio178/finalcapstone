@@ -1,3 +1,6 @@
+/* *{
+  outline: 1px solid;
+} */
 .content-info {
   display: flex;
   flex-direction: column;
@@ -8,6 +11,64 @@
   align-self: start;
   font-weight: bold;
 }
+.input_search_result{
+  align-self: start;
+  position: relative;
+}
+.result{
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 1px 1px 1px #616161;
+  display: none;
+  padding: 10px;
+}
+
+.demo-btnscan{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 25px;
+}
+.qr_instruction{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  background-color: #9d9d9d;
+  border-radius: 10px/10px;
+  width: 100%;
+}
+.label_instruction{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  width: 15%;
+  height: 15vh;
+  border-radius: 10px/10px;
+}
+.instruction_image{
+  width: 50px;
+}
+.step_5{
+  width: 40%;
+  height: 40vh;
+}
+p{
+ font-size: 10px;
+ font-weight: bold;
+ margin: 0;
+ padding: 0;
+}
+.qr_instruction{
+  padding: 10px;
+}
 .scan-qr {
   background-color: azure;
   padding: 10px;
@@ -16,10 +77,167 @@
   cursor: pointer;
 }
 
+.show{
+  margin-top: 30px;
+  background-color: white;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #616161;
+  padding: 20px;
+  gap: 30px;
+}
+.show_passowrd{
+  margin-top: 30px;
+  background-color: white;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #616161;
+  padding: 20px;
+  gap: 30px;
+}
+.label-input{
+  align-self: flex-start;
+}
+.teller-store{
+  font-size: 1.5em;
+}
+#input_balance{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.peso-sign-input{
+  position: relative;
+}
+.peso-sign-input .peso-sign{
+  position: absolute;
+  font-size: 2em;
+  bottom: -6px;
+  left: 5px;
+} 
+.peso-sign-input input{
+  text-align: center;
+} 
+
+main{
+  width: 50%;
+  margin: 20px;
+  display: none;
+  
+}
+
+.label_instruction:hover{
+  background-color: #D9D9D9;
+}
+
+.success-message{
+  height: 100vh;
+  background-color: white;
+  box-shadow: 0 1px 1px 1px #616161;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 25px;
+  gap: 20px;
+}
+.title-label{
+  font-weight: bold;
+  font-size: 15px;
+}
+.label-amount{
+  align-self: flex-start;
+  width: 100%;
+}
+.icon-success{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sweet_success{
+  width: 60%;
+  height: 20vh;
+}
+.icon-success b{
+  font-size: 26px;
+}
+
+.teller-label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.teller-label p{
+  font-size: 15px;
+}
+.teller-label b{
+  font-size: 18px;
+}
+.show-amount{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D9D9D9;
+  padding: 10px 70px;
+  border: 1px solid #616161;
+  border-radius: 10px/10px;
+}
+.data-amount{
+  display: flex;
+  flex-direction: row;
+}
+.data-amount p{
+  font-size: 30px;
+}
+.data-show{
+  display: flex;
+  flex-direction: row;
+}
+.data-show p{
+  font-size: 16px;
+}
+
+.data-show .label-show{
+  width: 80%;
+}
+
+.btn-ok{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.btn-ok button{
+  width: 100%;
+}
+.pass-icon{
+  position: relative;
+}
+.icon-pass{
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  cursor: pointer;
+}
+#input_password{
+  text-align: center;
+}
+
+.teller{
+  cursor: pointer;
+}
+
 @media screen and (min-width: 320px) {
   .content-info {
     padding-top: 100px;
-    gap: 60px;
   }
   .qr_instruction img {
     max-width: 800px;
@@ -30,7 +248,6 @@
   .content-info {
     padding-left: 100px;
     padding-top: 50px;
-    gap: 60px;
   }
   .qr_instruction img {
     max-width: 800px;

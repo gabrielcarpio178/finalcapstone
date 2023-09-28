@@ -53,6 +53,38 @@
   cursor: pointer;
 }
 
+.notification-bell{
+  position: relative;
+}
+
+.notification{
+  position: absolute;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  display: none;
+}
+
+.noti-data{
+  height: 60vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.button{
+  cursor: pointer;
+  box-shadow: 0 1px 1px 1px #616161;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0px;
+  background-color: #D9D9D9;
+}
+/* .message_info :hover{
+  background-color: #D9D9D9;
+} */
 @media screen and (min-width: 320px) {
   .bell {
     position: relative;
@@ -232,4 +264,38 @@
   #close {
     display: none !important;
   }
+
+  .notification{
+    height: 70vh;
+    padding-top: 5px; 
+    width: 400px;
+    font-size: 20px;
+  }
+
+  .messages{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    align-items: center;
+  }
+  .message_info{
+    display: flex;
+    flex-direction: column;
+  }
+  .message_info p{
+    font-size: 14px;
+    padding-left: 60px;
+  }
+  .message_info .canteen-staff-pp{
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .none_view{
+    background-color: #D9D9D9;
+  }
+
 }

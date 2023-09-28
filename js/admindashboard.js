@@ -134,7 +134,7 @@ function graph(month,datas, course, department){
         },
         title: {
           display: true,
-          text: 'Users Web Usages',
+          text: 'BCC Digital Payment System User Login Statistics',
         },
         legend: {
           position: 'bottom',
@@ -181,7 +181,7 @@ function graph(month,datas, course, department){
           },
           title: {
             display: true,
-            text: 'Users',
+            text: 'Total Department Users ',
             font: {
                 size: 20
             }

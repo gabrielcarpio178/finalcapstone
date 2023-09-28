@@ -77,7 +77,7 @@ if(!empty($amount_cashout)){
                        
                    </div>
 
-                    <a href="../../controller/Dbtellerprintqr.php?teller_id=<?=$teller_id; ?>" class="btn btn-warning mt-5" target=”_blank”><i class="fa fa-upload"></i>View QR</a>
+                    <a href="../../pdf.php?teller_id=<?=$teller_id; ?>" class="btn btn-warning mt-5" target=”_blank”><i class="fa fa-upload"></i>View QR</a>
                    
                </div>
                

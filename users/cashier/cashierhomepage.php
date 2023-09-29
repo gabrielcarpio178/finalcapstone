@@ -67,6 +67,6 @@ if(($_SESSION['usertype']!="cashier")){
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   ></script>
-  <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/cashierhomepage.js"></script>
 </html>

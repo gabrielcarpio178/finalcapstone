@@ -15,6 +15,7 @@
     <!-- <title>Document</title> -->
   </head>
   <body>
+    <div class="loader"><img src="../../image/loader.gif"></div>    
     <div class="navigation">
       <nav class="header">
         <b>BCC DIGITAL PAYMENT SYSTEM</b>
@@ -60,6 +61,6 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   ></script>
-  <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/cashiernav.js"></script>
 </html>

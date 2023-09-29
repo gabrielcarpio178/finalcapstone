@@ -2,9 +2,13 @@ $(document).ready(function () {
   $("#home").on("click", function () {
     window.location = "cashierhomepage.php";
   });
+
+  $("#cash_in").on('click', function(){
+    window.location = "cashiercashin.php";
+  });
   
-  $("#logout").on("click", function (e) {
-    e.preventDefault();
+  $("#logout").on("click", function () {
+    // console.log('click');
 
     $.ajax({
       url: "../../controller/Dblogout.php?logout=click",
@@ -25,6 +29,6 @@ $(document).ready(function () {
       },
     });
 
-  });
+  }); 
   
 });

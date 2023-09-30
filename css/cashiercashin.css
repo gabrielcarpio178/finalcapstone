@@ -1,10 +1,12 @@
 /* *{
     outline: 1px solid;
 } */
-
+body{
+    overflow: hidden;
+}
 .content{
     position: absolute;
-    inset: 90px 0px 0px 260px;
+    inset: 66px 0px 0px 260px;
 }
 .label-title{
     font-weight: bold;
@@ -16,11 +18,11 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 70vh;
+    height: 50vh;
 }
 
 .logo-id{
-    background-color: rgba(92, 92, 219, 0.719);
+    background-color: #d9d9d9;
     padding: 10px;
     width: 40%;
     border-radius: 10px/10px;
@@ -30,9 +32,91 @@
     justify-content: center;
     align-items: center;
 }
+.id-pic{
+    text-align: center;
+}
+.id-pic p{
+    font-size: 1.5em;
+}
+.id-pic i{
+    font-size: 10em;
+}
+
 .search-table{
     align-self: flex-start;
     width: 50%;
     text-align: center;
     white-space: nowrap;
+}
+
+table tr{
+    cursor: pointer;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+.input-amount{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    background-color: #d9d9d9;
+    border-radius: 10px/10px;
+    padding: 30px;
+    gap: 30px;
+    box-shadow: 0 1px 1px 1px #616161;
+}
+.input-amount form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#input_amount{
+    text-align: center;
+}
+.input-class{
+    position: relative;
+}
+
+.input-class p{
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    left: 8px;
+    top: -1px;
+}
+
+.profile-user{
+    padding: 30px;
+    background-color: white;
+    height: 100vh;
+    box-shadow: 0 1px 1px 1px #616161; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.profile-info{
+    align-self: center;
+    text-align: center;
+}
+.profile-info img{
+    max-width: 50%;
+}
+.name{
+    font-weight: 2000;
+}
+.department-info, .phonenumber-user, .addess-user{
+    background-color: #d9d9d98f;
+    padding: 10px;
+}
+.balance{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

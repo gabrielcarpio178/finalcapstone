@@ -9,6 +9,7 @@ $gender=$_POST['gender'];
 $address=$_POST['address'];
 $username=$_POST['username'];
 $password=md5($_POST['password']);
+
 try{
     
     $select = mysqli_query($connect, "SELECT `user_category`, `username`, `password` FROM `user_tb` WHERE username='$username' OR password='$password' UNION ALL SELECT `user_category`, `username`, `password` FROM `telleruser_tb` WHERE username='$username' OR password='$password' UNION ALL SELECT `user_category`, `username`, `password` FROM `cashier_tb` WHERE username='$username' OR password='$password' UNION ALL SELECT `user_category`, `username`, `password` FROM `admin_tb` WHERE username='$username' OR password='$password';");    

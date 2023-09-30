@@ -165,12 +165,18 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                                <p><?php if($row['usertype']=='student'){ ?>
                                Student ID: <?=$row['studentID_number'] ?>
                                <?php }else{ ?>
-                               Department: <?=$row['department'] ?>
+                               Personnel ID: <?=$row['personnelUser_id']?> 
                                <?php } ?>
                                </p>
                                
                            </div>
                        </div>
+                       <?php if($row['usertype']=='personnel'){ ?>
+                       <div class="profile-info">
+                           <label>Department:</label>
+                           <b><?=$row['department'] ?></b>
+                       </div>
+                       <?php } ?>
                        <?php if($row['usertype']=='student'){ ?>
                        <div class="profile-info">
                            <label>Course:</label>

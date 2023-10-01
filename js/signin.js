@@ -99,7 +99,7 @@ $(document).ready(function () {
           $(".loader").show();
         },
         success: function (res) {
-          // console.log(res);
+          console.log(res);
           if (res == "login") {
             $(".loader").hide();          
             Swal.fire({
@@ -157,13 +157,7 @@ $(document).ready(function () {
             });
           } else if (res == "wrong") {
             $(".loader").hide();
-            Swal.fire({
-              position: 'center',
-              icon: 'error',
-              title: 'Wrong username and password',
-              showConfirmButton: false,
-              timer: 1000
-            })
+            getdatafromApi(username, password);
           }
         },
       });
@@ -185,3 +179,34 @@ $(document).ready(function () {
   });
 
 });
+
+function getdatafromApi(username, password){
+  $.ajax({
+    url:'controller/DbgetdataIntoApi.php',
+    type: 'POST',
+    data: {username: username,
+    password: password},
+    cache: false,
+    success: function(res){
+      if(res == "login"){
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Hi! Welcome Back',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(function () {
+          window.location = "users/user_buyer/userhomepage.php";
+        });
+      }else if(res == "Invalid Credentials"){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Wrong username and password',
+          showConfirmButton: false,
+          timer: 1000
+        })
+      }
+    }
+  })
+}

@@ -9,12 +9,9 @@ $_SESSION['error'] = array();
 try{
    $result=mysqli_query($connect, "SELECT * FROM `user_tb` WHERE username='$username' AND password='$password';");
    $row = mysqli_fetch_assoc($result);
-   if($row>0){ 
+   if($row>0){  
     $id = $row['user_id'];
-      if($row['request']=="not-activite"){
-        echo 'account_request';
-      }
-      elseif($row['usertype']==NULL){
+        if($row['usertype']==NULL){
         echo 'firstlogin';
          $_SESSION['id']=$row['user_id']; 
          $_SESSION['firstname']=$row['firstname'];        
@@ -41,15 +38,7 @@ try{
               echo $th;
             }
 
-        }
-        try {
-          mysqli_query($connect, "UPDATE `user_tb` SET `statues`='active' WHERE `user_id` = '$id';");
-        } catch (\Throwable $th) {
-          echo $th;
-        } 
-  
-        
-        
+        }    
     }
       //admin
       else{

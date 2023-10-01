@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2023 at 06:58 PM
+-- Generation Time: Oct 01, 2023 at 06:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -106,8 +106,6 @@ CREATE TABLE `cashin_tb` (
 --
 
 INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `cashin_date`) VALUES
-(1, 40, 1500, '2023-09-25 10:48:51'),
-(2, 40, 1500, '2023-09-25 11:08:43'),
 (3, 45, 1500, '2023-09-28 09:24:32'),
 (6, 33, 1500, '2023-09-29 23:13:15');
 
@@ -191,13 +189,6 @@ CREATE TABLE `order_tb` (
 --
 
 INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `orderproduct_name`, `order_num`, `order_productcategory`, `order_time`, `deadline_time`, `order_amount`, `order_quantity`, `num_noti`, `statues`) VALUES
-(2, 40, 1, 1, 'Mountain dew', '3948571930', 'Drinks', '2023-08-22 22:53:14', '2023-08-22 23:03:46', 15, 1, 1, 'PROCEED'),
-(6, 40, 1, 1, 'Mountain dew', '8894829058', 'Drinks', '2023-08-23 14:11:14', '2023-08-23 14:21:35', 15, 1, 1, 'PROCEED'),
-(10, 40, 1, 1, 'Mountain dew', '9540188489', 'Drinks', '2023-08-24 10:36:10', '2023-08-24 11:09:08', 60, 3, 1, 'PROCEED'),
-(12, 40, 1, 1, 'Mountain dew', '7492883020', 'Drinks', '2023-08-24 11:32:46', '2023-08-24 13:36:27', 40, 2, 1, 'PROCEED'),
-(13, 40, 1, 10, 'Coke', '2380384410', 'Drinks', '2023-08-24 11:58:57', '2023-08-24 12:09:18', 40, 2, 1, 'PROCEED'),
-(14, 40, 1, 1, 'Mountain dew', '2380384410', 'Drinks', '2023-08-24 11:58:57', '2023-08-24 12:09:18', 20, 1, 1, 'PROCEED'),
-(15, 40, 1, 10, 'Coke', '6383295510', 'Drinks', '2023-08-24 12:00:27', '2023-08-24 12:11:37', 20, 1, 1, 'PROCEED'),
 (18, 38, 1, 1, 'Mountain dew', '6383295511', 'Drinks', '2023-08-24 13:05:36', '2023-08-24 13:33:21', 20, 1, 0, 'PROCEED'),
 (20, 38, 1, 1, 'Mountain dew', '6383295512', 'Drinks', '2023-08-24 13:31:34', '2023-08-24 13:41:58', 20, 1, 0, 'PROCEED'),
 (22, 41, 1, 1, 'Mountain dew', '6383295513', 'Drinks', '2023-08-24 20:01:17', '2023-08-24 20:12:11', 20, 1, 0, 'PROCEED'),
@@ -211,96 +202,25 @@ INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `order
 (39, 41, 1, 1, 'Mountain dew', '6103792458', 'Drinks', '2023-08-26 15:46:45', '2023-08-27 10:41:34', 20, 1, 0, 'PROCEED'),
 (41, 35, 1, 1, 'Mountain dew', '1605379842', 'Drinks', '2023-08-27 10:18:10', '2023-08-27 10:58:37', 20, 1, 0, 'PROCEED'),
 (43, 33, 1, 1, 'Mountain dew', '3672150984', 'Drinks', '2023-08-27 10:20:51', '2023-08-27 10:51:13', 20, 1, 0, 'PROCEED'),
-(45, 40, 1, 1, 'Mountain dew', '8751926304', 'Drinks', '2023-08-27 11:34:49', '2023-08-27 17:18:19', 20, 1, 1, 'PROCEED'),
-(47, 40, 1, 1, 'Mountain dew', '3296078451', 'Drinks', '2023-08-27 17:18:08', '2023-08-27 17:48:29', 20, 1, 1, 'PROCEED'),
 (49, 41, 1, 10, 'Coke', '3149082675', 'Drinks', '2023-08-27 17:23:37', '2023-08-27 17:54:00', 20, 1, 0, 'PROCEED'),
 (51, 45, 1, 1, 'Mountain dew', '6708429351', 'Drinks', '2023-08-27 18:02:55', '2023-08-27 18:13:14', 20, 1, 1, 'PROCEED'),
-(54, 40, 1, 1, 'Mountain dew', '1543902867', 'Drinks', '2023-08-27 18:09:37', '2023-08-27 18:11:05', 20, 1, 1, 'PROCEED'),
-(55, 40, 1, 1, 'Mountain dew', '4136079582', 'Drinks', '2023-08-27 18:57:02', '2023-08-27 18:59:21', 20, 1, 1, 'PROCEED'),
 (57, 41, 1, 1, 'Mountain dew', '9602547381', 'Drinks', '2023-08-27 19:01:37', '2023-08-27 19:02:57', 20, 1, 0, 'PROCEED'),
 (59, 45, 1, 1, 'Mountain dew', '8276514930', 'Drinks', '2023-08-27 19:02:33', '2023-08-27 19:04:54', 20, 1, 1, 'PROCEED'),
 (61, 37, 1, 1, 'Mountain dew', '2398165704', 'Drinks', '2023-08-27 22:33:34', '2023-08-27 22:43:55', 20, 1, 0, 'PROCEED'),
-(63, 40, 1, 1, 'Mountain dew', '4238750619', 'Drinks', '2023-08-27 22:36:48', '2023-08-27 22:39:11', 20, 1, 1, 'PROCEED'),
 (65, 36, 1, 1, 'Mountain dew', '8063592417', 'Drinks', '2023-08-27 22:40:46', '2023-08-27 22:43:07', 20, 1, 0, 'PROCEED'),
 (73, 37, 1, 10, 'Coke', '8352196740', 'Drinks', '2023-08-28 00:21:22', '2023-08-28 00:26:42', 20, 1, 0, 'PROCEED'),
-(77, 40, 1, 1, 'Mountain dew', '8604175932', 'Drinks', '2023-08-28 00:30:01', '2023-08-28 00:30:18', 20, 1, 1, 'PROCEED'),
 (79, 34, 1, 1, 'Mountain dew', '6041327895', 'Drinks', '2023-08-28 00:37:00', '2023-08-28 00:48:11', 20, 1, 0, 'PROCEED'),
 (81, 33, 1, 1, 'Mountain dew', '5187029346', 'Drinks', '2023-08-28 00:54:08', '2023-08-28 01:14:00', 20, 1, 0, 'PROCEED'),
 (87, 45, 1, 1, 'Mountain dew', '0831562479', 'Drinks', '2023-08-28 10:44:11', '2023-08-28 10:55:47', 20, 1, 1, 'PROCEED'),
 (89, 33, 1, 10, 'Coke', '2851069347', 'Drinks', '2023-08-28 11:40:25', '2023-08-29 23:26:23', 20, 1, 0, 'PROCEED'),
-(92, 40, 1, 18, 'Hansel', '7691852403', 'Biscuit', '2023-08-29 23:15:26', '2023-08-29 23:45:47', 7, 1, 1, 'PROCEED'),
-(93, 40, 1, 16, 'mountain dew', '7691852403', 'Drinks', '2023-08-29 23:15:26', '2023-08-29 23:45:47', 20, 1, 1, 'PROCEED'),
-(94, 40, 1, 19, 'showbear', '3608945271', 'Candy', '2023-09-10 22:50:32', '2023-09-10 23:11:01', 2, 1, 1, 'PROCEED'),
-(95, 40, 1, 16, 'mountain dew', '3608945271', 'Drinks', '2023-09-10 22:50:32', '2023-09-10 23:11:01', 20, 1, 1, 'PROCEED'),
 (96, 46, 2, 26, 'Fita', '1935867402', 'Biscuit', '2023-09-11 13:56:08', NULL, 16, 2, 0, NULL),
 (97, 46, 2, 23, 'Iced Coffee', '1935867402', 'Coolers', '2023-09-11 13:56:08', NULL, 30, 1, 0, NULL),
-(98, 40, 2, 23, 'Iced Coffee', '8639205174', 'Coolers', '2023-09-11 13:59:28', NULL, 60, 2, 1, NULL),
 (101, 47, 2, 28, 'Hansel', '0698145237', 'Biscuit', '2023-09-11 14:05:15', NULL, 16, 2, 0, NULL),
 (102, 47, 2, 23, 'Iced Coffee', '0698145237', 'Coolers', '2023-09-11 14:05:15', NULL, 30, 1, 0, NULL),
 (103, 45, 2, 23, 'Iced Coffee', '4526937108', 'Coolers', '2023-09-11 14:30:34', '2023-09-11 14:46:45', 30, 1, 1, 'PROCEED'),
-(107, 40, 4, 45, 'Tissue roll', '8762039145', 'Necessities', '2023-09-13 15:06:12', NULL, 10, 1, 1, NULL),
-(108, 40, 4, 43, 'Sanitary pads', '8762039145', 'Necessities', '2023-09-13 15:06:12', NULL, 8, 1, 1, NULL),
-(115, 40, 1, 16, 'mountain dew', '5702463189', 'Drinks', '2023-09-16 12:00:26', '2023-09-17 00:49:48', 20, 1, 1, 'PROCEED'),
-(116, 40, 1, 17, 'Fita', '8631295740', 'Biscuit', '2023-09-16 12:23:16', '2023-09-16 13:06:16', 8, 1, 1, 'PROCEED'),
-(117, 40, 1, 19, 'showbear', '1345672809', 'Candy', '2023-09-17 00:02:31', '2023-09-17 00:22:58', 2, 1, 1, 'PROCEED'),
-(118, 40, 1, 17, 'Fita', '1345672809', 'Biscuit', '2023-09-17 00:02:31', '2023-09-17 00:22:58', 8, 1, 1, 'PROCEED'),
-(119, 40, 1, 56, 'Le Minerale', '5392814067', 'Drinks', '2023-09-17 00:34:05', '2023-09-17 01:04:27', 20, 1, 1, 'PROCEED'),
-(120, 40, 1, 18, 'Hansel', '5392814067', 'Biscuit', '2023-09-17 00:34:05', '2023-09-17 01:04:27', 7, 1, 1, 'PROCEED'),
 (123, 41, 2, 54, 'Gulaman', '2579468103', 'Coolers', '2023-09-17 00:40:43', '2023-09-17 01:11:09', 15, 1, 0, 'PROCEED'),
 (124, 41, 2, 24, 'Apple', '2579468103', 'Fruits', '2023-09-17 00:40:43', '2023-09-17 01:11:09', 15, 1, 0, 'PROCEED'),
 (125, 45, 1, 56, 'Le Minerale', '0658473291', 'Drinks', '2023-09-20 09:33:16', NULL, 20, 1, 1, 'CANCELED'),
-(126, 40, 1, 19, 'showbear', '4381906275', 'Candy', '2023-09-21 17:04:03', '2023-09-21 17:25:24', 2, 1, 1, 'PROCEED'),
-(127, 40, 1, 17, 'Fita', '4381906275', 'Biscuit', '2023-09-21 17:04:03', '2023-09-21 17:25:24', 8, 1, 1, 'PROCEED'),
-(128, 40, 1, 18, 'Hansel', '9063418275', 'Biscuit', '2023-09-22 14:01:16', '2023-09-22 14:21:42', 7, 1, 1, 'CANCELED'),
-(129, 40, 1, 17, 'Fita', '9063418275', 'Biscuit', '2023-09-22 14:01:16', '2023-09-22 14:21:42', 8, 1, 1, 'CANCELED'),
-(130, 40, 1, 56, 'Le Minerale', '5790368142', 'Drinks', '2023-09-22 14:54:42', '2023-09-22 15:15:03', 20, 1, 1, 'CANCELED'),
-(131, 40, 1, 17, 'Fita', '5790368142', 'Biscuit', '2023-09-22 14:54:42', '2023-09-22 15:15:03', 8, 1, 1, 'CANCELED'),
-(132, 40, 2, 28, 'Hansel', '9530271648', 'Biscuit ', '2023-09-22 22:22:48', '2023-09-22 22:43:23', 8, 1, 1, 'PROCEED'),
-(133, 40, 2, 25, 'Lemonade', '9530271648', 'Coolers', '2023-09-22 22:22:48', '2023-09-22 22:43:23', 45, 3, 1, 'PROCEED'),
-(134, 40, 2, 54, 'Gulaman', '0734162895', 'Coolers', '2023-09-22 22:24:25', '2023-09-22 22:45:01', 15, 1, 1, NULL),
-(135, 40, 2, 55, 'Cream-o', '0734162895', 'Biscuit ', '2023-09-22 22:24:25', '2023-09-22 22:45:01', 9, 1, 1, NULL),
-(136, 40, 2, 26, 'Fita', '9360851724', 'Biscuit ', '2023-09-22 22:38:52', '2023-09-22 23:01:17', 8, 1, 1, 'CANCELED'),
-(137, 40, 3, 33, 'Le Minerale', '4701836925', 'Drinks', '2023-09-22 23:03:06', '2023-09-22 23:23:33', 25, 1, 1, 'PROCEED'),
-(138, 40, 3, 31, 'Nova', '4701836925', 'Curls', '2023-09-22 23:03:06', '2023-09-22 23:23:33', 15, 1, 1, 'PROCEED'),
-(139, 40, 4, 46, 'Yellow pad', '0698327415', 'Supplies', '2023-09-22 23:04:59', '2023-09-22 23:25:23', 60, 1, 1, 'ACCEPTED'),
-(140, 40, 4, 44, 'Wet wipes', '0698327415', 'Necessities', '2023-09-22 23:04:59', '2023-09-22 23:25:23', 20, 1, 1, 'ACCEPTED'),
-(141, 40, 1, 18, 'Hansel', '7031654982', 'Biscuit', '2023-09-25 11:14:55', NULL, 7, 1, NULL, 'CANCELED'),
-(142, 40, 1, 16, 'mountain dew', '7031654982', 'Drinks', '2023-09-25 11:14:55', NULL, 20, 1, NULL, 'CANCELED'),
-(143, 40, 1, 17, 'Fita', '1576830249', 'Biscuit', '2023-09-25 11:15:16', NULL, 8, 1, NULL, 'CANCELED'),
-(144, 40, 1, 56, 'Le Minerale', '7415862309', 'Drinks', '2023-09-25 11:15:47', NULL, 20, 1, NULL, 'CANCELED'),
-(146, 40, 1, 21, 'Dutch Mill', '2816495370', 'Drinks', '2023-09-25 12:48:32', NULL, 25, 1, NULL, 'CANCELED'),
-(147, 40, 1, 21, 'Dutch Mill', '6237041958', 'Drinks', '2023-09-25 12:54:15', '2023-09-25 13:14:56', 25, 1, 1, 'PROCEED'),
-(210, 40, 1, 17, 'Fita', '7403258619', 'Biscuit', '2023-09-27 16:42:08', '2023-09-27 17:02:31', 8, 1, 1, 'CANCELED'),
-(211, 40, 1, 16, 'mountain dew', '7403258619', 'Drinks', '2023-09-27 16:42:08', '2023-09-27 17:02:31', 20, 1, 1, 'CANCELED'),
-(212, 40, 1, 18, 'Hansel', '2609358174', 'Biscuit', '2023-09-27 17:22:50', '2023-09-27 17:43:11', 7, 1, 1, 'CANCELED'),
-(213, 40, 1, 17, 'Fita', '6893215740', 'Biscuit', '2023-09-27 21:51:25', '2023-09-27 22:51:55', 8, 1, 1, 'CANCELED'),
-(214, 40, 1, 16, 'mountain dew', '5906814237', 'Drinks', '2023-09-27 23:06:30', '2023-09-27 23:26:58', 20, 1, 1, 'PROCEED'),
-(215, 40, 5, 0, '', '4680251397', '', '2023-09-27 23:17:02', '2023-09-27 23:17:02', 10, 0, 1, 'PURCHASE'),
-(216, 40, 1, 0, '', '9218346075', '', '2023-09-27 23:33:31', '2023-09-27 23:33:31', 20, 0, 1, 'PURCHASE'),
-(217, 40, 5, 0, '', '1684590273', '', '2023-09-27 23:36:13', '2023-09-27 23:36:13', 20, 0, 1, 'PURCHASE'),
-(218, 40, 5, 0, '', '3761542098', '', '2023-09-27 23:36:13', '2023-09-27 23:36:13', 20, 0, 1, 'PURCHASE'),
-(219, 40, 5, 0, '', '0492537618', '', '2023-09-27 23:36:13', '2023-09-27 23:36:13', 20, 0, 1, 'PURCHASE'),
-(220, 40, 5, 0, '', '4903286157', '', '2023-09-27 23:36:13', '2023-09-27 23:36:13', 20, 0, 1, 'PURCHASE'),
-(221, 40, 5, 0, '', '0432695871', '', '2023-09-27 23:36:13', '2023-09-27 23:36:13', 20, 0, 1, 'PURCHASE'),
-(222, 40, 5, 0, '', '6490723815', '', '2023-09-27 23:36:13', '2023-09-27 23:36:13', 20, 0, 1, 'PURCHASE'),
-(223, 40, 5, 0, '', '4175380962', '', '2023-09-27 23:36:13', '2023-09-27 23:36:13', 20, 0, 1, 'PURCHASE'),
-(224, 40, 1, 0, '', '2384719065', '', '2023-09-27 23:37:57', '2023-09-27 23:37:57', 30, 0, 1, 'PURCHASE'),
-(225, 40, 1, 0, '', '9134872056', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(226, 40, 1, 0, '', '4372195806', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(227, 40, 1, 0, '', '4703165289', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(228, 40, 1, 0, '', '7148025693', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(229, 40, 1, 0, '', '1749603582', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(230, 40, 1, 0, '', '3728541069', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(231, 40, 1, 0, '', '0164793285', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(232, 40, 1, 0, '', '1950248763', '', '2023-09-28 09:14:06', '2023-09-28 09:14:06', 20, 0, 1, 'PURCHASE'),
-(233, 40, 1, 0, '', '6254381709', '', '2023-09-28 09:22:43', '2023-09-28 09:22:43', 20, 0, 1, 'PURCHASE'),
-(234, 40, 1, 19, 'showbear', '9025841763', 'Candy', '2023-09-28 09:51:26', '2023-09-28 09:53:03', 2, 1, 1, 'PROCEED'),
-(235, 40, 1, 18, 'Hansel', '9025841763', 'Biscuit', '2023-09-28 09:51:26', '2023-09-28 09:53:03', 7, 1, 1, 'PROCEED'),
-(236, 40, 1, 0, '', '2816540739', '', '2023-09-28 10:20:30', '2023-09-28 10:20:30', 30, 0, 1, 'PURCHASE'),
-(237, 40, 1, 0, '', '0936247851', '', '2023-09-28 10:22:11', '2023-09-28 10:22:11', 30, 0, 1, 'PURCHASE'),
-(238, 40, 1, 0, '', '6830157294', '', '2023-09-28 10:22:11', '2023-09-28 10:22:11', 30, 0, 1, 'PURCHASE'),
-(239, 40, 1, 0, '', '9421087536', '', '2023-09-28 10:22:11', '2023-09-28 10:22:11', 30, 0, 1, 'PURCHASE'),
-(240, 40, 1, 16, 'mountain dew', '9643782051', 'Drinks', '2023-09-28 10:30:05', NULL, 20, 1, NULL, NULL),
 (241, 45, 4, 44, 'Wet wipes', '3976410825', 'Necessities', '2023-09-28 16:17:47', '2023-09-28 16:38:56', 20, 1, 0, 'PROCEED');
 
 -- --------------------------------------------------------
@@ -413,14 +333,13 @@ CREATE TABLE `student_tb` (
 --
 
 INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `user_id`) VALUES
-(2020115752, 'BSIS', '4th', '0472321553', 40),
 (2020116420, 'BSCrim', '1st', '', 41),
 (2020112300, 'BSOA', '4th', '', 33),
-(2020115756, 'BSIS', '4th', '', 43),
 (2020115740, 'BSED', '4th', '', 37),
 (1164973821, 'BSOA', '3rd', '', 46),
 (1234567891, 'BSOA', '3rd', '', 47),
-(2020590400, 'BEED', '4th', '', 50);
+(2020590400, 'BEED', '4th', '', 50),
+(2020115752, 'IS', '4th', '0472321553', 58);
 
 -- --------------------------------------------------------
 
@@ -500,7 +419,9 @@ INSERT INTO `userwebusages_tb` (`userWebUsages_id`, `user_id`, `user_category`, 
 (24, 8, 'teller', '2023-09-19'),
 (25, 9, 'teller', '2023-09-25'),
 (26, 10, 'teller', '2023-09-28'),
-(27, 1, 'cashier', '2023-10-01');
+(27, 1, 'cashier', '2023-10-01'),
+(28, 40, 'user_buyer', '2023-10-01'),
+(29, 58, 'user_buyer', '2023-10-01');
 
 -- --------------------------------------------------------
 
@@ -518,9 +439,7 @@ CREATE TABLE `user_tb` (
   `address` varchar(255) NOT NULL,
   `usertype` varchar(20) DEFAULT NULL,
   `user_category` varchar(255) NOT NULL,
-  `statues` varchar(255) NOT NULL,
   `register_date` date NOT NULL DEFAULT current_timestamp(),
-  `request` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -529,23 +448,22 @@ CREATE TABLE `user_tb` (
 -- Dumping data for table `user_tb`
 --
 
-INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `usertype`, `user_category`, `statues`, `register_date`, `request`, `username`, `password`) VALUES
-(33, 'Kenny', 'Belarte', 'kenny@gmail.com', 9546213879, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-08-10', 'Activite', 'kenny', 'fde290ea8d375a112998beacd5f4cff5'),
-(34, 'Ninang', 'Dela Cruz', 'ninang@gmail.com', 9987123654, 'female', 'non-bago', 'personnel', 'user_buyer', 'not-active', '2023-09-09', 'Activite', 'ninang', 'd54fd1674b1e312cba3cec56add7e00a'),
-(35, 'Pablo', 'San jose', 'pablo@gmail.com', 9159357246, 'other', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-06', 'Activite', 'pablo', '7e4b64eb65e34fdfad79e623c44abd94'),
-(36, 'Jia mae', 'Gaspar', 'jiabadgirl@gmail.com', 9725468164, 'female', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'jia', 'a6907acf5b337a322193f19b6698c867'),
-(37, 'Abegail', 'Eparosa', 'abegail@gmail.com', 9158497685, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'abegail', '7eb036d95efd0ec315606393479aec4a'),
-(38, 'Angelo', 'Cortez', 'angelo@gmail.com', 9873465982, 'male', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'angelo', '98a8d3f11b400ddc06d7343375b71a84'),
-(40, 'Gabriel', 'Carpio', 'gabrielcarpio178@gmail.com', 9512708500, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'gabriel', '647431b5ca55b04fdf3c2fce31ef1915'),
-(41, 'Kian', 'Sadio', 'kian@gmail.com', 9546783165, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'kian', 'e40175cb8edf97dfa83512f43cb54bd6'),
-(43, 'gabriel', 'carpio', 'gcarpio51@gmail.com', 9899834234, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'carpio', '08064f68e87a41ce0cf9664b8b259b06'),
-(44, 'kian', 'sadio', 'sadio@gmail.com', 9513412451, 'male', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'sadio', 'fdfb0476a2f7ec30dea4cd393b8e7c91'),
-(45, 'Julie', 'Villacrusis', 'julie@gmail.com', 9578949584, 'female', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'Activite', 'julie', '16f12f5e8379e22be995e505ebfc1b84'),
-(46, 'Koa', 'Montelibano', 'koaknox8210@gmail.com', 9493582858, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-09-11', 'Activite', 'KoaKnox', '8028d74fe6ae33700bad6be602886890'),
-(47, 'Keam', 'Casseus', 'keamcasseus8210@gmail.com', 9103199898, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-11', 'Activite', 'keamcasseus', '9dd736dbbbec565cfe90e38e93c5e3cd'),
-(48, 'sherly', 'carpio', 'sherly@gmail.com', 9759872245, 'female', 'non-bago', 'personnel', 'user_buyer', 'not-active', '2023-09-12', 'Activite', 'sherly', '1c8b06358890d6c512859b21557315b4'),
-(50, 'ashly', 'sunga', 'ashly@gmail.com', 9582349023, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-18', 'Activite', 'ashly', 'c114e447529c910fb405cc586adabe8f'),
-(51, 'Rogaciano', 'Carpio', 'Rogaciano@gmail.com', 9531248312, 'male', 'non-bago', NULL, 'user_buyer', 'active', '2023-09-30', 'Activite', 'Rogaciano', 'd84f5ebdbb0138d19376fead142c9ae4');
+INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `usertype`, `user_category`, `register_date`, `username`, `password`) VALUES
+(33, 'Kenny', 'Belarte', 'kenny@gmail.com', 9546213879, 'female', 'bago', 'student', 'user_buyer', '2023-08-10', 'kenny', 'fde290ea8d375a112998beacd5f4cff5'),
+(34, 'Ninang', 'Dela Cruz', 'ninang@gmail.com', 9987123654, 'female', 'non-bago', 'personnel', 'user_buyer', '2023-09-09', 'ninang', 'd54fd1674b1e312cba3cec56add7e00a'),
+(35, 'Pablo', 'San jose', 'pablo@gmail.com', 9159357246, 'other', 'bago', 'personnel', 'user_buyer', '2023-09-06', 'pablo', '7e4b64eb65e34fdfad79e623c44abd94'),
+(36, 'Jia mae', 'Gaspar', 'jiabadgirl@gmail.com', 9725468164, 'female', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'jia', 'a6907acf5b337a322193f19b6698c867'),
+(37, 'Abegail', 'Eparosa', 'abegail@gmail.com', 9158497685, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-10', 'abegail', '7eb036d95efd0ec315606393479aec4a'),
+(38, 'Angelo', 'Cortez', 'angelo@gmail.com', 9873465982, 'male', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'angelo', '98a8d3f11b400ddc06d7343375b71a84'),
+(41, 'Kian', 'Sadio', 'kian@gmail.com', 9546783165, 'male', 'bago', 'student', 'user_buyer', '2023-09-10', 'kian', 'e40175cb8edf97dfa83512f43cb54bd6'),
+(44, 'kian', 'sadio', 'sadio@gmail.com', 9513412451, 'male', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'sadio', 'fdfb0476a2f7ec30dea4cd393b8e7c91'),
+(45, 'Julie', 'Villacrusis', 'julie@gmail.com', 9578949584, 'female', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'julie', '16f12f5e8379e22be995e505ebfc1b84'),
+(46, 'Koa', 'Montelibano', 'koaknox8210@gmail.com', 9493582858, 'male', 'bago', 'student', 'user_buyer', '2023-09-11', 'KoaKnox', '8028d74fe6ae33700bad6be602886890'),
+(47, 'Keam', 'Casseus', 'keamcasseus8210@gmail.com', 9103199898, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-11', 'keamcasseus', '9dd736dbbbec565cfe90e38e93c5e3cd'),
+(48, 'sherly', 'carpio', 'sherly@gmail.com', 9759872245, 'female', 'non-bago', 'personnel', 'user_buyer', '2023-09-12', 'sherly', '1c8b06358890d6c512859b21557315b4'),
+(50, 'ashly', 'sunga', 'ashly@gmail.com', 9582349023, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-18', 'ashly', 'c114e447529c910fb405cc586adabe8f'),
+(51, 'Rogaciano', 'Carpio', 'Rogaciano@gmail.com', 9531248312, 'male', 'non-bago', NULL, 'user_buyer', '2023-09-30', 'Rogaciano', 'd84f5ebdbb0138d19376fead142c9ae4'),
+(58, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'bago', 'student', 'user_buyer', '2023-10-01', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d');
 
 --
 -- Indexes for dumped tables
@@ -706,13 +624,13 @@ ALTER TABLE `telleruser_tb`
 -- AUTO_INCREMENT for table `userwebusages_tb`
 --
 ALTER TABLE `userwebusages_tb`
-  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `user_tb`
 --
 ALTER TABLE `user_tb`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Constraints for dumped tables

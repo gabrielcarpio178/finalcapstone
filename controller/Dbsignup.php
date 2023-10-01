@@ -30,7 +30,7 @@ try{
 
         }else{
 
-            mysqli_query($connect,"INSERT INTO `user_tb`(`firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `user_category`, `request`, `statues`,`username`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber', '$gender', '$address', 'user_buyer', 'Activite', 'NULL', '$username','$password');");
+            mysqli_query($connect,"INSERT INTO `user_tb`(`firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `user_category`, `username`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber', '$gender', '$address', 'user_buyer', '$username','$password');");
             echo "success";
 
         }

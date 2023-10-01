@@ -21,20 +21,22 @@
     <div class="container-fluid">
       <div class="content">
         <div class="row">
-          <div class="col-6 col-md-12">
+          <div class="col-6 col-md-12" id="main_info">
             <div class="label-title mt-5">
               Cash In
             </div>
             <div id="search_user" class="search-div mt-2">
               <input type="text" name="search" id="search" placeholder="Search Name Or ID" class="form-control w-25">
+              <input type="text" name="rfid" id="rfid" class="form-control w-25">
             </div>
             <div class="content_display">
               <div class="logo-id" >
                 <div class="id-pic">
-                  <i class="far fa-address-card"></i>
+                  <i class="fas fa-id-card"></i>
                   <p>Tap ID on Scanner</p>
                 </div>
               </div>
+              <div class="message"></div>
               <div class="search-table" style="display: none;">
                 <div class="table-result">
                   <table class="table table-hover">
@@ -43,6 +45,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone Number</th>
+                        <th scope="col">Department</th>
                         <th scope="col">User ID</th>
                       </tr>
                     </thead>
@@ -66,45 +69,58 @@
               </div>
             </div>
           </div>
-          <div class="col-6 col-md-4" style="display: none;">
+          <div class="col-6 col-md-4" style="display: none;" id="view_user">
             <div class="profile-user">
               <div class="label-profile">Profile</div>
               <div class="profile-info">
-                <img src="../../image/avatar.jpg" alt="" srcset="">
+                <img id="profile_image">
                 <div class="user-name">
-                  <h2 class="name"><b>Kian Sadio</b></h2>
+                  <h2 class="name">
+                   
+                  </h2>
                 </div>
                 <div class="user_id">
-                  STUDENT ID: 2029312312312
+                  
                 </div>
                 <div class="user-type">
-                  Student
+                  
                 </div>
               </div>
               <div class="department">
-                <label for="department_user">Course: Year</label>
-                <div class="department-info" id="department_user">BSIS: 4th</div>
+                <label for="department_user" id="department_year">
+               
+                </label>
+                <div class="department-info" id="department_user">
+             
+                </div>
               </div>
               <div class="phonenumber">
                 <label for="phonenumber_user">Phone Number:</label>
-                <div class="phonenumber-user" id="phonenumber_user">0987654321</div>
+                <div class="phonenumber-user" id="phonenumber_user">
+                  
+                </div>
               </div>
               <div class="address">
                 <label for="address_user">Address:</label>
-                <div class="addess-user" id="address_user">Bago City</div>
+                <div class="addess-user" id="address_user">
+                  
+                </div>
               </div>
               <div class="balance">
                 <b>Balance:</b>
-                <b>0.00</b>
+                <b class="balance_amount"></b>
+              </div>
+              <div class="btn-cancel">
+                <center>
+                  <button class="btn btn-danger" id="btn_cancel" onclick="cancel()">Cancel</button>
+                </center>
               </div>
             </div>
           </div>  
         </div>
-      </div>
+      </div>  
     </div>
 
-
-    <!-- far fa-address-card -->
 </body>
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
@@ -113,6 +129,5 @@
     referrerpolicy="no-referrer"
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="../../js/cashiercashin.js"></script>
 </html>

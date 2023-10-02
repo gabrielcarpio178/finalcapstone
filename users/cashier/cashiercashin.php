@@ -19,6 +19,7 @@
 <body>
     <div id="nav"></div>
     <div class="container-fluid">
+    
       <div class="content">
         <div class="row">
           <div class="col-6 col-md-12" id="main_info">
@@ -26,8 +27,7 @@
               Cash In
             </div>
             <div id="search_user" class="search-div mt-2">
-              <input type="text" name="search" id="search" placeholder="Search Name Or ID" class="form-control w-25">
-              <input type="text" name="rfid" id="rfid" class="form-control w-25">
+              <input type="text" name="rfid" id="rfid" placeholder="Scan RFID" class="form-control w-25 search">
             </div>
             <div class="content_display">
               <div class="logo-id" >
@@ -59,12 +59,12 @@
             <div class="user-info" style="display: none;">
               <div class="input-amount">
                 <label class="label-input" for="input_amount">Input Amount:</label>
-                <form id="input">
+                <form id="input-sumbit">
                   <div class="input-class">
                     <p>₱</p>
                     <input type="number" name="input_amount" id="input_amount" class="form-control">
                   </div>
-                  <input type="sumbit" value="Okay" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary" id="signin" value="submit">Okay</button>
                 </form>
               </div>
             </div>
@@ -120,8 +120,8 @@
         </div>
       </div>  
     </div>
-
 </body>
+
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
     integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="

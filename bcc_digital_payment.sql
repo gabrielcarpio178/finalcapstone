@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2023 at 06:07 PM
+-- Generation Time: Oct 02, 2023 at 07:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -98,6 +98,7 @@ CREATE TABLE `cashin_tb` (
   `cashin_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `cashin_amount` int(11) NOT NULL,
+  `ref_num` varchar(200) NOT NULL,
   `cashin_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -105,9 +106,10 @@ CREATE TABLE `cashin_tb` (
 -- Dumping data for table `cashin_tb`
 --
 
-INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `cashin_date`) VALUES
-(3, 45, 1500, '2023-09-28 09:24:32'),
-(6, 33, 1500, '2023-09-29 23:13:15');
+INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `cashin_date`) VALUES
+(7, 58, 30, '1234567890', '2023-10-03 01:08:01'),
+(8, 33, 30, '1234567891', '2023-10-03 01:26:56'),
+(9, 58, 30, '2851649730', '2023-10-03 01:34:09');
 
 -- --------------------------------------------------------
 
@@ -191,37 +193,28 @@ CREATE TABLE `order_tb` (
 INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `orderproduct_name`, `order_num`, `order_productcategory`, `order_time`, `deadline_time`, `order_amount`, `order_quantity`, `num_noti`, `statues`) VALUES
 (18, 38, 1, 1, 'Mountain dew', '6383295511', 'Drinks', '2023-08-24 13:05:36', '2023-08-24 13:33:21', 20, 1, 0, 'PROCEED'),
 (20, 38, 1, 1, 'Mountain dew', '6383295512', 'Drinks', '2023-08-24 13:31:34', '2023-08-24 13:41:58', 20, 1, 0, 'PROCEED'),
-(22, 41, 1, 1, 'Mountain dew', '6383295513', 'Drinks', '2023-08-24 20:01:17', '2023-08-24 20:12:11', 20, 1, 0, 'PROCEED'),
-(23, 33, 1, 1, 'Mountain dew', '6383295514', 'Drinks', '2023-08-24 20:03:53', '2023-08-24 20:15:08', 20, 1, 0, 'PROCEED'),
 (26, 37, 1, 1, 'Mountain dew', '6383295515', 'Drinks', '2023-08-25 13:25:50', '2023-08-25 13:36:17', 20, 1, 0, 'PROCEED'),
 (28, 36, 1, 10, 'Coke', '6383295516', 'Drinks', '2023-08-26 00:01:47', '2023-08-27 10:43:51', 20, 1, 0, 'PROCEED'),
 (33, 45, 1, 1, 'Mountain dew', '9785410212', 'Drinks', '2023-08-26 12:03:44', '2023-08-26 12:15:18', 20, 1, 1, 'PROCEED'),
 (34, 34, 1, 10, 'Coke', '7914538602', 'Drinks', '2023-08-26 12:14:10', '2023-08-26 12:24:35', 20, 1, 0, 'PROCEED'),
 (36, 34, 1, 1, 'Mountain dew', '7914538602', 'Drinks', '2023-08-26 12:14:10', '2023-08-26 12:24:35', 20, 1, 0, 'PROCEED'),
-(37, 41, 1, 10, 'Coke', '6103792458', 'Drinks', '2023-08-26 15:46:45', '2023-08-27 10:41:34', 20, 1, 0, 'PROCEED'),
-(39, 41, 1, 1, 'Mountain dew', '6103792458', 'Drinks', '2023-08-26 15:46:45', '2023-08-27 10:41:34', 20, 1, 0, 'PROCEED'),
 (41, 35, 1, 1, 'Mountain dew', '1605379842', 'Drinks', '2023-08-27 10:18:10', '2023-08-27 10:58:37', 20, 1, 0, 'PROCEED'),
-(43, 33, 1, 1, 'Mountain dew', '3672150984', 'Drinks', '2023-08-27 10:20:51', '2023-08-27 10:51:13', 20, 1, 0, 'PROCEED'),
-(49, 41, 1, 10, 'Coke', '3149082675', 'Drinks', '2023-08-27 17:23:37', '2023-08-27 17:54:00', 20, 1, 0, 'PROCEED'),
 (51, 45, 1, 1, 'Mountain dew', '6708429351', 'Drinks', '2023-08-27 18:02:55', '2023-08-27 18:13:14', 20, 1, 1, 'PROCEED'),
-(57, 41, 1, 1, 'Mountain dew', '9602547381', 'Drinks', '2023-08-27 19:01:37', '2023-08-27 19:02:57', 20, 1, 0, 'PROCEED'),
 (59, 45, 1, 1, 'Mountain dew', '8276514930', 'Drinks', '2023-08-27 19:02:33', '2023-08-27 19:04:54', 20, 1, 1, 'PROCEED'),
 (61, 37, 1, 1, 'Mountain dew', '2398165704', 'Drinks', '2023-08-27 22:33:34', '2023-08-27 22:43:55', 20, 1, 0, 'PROCEED'),
 (65, 36, 1, 1, 'Mountain dew', '8063592417', 'Drinks', '2023-08-27 22:40:46', '2023-08-27 22:43:07', 20, 1, 0, 'PROCEED'),
 (73, 37, 1, 10, 'Coke', '8352196740', 'Drinks', '2023-08-28 00:21:22', '2023-08-28 00:26:42', 20, 1, 0, 'PROCEED'),
 (79, 34, 1, 1, 'Mountain dew', '6041327895', 'Drinks', '2023-08-28 00:37:00', '2023-08-28 00:48:11', 20, 1, 0, 'PROCEED'),
-(81, 33, 1, 1, 'Mountain dew', '5187029346', 'Drinks', '2023-08-28 00:54:08', '2023-08-28 01:14:00', 20, 1, 0, 'PROCEED'),
 (87, 45, 1, 1, 'Mountain dew', '0831562479', 'Drinks', '2023-08-28 10:44:11', '2023-08-28 10:55:47', 20, 1, 1, 'PROCEED'),
-(89, 33, 1, 10, 'Coke', '2851069347', 'Drinks', '2023-08-28 11:40:25', '2023-08-29 23:26:23', 20, 1, 0, 'PROCEED'),
 (96, 46, 2, 26, 'Fita', '1935867402', 'Biscuit', '2023-09-11 13:56:08', NULL, 16, 2, 0, NULL),
 (97, 46, 2, 23, 'Iced Coffee', '1935867402', 'Coolers', '2023-09-11 13:56:08', NULL, 30, 1, 0, NULL),
 (101, 47, 2, 28, 'Hansel', '0698145237', 'Biscuit', '2023-09-11 14:05:15', NULL, 16, 2, 0, NULL),
 (102, 47, 2, 23, 'Iced Coffee', '0698145237', 'Coolers', '2023-09-11 14:05:15', NULL, 30, 1, 0, NULL),
 (103, 45, 2, 23, 'Iced Coffee', '4526937108', 'Coolers', '2023-09-11 14:30:34', '2023-09-11 14:46:45', 30, 1, 1, 'PROCEED'),
-(123, 41, 2, 54, 'Gulaman', '2579468103', 'Coolers', '2023-09-17 00:40:43', '2023-09-17 01:11:09', 15, 1, 0, 'PROCEED'),
-(124, 41, 2, 24, 'Apple', '2579468103', 'Fruits', '2023-09-17 00:40:43', '2023-09-17 01:11:09', 15, 1, 0, 'PROCEED'),
 (125, 45, 1, 56, 'Le Minerale', '0658473291', 'Drinks', '2023-09-20 09:33:16', NULL, 20, 1, 1, 'CANCELED'),
-(241, 45, 4, 44, 'Wet wipes', '3976410825', 'Necessities', '2023-09-28 16:17:47', '2023-09-28 16:38:56', 20, 1, 0, 'PROCEED');
+(241, 45, 4, 44, 'Wet wipes', '3976410825', 'Necessities', '2023-09-28 16:17:47', '2023-09-28 16:38:56', 20, 1, 0, 'PROCEED'),
+(242, 33, 1, 19, 'showbear', '0423759618', 'Candy', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 2, 1, 0, 'PROCEED'),
+(243, 33, 1, 16, 'mountain dew', '0423759618', 'Drinks', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 20, 1, 0, 'PROCEED');
 
 -- --------------------------------------------------------
 
@@ -245,7 +238,6 @@ INSERT INTO `personnel_tb` (`personnel_id`, `user_id`, `personnelUser_id`, `depa
 (2, 35, '1234567891', 'Guidance'),
 (3, 38, '1234567892', 'Admin'),
 (4, 36, '1234567893', 'Admin'),
-(5, 44, '1234567894', 'Registerar'),
 (7, 48, '1234567896', 'SSG'),
 (8, 45, '3208145697', 'Admin');
 
@@ -272,10 +264,10 @@ CREATE TABLE `product_tb` (
 --
 
 INSERT INTO `product_tb` (`product_id`, `category_id`, `teller_id`, `product_name`, `price`, `quantity`, `producer_price`, `date_post`, `image`) VALUES
-(16, 13, 1, 'mountain dew', 20, 198, 500, '2023-08-29', 'mountain_dew-64dc37f0c3a84-64e4c4caab3aa-64e6b8087f1b0.jpg'),
+(16, 13, 1, 'mountain dew', 20, 197, 500, '2023-08-29', 'mountain_dew-64dc37f0c3a84-64e4c4caab3aa-64e6b8087f1b0.jpg'),
 (17, 15, 1, 'Fita', 8, 204, 150, '2023-08-29', 'fita-64fdd6e8d8944.jpeg'),
 (18, 15, 1, 'Hansel', 7, 200, 180, '2023-08-29', 'hansel-choco-sandwich-64ee0ae77871c.jpg'),
-(19, 16, 1, 'showbear', 2, 196, 200, '2023-09-10', 'snowbear-64fdd755b51b4.jpg'),
+(19, 16, 1, 'showbear', 2, 195, 200, '2023-09-10', 'snowbear-64fdd755b51b4.jpg'),
 (20, 16, 1, 'maxx', 2, 200, 200, '2023-09-10', 'maxx-64fdd7933fe07.jpg'),
 (21, 13, 1, 'Dutch Mill', 25, 19, 400, '2023-09-11', 'dutchmill-64f56e1fa2939-64fe971262c90.jpeg'),
 (22, 13, 1, 'Nature Spring', 20, 50, 750, '2023-09-11', 'nature spring-64f56df68f994-64fe974e186cf.jpeg'),
@@ -333,13 +325,12 @@ CREATE TABLE `student_tb` (
 --
 
 INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `user_id`) VALUES
-(2020116420, 'BSCrim', '1st', '', 41),
 (2020112300, 'BSOA', '4th', '', 33),
 (2020115740, 'BSED', '4th', '', 37),
 (1164973821, 'BSOA', '3rd', '', 46),
 (1234567891, 'BSOA', '3rd', '', 47),
 (2020590400, 'BEED', '4th', '', 50),
-(2020115752, 'IS', '4th', '0472321553', 58);
+(2020115752, 'BSIS', '4th', '0472321553', 58);
 
 -- --------------------------------------------------------
 
@@ -421,7 +412,9 @@ INSERT INTO `userwebusages_tb` (`userWebUsages_id`, `user_id`, `user_category`, 
 (26, 10, 'teller', '2023-09-28'),
 (27, 1, 'cashier', '2023-10-01'),
 (28, 40, 'user_buyer', '2023-10-01'),
-(29, 58, 'user_buyer', '2023-10-01');
+(29, 58, 'user_buyer', '2023-10-01'),
+(30, 33, 'user_buyer', '2023-10-03'),
+(31, 1, 'teller', '2023-10-03');
 
 -- --------------------------------------------------------
 
@@ -455,8 +448,6 @@ INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber
 (36, 'Jia mae', 'Gaspar', 'jiabadgirl@gmail.com', 9725468164, 'female', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'jia', 'a6907acf5b337a322193f19b6698c867'),
 (37, 'Abegail', 'Eparosa', 'abegail@gmail.com', 9158497685, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-10', 'abegail', '7eb036d95efd0ec315606393479aec4a'),
 (38, 'Angelo', 'Cortez', 'angelo@gmail.com', 9873465982, 'male', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'angelo', '98a8d3f11b400ddc06d7343375b71a84'),
-(41, 'Kian', 'Sadio', 'kian@gmail.com', 9546783165, 'male', 'bago', 'student', 'user_buyer', '2023-09-10', 'kian', 'e40175cb8edf97dfa83512f43cb54bd6'),
-(44, 'kian', 'sadio', 'sadio@gmail.com', 9513412451, 'male', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'sadio', 'fdfb0476a2f7ec30dea4cd393b8e7c91'),
 (45, 'Julie', 'Villacrusis', 'julie@gmail.com', 9578949584, 'female', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'julie', '16f12f5e8379e22be995e505ebfc1b84'),
 (46, 'Koa', 'Montelibano', 'koaknox8210@gmail.com', 9493582858, 'male', 'bago', 'student', 'user_buyer', '2023-09-11', 'KoaKnox', '8028d74fe6ae33700bad6be602886890'),
 (47, 'Keam', 'Casseus', 'keamcasseus8210@gmail.com', 9103199898, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-11', 'keamcasseus', '9dd736dbbbec565cfe90e38e93c5e3cd'),
@@ -582,7 +573,7 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
@@ -600,7 +591,7 @@ ALTER TABLE `category_tb`
 -- AUTO_INCREMENT for table `order_tb`
 --
 ALTER TABLE `order_tb`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
 -- AUTO_INCREMENT for table `personnel_tb`
@@ -624,7 +615,7 @@ ALTER TABLE `telleruser_tb`
 -- AUTO_INCREMENT for table `userwebusages_tb`
 --
 ALTER TABLE `userwebusages_tb`
-  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user_tb`

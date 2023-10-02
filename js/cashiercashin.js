@@ -1,8 +1,17 @@
 $(document).ready(function () {
     $("#nav").load("cashiernav.php");
-    search_user();
     rfid();
-    $("#rfid").focus();
+    $(".content_display").on('click',function(){
+        $(".search").attr('id', "rfid");
+        $(".search").attr('placeholder', 'Scan RFID');
+        rfid();
+        $("#rfid").focus();
+    })
+    $(".search").on('click', function(){
+        $(this).attr('id', "search");
+        $(this).attr('placeholder', 'Search Name OR ID');
+        search_user();
+    })
 });
 
 function search_user(){
@@ -37,7 +46,6 @@ function search_user(){
                     }else{
                         $(".message").text("No Result");
                     }
-                    
 
                 }
             });
@@ -73,7 +81,7 @@ function getuser(user_id){
             }else if(data_user.gender=='female'){
                 $("#profile_image").attr("src","../../image/female_avatar.png");
             }
-            $(".name").html(`<b>${(data_user.firstname).charAt(0).toUpperCase() + (data_user.firstname).slice(1)} ${(data_user.lastname).charAt(0).toUpperCase() + (data_user.lastname).slice(1)}</b>`);
+            $(".name").html(`<b id="user_full_name">${(data_user.firstname).charAt(0).toUpperCase() + (data_user.firstname).slice(1)} ${(data_user.lastname).charAt(0).toUpperCase() + (data_user.lastname).slice(1)}</b>`);
             $("#user_id").text(`STUDENT ID:`);
             if(data_user.usertype=='student'){
                 $(".user_id").text(`STUDENT ID: ${data_user.studentID_number}`);
@@ -90,9 +98,10 @@ function getuser(user_id){
             $("#phonenumber_user").text(`0${data_user.phonenumber}`);
             $("#address_user").text(`${data_user.address}`);
             $(".balance_amount").text(`${data_user.user_balance}.00`);
-           
+            
         }
     });
+    sumbit_amount(user_id);
 }
 
 function cancel(){
@@ -103,6 +112,7 @@ function cancel(){
     $(".content_display").show();
     $(".search-div").show();
     $("#rfid").focus();
+    $("#rfid").val("");
 }
 
 function rfid(){
@@ -114,10 +124,90 @@ function rfid(){
                 type: 'POST',
                 data: {rfid:rfid},
                 cache: false,
-                success: function(res){
-                    getuser(res);
+                success: function(res){   
+                    if(res=="invalid-rfid"){
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Invalid RFID',
+                            showConfirmButton: false,
+                            timer: 1000
+                          })
+                    }else{
+                        getuser(res);
+                    }
                 }
             });
         }
+    });
+}
+
+function sumbit_amount(user_id){
+    $("#input-sumbit").on("submit", function(e){
+        e.preventDefault();
+        var amount = $("#input_amount").val();
+        var name = $("#user_full_name").text();
+        var image = $("#profile_image").attr("src");
+        var buyer_type = $(".user-type").text();
+        var section_course = $("#department_user").text();
+        if(amount.length!=0&&amount!=0){
+            Swal.fire({
+                html: `<div class="swal_content">
+                            <p class="swal-label">Review</p>
+                            <div class="swal-review-amount">
+                                <div class="swal-label-amount">Amount</div>
+                                <div class="amount-info" id="inserted_amount">₱ ${amount}.00</div>
+                                <div>To</div>
+                                <div class="swal-name-user">
+                                    <img src="${image}" class="swal-image">
+                                    <div class="swal-name-course">
+                                        <div class="send-name">${name}</div>
+                                        <div class="send-course">${buyer_type}|${section_course}</div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>`,
+                background: 'rgb(150, 150, 236)',
+                cancelButtonColor: '#5cb85c',
+                confirmButtonText: 'Send now'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '../../controller/Dbcashierinsent_amount.php',
+                    type: 'POST',
+                    data: {amount: amount, user_id: user_id},
+                    cache: false,
+                    success: function(res){
+                        if(res=="success"){
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Sent Balance',
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                        }
+                    }
+                });
+              }
+          });
+        }else if(amount==0){
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Invalid zero amount',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }else{
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Please Input amount',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+        
     });
 }

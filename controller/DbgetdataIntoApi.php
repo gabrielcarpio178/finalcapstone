@@ -36,7 +36,7 @@ else{
             $phonenumber = $decoded->cp_number;
             $gender = strtolower($decoded->gender);
             $student_id = $decoded->user_code;
-            $department = $decoded->program_code;
+            $department = "BS".$decoded->program_code;
             $addressapi = $decoded->address;
             $rfid = $decoded->rfid;
             if(($decoded->year_level)==1){
@@ -81,7 +81,6 @@ else{
             $_SESSION['usertype'] = $row['usertype'];
             $_SESSION['gender'] = $row['gender'];
             echo "login";
-           
         }
         else if($decoded->user_group == "REGISTRAR"){
             print_r($decoded);

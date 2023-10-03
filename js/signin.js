@@ -99,7 +99,6 @@ $(document).ready(function () {
           $(".loader").show();
         },
         success: function (res) {
-          console.log(res);
           if (res == "login") {
             $(".loader").hide();          
             Swal.fire({

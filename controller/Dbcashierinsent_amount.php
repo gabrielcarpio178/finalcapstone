@@ -1,5 +1,6 @@
 <?php
 require("Dbconnection.php");
+sleep(1);
 if(isset($_POST['amount'])&&isset($_POST['user_id'])){
     $amount = $_POST['amount'];
     $user_id = $_POST['user_id'];
@@ -36,7 +37,7 @@ if(isset($_POST['amount'])&&isset($_POST['user_id'])){
 
     try {
         mysqli_query($connect, "INSERT INTO `cashin_tb`(`user_id`, `cashin_amount`, `ref_num`) VALUES ('$user_id','$amount', '$uniq');");
-        echo "success";
+        echo $uniq;
     } catch (\Throwable $th) {
         echo $th;
     }

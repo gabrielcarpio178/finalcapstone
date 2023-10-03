@@ -22,6 +22,7 @@
     
       <div class="content">
         <div class="row">
+          <!-- col-md-12 -->
           <div class="col-6 col-md-12" id="main_info">
             <div class="label-title mt-5">
               Cash In
@@ -69,8 +70,9 @@
               </div>
             </div>
           </div>
-          <div class="col-6 col-md-4" style="display: none;" id="view_user">
-            <div class="profile-user">
+           <!-- display col-md-4--> 
+          <div class="col-6 col-md-4" id="view_user">
+            <div class="profile-user" style="display: none;" >
               <div class="label-profile">Profile</div>
               <div class="profile-info">
                 <img id="profile_image">
@@ -114,6 +116,38 @@
                 <center>
                   <button class="btn btn-danger" id="btn_cancel" onclick="cancel()">Cancel</button>
                 </center>
+              </div>
+            </div>
+            <!-- send success -->
+            <div class="sent-message" id="sent_message" style="display: none;">
+              <div class="title-info">BCC Digital Payment System</div>
+              <div class="profile-message">
+                <div class="message-icon">
+                  <div class="success-text">Success</div>
+                  <div class="success-iamge"><img src="../../image/succes-icon.png"></div>
+                </div>
+                <center><img src="" class="profile-icon"></center>
+                <div class="message-info">
+                  <div>You've successfully sent money to</div>
+                  <div class="user-info-sent"><b id="user_sent"></b><span>'s Digital Wallet.</span></div>
+                </div>
+                <div class="amount-sent">
+                  <div class="amount_data">₱ <span id="amount-money"></span></div>
+                  <div class="request-amount">Request Amount</div>
+                </div>
+                <div class="sent-date-ref">
+                  <div class="date-time">
+                    <div class="date-time-label">Date And Time:</div>
+                    <div class="date-info"></div>
+                  </div>
+                  <div class="red-num">
+                    <div class="ref-num-label">Reference Number:</div>
+                    <div class="ref-info" id="ref_num"></div>
+                  </div>
+                </div>
+                <div class="btn-ok mt-5">
+                  <button id="btn_ok" class="btn btn-primary w-100" onclick="cancel()">Okay</button>
+                </div>
               </div>
             </div>
           </div>  

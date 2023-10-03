@@ -72,9 +72,8 @@ function getuser(user_id){
             $(".content_display").hide();
             $('.search-table').hide();
             $(".user-info").fadeIn().show();
-            $("#view_user").fadeIn().show();
             $("#main_info").removeClass("col-md-12").addClass("col-md-8");
-            $("#view_user").show();
+            $(".profile-user").fadeIn().show();
             $(".search-div").hide();
             if(data_user.gender=='male'||data_user.gender=='other'){
                 $("#profile_image").attr("src","../../image/avatar.jpg");
@@ -106,13 +105,17 @@ function getuser(user_id){
 
 function cancel(){
     $("#main_info").removeClass("col-md-8").addClass("col-md-12");
-    $("#view_user").fadeOut().hide();
+    $(".profile-user").fadeOut().hide();
     $(".user-info").fadeOut().hide();
     $(".logo-id").fadeIn().show();
     $(".content_display").show();
     $(".search-div").show();
     $("#rfid").focus();
     $("#rfid").val("");
+    $("#input_amount").val("");
+    $("#input_amount").removeAttr("disabled");
+    $("#sent_message").fadeIn().hide();
+    $("#input-sumbit button").removeAttr("disabled");
 }
 
 function rfid(){
@@ -177,16 +180,20 @@ function sumbit_amount(user_id){
                     type: 'POST',
                     data: {amount: amount, user_id: user_id},
                     cache: false,
+                    beforeSend: function(){
+                        $(".loader").show();
+                    },
                     success: function(res){
-                        if(res=="success"){
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Sent Balance',
-                                showConfirmButton: false,
-                                timer: 1000
-                            });
-                        }
+                        $(".loader").hide();
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Sent Balance',
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                        getsuccessmessage(res);
+                    
                     }
                 });
               }
@@ -210,4 +217,58 @@ function sumbit_amount(user_id){
         }
         
     });
+}
+
+function  getsuccessmessage(ref_num){
+    $(".profile-user").fadeOut().hide();
+    $("#sent_message").fadeIn().show();
+    $("#input_amount").attr("disabled","disabled");
+    $("#input-sumbit button").attr("disabled", 'disabled');
+    $.ajax({
+        url: '../../controller/Dbcashiergetref_num.php',
+        type: 'POST',
+        data: {ref_num: ref_num},
+        cache: false,
+        success: function(res){
+            var info_data = JSON.parse(res);
+            
+            if(info_data.gender=='male'||info_data=='other'){
+                image = "../../image/avatar.jpg";
+            }else{
+                image = "../../image/female_avatar.png";
+            }
+            $("#user_sent").text(`${info_data.firstname} ${info_data.lastname}`);
+            $("#amount-money").text(info_data.cashin_amount+".00");
+
+            var date = new Date(info_data.cashin_date);
+            var mounth = date.getMonth();
+            var day = date.getDate();
+            var year = date.getFullYear();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var monthFull = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "June",
+              "July",
+              "Aug",
+              "Sept",
+              "Oct",
+              "Nov",
+              "Dec",
+            ];
+            var ampm = hour >= 12 ? 'pm' : 'am';
+            hour = hour % 12;
+            hour = hour ? hour : 12;
+            min = min < 10 ? '0'+min : min;
+            var strTime = hour + ':' + min + ampm;
+            $(".date-info").text(`${monthFull[mounth]}/${day}/${year} ${strTime}`);
+            $("#ref_num").text(info_data.ref_num); 
+            $(".profile-icon").attr('src', image);
+        }
+    });
+
 }

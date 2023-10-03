@@ -80,7 +80,7 @@ if(($_SESSION['usertype']!="admin")){
 
                 <div class="data all" id="All" name="all">
                     <div class="label label-all">
-                        
+                        ALL
                     </div>
                     <div class="num-all">
                         
@@ -91,7 +91,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data bsis" id="BSIS" name="student">
                     <div class="label label-bsis">
-                        
+                        BSIS
                     </div>
                     <div class="num-bsis">
                         
@@ -102,7 +102,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data bscrim" id="BSCrim" name="student">
                     <div class="label label-bscrim">
-                        
+                        BSCrim
                     </div>
                     <div class="num-bscrim">
                         
@@ -113,7 +113,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data bsed" id="BSED" name="student">
                     <div class="label label-bsed">
-                        
+                        BSED
                     </div>
                     <div class="num-bsed">
 
@@ -124,7 +124,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data beed" id="BEED" name="student">
                     <div class="label label-beed">
-                        
+                        BEED
                     </div>
                     <div class="num-beed">
 
@@ -135,7 +135,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data bsoa" id="BSOA" name="student">
                     <div class="label label-bsoa">
-                        
+                        BSOA
                     </div>
                     <div class="num-bsoa">
 
@@ -144,9 +144,9 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data registrar" id="Registerar" name="personnel">
+                <div class="data registrar" id="Registrar" name="personnel">
                     <div class="label label-registerar">
-                        
+                        Registrar
                     </div>
                     <div class="num-registerar">
 
@@ -157,7 +157,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data saso" id="SASO" name="personnel">
                     <div class="label label-saso">
-                        
+                        SASO
                     </div>
                     <div class="num-saso" name="personnel">
 
@@ -168,7 +168,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data ssg" id="SSG" name="personnel">
                     <div class="label label-ssg">
-                        
+                        SSG
                     </div>
                     <div class="num-ssg">
 
@@ -179,7 +179,7 @@ if(($_SESSION['usertype']!="admin")){
                 </div>
                 <div class="data admin" id="ADMIN" name="personnel">
                     <div class="label label-admin">
-                        
+                        ADMIN
                     </div>
                     <div class="num-admin">
 
@@ -191,9 +191,21 @@ if(($_SESSION['usertype']!="admin")){
 
                 <div class="data guidance" id="Guidance" name="personnel">
                     <div class="label label-guidance">
-                        
+                        Guidance
                     </div>
                     <div class="num-guidance">
+
+                    </div>
+                    <div class="num-label">
+                        Total number of users
+                    </div>
+                </div>
+
+                <div class="data faculty" id="Faculty" name="personnel">
+                    <div class="label label-faculty">
+                        Faculty
+                    </div>
+                    <div class="num-faculty">
 
                     </div>
                     <div class="num-label">

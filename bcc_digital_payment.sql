@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2023 at 07:36 PM
+-- Generation Time: Oct 03, 2023 at 06:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -107,9 +107,11 @@ CREATE TABLE `cashin_tb` (
 --
 
 INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `cashin_date`) VALUES
-(7, 58, 30, '1234567890', '2023-10-03 01:08:01'),
 (8, 33, 30, '1234567891', '2023-10-03 01:26:56'),
-(9, 58, 30, '2851649730', '2023-10-03 01:34:09');
+(12, 36, 40, '9726843150', '2023-10-03 12:54:03'),
+(20, 36, 30, '7489526310', '2023-10-03 13:32:12'),
+(21, 33, 30, '2164598703', '2023-10-03 13:36:58'),
+(23, 61, 30, '8530297641', '2023-10-03 23:56:50');
 
 -- --------------------------------------------------------
 
@@ -157,9 +159,6 @@ INSERT INTO `category_tb` (`category_id`, `teller_id`, `category_name`) VALUES
 (19, 2, 'Fruits'),
 (20, 3, 'Drinks'),
 (22, 3, 'Curls'),
-(23, 5, 'Viand'),
-(24, 5, 'Delicacies'),
-(25, 5, 'Drinks'),
 (26, 4, 'Supplies'),
 (27, 4, 'Necessities'),
 (28, 3, 'Candies');
@@ -283,14 +282,6 @@ INSERT INTO `product_tb` (`product_id`, `category_id`, `teller_id`, `product_nam
 (32, 22, 3, 'Cracklings', 9, 20, 120, '2023-09-11', 'cracklings-64fea672772d2.jpeg'),
 (33, 20, 3, 'Le Minerale', 25, 49, 900, '2023-09-11', 'le minerale-64fea6a4b1bca.jpg'),
 (34, 20, 3, 'Chuckie', 20, 20, 300, '2023-09-11', 'chuckie-64fea6cc5e124.jpeg'),
-(35, 23, 5, 'Adobo', 30, 50, 1000, '2023-09-11', 'adobo-64feaa4ab210a.jpeg'),
-(36, 23, 5, 'Fried Chicken', 20, 50, 750, '2023-09-11', 'fried chicken-64feaaacbcc09.jpg'),
-(37, 23, 5, 'Chicken Curry', 30, 30, 700, '2023-09-11', 'curry-64feaacb66f88.jpg'),
-(38, 25, 5, 'Le Minerale', 25, 20, 360, '2023-09-11', 'le minerale-64feab0fa2376.jpg'),
-(39, 24, 5, 'Empanada', 15, 100, 1000, '2023-09-11', 'empanada-64feac30cb06f.jpeg'),
-(40, 24, 5, 'Tuna Pie', 15, 50, 600, '2023-09-11', 'tunapie-64feac5d28656.jpg'),
-(41, 25, 5, 'Absolute', 20, 30, 500, '2023-09-11', 'absolute-64feac7d8076d.jpg'),
-(42, 25, 5, 'Blue', 35, 30, 850, '2023-09-11', 'blue-64feaca1f3625.jpeg'),
 (43, 27, 4, 'Sanitary pads', 8, 80, 500, '2023-09-11', 'pads-64feacf57ffab.jpg'),
 (44, 27, 4, 'Wet wipes', 20, 18, 300, '2023-09-11', 'wipes-64fead2067002.jpg'),
 (45, 27, 4, 'Tissue roll', 10, 20, 120, '2023-09-11', 'tissue-64fead5c39d15.jpeg'),
@@ -328,9 +319,9 @@ INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `
 (2020112300, 'BSOA', '4th', '', 33),
 (2020115740, 'BSED', '4th', '', 37),
 (1164973821, 'BSOA', '3rd', '', 46),
-(1234567891, 'BSOA', '3rd', '', 47),
+(1234567891, 'BSCrim', '3rd', '', 47),
 (2020590400, 'BEED', '4th', '', 50),
-(2020115752, 'BSIS', '4th', '0472321553', 58);
+(2020115752, 'BSIS', '4th', '0472321553', 61);
 
 -- --------------------------------------------------------
 
@@ -357,14 +348,10 @@ CREATE TABLE `telleruser_tb` (
 --
 
 INSERT INTO `telleruser_tb` (`teller_id`, `firstname_teller`, `lastname_teller`, `phonenumber_teller`, `store_name`, `teller_gender`, `teller_qr`, `tellerqr_image`, `user_category`, `username`, `password`) VALUES
-(1, 'Ninang', 'Dela cruz', 9123456789, 'teller one', 'female', 58213946, '58213946.png', 'teller', 'teller1', '8f2ffd75dd4cd9e86ed995b7728a75e2'),
-(2, 'Marlyn', 'Garcia', 9537583912, 'teller two', 'female', 76293105, '76293105.png', 'teller', 'marlyn', 'f15f8f0c7451118642dd9b602718c562'),
-(3, 'Grace', 'Mhie', 9437482741, 'grace Store', 'female', 90456278, '90456278.png', 'teller', 'grace', '15e5c87b18c1289d45bb4a72961b58e8'),
-(4, 'Kenny', 'Belarte', 9767686589, 'belarte Store', 'female', 62783140, '62783140.png', 'teller', 'belarte', '4df89289675f6a76284818a1e5ca6925'),
-(5, 'Evelyn', 'Lopez', 9255223456, 'evelyn Store', 'female', 61054238, '61054238.png', 'teller', 'evelyn', '8fbb8264c5040ec3ef3320336afa435a'),
-(6, 'Ma. helen', 'Carpio', 9574856823, 'carpio Store', 'female', 62548793, '62548793.png', 'teller', 'helen', '7a2eb41a38a8f4e39c1586649da21e5f'),
-(7, 'Gabriel', 'Carpio', 9578429942, 'gabs Store', 'male', 43582961, '43582961.png', 'teller', 'gabs', 'd42bdb5732712ade3f2f6a49efe040da'),
-(10, 'gabriel', 'carpio', 9472349213, 'cars', 'male', 38604975, '38604975.png', 'teller', 'cars', 'e66a124f9cabd3198d84dd68c8c87cf7');
+(1, 'Ninang', 'Dela cruz', 9123456789, 'EATScetera', 'female', 58213946, '58213946.png', 'teller', 'teller1', '8f2ffd75dd4cd9e86ed995b7728a75e2'),
+(2, 'Marlyn', 'Garcia', 9537583912, 'Mags Food Hub', 'female', 76293105, '76293105.png', 'teller', 'marlyn', 'f15f8f0c7451118642dd9b602718c562'),
+(3, 'Grace', 'Mhie', 9437482741, 'Yanong\'s Store', 'female', 90456278, '90456278.png', 'teller', 'grace', '15e5c87b18c1289d45bb4a72961b58e8'),
+(4, 'Kenny', 'Belarte', 9767686589, 'JD\'s Eatery', 'female', 62783140, '62783140.png', 'teller', 'belarte', '4df89289675f6a76284818a1e5ca6925');
 
 -- --------------------------------------------------------
 
@@ -414,7 +401,8 @@ INSERT INTO `userwebusages_tb` (`userWebUsages_id`, `user_id`, `user_category`, 
 (28, 40, 'user_buyer', '2023-10-01'),
 (29, 58, 'user_buyer', '2023-10-01'),
 (30, 33, 'user_buyer', '2023-10-03'),
-(31, 1, 'teller', '2023-10-03');
+(31, 1, 'teller', '2023-10-03'),
+(32, 61, 'user_buyer', '2023-10-03');
 
 -- --------------------------------------------------------
 
@@ -432,6 +420,7 @@ CREATE TABLE `user_tb` (
   `address` varchar(255) NOT NULL,
   `usertype` varchar(20) DEFAULT NULL,
   `user_category` varchar(255) NOT NULL,
+  `statues` varchar(20) NOT NULL,
   `register_date` date NOT NULL DEFAULT current_timestamp(),
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -441,20 +430,20 @@ CREATE TABLE `user_tb` (
 -- Dumping data for table `user_tb`
 --
 
-INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `usertype`, `user_category`, `register_date`, `username`, `password`) VALUES
-(33, 'Kenny', 'Belarte', 'kenny@gmail.com', 9546213879, 'female', 'bago', 'student', 'user_buyer', '2023-08-10', 'kenny', 'fde290ea8d375a112998beacd5f4cff5'),
-(34, 'Ninang', 'Dela Cruz', 'ninang@gmail.com', 9987123654, 'female', 'non-bago', 'personnel', 'user_buyer', '2023-09-09', 'ninang', 'd54fd1674b1e312cba3cec56add7e00a'),
-(35, 'Pablo', 'San jose', 'pablo@gmail.com', 9159357246, 'other', 'bago', 'personnel', 'user_buyer', '2023-09-06', 'pablo', '7e4b64eb65e34fdfad79e623c44abd94'),
-(36, 'Jia mae', 'Gaspar', 'jiabadgirl@gmail.com', 9725468164, 'female', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'jia', 'a6907acf5b337a322193f19b6698c867'),
-(37, 'Abegail', 'Eparosa', 'abegail@gmail.com', 9158497685, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-10', 'abegail', '7eb036d95efd0ec315606393479aec4a'),
-(38, 'Angelo', 'Cortez', 'angelo@gmail.com', 9873465982, 'male', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'angelo', '98a8d3f11b400ddc06d7343375b71a84'),
-(45, 'Julie', 'Villacrusis', 'julie@gmail.com', 9578949584, 'female', 'bago', 'personnel', 'user_buyer', '2023-09-10', 'julie', '16f12f5e8379e22be995e505ebfc1b84'),
-(46, 'Koa', 'Montelibano', 'koaknox8210@gmail.com', 9493582858, 'male', 'bago', 'student', 'user_buyer', '2023-09-11', 'KoaKnox', '8028d74fe6ae33700bad6be602886890'),
-(47, 'Keam', 'Casseus', 'keamcasseus8210@gmail.com', 9103199898, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-11', 'keamcasseus', '9dd736dbbbec565cfe90e38e93c5e3cd'),
-(48, 'sherly', 'carpio', 'sherly@gmail.com', 9759872245, 'female', 'non-bago', 'personnel', 'user_buyer', '2023-09-12', 'sherly', '1c8b06358890d6c512859b21557315b4'),
-(50, 'ashly', 'sunga', 'ashly@gmail.com', 9582349023, 'female', 'non-bago', 'student', 'user_buyer', '2023-09-18', 'ashly', 'c114e447529c910fb405cc586adabe8f'),
-(51, 'Rogaciano', 'Carpio', 'Rogaciano@gmail.com', 9531248312, 'male', 'non-bago', NULL, 'user_buyer', '2023-09-30', 'Rogaciano', 'd84f5ebdbb0138d19376fead142c9ae4'),
-(58, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'bago', 'student', 'user_buyer', '2023-10-01', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d');
+INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `usertype`, `user_category`, `statues`, `register_date`, `username`, `password`) VALUES
+(33, 'Kenny', 'Belarte', 'kenny@gmail.com', 9546213879, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-08-10', 'kenny', 'fde290ea8d375a112998beacd5f4cff5'),
+(34, 'Ninang', 'Dela Cruz', 'ninang@gmail.com', 9987123654, 'female', 'non-bago', 'personnel', 'user_buyer', 'not-active', '2023-09-09', 'ninang', 'd54fd1674b1e312cba3cec56add7e00a'),
+(35, 'Pablo', 'San jose', 'pablo@gmail.com', 9159357246, 'other', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-06', 'pablo', '7e4b64eb65e34fdfad79e623c44abd94'),
+(36, 'Jia mae', 'Gaspar', 'jiabadgirl@gmail.com', 9725468164, 'female', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'jia', 'a6907acf5b337a322193f19b6698c867'),
+(37, 'Abegail', 'Eparosa', 'abegail@gmail.com', 9158497685, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-10', 'abegail', '7eb036d95efd0ec315606393479aec4a'),
+(38, 'Angelo', 'Cortez', 'angelo@gmail.com', 9873465982, 'male', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'angelo', '98a8d3f11b400ddc06d7343375b71a84'),
+(45, 'Julie', 'Villacrusis', 'julie@gmail.com', 9578949584, 'female', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'julie', '16f12f5e8379e22be995e505ebfc1b84'),
+(46, 'Koa', 'Montelibano', 'koaknox8210@gmail.com', 9493582858, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-09-11', 'KoaKnox', '8028d74fe6ae33700bad6be602886890'),
+(47, 'Keam', 'Casseus', 'keamcasseus8210@gmail.com', 9103199898, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-11', 'keamcasseus', '9dd736dbbbec565cfe90e38e93c5e3cd'),
+(48, 'sherly', 'carpio', 'sherly@gmail.com', 9759872245, 'female', 'non-bago', 'personnel', 'user_buyer', 'not-active', '2023-09-12', 'sherly', '1c8b06358890d6c512859b21557315b4'),
+(50, 'ashly', 'sunga', 'ashly@gmail.com', 9582349023, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-18', 'ashly', 'c114e447529c910fb405cc586adabe8f'),
+(51, 'Rogaciano', 'Carpio', 'Rogaciano@gmail.com', 9531248312, 'male', 'non-bago', NULL, 'user_buyer', 'not-active', '2023-09-30', 'Rogaciano', 'd84f5ebdbb0138d19376fead142c9ae4'),
+(61, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-03', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d');
 
 --
 -- Indexes for dumped tables
@@ -573,7 +562,7 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
@@ -615,13 +604,13 @@ ALTER TABLE `telleruser_tb`
 -- AUTO_INCREMENT for table `userwebusages_tb`
 --
 ALTER TABLE `userwebusages_tb`
-  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `user_tb`
 --
 ALTER TABLE `user_tb`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Constraints for dumped tables

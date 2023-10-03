@@ -25,7 +25,7 @@ if(!isset($_SESSION['id'])){
                <option value="SASO">SASO</option>
                <option value="Faculty">Faculty</option>
                <option value="Guidance">Guidance</option>
-               <option value="Registerar">Registerar</option>
+               <option value="Registrar">Registrar</option>
                <option value="Admin">Admin</option>
                <option value="SSG">SSG</option>                                       
            </select>           

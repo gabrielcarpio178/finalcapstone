@@ -38,6 +38,5 @@ if(isset($_POST['admin'])){
     $data['all_active'] = $all_active['all_active'];
     print_r(json_encode($data));
 
-
 }
 ?>

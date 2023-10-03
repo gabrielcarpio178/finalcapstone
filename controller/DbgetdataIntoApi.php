@@ -56,7 +56,7 @@ else{
             }
             $passwordmd = md5($password);
             try {
-                mysqli_query($connect,"INSERT INTO `user_tb`(`firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `user_category`, `usertype`, `username`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber', '$gender', '$address', 'user_buyer', 'student','$username','$passwordmd');");
+                mysqli_query($connect,"INSERT INTO `user_tb`(`firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `user_category`, `usertype`, `statues`, `username`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber', '$gender', '$address', 'user_buyer', 'student', 'active', '$username','$passwordmd');");
             } catch (\Throwable $th) {
                 echo $th;
             }

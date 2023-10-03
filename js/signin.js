@@ -186,7 +186,11 @@ function getdatafromApi(username, password){
     data: {username: username,
     password: password},
     cache: false,
+    beforeSend: function(){
+      $(".loader").show();
+    },
     success: function(res){
+      $(".loader").hide();
       if(res == "login"){
         Swal.fire({
           position: 'center',

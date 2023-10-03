@@ -56,7 +56,7 @@ user-scalable=no">
                     </div>
                     
                     <div class="chooose-teller">
-                        Choose Canteen Staff                      
+                        Choose Canteen Store                  
                     </div> 
                     <div class="row gx-5 gy-2">
                         <!-- teller -->

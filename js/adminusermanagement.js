@@ -177,45 +177,19 @@ function num_of_data(){
         cache: false,
         success: function(res){
             var data_num = JSON.parse(res);
-
-            var labels = [...Object.keys(data_num[0]), ...Object.keys(data_num[1]), ...Object.keys(data_num[2]), ...Object.keys(data_num[3])];
-            var values = [...Object.values(data_num[0]), ...Object.values(data_num[1]), ...Object.values(data_num[2]), ...Object.values(data_num[3])];
-
-            // console.log(labels);
-            $('.label-all').text(labels[10]);
-            $('.num-all').text(parseInt(values[10])+parseInt(values[11][0]));
-
-            $('.label-bsis').text(labels[8]);
-            $('.num-bsis').text(values[8]);
-
-            $('.label-bscrim').text(labels[6]);
-            $('.num-bscrim').text(values[6]);
-
-            $('.label-bsed').text(labels[7]);
-            $('.num-bsed').text(values[7]);
-
-            $('.label-bsoa').text(labels[9]);
-            $('.num-bsoa').text(values[9]);
-
-            $('.label-registerar').text(labels[2]);
-            $('.num-registerar').text(values[2]);
-
-            $('.label-saso').text(labels[3]);
-            $('.num-saso').text(values[3]);
-
-            $('.label-ssg').text(labels[4]);
-            $('.num-ssg').text(values[4]);
-
-            $('.label-admin').text(labels[0]);
-            $('.num-admin').text(values[0]);
-
-            $('.label-guidance').text(labels[1]);
-            $('.num-guidance').text(values[1]);
-
-            $('.label-beed').text(labels[5]);
-            $('.num-beed').text(values[5]);
-
-            $('.num-teller').text(values[11][0]);
+            $('.num-all').text(parseInt(data_num[2]));
+            $('.num-bsis').text(data_num[0].BSIS);
+            $('.num-bscrim').text(data_num[0].BSCrim);
+            $('.num-bsed').text(data_num[0].BSED);
+            $('.num-bsoa').text(data_num[0].BSOA);
+            $('.num-registerar').text(data_num[0].Registrar);
+            $('.num-saso').text(data_num[0].SASO);
+            $('.num-ssg').text(data_num[0].SSG);
+            $('.num-admin').text(data_num[0].Admin);
+            $('.num-guidance').text(data_num[0].Guidance);
+            $('.num-beed').text(data_num[0].BEED);
+            $('.num-faculty').text(data_num[0].Faculty);
+            $('.num-teller').text(data_num[3]);
 
         }
     });

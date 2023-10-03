@@ -91,6 +91,9 @@ body {
   .teller {
     background-color: #a59094;
   }
+  .faculty {
+    background-color: #EE2E31;
+  }
   .data-info {
     display: flex;
     flex-direction: row;

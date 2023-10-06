@@ -13,16 +13,21 @@ body {
   text-align: center;
 }
 .content h1 {
-  font-size: 50px;
+  font-size: 40px;
+  font-weight: bold;
+}
+.content h3 {
+  font-size: 25px;
   font-weight: bold;
 }
 .content img {
-  width: 216px;
-  height: 210px;
+  margin-top: 5px;
+  width: 210px;
+  height: 205px;
 }
 .content p {
-  font-size: 20px;
-  font-weight: 750;
+  font-size: 18px;
+  font-weight: 500;
 }
 .content button {
   width: 200px;
@@ -31,15 +36,18 @@ body {
   margin-top: 200px;
 }
 @media only screen and (min-width: 320px) {
-  body{
-    background: url("../image/index_mobile.png") no-repeat center/cover fixed;
+  body {
+    background: url("../image/index_mobi.png") no-repeat center/cover fixed;
   }
   .content .signin {
-    margin-top: 100px;
+    margin-top: 170px;
+  }
+  .content p {
+    font-size: 15x;
   }
 }
 @media screen and (min-width: 1020px) {
-  body{
+  body {
     background: url("../image/index.png") no-repeat center center fixed;
   }
 }

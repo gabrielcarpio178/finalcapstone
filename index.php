@@ -12,11 +12,12 @@ user-scalable=no">
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="content mt-3">
+            <div class="col-md-5">
+                <div class="content mt-4">
+                    <h3>BCC Digital Payment System</h3>
                     <h1>WELCOME</h1>
                     <img src="image/icon_1.png" alt="BCC digital payment logo"></img>
-                    <p>A new way to make payment easy. Purchase and pay using digital currency.</p>
+                    <p>A new way to make payment easy.<br>Purchase and pay using digital currency.</p>
 
                     <div class="mt-5">
                         <div class="row signin">

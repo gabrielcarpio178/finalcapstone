@@ -181,7 +181,7 @@ function graph(month,datas, course, department){
           },
           title: {
             display: true,
-            text: 'Total Department Users ',
+            text: 'Total Department Users\' Graph',
             font: {
                 size: 20
             }

@@ -1,62 +1,107 @@
 /* * {
   outline: 1px solid black;
 } */
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.contents{
+  position: absolute;
+  inset: 80px 0px 0px 280px;
+  
+}
 .label-home {
   font-size: 1.5em;
+  font-weight: bold;
 }
-
-.content {
+.content-information{
+  padding: 20px;
+  height: 100vh;
+}
+.post-message{
   border-radius: 10px/10px;
-  color: rgb(240, 231, 231);
   box-shadow: 0 1px 1px 1px #616161;
+  height: 25vh;
+  padding: 20px;
+  background-color: #9d9d9d;
+  margin: 10px;
+}
+img{
+  max-width: 20%;
+}
+.post{
+  font-size: 20px;
+}
+.message h1{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.click-info{
+  width: 95%;
+  height: 10vh;
+  margin: 10px;
   cursor: pointer;
+  border-radius: 10px/10px;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 1px 1px 1px #616161;
 }
 
-#content_1 {
-  background-color: rgb(98, 98, 187);
+#request{
+ background-color: rgb(78, 173, 78);  
+ position: relative;
+}
+#cashin{
+ background-color: rgb(160, 80, 80);
+}
+#account-balance{
+ background-color: rgb(179, 115, 126);
+}
+#collection-div{
+ background-color: rgb(87, 51, 51);
 }
 
-#content_2 {
-  background-color: rgb(219, 179, 91);
+.data-set{
+  width: 100%;
+  margin: 10px;
+  height: 35vh;
+  
 }
-
-#content_3 {
-  background-color: rgb(80, 204, 80);
+.request-count{
+  position: absolute;
+  top: -15px;
+  left: 200px;
+  background-color: red;
+  width: 15%;
+  height: 5vh;
+  text-align: center;
+  border-radius: 50%;
 }
-
-@media screen and (min-width: 320px) {
-  .contents {
-    position: absolute;
-    top: 90px;
-    padding: 10px;
-  }
-  .content {
-    padding: 10px;
-  }
-
-  #content_1,
-  #content_2,
-  #content_3 {
-    width: 200px;
-    margin-left: 70px;
-    margin-top: 20px;
-  }
+.collection-amount{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 30%;
+  gap: 10px;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #616161;  
+  padding: 10px;
+  margin: 30px;
 }
-
-@media screen and (min-width: 1020px) {
-  .contents {
-    position: absolute;
-    inset: 100px 0px 0px 280px;
-  }
-
-  .content {
-    padding: 10px;
-  }
-
-  #content_1,
-  #content_2,
-  #content_3 {
-    width: 250px;
-    margin-left: 80px;
-  }
+.collection-date{
+  text-align: end;
+}
+.label-collection{
+  font-size: 20px;
+}
+.amount-collect{
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+.graph{
+  box-shadow: 0 1px 1px 1px #616161;
+}
+.graph canvas{
+  height: 100vh;
 }

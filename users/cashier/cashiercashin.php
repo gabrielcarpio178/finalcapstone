@@ -40,6 +40,7 @@
               <div class="message"></div>
               <div class="search-table" style="display: none;">
                 <div class="table-result">
+                  <center>
                   <table class="table table-hover">
                     <thead>
                       <tr>
@@ -54,6 +55,7 @@
                       
                     </tbody>
                   </table>
+                  </center>
                 </div>
               </div>
             </div>

@@ -7,6 +7,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
         exit;
    }
 }
+$id = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +26,9 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
 <body>
 
     <div id="navbar"></div>
-
+    
     <div class="content-info">
-
+        <input type="hidden" name="user_id" id="user_id" value="<?=$id; ?>">
         <div class="label">
             <div class="label-content">
                 <h1>Input Payment</h1>
@@ -35,7 +36,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
             </div>
             <div class="wallet-balance">
                 <p>Wallet Balance</p>
-                <b><?=$_SESSION['amount'] ?></b>     
+                <b id="walllet_balance"></b>     
             </div>
         </div>
 
@@ -61,9 +62,16 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
             </div>
 
             <div class="forms-method">
-
-                
-
+                <div class="label-form"><b>Non-Bago Fee</b></div>
+                <form class="insert_amount" id="non_bago-submit">
+                    <label for="Input">Enter Amount</label>
+                    <div class="group">
+                        <div class="sign-peso">₱</div>
+                        <input type="number" id="input" class="form-control input-class">
+                        <div class="eye-icon"><i class="fa-solid fa-eye-slash"></i></div>
+                    </div>
+                    <button type="submit" id="submit_amount" class="btn btn-primary">Send</button>
+                </form>
             </div>
 
         </div>
@@ -73,5 +81,6 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../../js/userinputpayment.js"></script>
 </html>

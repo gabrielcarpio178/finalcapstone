@@ -100,7 +100,7 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data bscrim" id="BSCrim" name="student">
+                <div class="data bscrim" id="BSCRIM" name="student">
                     <div class="label label-bscrim">
                         BSCrim
                     </div>

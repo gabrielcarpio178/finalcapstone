@@ -136,6 +136,7 @@ function rfid(){
                             showConfirmButton: false,
                             timer: 1000
                           })
+                          $(this).val("");
                     }else{
                         getuser(res);
                     }

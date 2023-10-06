@@ -28,37 +28,67 @@ if(($_SESSION['usertype']!="cashier")){
   <body>
     <div id="nav"></div>
     <div class="contents">
-      <div class="fw-bold label-home">Home</div>
-      <div class="row mt-5">
 
-        <div class="col-12 col-lg-4 content" id="content_1">
-          <p>Student</p>
-          <hr>
-          <div class="d-flex flex-row justify-content-between view-detail">
-            <p>View Details</p>
-            <i class="fa-solid fa-angle-right"></i>
+      <div class="label-home">Home</div>
+
+      <div class="content-information">
+        <div class="d-flex flex-row justify-content-between post-message">
+          <div class="d-flex flex-column justify-content-end post">
+            <div class="message">
+              <h1>Welcome!</h1> 
+            </div>
+            <div class="title">
+              BCC Digital Payment System
+            </div>
+          </div>
+          <img src="../../image/icon_1.png" >
+        </div> 
+
+        <div class="d-flex flex-row content-availabled">
+          
+          <div class="d-flex flex-row justify-content-around align-items-center click-info" id="request">
+            <div class="request-count">
+              1
+            </div>
+            <img src="../../image/cashier_request.png" class="logo-info">
+            <div class="label-info">Request</div>
+          </div>
+          <div class="d-flex flex-row justify-content-around align-items-center click-info" id="cashin">
+            <img src="../../image/cashier_cashin.png" class="logo-info">
+            <div class="label-info">Cash In</div>
+          </div>
+          <div class="d-flex flex-row justify-content-around align-items-center click-info" id="account-balance">
+            <img src="../../image/cashier_accountbalance.png" class="logo-info">
+            <div class="label-info">Account<br>Balance</div>
+          </div>
+          <div class="d-flex flex-row justify-content-around align-items-center click-info" id="collection-div">
+            <img src="../../image/cashier_collection.png" class="logo-info">
+            <div class="label-info">Collection</div>
           </div>
         </div>
 
-        <div class="col-12 col-lg-4 content" id="content_2">
-          <p>Personnel</p>
-          <hr>
-          <div class="d-flex flex-row justify-content-between view-detail">
-            <p>View Details</p>
-            <i class="fa-solid fa-angle-right"></i>
-          </div>
-        </div>
+        <div class="d-flex flex-row justify-content-around data-set">
 
-        <div class="col-12 col-lg-4 content" id="content_3">
-          <p>Requires</p>
-          <hr>
-          <div class="d-flex flex-row justify-content-between view-detail">
-            <p>View Details</p>
-            <i class="fa-solid fa-angle-right"></i>
+          <div class="collection-amount">
+              <div class="collection-date">
+                Sep. 10, 2023
+              </div>
+              <div class="label-collection">
+                TOTAL COLLECTION
+                <div class="amount-collect">
+                2,000.00  
+                </div>
+              </div> 
           </div>
+
+          <div class="graph p-2">
+            <canvas id="bar"></canvas>
+          </div>
+
         </div>
 
       </div>
+
     </div>
   </body>
   <script
@@ -68,5 +98,8 @@ if(($_SESSION['usertype']!="cashier")){
     referrerpolicy="no-referrer"
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
   <script src="../../js/cashierhomepage.js"></script>
 </html>

@@ -18,6 +18,10 @@ user-scalable=no">
                     <h1>WELCOME</h1>
                     <img src="image/icon_1.png" alt="BCC digital payment logo"></img>
                     <p>A new way to make payment easy.<br>Purchase and pay using digital currency.</p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 47e6dfc3ef5601a148c009ca13bde370210ac561
                     <div class="mt-5">
                         <div class="row signin">
                             <div class="col">

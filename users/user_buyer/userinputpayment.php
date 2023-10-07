@@ -62,16 +62,9 @@ $id = $_SESSION['id'];
             </div>
 
             <div class="forms-method">
-                <div class="label-form"><b>Non-Bago Fee</b></div>
-                <form class="insert_amount" id="non_bago-submit">
-                    <label for="Input">Enter Amount</label>
-                    <div class="group">
-                        <div class="sign-peso">₱</div>
-                        <input type="number" id="input" class="form-control input-class">
-                        <div class="eye-icon"><i class="fa-solid fa-eye-slash"></i></div>
-                    </div>
-                    <button type="submit" id="submit_amount" class="btn btn-primary">Send</button>
-                </form>
+            </div>
+
+            <div class="sumbit_password">
             </div>
 
         </div>

@@ -16,9 +16,18 @@ if(isset($_POST['user_id'])){
     } catch (\Throwable $th) {
         echo $th;
     }
+
+    try {
+        $sql_total_payment = mysqli_query($connect,"SELECT SUM(payment_amount) AS total_payment, user_id FROM digitalpayment_tb WHERE user_id = '$user_id' GROUP BY user_id;");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
     $total_cashin_user = 0;
     $total_purchase_user = 0;
-
+    $total_payment_user = 0;
+    while($total_payment = mysqli_fetch_assoc($sql_total_payment)){
+        $total_payment_user = $total_payment['total_payment'];
+    }
     while($total_purchase = mysqli_fetch_assoc($sql_totalPurchase)){
         $total_purchase_user = $total_purchase['total_purchase'];
     }
@@ -27,7 +36,7 @@ if(isset($_POST['user_id'])){
         $total_cashin_user = $total_cashin['total_cashin'];
     }
 
-    echo $total_cashin_user - $total_purchase_user;
+    echo $total_cashin_user - ($total_purchase_user+$total_payment_user);
 
 }
 ?>

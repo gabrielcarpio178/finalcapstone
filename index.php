@@ -18,10 +18,6 @@ user-scalable=no">
                     <h1>WELCOME</h1>
                     <img src="image/icon_1.png" alt="BCC digital payment logo"></img>
                     <p>A new way to make payment easy.<br>Purchase and pay using digital currency.</p>
-<<<<<<< HEAD
-=======
-
->>>>>>> 47e6dfc3ef5601a148c009ca13bde370210ac561
                     <div class="mt-5">
                         <div class="row signin">
                             <div class="col">
@@ -34,7 +30,6 @@ user-scalable=no">
                             </div>
                         </div>
                     </div>
-                   
                 </div>
             </div>
         </div>
@@ -43,18 +38,14 @@ user-scalable=no">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>   
-     $(document).ready(function(){
+    $(document).ready(function(){
         
         $("#signin").on("click", function(){
-                  
-           window.location="signin.php";
-            
+            window.location="signin.php";
         });  
         
         $("#signup").on("click", function(){ 
-               
-           window.location="signup.php";
-            
+            window.location="signup.php";
         });   
         
     });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2023 at 05:06 PM
+-- Generation Time: Oct 08, 2023 at 07:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -112,7 +112,8 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (20, 36, 30, '7489526310', '2023-10-03 13:32:12'),
 (21, 33, 30, '2164598703', '2023-10-03 13:36:58'),
 (23, 61, 30, '8530297641', '2023-10-03 23:56:50'),
-(24, 61, 100, '8756342109', '2023-10-07 23:03:56');
+(24, 61, 100, '8756342109', '2023-10-07 23:03:56'),
+(25, 61, 500, '6904157823', '2023-10-09 00:19:01');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,7 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 CREATE TABLE `cashout_tb` (
   `cashier_id` int(11) NOT NULL,
   `teller_id` int(11) NOT NULL,
-  `cashout_date` date NOT NULL,
+  `cashout_date` datetime NOT NULL DEFAULT current_timestamp(),
   `cashout_amount` int(11) NOT NULL,
   `cashout_refnum` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -133,7 +134,7 @@ CREATE TABLE `cashout_tb` (
 --
 
 INSERT INTO `cashout_tb` (`cashier_id`, `teller_id`, `cashout_date`, `cashout_amount`, `cashout_refnum`) VALUES
-(1, 1, '2023-09-20', 45, '4083726951');
+(6, 1, '2023-10-09 00:35:56', 30, '6423059781');
 
 -- --------------------------------------------------------
 
@@ -184,7 +185,12 @@ CREATE TABLE `digitalpayment_tb` (
 --
 
 INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `requestType`, `payment_date`) VALUES
-(1, 61, '30', 'non-bago-fee', 'pending', '2023-10-07 23:03:03');
+(1, 61, '30', 'Non Bago Fee', 'accepted', '2023-10-07 23:03:03'),
+(2, 61, '30', 'Non Bago Fee', 'pending', '2023-10-08 00:43:17'),
+(3, 61, '10', 'Non Bago Fee', 'pending', '2023-10-08 01:04:15'),
+(4, 61, '50', 'Certificate  of Transfers', 'accepted', '2023-10-08 23:56:06'),
+(5, 61, '30', 'Certificate of Enrollment', 'accepted', '2023-10-09 00:18:28'),
+(6, 61, '10', 'Non Bago Fee', 'accepted', '2023-10-09 00:18:38');
 
 -- --------------------------------------------------------
 
@@ -517,7 +523,8 @@ ALTER TABLE `category_tb`
 -- Indexes for table `digitalpayment_tb`
 --
 ALTER TABLE `digitalpayment_tb`
-  ADD PRIMARY KEY (`digitalPayment_id`);
+  ADD PRIMARY KEY (`digitalPayment_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `order_tb`
@@ -593,13 +600,13 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
 --
 ALTER TABLE `cashout_tb`
-  MODIFY `cashier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cashier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `category_tb`
@@ -611,7 +618,7 @@ ALTER TABLE `category_tb`
 -- AUTO_INCREMENT for table `digitalpayment_tb`
 --
 ALTER TABLE `digitalpayment_tb`
-  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
@@ -670,6 +677,12 @@ ALTER TABLE `cashout_tb`
 --
 ALTER TABLE `category_tb`
   ADD CONSTRAINT `category_tb_ibfk_1` FOREIGN KEY (`teller_id`) REFERENCES `telleruser_tb` (`teller_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `digitalpayment_tb`
+--
+ALTER TABLE `digitalpayment_tb`
+  ADD CONSTRAINT `digitalpayment_tb_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_tb` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `order_tb`

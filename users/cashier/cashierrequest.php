@@ -33,11 +33,16 @@ if(($_SESSION['usertype']!="cashier")){
         <div class="">Home</div>
 
         <div class="content-menu mt-5">
-            <div class="d-flex flex-row justify-content-around align-self-center">
+            <div class="d-flex flex-row justify-content-around align-self-center content-header">
                 <div id="non_bago" class="focus-1 fucos-class">NON-BAGO FEE</div>
                 <div id="cash_out" class="focus-2">CASH OUT</div>
-                <div id="request" class="focus-3">REQUEST</div>
+                <div id="certificate" class="focus-3">CERTIFICATE</div>
             </div>
+            <div class="table-content">
+
+            </div>
+            
+
         </div>
 
     </div>

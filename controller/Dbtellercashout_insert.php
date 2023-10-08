@@ -52,7 +52,7 @@ if(isset($_POST['amount'])&&isset($_POST['teller_id'])&&isset($_POST['password']
         $array['refnum'] = $refkey;
         $array['date'] = $new_datetime;
         try {
-            mysqli_query($connect, "INSERT INTO `cashout_tb`(`teller_id`, `cashout_date`, `cashout_amount`, `cashout_refnum`) VALUES ('$teller_id', '$new_datetime' ,'$amount', '$refkey');");
+            mysqli_query($connect, "INSERT INTO `cashout_tb`(`teller_id`, `cashout_amount`, `cashout_refnum`) VALUES ('$teller_id' ,'$amount', '$refkey');");
             print_r(json_encode($array));
         } catch (\Throwable $th) {
             echo $th;

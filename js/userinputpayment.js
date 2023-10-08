@@ -139,7 +139,7 @@ function submit_non_bago(res){
         timer: 1000
       });
     }else{
-      inputpassword(input_non_bago, 'non-bago-fee');
+      inputpassword(input_non_bago, 'Non Bago Fee');
     }
   });
 }
@@ -164,7 +164,7 @@ function submit_cert_e(res){
         timer: 1000
       });
     }else{
-      inputpassword(input_cert_e, 'certificate_of_enrollment');
+      inputpassword(input_cert_e, 'Certificate of Enrollment');
     }
   });
 }
@@ -190,7 +190,7 @@ function submit_cert_t(res){
         timer: 1000
       });
     }else{
-      inputpassword(input_cert_t, 'cert_transfers');
+      inputpassword(input_cert_t, 'Certificate  of Transfers');
     }
   });
 }

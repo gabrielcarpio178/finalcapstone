@@ -124,14 +124,14 @@ $(document).ready(function(){
     $(".txt, #filter, .checkbox").each(function() {
         $(this).change(function(){
             address = $(this).val();
-             table_info(category, usertype, address, add_row, page);
+            table_info(category, usertype, address, add_row, page);
         }); 
     });
 
     $(".txt, #add_row, .checkbox").each(function() {
         $(this).change(function(){
             add_row = $(this).val();
-             table_info(category, usertype, address, add_row, page);
+            table_info(category, usertype, address, add_row, page);
         }); 
     });
 

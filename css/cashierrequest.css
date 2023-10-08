@@ -9,18 +9,21 @@
 ul {
   list-style: none;
 }
-.content-menu {
+.content-header{
   background-color: rgba(112, 108, 108, 0.137);
   padding: 10px;
+}
+.content-menu {
   width: 85%;
 }
 
 #non_bago,
 #cash_out,
-#request {
+#certificate {
   cursor: pointer;
 }
 
 .fucos-class {
   color: blue;
+  font-weight: bold;
 }

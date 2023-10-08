@@ -1,10 +1,7 @@
 $(document).ready(function () {
   $("#nav").load("cashiernav.php");
-
-  // $("#content_3").on("click", function () {
-  //   window.location = "cashierrequest.php";
-  // });
   graph();
+  request()
 });
 
 function graph(){
@@ -56,4 +53,10 @@ function graph(){
   var bars = $("#bar");
   chart = new Chart(bars, bar);
 
+}
+
+function request(){
+  $("#request").on("click", function(){
+    window.location='cashierrequest.php';
+  })
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2023 at 06:00 PM
+-- Generation Time: Oct 07, 2023 at 05:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bcc_digital_payment`
+-- Database: `capstone`
 --
 
 -- --------------------------------------------------------
@@ -111,7 +111,8 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (12, 36, 40, '9726843150', '2023-10-03 12:54:03'),
 (20, 36, 30, '7489526310', '2023-10-03 13:32:12'),
 (21, 33, 30, '2164598703', '2023-10-03 13:36:58'),
-(23, 61, 30, '8530297641', '2023-10-03 23:56:50');
+(23, 61, 30, '8530297641', '2023-10-03 23:56:50'),
+(24, 61, 100, '8756342109', '2023-10-07 23:03:56');
 
 -- --------------------------------------------------------
 
@@ -166,6 +167,28 @@ INSERT INTO `category_tb` (`category_id`, `teller_id`, `category_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `digitalpayment_tb`
+--
+
+CREATE TABLE `digitalpayment_tb` (
+  `digitalPayment_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `payment_amount` varchar(100) NOT NULL,
+  `payment_type` varchar(100) NOT NULL,
+  `requestType` varchar(100) NOT NULL,
+  `payment_date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `digitalpayment_tb`
+--
+
+INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `requestType`, `payment_date`) VALUES
+(1, 61, '30', 'non-bago-fee', 'pending', '2023-10-07 23:03:03');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `order_tb`
 --
 
@@ -213,7 +236,9 @@ INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `order
 (125, 45, 1, 56, 'Le Minerale', '0658473291', 'Drinks', '2023-09-20 09:33:16', NULL, 20, 1, 1, 'CANCELED'),
 (241, 45, 4, 44, 'Wet wipes', '3976410825', 'Necessities', '2023-09-28 16:17:47', '2023-09-28 16:38:56', 20, 1, 0, 'PROCEED'),
 (242, 33, 1, 19, 'showbear', '0423759618', 'Candy', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 2, 1, 0, 'PROCEED'),
-(243, 33, 1, 16, 'mountain dew', '0423759618', 'Drinks', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 20, 1, 0, 'PROCEED');
+(243, 33, 1, 16, 'mountain dew', '0423759618', 'Drinks', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 20, 1, 0, 'PROCEED'),
+(244, 61, 1, 17, 'Fita', '0735864291', 'Biscuit', '2023-10-07 23:04:26', '2023-10-07 23:34:53', 8, 1, 0, 'PROCEED'),
+(245, 61, 1, 16, 'mountain dew', '0735864291', 'Drinks', '2023-10-07 23:04:26', '2023-10-07 23:34:53', 20, 1, 0, 'PROCEED');
 
 -- --------------------------------------------------------
 
@@ -319,7 +344,7 @@ INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `
 (2020112300, 'BSOA', '4th', '', 33),
 (2020115740, 'BSED', '4th', '', 37),
 (1164973821, 'BSOA', '3rd', '', 46),
-(1234567891, 'BSCrim', '3rd', '', 47),
+(1234567891, 'BSCRIM', '3rd', '', 47),
 (2020590400, 'BEED', '4th', '', 50),
 (2020115752, 'BSIS', '4th', '0472321553', 61);
 
@@ -489,6 +514,12 @@ ALTER TABLE `category_tb`
   ADD KEY `category_tb_ibfk_1` (`teller_id`);
 
 --
+-- Indexes for table `digitalpayment_tb`
+--
+ALTER TABLE `digitalpayment_tb`
+  ADD PRIMARY KEY (`digitalPayment_id`);
+
+--
 -- Indexes for table `order_tb`
 --
 ALTER TABLE `order_tb`
@@ -562,7 +593,7 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
@@ -577,10 +608,16 @@ ALTER TABLE `category_tb`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT for table `digitalpayment_tb`
+--
+ALTER TABLE `digitalpayment_tb`
+  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `order_tb`
 --
 ALTER TABLE `order_tb`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT for table `personnel_tb`

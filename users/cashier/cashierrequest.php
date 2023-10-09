@@ -38,6 +38,7 @@ if(($_SESSION['usertype']!="cashier")){
                 <div id="cash_out" class="focus-2">CASH OUT</div>
                 <div id="certificate" class="focus-3">CERTIFICATE</div>
             </div>
+
             <div class="table-content">
 
             </div>

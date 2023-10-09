@@ -8,14 +8,14 @@ $_SESSION['error'] = array();
 
 try{
    $result=mysqli_query($connect, "SELECT * FROM `user_tb` WHERE username='$username' AND password='$password';");
-   $row = mysqli_fetch_assoc($result);
-   if($row>0){  
+    $row = mysqli_fetch_assoc($result);
+    if($row>0){  
     $id = $row['user_id'];
         if($row['usertype']==NULL){
         echo 'firstlogin';
-         $_SESSION['id']=$row['user_id']; 
-         $_SESSION['firstname']=$row['firstname'];        
-         $_SESSION['gender'] = $row['gender'];  
+          $_SESSION['id']=$row['user_id']; 
+          $_SESSION['firstname']=$row['firstname'];        
+          $_SESSION['gender'] = $row['gender'];  
         }else{
             $_SESSION['id']=$row['user_id'];
             $_SESSION['usertype'] = $row['usertype'];
@@ -56,16 +56,16 @@ try{
           $_SESSION['usertype'] = $admin_row['user_category'];
           
         }
-       else{
+        else{
          //cashier
          $cashier=mysqli_query($connect, "SELECT * FROM `cashier_tb` WHERE username='$username' AND password='$password';");
-         $cashier_row = mysqli_fetch_assoc($cashier);
-         if($cashier_row>0){
+          $cashier_row = mysqli_fetch_assoc($cashier);
+          if($cashier_row>0){
           //print_r($cashier_row);
-          $id = $cashier_row['cashier_id'];
-           $_SESSION['id']=$cashier_row['cashier_id'];
-           $_SESSION['usertype'] = $cashier_row['user_category'];
-           try {
+            $id = $cashier_row['cashier_id'];
+            $_SESSION['id']=$cashier_row['cashier_id'];
+            $_SESSION['usertype'] = $cashier_row['user_category'];
+            try {
             $sql_check = mysqli_query($connect, "SELECT `user_id` FROM `userwebusages_tb` WHERE `user_id`='$id' AND MONTH(`use_date`) LIKE MONTH(CAST(now() AS DATE)) AND `user_category`='cashier';");
             $check = mysqli_fetch_assoc($sql_check);
             if(empty($check)){
@@ -82,11 +82,11 @@ try{
             echo $th;
           }
   
-           }else{
+            }else{
              //teller
               $teller=mysqli_query($connect, "SELECT * FROM `telleruser_tb` WHERE username='$username' AND password='$password';");
               $teller_row = mysqli_fetch_assoc($teller);
-           if($teller_row>0){
+            if($teller_row>0){
               $id = $teller_row['teller_id'];
               $_SESSION['id'] = $teller_row['teller_id'];            
               $_SESSION['teller_name'] = $teller_row['store_name'];
@@ -110,12 +110,12 @@ try{
                 echo $th;
               }
   
-           }else{
-             echo "wrong";
+            }else{
+              echo "wrong";
              //echo $password;
-             }
-           }
-         }
+              }
+            }
+          }
       }
     }catch (\Throwable $th){
       echo $th;

@@ -1,125 +1,180 @@
 /* * {
   outline: 1px solid;
 } */
-.wallet-balance {
-  background-color: white;
-  box-shadow: 0 1px 1px 1px #616161;
-  border-radius: 10px/10px;
-  font-weight: bold;
+.content-info{
+  position: absolute;
+  inset: 0px 0px 0px 350px;
 }
-.label-amount {
-  text-align: center;
+#main-content{
+  margin-top: 50px;
 }
-.form-control {
-  height: 50px;
-  width: 280px;
-  font-size: 30px;
-  text-align: center;
-}
-.input-group {
+.cashout-info{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-self: center;
-  background-color: #2a325470;
-  box-shadow: 0 1px 1px 1px #616161;
+}
+.label{
+  align-self: flex-start;
+}
+.wallet-balance{
+  margin-top: 25px;
+  background-color: white;
   border-radius: 10px/10px;
-  font-weight: bold;
-  gap: 10px;
-}
-.label-input {
-  align-self: start;
-  margin-left: 20px;
-}
-.col-lg-3 {
-  background-color: rgba(0, 119, 255, 0.466);
-  height: 100vh;
-}
-.success-message {
+  box-shadow: 0 1px 1px 1px #616161;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  padding: 10px;
+  height: 20vh;
+  justify-content: center;
 }
-.success-message img {
-  max-width: 130px;
-  margin-top: 35px;
+.label-wallet-balance{
+  align-self: flex-start;
+  font-size: 20px;
 }
-.message {
-  font-size: 2em;
+.label-amount{
+  font-size: 35px;
+  font-weight: bold;
+  color: black;
 }
-.name {
-  font-size: 1.5em;
+
+.forms-input{
+  width: 45%;
+  background-color: white;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #616161;
+  height: 40vh;
+  padding: 10px 15px;
+  font-size: 20px;
 }
-.amount-cashout {
-  font-size: 1.3em;
+.input-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-@media screen and (min-width: 320px) {
-  .cashout-info {
-    padding-top: 100px;
-  }
-  .wallet-balance {
-    width: 50%;
-    margin-top: 5%;
-    margin-left: 25%;
-    padding: 15px;
-  }
-  .success-message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
-    color: white;
-  }
-  .label-wallet-balance{
-    text-align: center;
-  }
-  .input-group {
-    width: 60%;
-    height: 225px;
-    margin-top: 25px;
-    padding: 10px;
-  }
-  .input-group #amount, #password{
-    width: 75%;
-    margin-left: 12%;
-  }
-  .col-lg-3 {
-    position: fixed;
-    margin-top: 85px;
-  }
+.insert-amount{
+  position: relative;
 }
-@media screen and (min-width: 1020px) {
-  .cashout-info {
-    padding: 100px 0px 0px 320px;
-  }
-  .wallet-balance {
-    width: 300px;
-    margin-top: 50px;
-    padding: 15px;
-  }
-  #message-info{
-    margin: 0px;
-  }
-  .success-message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px;
-    color: white;
-  }
-  .label-amount {
-    font-size: 40px;
-    padding: 1px;
-  }
-  .input-group {
-    width: 400px;
-    height: 200px;
-    margin-top: 100px;
-  }
-  .col-lg-3 {
-    position: static;
-    display: none;
-  }
+.peso-insert{
+  position: absolute;
+  font-size: 32px;
+  left: 10px;
+  top: -2px;
+  color: black;
+  font-weight: bold;
+}
+#insert_data{
+  text-align: center;
+}
+.form-set{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 20px;
+}
+.password-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  padding: 25px 10px;
+}
+.form-set-password{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0px 20px;
+}
+.label-password{
+  text-align: center;
+  
+}
+
+.set-password{
+  position: relative;
+}
+#insert_password{
+  text-align: center;
+}
+.icon-pass{
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 5px;
+}
+
+#message-info{
+  padding: 15px 20px;
+  box-shadow: 0 1px 1px 1px #616161;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 97.5vh;
+}
+
+.title-message{
+  font-size: 20px;
+  color: rgb(74, 74, 212);
+  font-weight: bold;
+}
+.icon-success{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.icon-success img{
+  max-width: 25%;
+}
+.icon-success .success-label{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.message-success{
+  text-align: center;
+  margin-top: 15px;
+}
+.message-success .type-request{
+  font-weight: bold;
+  font-size: 20px;
+}
+.amount-info{
+  background-color: #c4c2c2;
+  border-radius: 10px/10px;
+  width: 100%;
+  margin-top: 10px;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.amount-req{
+  font-weight: bold;
+  font-size: 30px;
+  color: black;
+}
+.info-generate{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.date_submit, .ref_number{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.date_submit .date-label, .ref_number .ref-label{
+  width: 50%;
+  white-space: nowrap;
+}
+
+.system-message{
+  text-align: center;
 }

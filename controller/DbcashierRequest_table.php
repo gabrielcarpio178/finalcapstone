@@ -19,8 +19,9 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
         $payment_amount = array();
         $payment_date = array();
         $digitalPayment_id = array();
+        $payment_ref = array();
         try {
-            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.course, student_tb.year, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, user_tb.user_id, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type = 'Non Bago Fee' AND requestType = 'pending' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
+            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.course, student_tb.year, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, user_tb.user_id, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type = 'Non Bago Fee' AND requestType = 'pending' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
             while($row = mysqli_fetch_assoc($sql)){
                 $name[] = $row['firstname']." ".$row['lastname'];
                 $studentID_number[] = $row['studentID_number'];
@@ -29,6 +30,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                 $payment_amount[] = $row['payment_amount'];
                 $payment_date[] = date("m-d-Y", strtotime($row['payment_dates']));
                 $digitalPayment_id[] = $row['digitalPayment_id'];
+                $payment_ref[] = $row['payment_ref'];
             }
         } catch (\Throwable $th) {
             echo $th;
@@ -40,7 +42,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
         } catch (\Throwable $th) {
             echo $th;
         }
-        array_push($array, $payment_date, $name, $studentID_number, $course, $year, $payment_amount, $digitalPayment_id, $num_row);
+        array_push($array, $payment_date, $name, $studentID_number, $course, $year, $payment_amount, $digitalPayment_id, $payment_ref, $num_row);
         if(count($array[5])!=0){
             ?>
             <div class="table-div mt-3">
@@ -48,7 +50,8 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                     <thead>
                         <tr>
                             <th scope="col">Date</th>
-                            <th scope="col">Time</th>
+                            <th scope="col">Reference #</th>
+                            <th scope="col">Student ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Course</th>
                             <th scope="col">Amount</th>
@@ -60,6 +63,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                         ?>
                         <tr id="<?=$array[6][$i] ?>">
                             <td><?=$array[0][$i] ?></td>
+                            <td><?=$array[7][$i] ?></td>
                             <td><?=$array[2][$i] ?></td>
                             <td><?=$array[1][$i] ?></td>
                             <td><?=$array[3][$i] ?></td>
@@ -78,7 +82,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                     <a class="page-link" href="javascript:void(0)" <?php if($num_page == 0){ echo "disabled"; }else{ ?> onclick = "displayTable('non_bago_table', <?=$num_page-1 ?>);" <?php } ?>>&laquo;</a>
                 </li>
                 <?php
-            for($x = 1; $x<=$array[7]; $x++){
+            for($x = 1; $x<=$array[8]; $x++){
                 ?>
                 <li class="page-item <?=($x==$num_page)? "active": "" ?>">
                     <a class="page-link" href="javascript:void(0)" onclick="displayTable('non_bago_table', <?=$x ?>);"><?=$x ?></a>
@@ -87,7 +91,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
             }
                 ?>
                 <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" <?php if($array[7] == $num_page){ echo "disabled"; }else{ ?> onclick = "displayTable('non_bago_table', <?=$num_page+1 ?>);" <?php } ?>>&raquo;</a>
+                    <a class="page-link" href="javascript:void(0)" <?php if($array[8] == $num_page){ echo "disabled"; }else{ ?> onclick = "displayTable('non_bago_table', <?=$num_page+1 ?>);" <?php } ?>>&raquo;</a>
                 </li>
             </ul>
         <?php
@@ -103,8 +107,9 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
         $payment_date = array();
         $digitalPayment_id = array();
         $payment_method = array();
+        $payment_ref = array();
         try {
-            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.year, user_tb.user_id, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Non Bago Fee' AND requestType = 'pending' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
+            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.year, user_tb.user_id, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Non Bago Fee' AND requestType = 'pending' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
             while($row = mysqli_fetch_assoc($sql)){
                 $name[] = $row['firstname']." ".$row['lastname'];
                 $studentID_number[] = $row['studentID_number'];
@@ -113,6 +118,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                 $payment_date[] = date("m-d-Y", strtotime($row['payment_dates']));
                 $digitalPayment_id[] = $row['digitalPayment_id'];
                 $payment_method[] = $row['payment_type'];
+                $payment_ref[] = $row['payment_ref'];
             }
         } catch (\Throwable $th) {
             echo $th;
@@ -124,7 +130,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
         } catch (\Throwable $th) {
             echo $th;
         }
-        array_push($array, $payment_date, $name, $studentID_number, $payment_method, $year, $payment_amount, $digitalPayment_id, $num_row);
+        array_push($array, $payment_date, $name, $studentID_number, $payment_method, $year, $payment_amount, $digitalPayment_id, $payment_ref, $num_row);
         if(count($array[5])!=0){
         ?>
             <div class="table-div mt-3">
@@ -132,7 +138,8 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                     <thead>
                         <tr>
                             <th scope="col">Date</th>
-                            <th scope="col">Time</th>
+                            <th scope="col">Reference #</th>
+                            <th scope="col">Student ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Type of Certificate</th>
                             <th scope="col">Amount</th>
@@ -144,6 +151,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                         ?>
                         <tr id="<?=$array[6][$i] ?>">
                             <td><?=$array[0][$i] ?></td>
+                            <td><?=$array[7][$i] ?></td>
                             <td><?=$array[2][$i] ?></td>
                             <td><?=$array[1][$i] ?></td>
                             <td><?=$array[3][$i] ?></td>
@@ -159,19 +167,19 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
             </div>
             <ul class="pagination">
                 <li class="page-item" >
-                    <a class="page-link" href="javascript:void(0)" <?php if($num_page == 0){ echo "disabled"; }else{ ?> onclick = "displayTable('cashout_out_table', <?=$num_page-1 ?>);" <?php } ?>>&laquo;</a>
+                    <a class="page-link" href="javascript:void(0)" <?php if($num_page == 0){ echo "disabled"; }else{ ?> onclick = "displayTable('certificate', <?=$num_page-1 ?>);" <?php } ?>>&laquo;</a>
                 </li>
                 <?php
-            for($x = 1; $x<=$array[7]; $x++){
+            for($x = 1; $x<=$array[8]; $x++){
                 ?>
                 <li class="page-item <?=($x==$num_page)? "active": "" ?>">
-                    <a class="page-link" href="javascript:void(0)" onclick="displayTable('cashout_out_table', <?=$x ?>);"><?=$x ?></a>
+                    <a class="page-link" href="javascript:void(0)" onclick="displayTable('certificate', <?=$x ?>);"><?=$x ?></a>
                 </li>
                 <?php
             }
                 ?>
                 <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" <?php if($array[7] == $num_page){ echo "disabled"; }else{ ?> onclick = "displayTable('cashout_out_table', <?=$num_page+1 ?>);" <?php } ?>>&raquo;</a>
+                    <a class="page-link" href="javascript:void(0)" <?php if($array[8] == $num_page){ echo "disabled"; }else{ ?> onclick = "displayTable('certificate', <?=$num_page+1 ?>);" <?php } ?>>&raquo;</a>
                 </li>
             </ul>
             <?php

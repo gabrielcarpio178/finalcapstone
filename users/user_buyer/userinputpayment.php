@@ -66,7 +66,41 @@ $id = $_SESSION['id'];
 
             <div class="sumbit_password">
             </div>
+            
+        </div>
 
+        <div class="success-message">
+            <div class="title-name">
+                BCC Digital Payment System
+            </div>
+            <div class="success-icon">
+                <div class="success-image"><img src="../../image/succes-icon.png"></div>
+                <div class="success-label">Success</div>
+            </div>
+            <div class="message-succes">
+                <div class="info-message">You've successfully sent a payment for</div>
+                <div class="type-of-payment"></div>
+            </div>
+            <div class="amount-pament">
+                <div class="amount-peso">
+                    <div class="peso-sign">₱</div>
+                    <div class="payment-total"></div>
+                </div>
+                <div class="total-payemnt">Total Payment</div>
+            </div>
+            <div class="payment-info">
+                <div class="date-payment">
+                    <div class="date-label">Date And Time: </div>
+                    <div class="date"></div>
+                </div>
+                <div class="ref-no mt-3">
+                    <div class="ref-label">Reference Number: </div>
+                    <div class="ref"></div>
+                </div>
+            </div>
+            <div class="btn-ok mt-4">
+                <button class="btn btn-primary w-100" id="btn-ok">OK</button>
+            </div>
         </div>
 
     </div>

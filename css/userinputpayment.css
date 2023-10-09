@@ -78,6 +78,89 @@
 .input-class{
     text-align: center;
 }
+.success-message{
+    position: absolute;
+    width: 26%;
+    height: 100vh;
+    background-color: white;
+    right: 0px;
+    top: 0px;
+    box-shadow: 0 1px 1px 1px #616161;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-name{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(46, 46, 156);
+}
+.success-icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+.success-image{
+    text-align: center;
+}
+.success-image img{
+    max-width: 25%;
+}
+.success-label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.message-succes{
+    text-align: center;
+}
+.type-of-payment{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.amount-pament{
+    margin-top: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px/10px;
+    width: 85%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(199, 185, 185);
+}
+
+.amount-peso{
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.payment-info{
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.date-payment, .ref-no{
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    gap: 10px;
+}
+.date-label, .ref-label{
+    white-space: nowrap;
+}
+.ref, .date{
+    text-align: end;
+}
+.btn-ok{
+    width: 100%;
+}
 @media screen and (min-width: 320px) {
     .content-info {
         padding: 100px 10px 0px 10px;

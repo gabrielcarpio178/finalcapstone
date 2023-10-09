@@ -248,18 +248,18 @@ function  getsuccessmessage(ref_num){
             var hour = date.getHours();
             var min = date.getMinutes();
             var monthFull = [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "June",
-              "July",
-              "Aug",
-              "Sept",
-              "Oct",
-              "Nov",
-              "Dec",
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "June",
+            "July",
+            "Aug",
+            "Sept",
+            "Oct",
+            "Nov",
+            "Dec",
             ];
             var ampm = hour >= 12 ? 'pm' : 'am';
             hour = hour % 12;

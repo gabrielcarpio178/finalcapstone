@@ -118,7 +118,7 @@ function viewaccepted(order_num){
       },
       cache: false,
       success: function (res) {
-       $(".procced_info").html(res);
+        $(".procced_info").html(res);
       },
     });
 

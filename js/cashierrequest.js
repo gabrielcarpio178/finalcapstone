@@ -1,7 +1,6 @@
 $(document).ready(function () {
   $("#nav").load("cashiernav.php");
   displayTable('non_bago_table', 0);
-
   let i;
   $("#non_bago").on("click", function () {
     $(this).addClass("fucos-class");

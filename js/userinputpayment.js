@@ -15,8 +15,7 @@ $(document).ready(function(){
     $("#cert_t").on('click', function(){
       cert_t_form();
     });
-
-
+    $(".success-message").hide();
 });
 
 function non_bago_form(){
@@ -267,8 +266,50 @@ function input_insertedData(input_amount, type_payment){
         showConfirmButton: false,
         timer: 1000
       }).then(function () {
-        window.location.reload();
+        $(".sumbit_password").fadeOut().hide();
+        $(".success-message").fadeIn().show();
+        var result = JSON.parse(res);
+        console.log(result);
+        var date = new Date(result.payment_date);
+        var mounth = date.getMonth();
+        var day = date.getDate();
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var monthFull = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "June",
+          "July",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        var ampm = hour >= 12 ? 'pm' : 'am';
+        hour = hour % 12;
+        hour = hour ? hour : 12;
+        min = min < 10 ? '0'+min : min;
+        var strTime = hour + ':' + min + ampm;
+        $(".type-of-payment").text(`${result.payment_type}`);
+        $(".payment-total").text(`${result.payment_amount}.00`);
+        $(".date").text(`${monthFull[mounth]}/${day}/${year} ${strTime}`);
+        $(".ref").text(`${result.payment_ref}`);
+        btn_ok();
       });
     }
+  });
+}
+
+function btn_ok(){
+  $("#btn-ok").on('click', function(){
+    $(".forms-method").fadeIn().show();
+    $(".success-message").fadeOut().hide();
+    $("#input").val("");
+    getbalance();
   });
 }

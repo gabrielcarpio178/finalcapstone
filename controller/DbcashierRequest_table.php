@@ -69,7 +69,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                             <td><?=$array[3][$i] ?></td>
                             <td><?=$array[5][$i].".00" ?></td>
                             <td><button class="btn btn-primary" onclick="accept(<?=$array[6][$i] ?>, false)">Accept</button></td>
-                            <td><button class="btn btn-danger">Cancel</button></td>
+                            <td><button class="btn btn-danger" onclick="deletePayment(<?=$array[6][$i] ?>, false)">Cancel</button></td>
                         </tr>
                     <?php
                     }
@@ -157,7 +157,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
                             <td><?=$array[3][$i] ?></td>
                             <td><?=$array[5][$i].".00" ?></td>
                             <td><button class="btn btn-primary" onclick="accept(<?=$array[6][$i] ?>, false)">Accept</button></td>
-                            <td><button class="btn btn-danger">Cancel</button></td>
+                            <td><button class="btn btn-danger" onclick="deletePayment(<?=$array[6][$i] ?>, false)">Cancel</button></td>
                         </tr>
                     <?php
                     }
@@ -188,7 +188,87 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
         }
     }elseif($content=='cashout_out_table'){
 
-        
+        $array = array();
+        $name = array();
+        $date_cashout = array();
+        $time_cashout = array();
+        $cashout_amount = array();
+        $cashout_refnum = array();
+        $cashout_id = array();
+        try {
+            $sql = mysqli_query($connect, "SELECT CAST(cashout_tb.cashout_date AS DATE) AS date_cashout, CAST(cashout_tb.cashout_date AS TIME) AS time_cashout, telleruser_tb.store_name, cashout_tb.cashout_amount, cashout_tb.cashout_refnum, cashout_tb.cashout_id FROM cashout_tb INNER JOIN telleruser_tb ON cashout_tb.teller_id = telleruser_tb.teller_id WHERE cashout_tb.cashout_status = 'pending' ORDER BY cashout_tb.cashout_id DESC LIMIT $offset, 5;");
+            while($row = mysqli_fetch_assoc($sql)){
+                $name[] = $row['store_name'];
+                $date_cashout[] = date("m-d-Y", strtotime($row['date_cashout']));
+                $time_cashout[] = date("h:i:s a", strtotime($row['time_cashout']));
+                $cashout_amount[] = $row['cashout_amount'];
+                $cashout_refnum[] = $row['cashout_refnum'];
+                $cashout_id[] = $row['cashout_id'];
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+
+        try {
+            $num_sql = mysqli_query($connect, "SELECT CAST(cashout_tb.cashout_date AS DATE) AS date_cashout, CAST(cashout_tb.cashout_date AS TIME) AS time_cashout, telleruser_tb.store_name, cashout_tb.cashout_amount, cashout_tb.cashout_refnum FROM cashout_tb INNER JOIN telleruser_tb ON cashout_tb.teller_id = telleruser_tb.teller_id WHERE cashout_tb.cashout_status = 'pending';");
+            $num_row = ceil(mysqli_num_rows($num_sql)/5);
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+        array_push($array, $date_cashout, $name, $time_cashout, $cashout_amount, $cashout_refnum, $cashout_id ,$num_row);
+        if(count($array[5])!=0){
+        ?>
+            <div class="table-div mt-3">
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Reference #</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col" colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    for($i = 0; $i<count($array[5]); $i++){
+                        ?>
+                        <tr id="<?=$array[5][$i] ?>">
+                            <td><?=$array[0][$i] ?></td>
+                            <td><?=$array[2][$i] ?></td>
+                            <td><?=$array[1][$i] ?></td>
+                            <td><?=$array[4][$i] ?></td>
+                            <td><?=$array[3][$i].".00" ?></td>
+                            <td><button class="btn btn-primary" onclick="accept(<?=$array[5][$i] ?>, true)">Accept</button></td>
+                            <td><button class="btn btn-danger" onclick="deletePayment(<?=$array[5][$i] ?>, true)">Cancel</button></td>
+                        </tr>
+                    <?php
+                    }
+                ?>                     
+                    </tbody>
+                </table>
+            </div>
+            <ul class="pagination">
+                <li class="page-item" >
+                    <a class="page-link" href="javascript:void(0)" <?php if($num_page == 0){ echo "disabled"; }else{ ?> onclick = "displayTable('cashout_out_table', <?=$num_page-1 ?>);" <?php } ?>>&laquo;</a>
+                </li>
+                <?php
+            for($x = 1; $x<=$array[6]; $x++){
+                ?>
+                <li class="page-item <?=($x==$num_page)? "active": "" ?>">
+                    <a class="page-link" href="javascript:void(0)" onclick="displayTable('cashout_out_table', <?=$x ?>);"><?=$x ?></a>
+                </li>
+                <?php
+            }
+                ?>
+                <li class="page-item">
+                    <a class="page-link" href="javascript:void(0)" <?php if($array[6] == $num_page){ echo "disabled"; }else{ ?> onclick = "displayTable('cashout_out_table', <?=$num_page+1 ?>);" <?php } ?>>&raquo;</a>
+                </li>
+            </ul>
+            <?php
+        }else{
+            echo "<h2><b>No Record..</b></h2>";
+        }
 
     }
     

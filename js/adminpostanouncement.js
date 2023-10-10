@@ -3,7 +3,6 @@ $(document).ready(function(){
 
     $('#post_announcement').on('submit', function (e) {
         e.preventDefault();
-        // console.log('submit');
         var input_post = $("#input_post").val();
         var post_to = $("#post_to").val();
         if (input_post == "" || !post_to) {
@@ -92,7 +91,6 @@ function edit(id){
 function saveEdit(){
   $('#edit_announcement').on('submit', function (e) {
     e.preventDefault();
-    // console.log('submit');
     var edit_post = $("#edit_post").val();
     var edit_post_to = $("#edit_post_to").val();
     var id = $("#id").val();
@@ -105,7 +103,6 @@ function saveEdit(){
         timer: 1000
       });
     } else {
-      // console.log(edit_post+" "+edit_post_to+" "+id);
       Swal.fire({
         title: 'Do you want to Post?',
         showDenyButton: true,
@@ -113,7 +110,6 @@ function saveEdit(){
         confirmButtonText: 'Yes',
         denyButtonText: `No`,
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           edit_and_post(edit_post, edit_post_to, id, 'active');
         } else if (result.isDenied) {
@@ -310,7 +306,6 @@ function post_to(){
     },
     cache: false,
     success: function(res){
-      // console.log(res);
       $("#table-info").html(res);
       date = search;
     }

@@ -61,12 +61,57 @@ function accept(payment_id, cashout){
           cashout : cashout
         },
         cache: false,
+        beforeSend: function () {
+          $(".loader").show();
+        },
         success: function(res){
           if(res=="success"){
+            $(".loader").hide();
             Swal.fire({
               position: 'center',
               icon: 'success',
               title: 'Accepted Success',
+              showConfirmButton: false,
+              timer: 1000
+            }).then(function(){
+              $($(`#${payment_id}`).children()).remove();
+            });
+          }
+        }
+      });
+    }
+  })
+}
+
+function deletePayment(payment_id, isCashout){
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, cancel it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: '../../controller/Dbcashierdelete_request.php',
+        type: 'POST',
+        data: {
+          payment_id : payment_id,
+          isCashout : isCashout
+        },
+        cache: false,
+        beforeSend: function () {
+          $(".loader").show();
+        },
+        success: function(res){
+          if(res=="success"){
+            $(".loader").hide();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Deleted Success',
               showConfirmButton: false,
               timer: 1000
             }).then(function(){

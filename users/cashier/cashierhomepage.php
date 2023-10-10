@@ -2,10 +2,10 @@
 session_start();
 require('../../controller/Dbconnection.php');
 if(($_SESSION['usertype']!="cashier")){
-   if(!isset($_SERVER['HTTP_REFERER'])){
-       header('location: ../../index.php');
+  if(!isset($_SERVER['HTTP_REFERER'])){
+      header('location: ../../index.php');
     exit;
-   }
+  }
 }
 
 ?>
@@ -35,7 +35,7 @@ if(($_SESSION['usertype']!="cashier")){
         <div class="d-flex flex-row justify-content-between post-message">
           <div class="d-flex flex-column justify-content-end post">
             <div class="message">
-              <h1>Welcome!</h1> 
+              <h1 class="welcome"></h1> 
             </div>
             <div class="title">
               BCC Digital Payment System
@@ -48,7 +48,7 @@ if(($_SESSION['usertype']!="cashier")){
           
           <div class="d-flex flex-row justify-content-around align-items-center click-info" id="request">
             <div class="request-count">
-              1
+              
             </div>
             <img src="../../image/cashier_request.png" class="logo-info">
             <div class="label-info">Request</div>
@@ -75,8 +75,8 @@ if(($_SESSION['usertype']!="cashier")){
               </div>
               <div class="label-collection">
                 TOTAL COLLECTION
-                <div class="amount-collect">
-                2,000.00  
+                <div class="amount-collect" id="amount_collection">
+                
                 </div>
               </div> 
           </div>

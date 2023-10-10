@@ -1,5 +1,6 @@
 <?php
 require('Dbconnection.php');
+sleep(1);
 if(isset($_POST['amount'])&&isset($_POST['user_id'])){
     $amount = $_POST['amount'];
     $user_id = $_POST['user_id'];
@@ -35,7 +36,7 @@ if(isset($_POST['amount'])&&isset($_POST['user_id'])){
 
     $uniq = generate_key($connect);
     try {
-        mysqli_query($connect, "INSERT INTO `cashout_tb`(`teller_id`, `cashout_amount`, `cashout_refnum`) VALUES ('$user_id','$amount','$uniq')");
+        mysqli_query($connect, "INSERT INTO `cashout_tb`(`teller_id`, `cashout_amount`, `cashout_refnum`, `cashout_status`) VALUES ('$user_id','$amount','$uniq', 'pending')");
     } catch (\Throwable $th) {
         echo $th;
     }

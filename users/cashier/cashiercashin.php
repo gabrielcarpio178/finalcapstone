@@ -40,8 +40,7 @@
               <div class="message"></div>
               <div class="search-table" style="display: none;">
                 <div class="table-result">
-                  <center>
-                  <table class="table table-hover">
+                  <table class="table table-hover w-100">
                     <thead>
                       <tr>
                         <th scope="col">Name</th>
@@ -55,7 +54,6 @@
                       
                     </tbody>
                   </table>
-                  </center>
                 </div>
               </div>
             </div>
@@ -72,7 +70,7 @@
               </div>
             </div>
           </div>
-           <!-- display col-md-4--> 
+
           <div class="col-6 col-md-4" id="view_user">
             <div class="profile-user" style="display: none;" >
               <div class="label-profile">Profile</div>
@@ -80,7 +78,7 @@
                 <img id="profile_image">
                 <div class="user-name">
                   <h2 class="name">
-                   
+
                   </h2>
                 </div>
                 <div class="user_id">
@@ -92,10 +90,10 @@
               </div>
               <div class="department">
                 <label for="department_user" id="department_year">
-               
+
                 </label>
                 <div class="department-info" id="department_user">
-             
+
                 </div>
               </div>
               <div class="phonenumber">
@@ -120,7 +118,7 @@
                 </center>
               </div>
             </div>
-            <!-- send success -->
+
             <div class="sent-message" id="sent_message" style="display: none;">
               <div class="title-info">BCC Digital Payment System</div>
               <div class="profile-message">

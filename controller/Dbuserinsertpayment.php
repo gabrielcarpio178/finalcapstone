@@ -1,5 +1,6 @@
 <?php
 require('Dbconnection.php');
+sleep(1);
 if(isset($_POST['user_id'])&&isset($_POST['input_amount'])&&isset($_POST['type_payment'])){
     $user_id = $_POST['user_id'];
     $input_amount = $_POST['input_amount'];

@@ -158,7 +158,11 @@ function inputAmountInDatabase(amount, user_id){
       user_id : user_id
     },
     cache: false,
+    beforeSend: function () {
+      $(".loader").show();
+    },
     success: function(res){
+      $(".loader").hide();
       Swal.fire({
         position: 'center',
         icon: 'success',

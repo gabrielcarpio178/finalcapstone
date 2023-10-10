@@ -1,15 +1,43 @@
 $(document).ready(function () {
   $("#nav").load("cashiernav.php");
-  graph();
-  request()
+  getdataGraph()
+  request();
+  getTotalCollection();
+  requestNotification();
+  announcement('Cashier');
 });
 
-function graph(){
+function announcement(usertype){
 
+  $.ajax({
+    url: '../../controller/Dbannoucement_show.php',
+    type: 'POST',
+    data: {usertype: usertype},
+    cache: false,
+    success: function(res){
+      $(".welcome").text(res);
+    }
+
+  });
+
+}
+
+function getdataGraph(){
+  $.ajax({
+    url: '../../controller/DbcashierGraph.php',
+    type: 'POST',
+    data: {cashier : 'cashier'},
+    cache: false,
+    success: function(res){
+      graph(JSON.parse(res));
+    }
+  });
+}
+function graph(data_result){
   const data = {
     labels: ['Non Bago Fee', 'Certificate', 'Cash In'],
     datasets: [{
-      data: [2, 3, 4],
+      data: [data_result.total_non_bago, data_result.total_cert, data_result.total_cashin],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(255, 159, 64, 0.2)',
@@ -31,7 +59,7 @@ function graph(){
       plugins:{
         legend: {
           display: false  
-       },
+        },
         stacked100: {
           enable: true,
         },
@@ -59,4 +87,31 @@ function request(){
   $("#request").on("click", function(){
     window.location='cashierrequest.php';
   })
+}
+
+function getTotalCollection(){
+  $.ajax({
+    url: '../../controller/DbgetCashierTotalCollection.php',
+    type: 'POST',
+    data: {cashier : 'cashier'},
+    cache: false,
+    success: function(res){
+      var amount = `${res}.00`;
+      var parts = amount.toString().split(".");
+      var num = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+      $("#amount_collection").text(`₱${num}`);
+    }
+  });
+}
+
+function requestNotification(){
+  $.ajax({
+    url: '../../controller/DbcashierNotification.php',
+    type: 'POST',
+    data: {cashier : 'cashier'},
+    cache: false,
+    success: function(res){
+      $(".request-count").text(res);
+    }
+  });
 }

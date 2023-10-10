@@ -48,7 +48,7 @@ body{
 
 .search-table{
     align-self: flex-start;
-    width: 50%;
+    width: 100%;
     text-align: center;
     white-space: nowrap;
 }

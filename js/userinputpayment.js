@@ -270,7 +270,11 @@ function input_insertedData(input_amount, type_payment){
       type_payment : type_payment
     },
     cache: false,
+    beforeSend: function () {
+      $(".loader").show();
+    },
     success: function(res){
+      $(".loader").hide();
       Swal.fire({
         position: 'center',
         icon: 'success',

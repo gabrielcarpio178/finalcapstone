@@ -146,6 +146,7 @@ $num_page = ceil($num_row['num_post']/ $num_data);
                             <option selected disabled value="empty">Post to</option>
                             <option value="All">All</option>
                             <option value="Buyer">Buyer Only</option>
+                            <option value="Cashier">Cashier Only</option>
                             <option value="Canteen Staff">Canteen Staff Only</option>
                         </select>
 

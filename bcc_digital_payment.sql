@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2023 at 07:41 PM
+-- Generation Time: Oct 10, 2023 at 07:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -113,7 +113,9 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (21, 33, 30, '2164598703', '2023-10-03 13:36:58'),
 (23, 61, 30, '8530297641', '2023-10-03 23:56:50'),
 (24, 61, 100, '8756342109', '2023-10-07 23:03:56'),
-(25, 61, 500, '6904157823', '2023-10-09 00:19:01');
+(25, 61, 500, '6904157823', '2023-10-09 00:19:01'),
+(26, 61, 100, '8620534917', '2023-10-11 01:14:37'),
+(27, 45, 150, '7564310298', '2023-10-11 01:37:54');
 
 -- --------------------------------------------------------
 
@@ -122,10 +124,11 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 --
 
 CREATE TABLE `cashout_tb` (
-  `cashier_id` int(11) NOT NULL,
+  `cashout_id` int(11) NOT NULL,
   `teller_id` int(11) NOT NULL,
   `cashout_date` datetime NOT NULL DEFAULT current_timestamp(),
   `cashout_amount` int(11) NOT NULL,
+  `cashout_status` varchar(100) NOT NULL,
   `cashout_refnum` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -133,8 +136,9 @@ CREATE TABLE `cashout_tb` (
 -- Dumping data for table `cashout_tb`
 --
 
-INSERT INTO `cashout_tb` (`cashier_id`, `teller_id`, `cashout_date`, `cashout_amount`, `cashout_refnum`) VALUES
-(6, 1, '2023-10-09 00:35:56', 30, '6423059781');
+INSERT INTO `cashout_tb` (`cashout_id`, `teller_id`, `cashout_date`, `cashout_amount`, `cashout_status`, `cashout_refnum`) VALUES
+(1, 1, '2023-10-10 23:53:20', 50, 'accepted', '4971032586'),
+(2, 1, '2023-10-11 00:07:44', 50, 'pending', '2459108376');
 
 -- --------------------------------------------------------
 
@@ -176,6 +180,7 @@ CREATE TABLE `digitalpayment_tb` (
   `user_id` int(11) NOT NULL,
   `payment_amount` varchar(100) NOT NULL,
   `payment_type` varchar(100) NOT NULL,
+  `payment_ref` varchar(100) NOT NULL,
   `requestType` varchar(100) NOT NULL,
   `payment_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -184,13 +189,11 @@ CREATE TABLE `digitalpayment_tb` (
 -- Dumping data for table `digitalpayment_tb`
 --
 
-INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `requestType`, `payment_date`) VALUES
-(1, 61, '30', 'Non Bago Fee', 'accepted', '2023-10-07 23:03:03'),
-(2, 61, '30', 'Non Bago Fee', 'pending', '2023-10-08 00:43:17'),
-(3, 61, '10', 'Non Bago Fee', 'pending', '2023-10-08 01:04:15'),
-(4, 61, '50', 'Certificate  of Transfers', 'accepted', '2023-10-08 23:56:06'),
-(5, 61, '30', 'Certificate of Enrollment', 'accepted', '2023-10-09 00:18:28'),
-(6, 61, '10', 'Non Bago Fee', 'accepted', '2023-10-09 00:18:38');
+INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `payment_ref`, `requestType`, `payment_date`) VALUES
+(1, 61, '50', 'Certificate of Enrollment', '6081274593', 'accepted', '2023-10-10 23:53:47'),
+(2, 61, '50', 'Certificate of Enrollment', '5139084762', 'pending', '2023-10-11 00:07:04'),
+(3, 61, '100', 'Non Bago Fee', '1789035264', 'accepted', '2023-10-11 00:55:01'),
+(4, 61, '30', 'Certificate  of Transfers', '0469753218', 'accepted', '2023-10-11 01:08:15');
 
 -- --------------------------------------------------------
 
@@ -244,7 +247,9 @@ INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `order
 (242, 33, 1, 19, 'showbear', '0423759618', 'Candy', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 2, 1, 0, 'PROCEED'),
 (243, 33, 1, 16, 'mountain dew', '0423759618', 'Drinks', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 20, 1, 0, 'PROCEED'),
 (244, 61, 1, 17, 'Fita', '0735864291', 'Biscuit', '2023-10-07 23:04:26', '2023-10-07 23:34:53', 8, 1, 0, 'PROCEED'),
-(245, 61, 1, 16, 'mountain dew', '0735864291', 'Drinks', '2023-10-07 23:04:26', '2023-10-07 23:34:53', 20, 1, 0, 'PROCEED');
+(245, 61, 1, 16, 'mountain dew', '0735864291', 'Drinks', '2023-10-07 23:04:26', '2023-10-07 23:34:53', 20, 1, 0, 'PROCEED'),
+(246, 61, 1, 18, 'Hansel', '9570643812', 'Biscuit', '2023-10-09 16:24:09', NULL, 7, 1, NULL, NULL),
+(247, 61, 1, 17, 'Fita', '9570643812', 'Biscuit', '2023-10-09 16:24:09', NULL, 8, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -509,7 +514,7 @@ ALTER TABLE `cashin_tb`
 -- Indexes for table `cashout_tb`
 --
 ALTER TABLE `cashout_tb`
-  ADD PRIMARY KEY (`cashier_id`),
+  ADD PRIMARY KEY (`cashout_id`),
   ADD KEY `teller_id` (`teller_id`);
 
 --
@@ -582,7 +587,7 @@ ALTER TABLE `user_tb`
 -- AUTO_INCREMENT for table `adminannoucement`
 --
 ALTER TABLE `adminannoucement`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `admin_tb`
@@ -600,13 +605,13 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
 --
 ALTER TABLE `cashout_tb`
-  MODIFY `cashier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cashout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category_tb`
@@ -618,13 +623,13 @@ ALTER TABLE `category_tb`
 -- AUTO_INCREMENT for table `digitalpayment_tb`
 --
 ALTER TABLE `digitalpayment_tb`
-  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
 --
 ALTER TABLE `order_tb`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- AUTO_INCREMENT for table `personnel_tb`
@@ -654,7 +659,7 @@ ALTER TABLE `userwebusages_tb`
 -- AUTO_INCREMENT for table `user_tb`
 --
 ALTER TABLE `user_tb`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- Constraints for dumped tables

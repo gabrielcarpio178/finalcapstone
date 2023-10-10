@@ -38,7 +38,7 @@ $teller_id = $_SESSION['id'];
                         </div>
                         <div class="d-flex flex-row label-amount">
                             <div class="peso-sign">₱</div>
-                            <div class="amount">5,000.00</div>
+                            <div class="amount"></div>
                         </div>
                     </div>
                     <div class="forms-input mt-5">
@@ -74,7 +74,7 @@ $teller_id = $_SESSION['id'];
                 <div class="amount-info">
                     <div class="d-flex flex-row justify-content-center amount-req">
                         <div class="amount-sign">₱</div>
-                        <div class="amount">500.00</div>
+                        <div class="amount-input"></div>
                     </div>
                     <div class="amount-label">
                         Total Amount
@@ -96,7 +96,7 @@ $teller_id = $_SESSION['id'];
                     </p>
                 </div>
                 <div class="btn-class w-100 mt-2">
-                    <button class="btn btn-primary w-100">OK</button>
+                    <button class="btn btn-primary w-100" id="btn_ok">OK</button>
                 </div>
             </div> 
         </div>

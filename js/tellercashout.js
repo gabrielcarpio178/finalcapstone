@@ -1,8 +1,7 @@
 $(document).ready(function () {
   $("#nav").load('storenav.php'); 
   getrunningBalance();
-
-
+  btn_ok();
 });
 
 function getrunningBalance(){
@@ -128,7 +127,8 @@ function submit_password(amount, user_id){
         url: '../../controller/DbtellercashoutEnterpass.php',
         type: 'POST',
         data: {
-          insert_password : insert_password
+          insert_password : insert_password,
+          user_id : user_id
         },
         cache: false,
         success: function(res){
@@ -158,7 +158,7 @@ function inputAmountInDatabase(amount, user_id){
       user_id : user_id
     },
     cache: false,
-    success: function(){
+    success: function(res){
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -166,8 +166,52 @@ function inputAmountInDatabase(amount, user_id){
         showConfirmButton: false,
         timer: 1000
       }).then(function(){
-        // window.location.reload;
+        var result = JSON.parse(res);
+        var date = new Date(result.cashout_date);
+        var mounth = date.getMonth();
+        var day = date.getDate();
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var monthFull = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "June",
+          "July",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        var ampm = hour >= 12 ? 'pm' : 'am';
+        hour = hour % 12;
+        hour = hour ? hour : 12;
+        min = min < 10 ? '0'+min : min;
+        var strTime = hour + ':' + min + ampm;
+        $(".amount-input").text(result.cashout_amount);
+        $(".date").text(`${monthFull[mounth]}/${day}/${year} ${strTime}`);
+        $(".ref").text(result.cashout_refnum);
+        $("#main-content").removeClass("col-lg-12").addClass('col-lg-8');
+        $("#message-info").fadeIn().show();
+        $(".input-password").fadeOut().hide();
+        $(".input-amount").fadeIn().show();
+        getrunningBalance();
       });
     }
   });
+}
+
+function btn_ok(){
+  $("#btn_ok").on('click',function(){
+    $("#main-content").removeClass("col-lg-8").addClass('col-lg-12');
+    $("#message-info").fadeOut().hide();
+    $(".input-amount").fadeIn().show();
+    $("#insert_data").val("");
+    $("#insert_password").val("");
+  })
+  
 }

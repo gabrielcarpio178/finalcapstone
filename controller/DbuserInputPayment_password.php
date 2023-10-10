@@ -1,11 +1,12 @@
 <?php
 require('Dbconnection.php');
-if(isset($_POST['password'])){
+if(isset($_POST['password'])&&isset($_POST['user_id'])){
     $password = md5($_POST['password']);
+    $user_id = $_POST['user_id'];
     try {
-        $sql = mysqli_query($connect, "SELECT password FROM user_tb WHERE password = '$password';");
+        $sql = mysqli_query($connect, "SELECT password FROM user_tb WHERE user_id = '$user_id';");
         $row = mysqli_fetch_assoc($sql);
-        if(!empty($row)){
+        if($row['password']==$password){
             echo "success";
         }else{
             echo "wrong_password";

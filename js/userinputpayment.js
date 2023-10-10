@@ -38,6 +38,9 @@ function non_bago_form(){
   $(".sumbit_password").fadeOut().hide();
   $(".forms-method .insert_amount").attr('id','non_bago-submit');
   getbalance();
+  $(".forms-method").fadeIn().show();
+  $(".success-message").fadeOut().hide();
+  $("#input").val("");
 }
 
 function cert_e_form(){
@@ -59,6 +62,9 @@ function cert_e_form(){
   $(".sumbit_password").fadeOut().hide();
   $(".forms-method .insert_amount").attr('id','cert_e-submit');
   getbalance();
+  $(".forms-method").fadeIn().show();
+  $(".success-message").fadeOut().hide();
+  $("#input").val("");
 }
 
 function cert_t_form(){
@@ -80,6 +86,9 @@ function cert_t_form(){
   $(".sumbit_password").fadeOut().hide();
   $(".forms-method .insert_amount").attr('id','cert_t-submit');
   getbalance();
+  $(".forms-method").fadeIn().show();
+  $(".success-message").fadeOut().hide();
+  $("#input").val("");
 }
 
 function showpassword(){
@@ -109,15 +118,15 @@ function getbalance(){
       var parts = amount.toString().split(".");
       var num = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
       $("#walllet_balance").html(`₱${num}`);
-      submit_non_bago(res);
-      submit_cert_e(res);
-      submit_cert_t(res);
+      submit_non_bago(res, user_id);
+      submit_cert_e(res, user_id);
+      submit_cert_t(res, user_id);
     }
   });
 
 }
 
-function submit_non_bago(res){
+function submit_non_bago(res, user_id){
   $("#non_bago-submit").on('submit', function(e){
     e.preventDefault();
     var input_non_bago = $("#input").val();
@@ -138,11 +147,11 @@ function submit_non_bago(res){
         timer: 1000
       });
     }else{
-      inputpassword(input_non_bago, 'Non Bago Fee');
+      inputpassword(input_non_bago, 'Non Bago Fee', user_id);
     }
   });
 }
-function submit_cert_e(res){  
+function submit_cert_e(res, user_id){  
   $("#cert_e-submit").on('submit', function(e){
     e.preventDefault();
     var input_cert_e = $("#input").val();
@@ -163,12 +172,12 @@ function submit_cert_e(res){
         timer: 1000
       });
     }else{
-      inputpassword(input_cert_e, 'Certificate of Enrollment');
+      inputpassword(input_cert_e, 'Certificate of Enrollment', user_id);
     }
   });
 }
 
-function submit_cert_t(res){
+function submit_cert_t(res, user_id){
   $("#cert_t-submit").on('submit', function(e){
     e.preventDefault();
     var input_cert_t = $("#input").val();
@@ -189,12 +198,12 @@ function submit_cert_t(res){
         timer: 1000
       });
     }else{
-      inputpassword(input_cert_t, 'Certificate  of Transfers');
+      inputpassword(input_cert_t, 'Certificate  of Transfers', user_id);
     }
   });
 }
 
-function inputpassword(input_amount, type_payment){
+function inputpassword(input_amount, type_payment, user_id){
 
   passwordform = `
       <div class="label-form"><center>Please Enter Your Password</center></div>
@@ -226,7 +235,10 @@ function inputpassword(input_amount, type_payment){
       $.ajax({
         url:'../../controller/DbuserInputPayment_password.php',
         type: 'POST',
-        data: {password : password},
+        data: {
+          password : password,
+          user_id : user_id
+        },
         cache: false,
         success: function(res){
           if(res=='success'){

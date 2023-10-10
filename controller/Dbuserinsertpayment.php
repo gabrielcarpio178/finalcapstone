@@ -6,6 +6,7 @@ if(isset($_POST['user_id'])&&isset($_POST['input_amount'])&&isset($_POST['type_p
     $type_payment = $_POST['type_payment'];
     function checkpersonnelUser_num($connect, $ref_num){
         $getqrnum = mysqli_query($connect, "SELECT `payment_ref` FROM `digitalpayment_tb`;");
+        $uni = false;
         while($row = mysqli_fetch_assoc($getqrnum)){
             if($row['payment_ref']==$ref_num){
                 $uni = true;

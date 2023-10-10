@@ -5,8 +5,33 @@ $(document).ready(function () {
   getTotalCollection();
   requestNotification();
   announcement('Cashier');
+  getdate();
 });
 
+function getdate(){
+  var date = new Date();
+  var mounth = date.getMonth();
+  var day = date.getDate();
+  if(day<10){
+      day="0"+day;
+  }
+  var year = date.getFullYear();
+  var monthFull = [
+  "Jan.",
+  "Feb.",
+  "Mar.",
+  "Apr.",
+  "May.",
+  "Jun.",
+  "July",
+  "Aug.",
+  "Sept.",
+  "Oct.",
+  "Nov.",
+  "Dec.",
+];
+  $(".collection-date").text(monthFull[mounth]+" "+day+" - "+year)
+}
 function announcement(usertype){
 
   $.ajax({

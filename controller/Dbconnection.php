@@ -1,9 +1,9 @@
 <?php
- 
+
 $dbUser='root';
 $dbHost='localhost';
 $dbPassword='';
-$dbName='capstone';
+$dbName='bcc_digital_payment';
 
 try {
     $connect = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);

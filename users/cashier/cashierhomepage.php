@@ -71,7 +71,6 @@ if(($_SESSION['usertype']!="cashier")){
 
           <div class="collection-amount">
               <div class="collection-date">
-                Sep. 10, 2023
               </div>
               <div class="label-collection">
                 TOTAL COLLECTION

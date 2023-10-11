@@ -31,7 +31,7 @@ user-scalable=no"
         <div class="col col-md-6 forms">
           <div class="signup-form">
             <div class="label-div">
-              Sign up
+              Sign Up
             </div>
             <form id="signup">
               <div class="row">
@@ -43,8 +43,8 @@ user-scalable=no"
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="lastname" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname"  placeholder="Last name">      
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname"  placeholder="Last Name">      
                   </div>
                 </div>
               </div><!-- end row -->
@@ -59,8 +59,8 @@ user-scalable=no"
               <div class="row mt-2">
                 <div class="col-md-12">
                   <div class="form-group has-danger">
-                    <label class="form-label" for="phonenumber">Phone number</label>
-                    <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone number">
+                    <label class="form-label" for="phonenumber">Phone Number</label>
+                    <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone Number">
                     <div class="invalid-feedback" id="message">
                       Sorry, input phone number is to short
                     </div>
@@ -91,8 +91,8 @@ user-scalable=no"
               <div class="row mt-2">
                   <div class="col-md-12">
                       <div class="form-group">
-                <label for="username" class="form-label">User name</label>
-                    <input type="text" class="form-control" id="username" name="username"  placeholder="User name">      
+                <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username"  placeholder="Username">      
                     </div>
                   </div> 
               </div><!-- end row -->
@@ -130,7 +130,7 @@ user-scalable=no"
             </form>
           </div>
           <div class="signin">
-            <p>Already have a account? <a id="login"><strong>Login</strong></a></p>
+            <p>Already have an account? <a id="login"><strong>Sign In</strong></a></p>
           </div>
         </div>
 

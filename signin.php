@@ -16,7 +16,7 @@ user-scalable=no"
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/signin.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" />    
-    <title>Login</title>
+    <title>Sign In</title>
   </head>
   <body>
       <div class="loader"><img src="image/loader.gif"></div>
@@ -40,7 +40,7 @@ user-scalable=no"
 
           <div class="signin-form">
             <h1 class="label-h1">
-              Sign in
+              Sign In
             </h1>
             <form id="singin">
               <div class="form-group">
@@ -86,7 +86,7 @@ user-scalable=no"
               <div class="mt-2">
                 <center>
                   <h5>
-                    Don't have account? <strong><a id="signup">Sign up</a></strong>
+                    Don't have an account? <strong><a id="signup">Sign Up</a></strong>
                   </h5>
                 </center>
                 <center><div id="forgotform"> Forgot Account </div></center>
@@ -124,7 +124,7 @@ user-scalable=no"
                 <div class="mt-2">
                 <center>
                   <h5>
-                    <strong><div id="login">Sign in</div></strong>
+                    <strong><div id="login">Sign In</div></strong>
                   </h5>
                 </center>
                   <center><div id="resetcode" data-bs-toggle="modal" data-bs-target="#exampleModal"> Use Reset Code </div></center>

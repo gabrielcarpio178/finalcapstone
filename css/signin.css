@@ -11,7 +11,6 @@ body {
   background-size: cover;
 }
 
-
 .loader {
   display: none;
   position: fixed;
@@ -36,92 +35,96 @@ body {
   bottom: 0;
 }
 
-.title{
+.title {
   font-weight: bold;
   color: rgb(46, 46, 90);
 }
 
-.signin-form{
+.signin-form {
   display: flex;
   flex-direction: column;
 }
 
-.btn-primary{
+.btn-primary {
   width: 150px;
 }
 
-.form-group .icon-password{
+.form-group .icon-password {
   position: relative;
 }
-.icon-password .icon-pass{
+.form-group {
+  margin-bottom: 8px;
+}
+.icon-password .icon-pass {
   position: absolute;
   right: 10px;
   bottom: 5px;
   cursor: pointer;
 }
-.forgot-form{
+.forgot-form {
   display: none;
 }
-#forgotform, #resetcode, #login, #signup{
+#forgotform, #resetcode, #login{
   cursor: pointer;
 }
 
 @media screen and (min-width: 320px) {
   body {
-    background: url("../image/signin_mobile.png")  no-repeat center center fixed;
+    background: url("../image/signin_mobile.png") no-repeat center center fixed;
   }
 
-  .container{
+  .container {
     padding-top: 50px;
   }
 
-  .image-div img{
+  .image-div img {
     width: 150px;
-    height: 160px; 
+    height: 160px;
   }
-  .title{
+  .title {
     font-size: 20px;
   }
 
-  .label-h1{
+  .label-h1 {
     text-align: center;
   }
 
-  .signin-form{
+  .signin-form {
     margin: 5px 25px 0px 25px;
-
   }
-  h5{
+  h5 {
     white-space: nowrap;
   }
-
 }
 
-
 @media screen and (min-width: 1020px) {
-  body{
+  body {
     background: url("../image/signin_web.png") no-repeat center center fixed;
   }
 
-  .container{
+  .container {
     padding-top: 100px;
   }
 
   .image-div img{
-    width: 350px;
-    height: 360px;
+    width: 450px;
+    height: 460px;
   }
 
-  .title{
+  .title {
     font-size: 32px;
   }
 
-  .label-h1{
+  .label-h1 {
     text-align: left;
   }
 
-  .signin-form, .forgot-form{
+  .signin-form,
+  .forgot-form {
     margin: 0px 50px;
-    gap: 30px
+    gap: 30px;
   }
+
 }
+
+

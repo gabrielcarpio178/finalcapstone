@@ -54,12 +54,12 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
 
             <div class="col col-lg-8 info">
                 
-                 <div class="d-flex flex-row justify-content-end w-100 btn-profile">
-                   
-                   <div class="d-flex flex-column align-items-center profile-icon">
-                       <img src="../../image/<?php echo ($gender=='male')?'avatar.jpg':'female_avatar.png'; ?>">
-                       <div><?=$row['firstname'] ?></div>
-                   </div>
+                    <div class="d-flex flex-row justify-content-end w-100 btn-profile">
+                    
+                    <div class="d-flex flex-column align-items-center profile-icon">
+                        <img src="../../image/<?php echo ($gender=='male')?'avatar.jpg':'female_avatar.png'; ?>">
+                        <div><?=$row['firstname'] ?></div>
+                    </div>
                     
                 </div>
                 
@@ -89,63 +89,63 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                     </div>
 
                     
-                   <div class="d-flex flex-row flex-lg-column justify-content-around">
+                    <div class="d-flex flex-row flex-lg-column justify-content-around">
                         
-                       <div class="d-flex flex-column category" id="inputpayment">
-                           <img src="../../image/inputpayment.png" alt="Input payment">
-                           <div class="label">
-                               Input Payment
-                           </div>                           
-                       </div>
-                       <div class="d-flex flex-column category" id="purchase">
-                           <img src="../../image/store.png" alt="Purchase">
-                           <div class="label">
-                               Purchase
-                           </div>                           
-                       </div>
-                       <div class="d-flex flex-column category" id="accountbalance">
-                           <img src="../../image/accountbalance.png" alt="Account balance">
-                           <div class="label">
-                               Account Balance
-                           </div>                           
-                       </div>
-                       <div class="d-flex flex-column category" id="scanqr">
-                           <img src="../../image/qrcode.png" alt="Scan Qr">
-                           <div class="label">
-                               Scan QR
-                           </div>                           
-                       </div>                         
-                       
-                   </div>                    
-                   <div class="d-flex flex-column">
-                       <div class="d-flex flex-column anouncement">
-                           
-                           <div class="d-flex flex-row justify-content-between align-items-end announce">
-                               <h1 id="annoucement"></h1>
-                               <img src="../../image/icon_1.png" alt="Logo">
-                               
-                               
-                           </div>
-                           <p class="name">
-                               BCC Digital Payment System
-                           </p>   
-                                                                             
-                       </div>  
-                       
-                       <div class="d-flex flex-column justify-content-center align-items-center wallet-balances">
-                           <div class="d-flex flex-column justify-content-center align-items-center wallet-balance">
-                               <div class="wallet">
-                                   WALLET BALANCE
-                               </div>
-                               <div class="balance">
-                                   <h1 class="balance_amount"></h1>
-                               
-                               </div>
-                               
-                           </div>                                              
-                       </div>                                                                    
-                       
-                   </div>
+                        <div class="d-flex flex-column category" id="inputpayment">
+                            <img src="../../image/inputpayment.png" alt="Input payment">
+                            <div class="label">
+                                Input Payment
+                            </div>                           
+                        </div>
+                        <div class="d-flex flex-column category" id="purchase">
+                            <img src="../../image/store.png" alt="Purchase">
+                            <div class="label">
+                                Purchase
+                            </div>                           
+                        </div>
+                        <div class="d-flex flex-column category" id="accountbalance">
+                            <img src="../../image/accountbalance.png" alt="Account balance">
+                            <div class="label">
+                                Account Balance
+                            </div>                           
+                        </div>
+                        <div class="d-flex flex-column category" id="scanqr">
+                            <img src="../../image/qrcode.png" alt="Scan Qr">
+                            <div class="label">
+                                Scan QR
+                            </div>                           
+                        </div>                         
+                        
+                    </div>                    
+                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-column anouncement">
+                            
+                            <div class="d-flex flex-row justify-content-between align-items-end announce">
+                                <h1 id="annoucement"></h1>
+                                <img src="../../image/icon_1.png" alt="Logo">
+                                
+                                
+                            </div>
+                            <p class="name">
+                                BCC Digital Payment System
+                            </p>   
+                                                                                
+                        </div>  
+                        
+                        <div class="d-flex flex-column justify-content-center align-items-center wallet-balances">
+                            <div class="d-flex flex-column justify-content-center align-items-center wallet-balance">
+                                <div class="wallet">
+                                    WALLET BALANCE
+                                </div>
+                                <div class="balance">
+                                    <h1 class="balance_amount"></h1>
+                                
+                                </div>
+                                
+                            </div>                                              
+                        </div>                                                                    
+                        
+                    </div>
                     
                 </div>
                 
@@ -154,87 +154,87 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
             <div class="col col-lg-4" id="profile"> 
                 
                 <div class="profile-data">
-                   <div class="d-flex flex-row justify-content-end">
-                       <i class="fa-solid fa-x" style="cursor: pointer;" id="close"></i>                       
-                   </div>
-                   <div class="d-flex flex-column">
-                       <div class="d-flex flex-row align-items-center icon">
-                           <img src="../../image/avatar.jpg" alt="Profile Picture">
-                           <div class="d-flex flex-column">
-                               <b><?=ucfirst($row['firstname'])." ".ucfirst($row['lastname']) ?></b>
-                               <p><?php if($row['usertype']=='student'){ ?>
-                               Student ID: <?=$row['studentID_number'] ?>
-                               <?php }else{ ?>
-                               Personnel ID: <?=$row['personnelUser_id']?> 
-                               <?php } ?>
-                               </p>
-                               
-                           </div>
-                       </div>
-                       <?php if($row['usertype']=='personnel'){ ?>
-                       <div class="profile-info">
-                           <label>Department:</label>
-                           <b><?=$row['department'] ?></b>
-                       </div>
-                       <?php } ?>
-                       <?php if($row['usertype']=='student'){ ?>
-                       <div class="profile-info">
-                           <label>Course:</label>
-                           <b><?=$row['course'] ?></b>
-                       </div>
-                       <?php }elseif($row['usertype']=='personnel'){ ?>
-                           <div class="profile-info">
-                           <label>Email:</label>
-                           <b><?=$row['email'] ?></b>
-                       </div>
-                      <?php } ?> 
-                       <?php if($row['usertype']=='student'){ ?>
-                       <div class="profile-info">
-                           <label>Year:</label>
-                           <b><?=$row['year'] ?></b>
-                       </div>
-                       <?php }elseif($row['usertype']=='personnel'){ ?>
-                           <div class="profile-info">
-                           <label>Address:</label>
-                           <b><?=$row['address'] ?></b>
-                       </div>
-                      <?php } ?> 
-                       <?php if($row['usertype']=='student'){ ?>
-                       <div class="profile-info">
-                           <label>Email:</label>
-                           <b><?=$row['email'] ?></b>
-                       </div>
-                       <?php } ?> 
-                       <?php if($row['usertype']=='student'){ ?>
-                       <div class="profile-info">
-                           <label>Address:</label>
-                           <b><?=ucfirst($row['address'])." City" ?></b>
-                       </div>
-                       <?php }elseif($row['usertype']=='personnel'){ ?>
-                           <div class="profile-info">
-                           <label>Gender:</label>
-                           <b><?=ucfirst($row['gender']) ?></b>
-                       </div>
-                      <?php } ?> 
-                       <?php if($row['usertype']=='student'){ ?>
-                       <div class="profile-info">
-                           <label>Sex:</label>
-                           <b><?=ucfirst($row['gender']) ?></b>
-                       </div>
-                       <?php }elseif($row['usertype']=='personnel'){ ?>
-                           <div class="profile-info">
-                           <label>Phone number:</label>
-                           <b><?="0".$row['phonenumber'] ?></b>
-                       </div>
-                      <?php } ?>                        
-                       <?php if($row['usertype']=='student'){ ?>
-                       <div class="profile-info">
-                           <label>Phone number:</label>
-                           <b><?="0".$row['phonenumber'] ?></b>
-                       </div>
-                       <?php } ?>             
-                   </div>
-                   
+                    <div class="d-flex flex-row justify-content-end">
+                        <i class="fa-solid fa-x" style="cursor: pointer;" id="close"></i>                       
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-row align-items-center icon">
+                            <img src="../../image/avatar.jpg" alt="Profile Picture">
+                            <div class="d-flex flex-column">
+                                <b><?=ucfirst($row['firstname'])." ".ucfirst($row['lastname']) ?></b>
+                                <p><?php if($row['usertype']=='student'){ ?>
+                                Student ID: <?=$row['studentID_number'] ?>
+                                <?php }else{ ?>
+                                Personnel ID: <?=$row['personnelUser_id']?> 
+                                <?php } ?>
+                                </p>
+                                
+                            </div>
+                        </div>
+                        <?php if($row['usertype']=='personnel'){ ?>
+                        <div class="profile-info">
+                            <label>Department:</label>
+                            <b><?=$row['department'] ?></b>
+                        </div>
+                        <?php } ?>
+                        <?php if($row['usertype']=='student'){ ?>
+                        <div class="profile-info">
+                            <label>Course:</label>
+                            <b><?=$row['course'] ?></b>
+                        </div>
+                        <?php }elseif($row['usertype']=='personnel'){ ?>
+                            <div class="profile-info">
+                            <label>Email:</label>
+                            <b><?=$row['email'] ?></b>
+                        </div>
+                        <?php } ?> 
+                        <?php if($row['usertype']=='student'){ ?>
+                        <div class="profile-info">
+                            <label>Year:</label>
+                            <b><?=$row['year'] ?></b>
+                        </div>
+                        <?php }elseif($row['usertype']=='personnel'){ ?>
+                            <div class="profile-info">
+                            <label>Address:</label>
+                            <b><?=$row['address'] ?></b>
+                        </div>
+                        <?php } ?> 
+                        <?php if($row['usertype']=='student'){ ?>
+                        <div class="profile-info">
+                            <label>Email:</label>
+                            <b><?=$row['email'] ?></b>
+                        </div>
+                        <?php } ?> 
+                        <?php if($row['usertype']=='student'){ ?>
+                        <div class="profile-info">
+                            <label>Address:</label>
+                            <b><?=ucfirst($row['address'])." City" ?></b>
+                        </div>
+                        <?php }elseif($row['usertype']=='personnel'){ ?>
+                            <div class="profile-info">
+                            <label>Gender:</label>
+                            <b><?=ucfirst($row['gender']) ?></b>
+                        </div>
+                        <?php } ?> 
+                        <?php if($row['usertype']=='student'){ ?>
+                        <div class="profile-info">
+                            <label>Sex:</label>
+                            <b><?=ucfirst($row['gender']) ?></b>
+                        </div>
+                        <?php }elseif($row['usertype']=='personnel'){ ?>
+                            <div class="profile-info">
+                            <label>Phone number:</label>
+                            <b><?="0".$row['phonenumber'] ?></b>
+                        </div>
+                        <?php } ?>                        
+                        <?php if($row['usertype']=='student'){ ?>
+                        <div class="profile-info">
+                            <label>Phone number:</label>
+                            <b><?="0".$row['phonenumber'] ?></b>
+                        </div>
+                        <?php } ?>             
+                    </div>
+                    
                 </div>                               
                 
             </div>                           

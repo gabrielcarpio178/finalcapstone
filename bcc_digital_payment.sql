@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2023 at 07:41 PM
+-- Generation Time: Oct 11, 2023 at 05:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `capstone`
+-- Database: `bcc_digital_payment`
 --
 
 -- --------------------------------------------------------
@@ -111,11 +111,10 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (12, 36, 40, '9726843150', '2023-10-03 12:54:03'),
 (20, 36, 30, '7489526310', '2023-10-03 13:32:12'),
 (21, 33, 30, '2164598703', '2023-10-03 13:36:58'),
-(23, 61, 30, '8530297641', '2023-10-03 23:56:50'),
-(24, 61, 100, '8756342109', '2023-10-07 23:03:56'),
-(25, 61, 500, '6904157823', '2023-10-09 00:19:01'),
-(26, 61, 100, '8620534917', '2023-10-11 01:14:37'),
-(27, 45, 150, '7564310298', '2023-10-11 01:37:54');
+(27, 45, 150, '7564310298', '2023-10-11 01:37:54'),
+(28, 65, 500, '6578241930', '2023-10-11 15:01:09'),
+(29, 63, 1000, '3721809546', '2023-10-11 15:07:21'),
+(30, 79, 500, '1365890742', '2023-10-11 23:02:57');
 
 -- --------------------------------------------------------
 
@@ -190,10 +189,8 @@ CREATE TABLE `digitalpayment_tb` (
 --
 
 INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `payment_ref`, `requestType`, `payment_date`) VALUES
-(1, 61, '50', 'Certificate of Enrollment', '6081274593', 'accepted', '2023-10-10 23:53:47'),
-(2, 61, '50', 'Certificate of Enrollment', '5139084762', 'pending', '2023-10-11 00:07:04'),
-(3, 61, '100', 'Non Bago Fee', '1789035264', 'accepted', '2023-10-11 00:55:01'),
-(4, 61, '30', 'Certificate  of Transfers', '0469753218', 'accepted', '2023-10-11 01:08:15');
+(5, 65, '500', 'Non Bago Fee', '2398567410', 'accepted', '2023-10-11 15:01:32'),
+(6, 79, '50', 'Certificate  of Transfers', '5684290173', 'accepted', '2023-10-11 23:03:28');
 
 -- --------------------------------------------------------
 
@@ -245,11 +242,7 @@ INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `order
 (125, 45, 1, 56, 'Le Minerale', '0658473291', 'Drinks', '2023-09-20 09:33:16', NULL, 20, 1, 1, 'CANCELED'),
 (241, 45, 4, 44, 'Wet wipes', '3976410825', 'Necessities', '2023-09-28 16:17:47', '2023-09-28 16:38:56', 20, 1, 0, 'PROCEED'),
 (242, 33, 1, 19, 'showbear', '0423759618', 'Candy', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 2, 1, 0, 'PROCEED'),
-(243, 33, 1, 16, 'mountain dew', '0423759618', 'Drinks', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 20, 1, 0, 'PROCEED'),
-(244, 61, 1, 17, 'Fita', '0735864291', 'Biscuit', '2023-10-07 23:04:26', '2023-10-07 23:34:53', 8, 1, 0, 'PROCEED'),
-(245, 61, 1, 16, 'mountain dew', '0735864291', 'Drinks', '2023-10-07 23:04:26', '2023-10-07 23:34:53', 20, 1, 0, 'PROCEED'),
-(246, 61, 1, 18, 'Hansel', '9570643812', 'Biscuit', '2023-10-09 16:24:09', NULL, 7, 1, NULL, NULL),
-(247, 61, 1, 17, 'Fita', '9570643812', 'Biscuit', '2023-10-09 16:24:09', NULL, 8, 1, NULL, NULL);
+(243, 33, 1, 16, 'mountain dew', '0423759618', 'Drinks', '2023-10-03 01:27:27', '2023-10-03 01:57:46', 20, 1, 0, 'PROCEED');
 
 -- --------------------------------------------------------
 
@@ -300,8 +293,8 @@ CREATE TABLE `product_tb` (
 
 INSERT INTO `product_tb` (`product_id`, `category_id`, `teller_id`, `product_name`, `price`, `quantity`, `producer_price`, `date_post`, `image`) VALUES
 (16, 13, 1, 'mountain dew', 20, 197, 500, '2023-08-29', 'mountain_dew-64dc37f0c3a84-64e4c4caab3aa-64e6b8087f1b0.jpg'),
-(17, 15, 1, 'Fita', 8, 204, 150, '2023-08-29', 'fita-64fdd6e8d8944.jpeg'),
-(18, 15, 1, 'Hansel', 7, 200, 180, '2023-08-29', 'hansel-choco-sandwich-64ee0ae77871c.jpg'),
+(17, 15, 1, 'Fita', 8, 203, 150, '2023-08-29', 'fita-64fdd6e8d8944.jpeg'),
+(18, 15, 1, 'Hansel', 7, 199, 180, '2023-08-29', 'hansel-choco-sandwich-64ee0ae77871c.jpg'),
 (19, 16, 1, 'showbear', 2, 195, 200, '2023-09-10', 'snowbear-64fdd755b51b4.jpg'),
 (20, 16, 1, 'maxx', 2, 200, 200, '2023-09-10', 'maxx-64fdd7933fe07.jpg'),
 (21, 13, 1, 'Dutch Mill', 25, 19, 400, '2023-09-11', 'dutchmill-64f56e1fa2939-64fe971262c90.jpeg'),
@@ -357,7 +350,21 @@ INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `
 (1164973821, 'BSOA', '3rd', '', 46),
 (1234567891, 'BSCRIM', '3rd', '', 47),
 (2020590400, 'BEED', '4th', '', 50),
-(2020115752, 'BSIS', '4th', '0472321553', 61);
+(2020114925, 'BSIS', '4th', '0478138897', 63),
+(2023019305, 'BSED', '1st', '2059831325', 64),
+(2020115558, 'BSIS', '4th', '0477300257', 65),
+(2021117366, 'BSOA', '3rd', '0463113411', 66),
+(2021116715, 'BSOA', '3rd', '0472665361', 67),
+(2021116526, 'BSCRIM', '3rd', '', 68),
+(2019113585, 'BSIS', '3rd', '3391757350', 69),
+(2022017958, 'BSED', '2nd', '0461417986', 70),
+(2022018006, 'BSED', '2nd', '0455007746', 71),
+(2020115788, 'BSED', '4th', '0688068140', 72),
+(2020115817, 'BSED', '4th', '', 73),
+(2020115739, 'BSCRIM', '4th', '', 74),
+(2022118767, 'BSCRIM', '2nd', '0485950241', 75),
+(2020115761, 'BSIS', '4th', '0437282034', 76),
+(2020115752, 'BSIS', '4th', '0472321553', 79);
 
 -- --------------------------------------------------------
 
@@ -438,7 +445,9 @@ INSERT INTO `userwebusages_tb` (`userWebUsages_id`, `user_id`, `user_category`, 
 (29, 58, 'user_buyer', '2023-10-01'),
 (30, 33, 'user_buyer', '2023-10-03'),
 (31, 1, 'teller', '2023-10-03'),
-(32, 61, 'user_buyer', '2023-10-03');
+(32, 61, 'user_buyer', '2023-10-03'),
+(33, 63, 'user_buyer', '2023-10-11'),
+(34, 79, 'user_buyer', '2023-10-11');
 
 -- --------------------------------------------------------
 
@@ -479,7 +488,21 @@ INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber
 (48, 'sherly', 'carpio', 'sherly@gmail.com', 9759872245, 'female', 'non-bago', 'personnel', 'user_buyer', 'not-active', '2023-09-12', 'sherly', '1c8b06358890d6c512859b21557315b4'),
 (50, 'ashly', 'sunga', 'ashly@gmail.com', 9582349023, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-18', 'ashly', 'c114e447529c910fb405cc586adabe8f'),
 (51, 'Rogaciano', 'Carpio', 'Rogaciano@gmail.com', 9531248312, 'male', 'non-bago', NULL, 'user_buyer', 'not-active', '2023-09-30', 'Rogaciano', 'd84f5ebdbb0138d19376fead142c9ae4'),
-(61, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-03', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d');
+(63, 'KENNY', 'BELARTE', 'KNYBELARTE1120@GMAIL.COM', 9777180551, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020114925', 'f72fd7e00b06968afabedb8e28713ffb'),
+(64, 'KISSHA VERONICA', 'BELARTE', '', 9810552536, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2023019305', '3fd0f9eb0dee1fa44f22cec8d806a07a'),
+(65, 'KIAN', 'SADIO', 'KIANSADIO283@GMAIL.COM', 9939064484, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020115558', '9d0fdff0a7ca1f9cbe0b7553ee887719'),
+(66, 'ROSALY', 'BARREDO', 'BARREDOROSALY@GMAIL.COM', 9301020253, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2021117366', 'a9eb8cb1236b1ff06141a564f9a71381'),
+(67, 'JONA MAY', 'ODELMO', 'ODELMOJONAMAY@GMAIL.COM', 9152630029, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2021116715', '9e5b014336f2f454bd95480fbe6327ef'),
+(68, 'CRIS DHENIEL', 'BATHAN', 'CRISDHENIELBATHAN@GMAIL.COM', 9122443890, 'male', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2021116526', '91cb88099fb85538ff3068ba143fd554'),
+(69, 'JOSHUA JADE', 'DE ASIS', 'JOSHUAJADE2000@GMAIL.COM', 9076715377, 'male', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2019113585', '11943f599ef8db7d79e3559be7726eb2'),
+(70, 'CHOLEN KATE', 'VILLAHERMOZA', '', 9565709333, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2022017958', '1946359365173169d03238de8e79e1f1'),
+(71, 'JUARHT', 'VALENZUELA', 'NONOYARHTBOY@GMAIL.COM', 9506451553, 'male', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2022018006', '6dd93c8a6f36b0e40c2ef65b1df844f8'),
+(72, 'MA. ALCREZA', 'ALAMPAYAN', 'MAALCREZAALAMPAYAN25@GMAIL.COM', 9101086430, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020115788', '5b498e58edc0b2aee39277f88d7107b7'),
+(73, 'MEL JHON', 'MALINAO', 'MELJHONMALINAO18@GMAIL.COM', 9163170404, 'male', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020115817', 'bc499d94a3bd353ff3ddaee4fe55d99c'),
+(74, 'CLARENCE', 'GALEA', '', 9369448732, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020115739', '8f465e4dfb551860ff6b3cc8212ab6c8'),
+(75, 'BIANCA MARIE', 'SION', '', 9388042554, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2022118767', '911ff67ab51513c03af3127f7c755592'),
+(76, 'ARIEL', 'GABIANDAN', 'COLUMNAARIEL460@GMAIL.COM', 9922073188, 'male', 'non-bago', 'student', 'user_buyer', 'active', '2023-10-11', '2020115761', 'ed1a085c3eba34485679181c9a4c19c0'),
+(79, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d');
 
 --
 -- Indexes for dumped tables
@@ -605,7 +628,7 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
@@ -623,7 +646,7 @@ ALTER TABLE `category_tb`
 -- AUTO_INCREMENT for table `digitalpayment_tb`
 --
 ALTER TABLE `digitalpayment_tb`
-  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
@@ -653,13 +676,13 @@ ALTER TABLE `telleruser_tb`
 -- AUTO_INCREMENT for table `userwebusages_tb`
 --
 ALTER TABLE `userwebusages_tb`
-  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user_tb`
 --
 ALTER TABLE `user_tb`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- Constraints for dumped tables

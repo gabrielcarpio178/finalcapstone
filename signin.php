@@ -40,7 +40,7 @@ user-scalable=no"
 
           <div class="signin-form">
             <h1 class="label-h1">
-              Sign in
+              Sign In
             </h1>
             <form id="singin">
               <div class="form-group">
@@ -86,7 +86,7 @@ user-scalable=no"
               <div class="mt-2">
                 <center>
                   <h5>
-                    Don't have account? <strong><a id="signup">Sign up</a></strong>
+                    Don't have account? <strong><a id="signup">Sign Up</a></strong>
                   </h5>
                 </center>
                 <center><div id="forgotform"> Forgot Account </div></center>
@@ -101,13 +101,13 @@ user-scalable=no"
             </h1>
             <form id="forgot_form">
               <div class="form-group">
-                <label for="forgot" class="form-label">Phone number:</label>
+                <label for="forgot" class="form-label">Phone Number:</label>
                 <input
                   type="number"
                   class="form-control"
                   id="phone_number"
                   name="forgot"
-                  placeholder="Enter Phone number"
+                  placeholder="Enter Phone Number"
                 />
                 <div>
                   <center>
@@ -124,7 +124,7 @@ user-scalable=no"
                 <div class="mt-2">
                 <center>
                   <h5>
-                    <strong><div id="login">Sign in</div></strong>
+                    <strong><div id="login">Sign In</div></strong>
                   </h5>
                 </center>
                   <center><div id="resetcode" data-bs-toggle="modal" data-bs-target="#exampleModal"> Use Reset Code </div></center>

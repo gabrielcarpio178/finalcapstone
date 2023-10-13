@@ -2,10 +2,10 @@
     outline: 1px solid;
 } */
 
-body {
+/* body {
     overflow-x: hidden;
     overflow-y: hidden;
-  }
+  } */
   
   .content {
     position: absolute;
@@ -52,7 +52,7 @@ body {
     scrollbar-width: none;
     padding: 5px 7px;
   }
- 
+
   /* departments */
   
   .all {

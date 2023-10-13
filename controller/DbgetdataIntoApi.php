@@ -36,9 +36,25 @@ else{
             $phonenumber = $decoded->cp_number;
             $gender = strtolower($decoded->gender);
             $student_id = $decoded->user_code;
-            $department = "BS".$decoded->program_code;
             $addressapi = $decoded->address;
             $rfid = $decoded->rfid;
+            $department = $decoded->program_code;
+            if(($decoded->program_code)=="IS"){
+                $department = "BSIS";
+            }elseif(($decoded->program_code)=="BSOA"){
+                $department = "BSOA";
+            }elseif(($decoded->program_code)=="CRIM"){
+                $department = "BSCRIM";
+            }else{
+                $educ = array("BSEDFIL", "BSEDMATH");
+                for($i=0;$i<count($educ);$i++){
+                    if($educ[$i]==($decoded->program_code)){
+                        $department = "BSED";
+                        break;
+                    }
+                }
+            }
+            
             if(($decoded->year_level)==1){
                 $year = "1st";
             }elseif(($decoded->year_level)==2){

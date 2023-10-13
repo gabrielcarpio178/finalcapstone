@@ -56,7 +56,7 @@ function search_user(){
             $(".message").hide();
             $("#rfid").focus();
         }
-       
+
     });
 }
 
@@ -93,7 +93,7 @@ function getuser(user_id){
                 $("#department_year").text("Department:");
                 $("#department_user").text(`${data_user.department}`);
             }
-          
+
             $("#phonenumber_user").text(`0${data_user.phonenumber}`);
             $("#address_user").text(`${data_user.address}`);
             $(".balance_amount").text(`${data_user.user_balance}.00`);
@@ -135,8 +135,8 @@ function rfid(){
                             title: 'Invalid RFID',
                             showConfirmButton: false,
                             timer: 1000
-                          })
-                          $(this).val("");
+                            })
+                            $("#rfid").val("");
                     }else{
                         getuser(res);
                     }
@@ -197,8 +197,8 @@ function sumbit_amount(user_id){
                     
                     }
                 });
-              }
-          });
+                }
+            });
         }else if(amount==0){
             Swal.fire({
                 position: 'center',

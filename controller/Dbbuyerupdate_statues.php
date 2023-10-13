@@ -1,29 +1,57 @@
 <?php 
 require('Dbconnection.php');
-if(isset($_POST['id'])&&isset($_POST['order_num'])){
-    $id = $_POST['id'];
-    $order_num = $_POST['order_num'];
-    try {
-        $sql = mysqli_query($connect, "SELECT `num_noti` FROM `order_tb` WHERE `user_id` = '$id' AND `order_num` = '$order_num';");
-        $row = mysqli_fetch_assoc($sql);
-    } catch (\Throwable $th) {
-        echo $th;
-    }
-    if($row['num_noti']=='1'){
+if(isset($_POST['user_id'])&&isset($_POST['num'])&&isset($_POST['type'])){
+    $user_id = $_POST['user_id'];
+    $num = $_POST['num'];
+    $type = $_POST['type'];
+    if($type=="purchase"){
         try {
-            mysqli_query($connect, "UPDATE `order_tb` SET `num_noti` = '0' WHERE `user_id` = '$id' AND `order_num`='$order_num';");
+            $sql = mysqli_query($connect, "SELECT `num_noti` FROM `order_tb` WHERE `user_id` = '$user_id' AND `order_num` = '$num';");
+            $row = mysqli_fetch_assoc($sql);
         } catch (\Throwable $th) {
             echo $th;
         }
-    }elseif($row['num_noti']=='0'){
+        if($row['num_noti']=='1'){
+            try {
+                mysqli_query($connect, "UPDATE `order_tb` SET `num_noti` = '0' WHERE `user_id` = '$user_id' AND `order_num`='$num';");
+            } catch (\Throwable $th) {
+                echo $th;
+            }
+        }elseif($row['num_noti']=='0'){
+            try {
+                mysqli_query($connect, "UPDATE `order_tb` SET `num_noti` = '1' WHERE `user_id` = '$user_id' AND `order_num`='$num';");
+            } catch (\Throwable $th) {
+                echo $th;
+            }
+        }
+        $array = array($num ,$row['num_noti']);
+        print_r(json_encode($array));
+    }else if($type=="cashin"){
+
         try {
-            mysqli_query($connect, "UPDATE `order_tb` SET `num_noti` = '1' WHERE `user_id` = '$id' AND `order_num`='$order_num';");
+            $sql = mysqli_query($connect, "SELECT `cashin_noti` FROM `cashin_tb` WHERE `cashin_id`='$num';");
+            $row = mysqli_fetch_assoc($sql);
         } catch (\Throwable $th) {
             echo $th;
         }
+
+        if($row['cashin_noti']=='1'){
+            try {
+                mysqli_query($connect, "UPDATE `cashin_tb` SET `cashin_noti` = '0' WHERE `user_id` = '$user_id' AND `cashin_id`='$num';");
+            } catch (\Throwable $th) {
+                echo $th;
+            }
+        }elseif($row['cashin_noti']=='0'){
+            try {
+                mysqli_query($connect, "UPDATE `cashin_tb` SET `cashin_noti` = '1' WHERE `user_id` = '$user_id' AND `cashin_id`='$num';");
+            } catch (\Throwable $th) {
+                echo $th;
+            }
+        }
+        $array = array($num ,$row['cashin_noti']);
+        print_r(json_encode($array));
     }
-    $array = array($order_num ,$row['num_noti']);
-    print_r(json_encode($array));
+    
     
 }
 

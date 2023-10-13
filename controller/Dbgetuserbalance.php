@@ -4,7 +4,7 @@ if(isset($_POST['user_id'])){
     $user_id = $_POST['user_id'];
     //SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id FROM order_tb WHERE order_tb.user_id = '$user_id' AND order_tb.statues IS NOT NULL GROUP BY order_tb.user_id;
     try {
-        $sql_totalPurchase =  mysqli_query($connect, "SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id FROM order_tb WHERE order_tb.user_id = '$user_id' GROUP BY order_tb.user_id;");
+        $sql_totalPurchase =  mysqli_query($connect, "SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id, order_tb.`statues` FROM order_tb WHERE order_tb.user_id = '$user_id' GROUP BY order_tb.`statues`;");
         
     } catch (\Throwable $th) {
         echo $th;
@@ -29,7 +29,9 @@ if(isset($_POST['user_id'])){
         $total_payment_user = $total_payment['total_payment'];
     }
     while($total_purchase = mysqli_fetch_assoc($sql_totalPurchase)){
-        $total_purchase_user = $total_purchase['total_purchase'];
+        if($total_purchase['statues']!="CANCELED"){
+            $total_purchase_user += $total_purchase['total_purchase'];
+        }
     }
     
     while($total_cashin = mysqli_fetch_assoc($sql_totalCashin)){

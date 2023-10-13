@@ -155,7 +155,6 @@ $(document).ready(function () {
               window.location = "users/cashier/cashierhomepage.php";
             });
           } else if (res == "wrong") {
-            $(".loader").hide();
             getdatafromApi(username, password);
           }
         },
@@ -186,16 +185,13 @@ function getdatafromApi(username, password){
     data: {username: username,
     password: password},
     cache: false,
-    beforeSend: function(){
-      $(".loader").show();
-    },
     success: function(res){
       $(".loader").hide();
       if(res == "login"){
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Hi! Welcome Back',
+          title: 'Welcome!',
           showConfirmButton: false,
           timer: 1500
         }).then(function () {

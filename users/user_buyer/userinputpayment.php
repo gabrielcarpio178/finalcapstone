@@ -5,7 +5,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
     if(!isset($_SERVER['HTTP_REFERER'])){
         header('location: ../../index.php');
         exit;
-   }
+    }
 }
 $id = $_SESSION['id'];
 ?>

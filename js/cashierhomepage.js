@@ -61,6 +61,19 @@ function getdataGraph(){
 function graph(data_result){
   const data = {
     labels: ['Non Bago Fee', 'Certificate', 'Cash In'],
+    // datasets: [{
+    //   label: 'Non Bago Fee',
+    //   backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    //   data: [data_result.total_non_bago]
+    // },{
+    //   label: 'Certificate',
+    //   backgroundColor: 'rgba(255, 159, 64, 0.2)',
+    //   data: [data_result.total_cert]
+    // },{
+    //   label: 'Cash In',
+    //   backgroundColor: 'rgba(255, 205, 86, 0.2)',
+    //   data: [data_result.total_cashin]
+    // }]
     datasets: [{
       data: [data_result.total_non_bago, data_result.total_cert, data_result.total_cashin],
       backgroundColor: [
@@ -83,14 +96,14 @@ function graph(data_result){
     options: {
       plugins:{
         legend: {
-          display: false  
+          display: false,
         },
         stacked100: {
           enable: true,
         },
         title: {
           display: true,
-          text: 'BCC Digital Payment Cashier Daily Collection',
+          text: 'BCC Digital Payment Cashier Yearly Collection',
         },
 
       },

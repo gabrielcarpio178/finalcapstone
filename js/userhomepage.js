@@ -36,7 +36,6 @@ $(document).ready(function () {
 
   announcement('Buyer');
   getbalance();
-  update();
 });
 
 function announcement(usertype){
@@ -76,120 +75,163 @@ function notification(){
     cache: false,
     success: function(res){
       var data = JSON.parse(res);
-      for(let i = 0; i<Object.values(data[0]).length; i++){
-        var image = (data[0][i]=='male')? '../../image/avatar.jpg':'../../image/female_avatar.png';
-        gender_info += "<img src='"+image+"'>";         
-        if(data[1][i]!=null){
-          statues +=  '<div>'+data[1][i]+'</div>';
-          let db_day = String(new Date(data[3][i]).getDate()).padStart(2, '0');
-          let db_month = String(new Date(data[3][i]).getMonth()+1).padStart(2,"0");
-          let db_year = new Date(data[3][i]).getFullYear();
-          let db_date = `${db_day}-${db_month}-${db_year}`;
-          var database_mins =  parseInt(parseInt(new Date(data[3][i]).getHours())*60+parseInt(new Date(data[3][i]).getMinutes()));
+      data.sort(function(a, b){
+        let d1 = new Date(a.date), d2 = new Date(b.date);
+          return d2 - d1;
+      });
+      var count = 0;
+      for(let i = 0; i<data.length; i++){
+        if((data[i]).isSeen=='0'){
+          count++;
+        }
+        var date = new Date((data[i]).date);
+        var mounth = date.getMonth();
+        var day = date.getDate();
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var monthFull = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "June",
+        "July",
+        "Aug",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Dec",
+        ];
+        var ampm = hour >= 12 ? 'pm' : 'am';
+        hour = hour % 12;
+        hour = hour ? hour : 12;
+        min = min < 10 ? '0'+min : min;
+        var strTime = hour + ':' + min + ampm;
+        var insert_date = `${monthFull[mounth]}-${day}-${year} ${strTime}`;
+        if((data[i]).isSeen=='0'){
+          none_view = "none_view";
+        }else{
+          none_view = "";
+        }  
+        
+        if((data[i]).type=='cashin'){
+          data_show += `
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).cashin_id}','${user_id}','${(data[i]).type}')" id="${(data[i]).cashin_id}">
+              <div class="messages">
+                <img src ='../../image/avatar.jpg' class="canteen-staff-pp">
+                <div class="message-order">
+                  <b>${(data[i]).cashin_amount}</b> pesos have been successfully added to your digital wallet.
+                </div>
+              </div>
+              <p class="date">${insert_date}</p>
+            </div>
+          `;
+        }
+        else if((data[i]).type=='purchase'){
+          var image = (data[0][i]=='male')? '../../image/avatar.jpg':'../../image/female_avatar.png';
+          gender_info += "<img src='"+image+"'>";   
+          let db_day = String(new Date((data[i]).date).getDate()).padStart(2, '0');
+          let db_month = String(new Date((data[i]).date).getMonth()+1).padStart(2,"0");
+          let db_year = new Date((data[i]).date).getFullYear();
+          let db_date = `${db_day}-${db_month}-${db_year}`;    
+          var database_mins =  parseInt(parseInt(new Date((data[i]).date).getHours())*60+parseInt(new Date((data[i]).date).getMinutes()));
           var deadline = database_mins-current_time;
           var ago_hours = Math.floor((database_mins+current_time)/60);
           var ago_mins = (database_mins+current_time) % 60;
           var day = Math.floor(ago_hours/24);
           var hours = Math.floor(((ago_hours/24)-day)*24);
           var mins = parseInt((((ago_hours/24)-day)*24) % 60);
-          var show_data = ((day!=0)?((day!=1)?day+" days ":day+" day "):"")+((hours!=0)?((hours!=1)?hours+" hours ":hours+" hour "):"")+((mins!=0)?((mins!=1)?mins+" mins":mins+" min"):"");
+          
           if(currentDate==db_date){
               if(deadline<=0){
                 var deadline = 0;
-                update(user_id, data[5][i]);
               }
           }else{
             var deadline = 0;
             
           }
-         
-        }
-        if(data[4][i]=='0'){
-          none_view = "none_view";
-        }else{
-          none_view = "";
-        }    
-        if(data[1][i]=="ACCEPTED"&&deadline!=0){
-          data_show += `<div class="message_info ${none_view}" id="${data[5][i]}" name="${user_id}">
-                          <div class="messages">
-                            <img src ='${image}' class="canteen-staff-pp">
-                            <div class="message-order"><b>${data[2][i]}</b> accept your order Pick up time <b>${deadline} minutes.</b> Otherwise your order will automatically be cancelled.</div>
-                          </div>
-                          <p class="time"></p>
-                        </div>`;
-        }else if(data[1][i]=="PROCEED"){
-          data_show += `<div class="message_info ${none_view}" id="${data[5][i]}" name="${user_id}">
-                          <div class="messages">
-                            <img src ='${image}' class="canteen-staff-pp">
-                            <div class="message-order">Successfully paid and picked up the order from the <b>${data[2][i]}</b>.</div>
-                          </div>
-                          <p class="time"></p>
-                        </div>`;
-        }else if(data[1][i]=="CANCELED"){
-          data_show += `<div class="message_info ${none_view}" id="${data[5][i]}" name="${user_id}">
-                          <div class="messages">
-                            <img src ='${image}' class="canteen-staff-pp">
-                            <div class="message-order">Failed to pick up with some reason <b>${data[2][i]}</b>.</div>
-                          </div>
-                          <p class="time"></p>
-                        </div>`;
-        }else if(data[1][i]=="ACCEPTED"&&deadline==0){
-          data_show += `<div class="message_info ${none_view}" id="${data[5][i]}" name="${user_id}">
-                          <div class="messages">
-                            <img src ='${image}' class="canteen-staff-pp">
-                            <div class="message-order">Failed to pick up within the time scheduled <b>${data[2][i]}</b> cancelled your order.</div>
-                          </div>
-                          <p class="time"></p>
-                        </div>`;
-        }else if(data[1][i]=="PURCHASE"&&deadline==0){
-          data_show += `<div class="message_info ${none_view}" id="${data[5][i]}" name="${user_id}">
-                          <div class="messages">
-                            <img src ='${image}' class="canteen-staff-pp">
-                            <div class="message-order">Successfully send payment.</div>
-                          </div>
-                          <p class="time"></p>
-                        </div>`;
+
+          if((data[i]).statues=="ACCEPTED"&&deadline!=0){
+            data_show += `
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')">
+                <div class="messages">
+                  <img src ='${image}' class="canteen-staff-pp">
+                  <div class="message-order"><b>${(data[i]).store_name}</b> accept your order Pick up time <b>${deadline} minutes.</b> Otherwise your order will automatically be cancelled.</div>
+                </div>
+                <p class="date">${insert_date}</p>
+              </div>`;
+          }else if((data[i]).statues=="ACCEPTED"&&deadline==0){
+            data_show += `
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+              <div class="messages">
+                <img src ='${image}' class="canteen-staff-pp">
+                <div class="message-order">Failed to pick up within the time scheduled <b>${(data[i]).store_name}</b> cancelled your order.</div>
+              </div>
+              <p class="date">${insert_date}</p>
+            </div>`;
+          }else if((data[i]).statues=="CANCELED"){
+            data_show += `
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+              <div class="messages">
+                <img src ='${image}' class="canteen-staff-pp">
+                <div class="message-order">Failed to pick up with some reason <b>${(data[i]).store_name}</b>.</div>
+              </div>
+              <p class="date">${insert_date}</p>
+            </div>`;
+          }else if((data[i]).statues=="PROCEED"){
+              data_show += `
+              <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+                <div class="messages">
+                  <img src ='${image}' class="canteen-staff-pp">
+                  <div class="message-order">Successfully paid and picked up the order from the <b>${(data[i]).store_name}</b>.</div>
+                </div>
+                <p class="date">${insert_date}</p>
+              </div>`;
+            }else if(data[1][i]=="PURCHASE"&&deadline==0){
+              data_show += `
+                <div class="message_info onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+                  <div class="messages">
+                    <img src ='${image}' class="canteen-staff-pp">
+                    <div class="message-order">Successfully send payment.</div>
+                  </div>
+                  <p class="date">${insert_date}</p>
+                </div>`;
+            }
+
         }
 
       }
-      let count = 0;
-      for(let z = 0; z<data[4].length;z++){
-        if(data[4][z]=='0'){
-          count++;
-        }
-      }
+      
       $(".count-number").text(count);
       $(".noti-data").html(data_show);
-      update();
     }
   });  
   multipleseen(user_id);
   
 }
 
-function update(){
-  $(".message_info").on("click", function(){
-    var id = $(this).attr("name");
-    var order_num = $(this).attr("id");
-    $.ajax({
-      url: '../../controller/Dbbuyerupdate_statues.php',
-      type: 'POST',
-      data: {
-        id : id,
-        order_num : order_num
-        },
-      cache: false,
-      success: function(res){
-        var result = JSON.parse(res);
-        if(result[1]=='1'){
-          $(`#${result[0]}`).addClass("none_view");
-          $(".count-number").text(parseInt($(".count-number").text())+1);
-        }else if(result[1]=='0'){
-          $(`#${result[0]}`).removeClass("none_view");
-          $(".count-number").text(parseInt($(".count-number").text())-1);
-        }
+function update(num, user_id, type){
+  $.ajax({
+    url: '../../controller/Dbbuyerupdate_statues.php',
+    type: 'POST',
+    data: {
+      user_id : user_id,
+      num : num,
+      type : type
+      },
+    cache: false,
+    success: function(res){
+      var result = JSON.parse(res);
+      if(result[1]=='1'){
+        $(`#${result[0]}`).addClass("none_view");
+        $(".count-number").text(parseInt($(".count-number").text())+1);
+      }else if(result[1]=='0'){
+        $(`#${result[0]}`).removeClass("none_view");
+        $(".count-number").text(parseInt($(".count-number").text())-1);
       }
-    });
+    }
   });
 }
 
@@ -210,9 +252,6 @@ function multipleseen(user_id){
           type: 'POST',
           data: {user_id: user_id},
           cache: false,
-          beforeSend: function(){
-            $(".loader").show();
-          },
           success: function(res){
             var orders_num = JSON.parse(res);
             console.log(orders_num);
@@ -220,7 +259,6 @@ function multipleseen(user_id){
               $(`#${orders_num[i]}`).removeClass("none_view");
               $(".count-number").text(0);
             }
-            $(".loader").hide();
             Swal.fire({
               position: 'center',
               icon: 'success',

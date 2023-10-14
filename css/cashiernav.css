@@ -31,7 +31,9 @@ ul {
 .categories {
   font-weight: 400;
 }
-
+li{
+  cursor: pointer;
+}
 ul li:hover {
   background-color: #ffffff4f;
 }
@@ -59,7 +61,6 @@ ul li:hover {
   right: 0;
   bottom: 0;
 }
-
 @media screen and (min-width: 320px) {
   .header {
     display: flex;

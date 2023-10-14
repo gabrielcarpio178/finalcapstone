@@ -31,4 +31,7 @@ $(document).ready(function () {
 
   }); 
   
+  $("#collection").on("click",function(){
+    window.location = "cashiercollection.php";
+  });
 });

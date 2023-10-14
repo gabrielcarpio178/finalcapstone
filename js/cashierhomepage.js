@@ -1,5 +1,10 @@
 $(document).ready(function () {
   $("#nav").load("cashiernav.php");
+
+  $("#collection-div").on('click',function(){
+    window.location = "cashiercollection.php";
+  });
+  
   getdataGraph()
   request();
   getTotalCollection();
@@ -47,6 +52,7 @@ function announcement(usertype){
 
 }
 
+
 function getdataGraph(){
   $.ajax({
     url: '../../controller/DbcashierGraph.php',
@@ -61,19 +67,6 @@ function getdataGraph(){
 function graph(data_result){
   const data = {
     labels: ['Non Bago Fee', 'Certificate', 'Cash In'],
-    // datasets: [{
-    //   label: 'Non Bago Fee',
-    //   backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    //   data: [data_result.total_non_bago]
-    // },{
-    //   label: 'Certificate',
-    //   backgroundColor: 'rgba(255, 159, 64, 0.2)',
-    //   data: [data_result.total_cert]
-    // },{
-    //   label: 'Cash In',
-    //   backgroundColor: 'rgba(255, 205, 86, 0.2)',
-    //   data: [data_result.total_cashin]
-    // }]
     datasets: [{
       data: [data_result.total_non_bago, data_result.total_cert, data_result.total_cashin],
       backgroundColor: [

@@ -70,7 +70,7 @@ if(($_SESSION['usertype']!="cashier")){
                                     <div class="category">
                                         Non Bago Fee
                                     </div>
-                                    <div class="data-amount">₱ 1,000</div>
+                                    <div class="data-amount" id="non_bago"></div>
                                 </div>
                             </div>
                             <div class="data">
@@ -79,16 +79,16 @@ if(($_SESSION['usertype']!="cashier")){
                                     <div class="category">
                                         Certificate
                                     </div>
-                                    <div class="data-amount">₱ 1,000</div>
+                                    <div class="data-amount" id="cert"></div>
                                 </div>
                             </div>
                             <div class="data">
                                 <div class="color-content" id="content_3"></div>
                                 <div class="data-label">
                                     <div class="category">
-                                        Certificate Of Enrollment 
+                                        Cert. of Transfer Creditials
                                     </div>
-                                    <div class="data-amount">₱ 1,000</div>
+                                    <div class="data-amount" id="cert_t"></div>
                                 </div>
                             </div>
                             <div class="data"> 
@@ -97,7 +97,7 @@ if(($_SESSION['usertype']!="cashier")){
                                     <div class="category">
                                         Cash Out
                                     </div>
-                                    <div class="data-amount">₱ 1,000</div>
+                                    <div class="data-amount" id="cashOut"></div>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ if(($_SESSION['usertype']!="cashier")){
                         </div>
                     </div>
                     <div class="total-collection-amount">
-                        ₱ 4,000.00
+                        
                     </div>
                     <div class="d-flex flex-row justify-content-around color-info">
                         <div class="color-label-content"> 

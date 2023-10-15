@@ -3,7 +3,7 @@ require('Dbconnection.php');
 if(isset($_POST['cashier'])){
     //cash in
     try {
-        $cashin_sql = mysqli_query($connect, "SELECT SUM(`cashin_amount`) AS total_cashin, CAST(`cashin_date` AS DATE) AS date_today FROM cashin_tb WHERE CAST(`cashin_date` AS DATE) = CAST(now() AS DATE);");
+        $cashin_sql = mysqli_query($connect, "SELECT SUM(`cashin_amount`) AS total_cashin FROM cashin_tb WHERE CAST(`cashin_date` AS DATE) = CAST(now() AS DATE);");
         $cashin_data = 0;
         $cashin = mysqli_fetch_assoc($cashin_sql);
         if($cashin['total_cashin']!=NULL){
@@ -22,8 +22,8 @@ if(isset($_POST['cashier'])){
         while($payment = mysqli_fetch_assoc($payment_sql)){
             if($payment['payment_type'] == 'Non Bago Fee'){
                 $payment_nonBago = $payment['total_payment'];
-            }elseif($payment['payment_type'] == 'Certificate of Enrollment'){
-                $cert_e = $payment['total_payment'];
+            }elseif($payment['payment_type'] == 'Certificate  of Transfers'){
+                $cert_t = $payment['total_payment'];
             }else{
                 $cert = $payment['total_payment'];
             }
@@ -43,8 +43,32 @@ if(isset($_POST['cashier'])){
     } catch (\Throwable $th) {
         echo $th;
     }
+    //total_collection
+    try {
+        $collection_cashin_sql = mysqli_query($connect, "SELECT SUM(`cashin_amount`) AS total_cashin FROM cashin_tb;");
+        $collection_cashin_row =mysqli_fetch_assoc($collection_cashin_sql);
+        $collection_cashin = 0;
+        if($collection_cashin_row['total_cashin']!=NULL){
+            $collection_cashin = $collection_cashin_row['total_cashin'];
+        }
+    } catch (\Throwable $th) {
+        echo $th;
+    }
 
-    $datas = array('cashin'=>$cashin_data, 'payment_nonBago'=>$payment_nonBago, 'cert_e'=>$cert_e, 'cert'=>$cert, 'payment_sum'=>$payment_sum, 'cashout'=>$cashOut);
+    //total_payment
+    try {
+        $total_payment_sql = mysqli_query($connect, "SELECT SUM(`payment_amount`) AS total_payment FROM digitalpayment_tb WHERE `requestType` = 'accepted';");
+        $total_payment_row = mysqli_fetch_assoc($total_payment_sql);
+        $total_payment = 0;
+        if($total_payment_row['total_payment']!=NULL){
+            $total_payment = $total_payment_row['total_payment'];
+        }
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+    $total_collection = $total_payment+$collection_cashin;
+
+    $datas = array('cashin'=>$cashin_data, 'payment_nonBago'=>$payment_nonBago, 'cert_t'=>$cert_t, 'cert'=>$cert, 'payment_sum'=>$payment_sum, 'cashout'=>$cashOut, 'total_collection'=>$total_collection);
     print_r(json_encode($datas));
 }
 ?>

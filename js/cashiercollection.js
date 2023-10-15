@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $("#nav").load("cashiernav.php");
-    graph();
     getdate();
     displaydata();
 });
@@ -49,15 +48,43 @@ function displaydata(){
             var payment_parts = payment_amount.toString().split(".");
             var payment = payment_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (payment_parts[1] ? "." + payment_parts[1] : "");
             $("#school_fee").text(`₱ ${payment}`);
+            //non-bago
+            var nonBago_amount = `${datas.payment_nonBago}.00`;
+            var nonBago_parts = nonBago_amount.toString().split(".");
+            var nonBago = nonBago_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (nonBago_parts[1] ? "." + nonBago_parts[1] : "");
+            $("#non_bago").text(`₱ ${nonBago}`);
+            //certificate
+            var cert_amount = `${datas.cert}.00`;
+            var cert_parts = cert_amount.toString().split(".");
+            var cert = cert_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (cert_parts[1] ? "." + cert_parts[1] : "");
+            $("#cert").text(`₱ ${cert}`);
+            //certificate of enrollment
+            var certT_amount = `${datas.cert_t}.00`;
+            var certT_parts = certT_amount.toString().split(".");
+            var certT = certT_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (certT_parts[1] ? "." + certT_parts[1] : "");
+            $("#cert_t").text(`₱ ${certT}`);
+            //cash out
+            var cashOut_amount = `${datas.cashout}.00`;
+            var cashOut_parts = cashOut_amount.toString().split(".");
+            var cashOut = cashOut_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (cashOut_parts[1] ? "." + cashOut_parts[1] : "");
+            $("#cashOut").text(`₱ ${cashOut}`);
+            //total_collection
+            var total_amount = `${datas.total_collection}.00`;
+            var total_parts = total_amount.toString().split(".");
+            var total = total_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (total_parts[1] ? "." + total_parts[1] : "");
+            $(".total-collection-amount").text(`₱ ${total}`);
+            var total_cert = parseInt(datas.cert_t)+parseInt(datas.cert);
+            graph(datas.payment_nonBago, total_cert, datas.cashin);
         }
     });
 }
 
-function graph(){
+function graph(non_bago, cert, cashin){
+
     const data = {
     labels: ['Non Bago Fee', 'Certificate', 'Cash In'],
     datasets: [{
-        data: [2, 3, 4],
+        data: [non_bago, cert, cashin],
         backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(255, 159, 64, 0.2)',

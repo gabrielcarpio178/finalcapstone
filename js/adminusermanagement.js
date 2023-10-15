@@ -162,13 +162,13 @@ $(document).ready(function(){
         }
             
     });
- 
+
 });
 
 function page_num(page_num){
     table_info(category, usertype, address, add_row, page_num);
 }
- 
+
 function num_of_data(){
     $.ajax({
         url: '../../controller/Dbadminusermanagement_num_of_data.php',

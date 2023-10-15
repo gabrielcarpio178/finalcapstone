@@ -101,35 +101,40 @@ if(($_SESSION['usertype']!="cashier")){
                                 </div>
                             </div>
                         </div>
+
+                        <div class="d-flex flex-row justify-content-around btn-category">
+                            <div id="non_bago" class="focus-1 fucos-class">NON-BAGO FEE</div>
+                            <div id="cash_out" class="focus-2">CASH OUT</div>
+                            <div id="certificate" class="focus-3">CERTIFICATE</div>
+                        </div>
+
                         <div class="d-flex flex-row justify-content-between p-3 w-100 latest-transaction">
                             <div class="label-latest-transaction">
                                 Latest Transaction
                             </div>
                             <div class="sort-by w-25">
-                                <select class="form-select form-select-sm " aria-label=".form-select-sm example">
+                                <select class="form-select form-select-sm " aria-label=".form-select-sm example" id="sortBy" disabled="disabled">
                                     <option selected disabled>Sort By</option>
-                                    <option value="Non Bago Fee">Non Bago Fee</option>
-                                    <option value="Certificate">Certificate</option>
-                                    <option value="Certificate Of Enrollment ">Certificate Of Enrollment </option>
-                                    <option value="Cash Out">Cash Out</option>
+                                    <option value="Certificate of Enrollment">Certificate of Enrollment</option>
+                                    <option value="Certificate  of Transfers">Cert. of Transfer Creditials</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="table-content">
                         <table class="table table-hover">
-                            <thead>
-                                <tr>
+                            <thead id="table_head">
+                                <!-- <tr>
                                     <th scope="col"></th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">User ID</th>
                                     <th scope="col">Activity</th>
                                     <th scope="col">Amount</th>
-                                </tr>
+                                </tr> -->
                             </thead>
                             <tbody id="table_body">
-
+                                <!-- table row -->
                             </tbody>
                         </table>
                     </div>

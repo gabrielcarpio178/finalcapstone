@@ -127,3 +127,18 @@
 #collect-color_2{
     background-color: rgb(167, 75, 167);
 }
+.btn-category{
+    background-color: white;
+    box-shadow: 0 1px 1px 1px #616161;
+    margin: 0rem 1rem;
+}
+.fucos-class{
+    color: blue;
+    font-weight: bold;
+}
+.focus-1, .focus-2, .focus-3{
+    cursor: pointer;
+}
+.table-content{
+    margin: 0px 1rem;
+}

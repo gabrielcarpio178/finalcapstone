@@ -17,7 +17,7 @@ if(isset($_POST['cashier'])){
         $payment_sql = mysqli_query($connect, "SELECT SUM(`payment_amount`) AS total_payment, `payment_date`, `payment_type` FROM digitalpayment_tb WHERE CAST(`payment_date` AS DATE) = CAST(now() AS DATE) AND `requestType` = 'accepted' GROUP BY `payment_type`;");
         $payment_sum = 0;
         $payment_nonBago = 0;
-        $cert_e = 0;
+        $cert_t = 0;
         $cert = 0;
         while($payment = mysqli_fetch_assoc($payment_sql)){
             if($payment['payment_type'] == 'Non Bago Fee'){

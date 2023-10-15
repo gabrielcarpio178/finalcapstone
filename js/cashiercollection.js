@@ -2,6 +2,82 @@ $(document).ready(function(){
     $("#nav").load("cashiernav.php");
     getdate();
     displaydata();
+
+    let table_head = `
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Reference #</th>
+        <th scope="col">Name</th>
+        <th scope="col">Student ID</th>
+        <th scope="col">Amount</th>
+    </tr>`;
+    let categories = 'Non Bago Fee';
+    let i;
+    displayTable('all', 'Non Bago Fee');
+    $(".btn-category #non_bago").on("click", function () {
+        $("#sortBy").attr('disabled', 'disabled');
+        $(this).addClass("fucos-class");
+        $(".focus-" + i).removeClass("fucos-class");
+        table_head = `
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Reference #</th>
+            <th scope="col">Name</th>
+            <th scope="col">Student ID</th>
+            <th scope="col">Amount</th>
+        </tr>`;
+        i = 1;
+        categories = 'Non Bago Fee';
+        displayTable('all', 'Non Bago Fee');
+        table_head_row(table_head);
+    });
+
+    $("#cash_out").on("click", function () {
+        $("#sortBy").attr('disabled', 'disabled');
+        $(this).addClass("fucos-class"); 
+        $(".focus-1").removeClass("fucos-class");
+        $(".focus-" + i).removeClass("fucos-class");
+        table_head = `
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Name</th>
+            <th scope="col">Reference #</th>
+            <th scope="col">Amount</th>
+        </tr>`;
+        i = 2;
+        categories = 'cash_out';
+        displayTable('all', 'cash_out');
+        table_head_row(table_head);
+    });
+
+    $("#certificate").on("click", function () {
+        $("#sortBy").removeAttr('disabled');
+        $(this).addClass("fucos-class"); 
+        $(".focus-1").removeClass("fucos-class");
+        $(".focus-" + i).removeClass("fucos-class");
+        table_head = `
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Reference #</th>
+            <th scope="col">Student ID</th>
+            <th scope="col">Type of Certificate</th>
+            <th scope="col">Amount</th>
+        </tr>`;
+        i = 3;
+        categories = 'Certificate Of Enrollment';
+        displayTable('all', 'Certificate Of Enrollment');
+        table_head_row(table_head);
+    });
+
+    $(".txt, #sortBy, .checkbox").each(function() {
+        $(this).change(function(){
+            sortBy = $(this).val();
+            displayTable(sortBy, categories);
+        }); 
+    });
+    table_head_row(table_head);
+    
 });
 
 function getdate(){
@@ -128,4 +204,24 @@ function graph(non_bago, cert, cashin){
     var bars = $("#graph_data");
     chart = new Chart(bars, bar);
 
+}
+
+function table_head_row(table_head){
+    $("#table_head").html(table_head);
+}
+
+function displayTable(sortBy, category){
+    $.ajax({
+        url: '../../controller/DbcashiercollectionTable.php',
+        type: 'POST',
+        data: {
+            sortBy : sortBy,
+            category : category
+        },
+        cache: false,
+        success: function(res){
+            // var non_bago = JSON.parse(res);
+            console.log(res);
+        }
+    });
 }

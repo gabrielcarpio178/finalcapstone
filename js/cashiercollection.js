@@ -101,7 +101,7 @@ function displaydata(){
             var cashin_parts = cashin_amount.toString().split(".");
             var cashin = cashin_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (cashin_parts[1] ? "." + cashin_parts[1] : "");
             $("#cashin").text(`₱ ${cashin}`);
-            //school fee
+            //school fee daily
             var payment_amount = `${datas.payment_sum}.00`;
             var payment_parts = payment_amount.toString().split(".");
             var payment = payment_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (payment_parts[1] ? "." + payment_parts[1] : "");
@@ -126,11 +126,23 @@ function displaydata(){
             var cashOut_parts = cashOut_amount.toString().split(".");
             var cashOut = cashOut_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (cashOut_parts[1] ? "." + cashOut_parts[1] : "");
             $("#cashOut").text(`₱ ${cashOut}`);
-            //total_collection
-            var total_amount = `${datas.total_collection}.00`;
+            //total_collection daily
+            var total_amount = `${(parseInt(datas.cashin)+parseInt(datas.payment_sum))}.00`;
             var total_parts = total_amount.toString().split(".");
             var total = total_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (total_parts[1] ? "." + total_parts[1] : "");
             $(".total-collection-amount").text(`₱ ${total}`);
+            var total_cert = parseInt(datas.cert_t)+parseInt(datas.cert);
+            //school fee collection
+            var school_fee_amount = `${datas.total_payment}.00`;
+            var school_fee_parts = school_fee_amount.toString().split(".");
+            var school_fee = school_fee_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (school_fee_parts[1] ? "." + total_parts[1] : "");
+            $(".school-fee-amount").text(`₱ ${school_fee}`);
+            //cash in collection
+            var cashIn_collection_amount = `${datas.collection_cashin}.00`;
+            var cashIn_collection_parts = cashIn_collection_amount.toString().split(".");
+            var cashIn_collection = cashIn_collection_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (cashIn_collection_parts[1] ? "." + total_parts[1] : "");
+            $(".cashIn-collection-amount").text(`₱ ${cashIn_collection}`);
+
             var total_cert = parseInt(datas.cert_t)+parseInt(datas.cert);
             graph(datas.payment_nonBago, total_cert, datas.cashin);
         }

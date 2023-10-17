@@ -136,6 +136,10 @@ if(($_SESSION['usertype']!="cashier")){
                         <div class="label-collection">
                             Total Collection
                         </div>
+                        <div class="d-flex flex-column date-icon">
+                            <div class="current">Today</div>
+                            <div class="today"></div>
+                        </div>
                     </div>
                     <div class="total-collection-amount">
                         
@@ -143,13 +147,51 @@ if(($_SESSION['usertype']!="cashier")){
                     <div class="d-flex flex-row justify-content-around color-info">
                         <div class="color-label-content"> 
                             <div class="color-label" id="collect-color_1"></div>
-                            <div class="label-text">Daily Collection</div>
+                            <div class="label-text">Daily School Fee</div>
                         </div>
                         <div class="color-label-content">
                             <div class="color-label" id="collect-color_2"></div>
                             <div class="label-text" >Cash In Collection</div>
                         </div>
                     </div>
+                    <hr>
+
+                    <div class="collection-balance-content p-3">
+                        <div class="d-flex flex-row justify-content-between align-items-center total-collection-label">
+                            <div class="label-collection-balance">
+                                Collection Balance
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column gap-2">
+
+                            <div class="d-flex flex-row align-items-center gap-2 school-fee">
+                                <div class="school-fee-color"></div>
+                                <div class="d-flex flex-column">
+                                    <div class="school-fee-label">
+                                        School Fee Collection
+                                    </div>
+                                    <div class="school-fee-amount">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center gap-2 cashIn-collection">
+                                <div class="cashIn-collection-color"></div>
+                                <div class="d-flex flex-column">
+                                    <div class="cashIn-collection-label">
+                                        Cash In Collection
+                                    </div>
+                                    <div class="cashIn-collection-amount">
+                                        
+                                    </div>
+                                </div>
+                            </div>    
+
+                        </div>
+                    </div>
+                    
+                        
                     <hr>
                     <div class="graph">
                         <canvas id="graph_data"></canvas>

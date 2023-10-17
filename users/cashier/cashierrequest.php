@@ -58,7 +58,7 @@ if(($_SESSION['usertype']!="cashier")){
 
             <div class="d-flex gap-3 flex-row-reverse p-2">
               <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add_certificate">Add Certificate</button>
-              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal">Edit</button>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#edit_certificate">Edit</button>
             </div> 
             <div class="content-rate p-2">
 
@@ -75,11 +75,13 @@ if(($_SESSION['usertype']!="cashier")){
               <div class="d-flex flex-column rate-content">
                 <div class="d-flex flex-row justify-content-between w-100">
                   <div class="rate-label">Certificate</div>
-                  <div class="rate-label"><i class="fa-solid fa-angle-up"></i></div>
+                  <div class="rate-label" id="certificate_show"><i class="fa-solid fa-angle-up"></i></div>
                 </div>
-                <div class="d-flex flex-row justify-content-between cert-content">
-                  <!-- certificate -->
+
+                <div class="d-flex flex-column gap-2" id="cert-content" style="display: none !important">
+                  
                 </div>
+
               </div>
 
               <div class="d-flex flex-row justify-content-between rate-content">
@@ -96,7 +98,7 @@ if(($_SESSION['usertype']!="cashier")){
 
   <!--Add payment modal -->
   <div class="modal fade" id="add_certificate">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Certificate</h5>
@@ -123,7 +125,7 @@ if(($_SESSION['usertype']!="cashier")){
               </div>
 
               <div class="btn_submit-content">
-                <input type="submit" value="Save" class="btn btn-primary w-100" id="submit_inputed">
+                <button type="submit" value="submit" class="btn btn-primary w-100" id="submit_inputed">Submit</button>
               </div>
             </form>
 
@@ -131,7 +133,42 @@ if(($_SESSION['usertype']!="cashier")){
         </div>
       </div>
     </div>
-  
+  </div>  
+
+  <!--edit payment modal -->
+  <div class="modal fade" id="edit_certificate">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Certificate</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form id="editCertificate_submit" class="d-flex flex-column gap-2 p-2">
+
+            <div class="d-flex flex-row justify-content-between addCertificate-label">
+              <div class="certificate-name">Certificate Name</div>
+              <div class="certificate-amount">Amount</div>
+              <div></div>
+            </div>
+
+            <div class="d-flex flex-column gap-2 p-2" id="edit_input-content">
+              <!-- input-content -->
+            </div>
+
+            <div class="btn_submit-content">
+              <button type="submit" value="submit" class="btn btn-primary w-100">Submit</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+    
 </body>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"

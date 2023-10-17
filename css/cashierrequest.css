@@ -33,7 +33,6 @@ ul {
   flex-direction: column;
   gap: 10px;
 }
-
 .header-rate{
   background-color: rgb(174, 174, 243);
 }
@@ -41,6 +40,9 @@ ul {
   padding: 10px;
   border-radius: 5px/5px;
   box-shadow: 0 1px 1px 1px #616161;
+}
+#certificate_show{
+  cursor: pointer;
 }
 #input-content{
   height: inherit;

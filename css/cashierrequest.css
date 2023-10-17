@@ -27,3 +27,21 @@ ul {
   color: blue;
   font-weight: bold;
 }
+
+.content-rate{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header-rate{
+  background-color: rgb(174, 174, 243);
+}
+.header-rate, .rate-content{
+  padding: 10px;
+  border-radius: 5px/5px;
+  box-shadow: 0 1px 1px 1px #616161;
+}
+#input-content{
+  height: inherit;
+}

@@ -105,7 +105,8 @@ if(($_SESSION['usertype']!="cashier")){
                         <div class="d-flex flex-row justify-content-around btn-category">
                             <div id="non_bago" class="focus-1 fucos-class">NON-BAGO FEE</div>
                             <div id="cash_out" class="focus-2">CASH OUT</div>
-                            <div id="certificate" class="focus-3">CERTIFICATE</div>
+                            <div id="cash_in" class="focus-3">CASH IN</div>
+                            <div id="certificate" class="focus-4">CERTIFICATE</div>
                         </div>
 
                         <div class="d-flex flex-row justify-content-between p-3 w-100 latest-transaction">
@@ -121,23 +122,11 @@ if(($_SESSION['usertype']!="cashier")){
                             </div>
                         </div>
                     </div>
-                    <div class="table-content">
-                        <table class="table table-hover">
-                            <thead id="table_head">
-                                <!-- <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">User ID</th>
-                                    <th scope="col">Activity</th>
-                                    <th scope="col">Amount</th>
-                                </tr> -->
-                            </thead>
-                            <tbody id="table_body">
-                                <!-- table row -->
-                            </tbody>
-                        </table>
+
+                    <div class="d-flex flex-column table-content">
+                        
                     </div>
+
                 </div>
             </div>
             <div class="col-4 total-collection">

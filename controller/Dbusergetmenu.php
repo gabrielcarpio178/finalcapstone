@@ -22,7 +22,7 @@ if(!empty($category)){
 <?php do{ ?>
 <div class="col-4 col-sm-3 col-lg-2">
     <div class="menu-purchase text-center" id="<?="category".$category['category_id']; ?>" onclick="getproduct(<?=$category['category_id']; ?>, <?=$id ?>)">
-       <?=$category['category_name']; ?>
+        <?=$category['category_name']; ?>
     </div>                            
 </div> 
 <?php }while($category = mysqli_fetch_array($querycategory)); }else{ ?>

@@ -1,35 +1,17 @@
+let categories = 'Non Bago Fee';
 $(document).ready(function(){
     $("#nav").load("cashiernav.php");
     getdate();
     displaydata();
-
-    let table_head = `
-    <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Reference #</th>
-        <th scope="col">Name</th>
-        <th scope="col">Student ID</th>
-        <th scope="col">Amount</th>
-    </tr>`;
-    let categories = 'Non Bago Fee';
     let i;
-    displayTable('all', 'Non Bago Fee');
+    displayTable('all', 'Non Bago Fee', 0);
     $(".btn-category #non_bago").on("click", function () {
         $("#sortBy").attr('disabled', 'disabled');
         $(this).addClass("fucos-class");
         $(".focus-" + i).removeClass("fucos-class");
-        table_head = `
-        <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Reference #</th>
-            <th scope="col">Name</th>
-            <th scope="col">Student ID</th>
-            <th scope="col">Amount</th>
-        </tr>`;
         i = 1;
         categories = 'Non Bago Fee';
-        displayTable('all', 'Non Bago Fee');
-        table_head_row(table_head);
+        displayTable('all', 'Non Bago Fee', 0);
     });
 
     $("#cash_out").on("click", function () {
@@ -37,18 +19,19 @@ $(document).ready(function(){
         $(this).addClass("fucos-class"); 
         $(".focus-1").removeClass("fucos-class");
         $(".focus-" + i).removeClass("fucos-class");
-        table_head = `
-        <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Name</th>
-            <th scope="col">Reference #</th>
-            <th scope="col">Amount</th>
-        </tr>`;
         i = 2;
         categories = 'cash_out';
-        displayTable('all', 'cash_out');
-        table_head_row(table_head);
+        displayTable('all', 'cash_out', 0);
+    });
+
+    $("#cash_in").on("click", function () {
+        $("#sortBy").attr('disabled', 'disabled');
+        $(this).addClass("fucos-class"); 
+        $(".focus-1").removeClass("fucos-class");
+        $(".focus-" + i).removeClass("fucos-class");
+        i = 3;
+        categories = 'cash_in';
+        displayTable('all', 'cash_in', 0);
     });
 
     $("#certificate").on("click", function () {
@@ -64,19 +47,18 @@ $(document).ready(function(){
             <th scope="col">Type of Certificate</th>
             <th scope="col">Amount</th>
         </tr>`;
-        i = 3;
+        i = 4;
         categories = 'Certificate Of Enrollment';
-        displayTable('all', 'Certificate Of Enrollment');
-        table_head_row(table_head);
+        displayTable('all', 'Certificate Of Enrollment', 0);
     });
 
     $(".txt, #sortBy, .checkbox").each(function() {
         $(this).change(function(){
             sortBy = $(this).val();
-            displayTable(sortBy, categories);
+            displayTable(sortBy, categories, 0);
         }); 
     });
-    table_head_row(table_head);
+    
     
 });
 
@@ -206,22 +188,22 @@ function graph(non_bago, cert, cashin){
 
 }
 
-function table_head_row(table_head){
-    $("#table_head").html(table_head);
+function page(num){
+    displayTable('all', categories, num);
 }
 
-function displayTable(sortBy, category){
+function displayTable(sortBy, category, num){
     $.ajax({
         url: '../../controller/DbcashiercollectionTable.php',
         type: 'POST',
         data: {
             sortBy : sortBy,
-            category : category
+            category : category,
+            num_page : num
         },
         cache: false,
         success: function(res){
-            // var non_bago = JSON.parse(res);
-            console.log(res);
+            $(".table-content").html(res);
         }
     });
 }

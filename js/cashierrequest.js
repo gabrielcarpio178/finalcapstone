@@ -24,8 +24,29 @@ $(document).ready(function () {
     i = 3;
     displayTable('certificate', 0);
   });
-
+  addCertificateRow();
 });
+let i = 0;
+function addCertificateRow(){
+  input = 
+  `
+  <div class="d-flex flex-row justify-content-between align-items-center gap-3 w-100">
+    <input type="text" name="category_name[]" id="category_name" class="form-control">
+    <input type="number" name="category_amount[]" id="category_amount" class="form-control">
+    <input class="btn btn-danger w-25 remove" value="&#10006;" id="remove_row_${i}" onclick="removeRow(${i})">
+  </div>
+  `;
+  $("#input-content").append(input);
+  i++;
+}
+
+function removeRow(y){
+  if(($(`.remove`).length)!=1){
+    $(`#input-content > div > #remove_row_${y}`).parent().children().remove();
+    i--;
+  }
+  
+}
 
 function displayTable(content, num_page){
   $.ajax({

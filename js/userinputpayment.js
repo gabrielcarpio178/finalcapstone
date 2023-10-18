@@ -9,23 +9,27 @@ $(document).ready(function(){
       cert_e_form();
     });
 
-    let i = false;
-    $("#show_certificate").on('click', function(){
-      if(i==false){
-        $("#available_display").removeAttr('style');
-        i=true;
-      }else{
-        $("#available_display").attr('style', 'display: none !important;');
-        i=false;
-      }
-    });
-
+    show_cert(false);
     $("#cert_t").on('click', function(){
       cert_t_form();
       cert_e_form();
     });
     $(".success-message").hide();
 });
+function show_cert(x){
+  let i = x;
+  $("#show_certificate").on('click', function(){
+    if(i==false){
+      $("#available_display").removeAttr('style');
+      $(this).html('<i class="fa-solid fa-angle-up icon-font"></i>');
+      i=true;
+    }else{
+      $("#available_display").attr('style', 'display: none !important;');
+      $(this).html('<i class="fa-solid fa-angle-down icon-font"></i>');
+      i=false;
+    }
+  });
+}
 
 function non_bago_form(){
   $(".forms-method").css('background-color','rgba(0, 174, 255, 0.253)');
@@ -57,6 +61,8 @@ function non_bago_form(){
 }
 
 function cert_e_form(){
+  var user_id = $("#user_id").val();
+  var balance = $("#available_balance").val();
   $.ajax({
     url:'../../controller/Dbuserinputpayment_categories.php',
     type: 'POST',
@@ -83,17 +89,22 @@ function cert_e_form(){
       var content_3_num = content_3_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_3_parts[1] ? "." + content_3_parts[1] : "");
       $(".category_2").text((categories[1]).cashierRatesCertificate);
       $(".price_2").text(`₱ ${content_3_num}`);
-
+      submit_non_bago(balance, (categories[0]).cashierRatesCertificate, user_id, (categories[0]).cashierRates_amount);
+      submit_cert_t(balance, (categories[1]).cashierRatesCertificate,  user_id, (categories[1]).cashierRates_amount);
     }
   })
 }
 function cert(cashierRates_amount, cashierRatesCertificate){
+  show_cert(false);
+  $("#available_display").attr('style', 'display: none !important;');
+  var user_id = $("#user_id").val();
+  var balance = $("#available_balance").val();
   $(".forms-method").css('background-color','rgba(247, 0, 255, 0.253)');
   $(".sumbit_password").css('background-color','rgba(247, 0, 255, 0.253)');
   $("#input").val("");
   var content = `${cashierRates_amount}.00`;
-      var content_parts = content.toString().split(".");
-      var content_num = content_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_parts[1] ? "." + content_parts[1] : "");
+  var content_parts = content.toString().split(".");
+  var content_num = content_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_parts[1] ? "." + content_parts[1] : "");
   htmlform = `
       <div class="d-flex flex-column label-form">
         <b>Certificate</b>
@@ -121,6 +132,7 @@ function cert(cashierRates_amount, cashierRatesCertificate){
   $(".forms-method").fadeIn().show();
   $(".success-message").fadeOut().hide();
   $("#input").val("");
+  submit_cert_e(balance, cashierRatesCertificate, user_id, cashierRates_amount);
 }
 function cert_t_form(){
   $(".forms-method").css('background-color','rgba(255, 0, 55, 0.253)');
@@ -177,15 +189,13 @@ function getbalance(){
       var parts = amount.toString().split(".");
       var num = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
       $("#walllet_balance").html(`₱${num}`);
-      submit_non_bago(res, user_id);
-      submit_cert_e(res, user_id);
-      submit_cert_t(res, user_id);
+      $("#available_balance").val(res);
     }
   });
 
 }
 
-function submit_non_bago(res, user_id){
+function submit_non_bago(res, non_bago_category ,user_id, amount){
   $("#non_bago-submit").on('submit', function(e){
     e.preventDefault();
     var input_non_bago = $("#input").val();
@@ -205,12 +215,20 @@ function submit_non_bago(res, user_id){
         showConfirmButton: false,
         timer: 1000
       });
+    }else if(parseInt(amount)!=parseInt(input_non_bago)){
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Incorrect Amount Entered.',
+        showConfirmButton: false,
+        timer: 1000
+      });
     }else{
-      inputpassword(input_non_bago, 'Non Bago Fee', user_id);
+      inputpassword(input_non_bago, non_bago_category, user_id);
     }
   });
 }
-function submit_cert_e(res, user_id){  
+function submit_cert_e(res, cert, user_id, amount){  
   $("#cert_e-submit").on('submit', function(e){
     e.preventDefault();
     var input_cert_e = $("#input").val();
@@ -222,7 +240,16 @@ function submit_cert_e(res, user_id){
         showConfirmButton: false,
         timer: 1000
       });
-    }else if(input_cert_e.length==0||input_cert_e==""){
+    }else if(parseInt(amount)!=parseInt(input_cert_e)){
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Incorrect Amount Entered.',
+        showConfirmButton: false,
+        timer: 1000
+      });
+    }
+    else if(input_cert_e.length==0||input_cert_e==""){
       Swal.fire({
         position: 'center',
         icon: 'warning',
@@ -231,12 +258,12 @@ function submit_cert_e(res, user_id){
         timer: 1000
       });
     }else{
-      inputpassword(input_cert_e, 'Certificate of Enrollment', user_id);
+      inputpassword(input_cert_e, cert, user_id);
     }
   });
 }
 
-function submit_cert_t(res, user_id){
+function submit_cert_t(res, torFee, user_id, amount){
   $("#cert_t-submit").on('submit', function(e){
     e.preventDefault();
     var input_cert_t = $("#input").val();
@@ -256,8 +283,16 @@ function submit_cert_t(res, user_id){
         showConfirmButton: false,
         timer: 1000
       });
+    }else if(parseInt(amount)!=parseInt(input_cert_t)){
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Incorrect Amount Entered.',
+        showConfirmButton: false,
+        timer: 1000
+      });
     }else{
-      inputpassword(input_cert_t, 'Certificate  of Transfers', user_id);
+      inputpassword(input_cert_t, torFee, user_id);
     }
   });
 }
@@ -271,7 +306,7 @@ function inputpassword(input_amount, type_payment, user_id){
               <input type="password" id="password_input" class="form-control input-class">
               <div class="eye-icon"><i class="fa-solid fa-eye-slash"></i></div>
           </div>
-          <button type="submit" id="submit_password" class="btn btn-primary">Send</button>
+          <button type="submit" id="submit_password" class="btn btn-primary mt-4">Send</button>
       </form>`;
       $(".sumbit_password").html(passwordform);
   $(".forms-method").fadeOut().hide();
@@ -300,6 +335,7 @@ function inputpassword(input_amount, type_payment, user_id){
         },
         cache: false,
         success: function(res){
+          console.log(res);
           if(res=='success'){
             input_insertedData(input_amount, type_payment);
           }else{

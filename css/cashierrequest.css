@@ -19,7 +19,8 @@ ul {
 
 #non_bago,
 #cash_out,
-#certificate {
+#certificate,
+#tor {
   cursor: pointer;
 }
 

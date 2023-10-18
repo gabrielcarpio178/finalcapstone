@@ -9,11 +9,19 @@ $(document).ready(function () {
     displayTable('non_bago_table', 0);
   });
 
-  $("#cash_out").on("click", function () {
+  $("#tor").on("click", function () {
     $(this).addClass("fucos-class"); 
     $(".focus-1").removeClass("fucos-class");
     $(".focus-" + i).removeClass("fucos-class");
     i = 2;
+    displayTable('tor', 0);
+  });
+
+  $("#cash_out").on("click", function () {
+    $(this).addClass("fucos-class"); 
+    $(".focus-1").removeClass("fucos-class");
+    $(".focus-" + i).removeClass("fucos-class");
+    i = 3;
     displayTable('cashout_out_table', 0);
   });
 
@@ -21,7 +29,7 @@ $(document).ready(function () {
     $(this).addClass("fucos-class"); 
     $(".focus-1").removeClass("fucos-class");
     $(".focus-" + i).removeClass("fucos-class");
-    i = 3;
+    i = 4;
     displayTable('certificate', 0);
   });
 

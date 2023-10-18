@@ -32,8 +32,9 @@ if(($_SESSION['usertype']!="cashier")){
           </div>
           <div class="d-flex flex-row justify-content-around align-self-center content-header">
               <div id="non_bago" class="focus-1 fucos-class">NON-BAGO FEE</div>
-              <div id="cash_out" class="focus-2">CASH OUT</div>
-              <div id="certificate" class="focus-3">CERTIFICATE</div>
+              <div id="tor" class="focus-2">TOR</div>
+              <div id="cash_out" class="focus-3">CASH OUT</div>
+              <div id="certificate" class="focus-4">CERTIFICATE</div>
           </div>
 
           <div class="table-content">

@@ -75,7 +75,7 @@ $id = $_SESSION['id'];
                 </div>
 
             </div>
-
+            <input type="hidden" id="available_balance">
             <div class="forms-method">
                 
             </div>

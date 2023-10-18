@@ -116,6 +116,7 @@ ul li:hover {
     padding-right: 10px;
     font-size: 1.5em;
     height: 10vh;
+    width: 100%;
   }
   .header .profile {
     display: flex;
@@ -134,7 +135,7 @@ ul li:hover {
   }
   .sidebar {
     width: 250px;
-    height: 100vh;
+    height: 110vh;
   }
   .label {
     display: block;

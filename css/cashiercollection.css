@@ -3,7 +3,7 @@
 } */
 .containder-fluid {
   position: absolute;
-  inset: 0px 0px 0px 300px;
+  inset: 0px 0px 0px 260px;
 }
 .content {
   padding-top: 80px;
@@ -168,4 +168,10 @@
 }
 .total-collection-label .time-two {
   font-size: 15 px;
+}
+.total-collection{
+  height: 110vh;
+}
+table tbody tr td{
+  white-space: nowrap;
 }

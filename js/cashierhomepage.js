@@ -4,6 +4,10 @@ $(document).ready(function () {
   $("#collection-div").on('click',function(){
     window.location = "cashiercollection.php";
   });
+
+  $("#cashin").on('click',function(){
+    window.location = "cashiercashin.php";
+  });
   
   getdataGraph()
   request();

@@ -22,10 +22,10 @@ if(isset($_POST['cashier'])){
         while($payment = mysqli_fetch_assoc($payment_sql)){
             if($payment['payment_type'] == 'Non Bago Fee'){
                 $payment_nonBago = $payment['total_payment'];
-            }elseif($payment['payment_type'] == 'Certificate  of Transfers'){
+            }elseif($payment['payment_type'] == 'Transcript of Record'){
                 $cert_t = $payment['total_payment'];
             }else{
-                $cert = $payment['total_payment'];
+                $cert += $payment['total_payment'];
             }
             $payment_sum += $payment['total_payment'];
         }

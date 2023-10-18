@@ -1,41 +1,57 @@
 let categories = 'Non Bago Fee';
 $(document).ready(function(){
     $("#nav").load("cashiernav.php");
+    $("#sortBy").hide();
     getdate();
     displaydata();
+    displaySortBy();
     let i;
     displayTable('all', 'Non Bago Fee', 0);
     $(".btn-category #non_bago").on("click", function () {
-        $("#sortBy").attr('disabled', 'disabled');
+        $("#sortBy").hide();
         $(this).addClass("fucos-class");
         $(".focus-" + i).removeClass("fucos-class");
         i = 1;
         categories = 'Non Bago Fee';
         displayTable('all', 'Non Bago Fee', 0);
+        displaySortBy();
     });
 
-    $("#cash_out").on("click", function () {
-        $("#sortBy").attr('disabled', 'disabled');
+    $("#tor").on("click", function () {
+        $("#sortBy").hide();
         $(this).addClass("fucos-class"); 
         $(".focus-1").removeClass("fucos-class");
         $(".focus-" + i).removeClass("fucos-class");
         i = 2;
         categories = 'cash_out';
-        displayTable('all', 'cash_out', 0);
+        displayTable('all', 'tor', 0);
+        displaySortBy();
     });
 
-    $("#cash_in").on("click", function () {
-        $("#sortBy").attr('disabled', 'disabled');
+    $("#cash_out").on("click", function () {
+        $("#sortBy").hide();
         $(this).addClass("fucos-class"); 
         $(".focus-1").removeClass("fucos-class");
         $(".focus-" + i).removeClass("fucos-class");
         i = 3;
+        categories = 'cash_out';
+        displayTable('all', 'cash_out', 0);
+        displaySortBy();
+    });
+
+    $("#cash_in").on("click", function () {
+        $("#sortBy").hide();
+        $(this).addClass("fucos-class"); 
+        $(".focus-1").removeClass("fucos-class");
+        $(".focus-" + i).removeClass("fucos-class");
+        i = 4;
         categories = 'cash_in';
         displayTable('all', 'cash_in', 0);
+        displaySortBy();
     });
 
     $("#certificate").on("click", function () {
-        $("#sortBy").removeAttr('disabled');
+        $("#sortBy").show();
         $(this).addClass("fucos-class"); 
         $(".focus-1").removeClass("fucos-class");
         $(".focus-" + i).removeClass("fucos-class");
@@ -47,9 +63,10 @@ $(document).ready(function(){
             <th scope="col">Type of Certificate</th>
             <th scope="col">Amount</th>
         </tr>`;
-        i = 4;
-        categories = 'Certificate Of Enrollment';
-        displayTable('all', 'Certificate Of Enrollment', 0);
+        i = 5;
+        categories = 'Certificate';
+        displayTable('all', 'Certificate', 0);
+        displaySortBy();
     });
 
     $(".txt, #sortBy, .checkbox").each(function() {
@@ -158,6 +175,31 @@ function displayTable(sortBy, category, num){
         cache: false,
         success: function(res){
             $(".table-content").html(res);
+        }
+    });
+}
+
+function displaySortBy(){
+    $.ajax({
+        url: '../../controller/DbcashiercollectionSortBy.php',
+        type: 'POST',
+        data: {
+            sortBy : 'sortBy',
+        },
+        cache: false,
+        success: function(res){
+            var sortData = JSON.parse(res);
+            sortHtml = `
+            <option disabled selected>Sort By</option>
+            <option value="all">All</option>
+            `;
+            for(let i=0;i<sortData.length;i++){
+                sortHtml += `
+                <option value="${(sortData[i]).cashierRatesCertificate}">
+                    ${(sortData[i]).cashierRatesCertificate}
+                </option>`;
+            }
+            $("#sortBy").html(sortHtml);
         }
     });
 }

@@ -95,9 +95,10 @@ if(($_SESSION['usertype']!="cashier")){
 
                         <div class="d-flex flex-row justify-content-around mt-3 btn-category">
                             <div id="non_bago" class="focus-1 fucos-class">NON-BAGO FEE</div>
-                            <div id="cash_out" class="focus-2">CASH OUT</div>
-                            <div id="cash_in" class="focus-3">CASH IN</div>
-                            <div id="certificate" class="focus-4">CERTIFICATE</div>
+                            <div id="tor" class="focus-2">TOR</div>
+                            <div id="cash_out" class="focus-3">CASH OUT</div>
+                            <div id="cash_in" class="focus-4">CASH IN</div>
+                            <div id="certificate" class="focus-5">CERTIFICATE</div>
                         </div>
 
                         <div class="d-flex flex-row justify-content-between p-3 w-100 latest-transaction">
@@ -105,10 +106,8 @@ if(($_SESSION['usertype']!="cashier")){
                                 Latest Transaction
                             </div>
                             <div class="sort-by w-25">
-                                <select class="form-select form-select-sm " aria-label=".form-select-sm example" id="sortBy" disabled="disabled">
-                                    <option selected disabled>Sort By</option>
-                                    <option value="Certificate of Enrollment">Certificate of Enrollment</option>
-                                    <option value="Certificate  of Transfers">Cert. of Transfer Creditials</option>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="sortBy">
+                                    
                                 </select>
                             </div>
                         </div>
@@ -152,7 +151,7 @@ if(($_SESSION['usertype']!="cashier")){
                     <div class="collection-balance-content p-2">
                         <div class="d-flex flex-row justify-content-between align-items-center total-collection-label">
                             <div class="label-collection-balance">
-                               Cash In Collection
+                                Cash In Collection
                             </div>
                         </div>
 
@@ -190,7 +189,7 @@ if(($_SESSION['usertype']!="cashier")){
                                 <div class="cashOut-collection-color"></div>
                                 <div class="d-flex flex-column">
                                     <div class="cashOut-collection-label">
-                                       Total Amount
+                                        Total Amount
                                     </div>
                                     <div class="cashOut-collection-amount" id="cashOut"></div>
                                 </div>

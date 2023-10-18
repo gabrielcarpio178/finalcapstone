@@ -31,7 +31,7 @@ $id = $_SESSION['id'];
         <input type="hidden" name="user_id" id="user_id" value="<?=$id; ?>">
         <div class="label">
             <div class="label-content">
-                <h1>Input Payment</h1>
+                <h1>Request Payment</h1>
                 <p>Choose Type of Payment Method</p>
             </div>
             <div class="wallet-balance">
@@ -47,13 +47,13 @@ $id = $_SESSION['id'];
                 <div class="payment-method">
                     <div class="payment" id="non_bago">
                         <div class="non-bago-color"></div>
-                        <div>Non-Bago Fee</div>
+                        <div class="category_1"></div>
                     </div>
 
                     <div class="d-flex flex-column cert-data">
                         <div class="payment" id="cert_e">
                             <div class="cert_e-color"></div>
-                            <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-row justify-content-between certificate_content">
                                 <div>Certificate</div>
                                 <div id="show_certificate">
                                     <i class="fa-solid fa-angle-down icon-font"></i>
@@ -63,7 +63,7 @@ $id = $_SESSION['id'];
                         <div class="d-flex flex-row justify-content-between available-certificate w-75" style="display: none !important;" id="available_display">
                             <div></div>
                             <div class="d-flex flex-column justify-content-end text-start certificate-label">
-                                <div class="db-cert">Certificate of Enrollment</div>
+                                
                             </div>
                         </div>
                     </div>

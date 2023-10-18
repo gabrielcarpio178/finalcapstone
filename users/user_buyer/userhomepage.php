@@ -94,7 +94,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                         <div class="d-flex flex-column category" id="inputpayment">
                             <img src="../../image/inputpayment.png" alt="Input payment">
                             <div class="label">
-                                Input Payment
+                                Request Payment
                             </div>                           
                         </div>
                         <div class="d-flex flex-column category" id="purchase">

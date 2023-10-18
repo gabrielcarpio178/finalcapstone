@@ -17,18 +17,20 @@
 
 .payment{
     box-shadow: 0 1px 1px 1px #616161; 
-    padding: 25px;
     width: 75%;
-    position: relative;
     white-space: nowrap;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.certificate_content{
+    width: 90%;
 }
 .non-bago-color, .cert_e-color, .cert_t-color{
-    position: absolute;  
     width: 20px;
     height: 75px;
-    top: 0px;
-    left: 0px;
 }
 .non-bago-color{
     background-color: rgba(0, 174, 255, 0.253);
@@ -52,7 +54,6 @@
 .insert_amount, .insert_password{
     display: flex;
     flex-direction: column;
-    gap: 20px;
     justify-content: center;
     height: 100vh;
 }

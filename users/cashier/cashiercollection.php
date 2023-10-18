@@ -77,7 +77,7 @@ if(($_SESSION['usertype']!="cashier")){
                                 <div class="color-content" id="content_2"></div>
                                 <div class="data-label">
                                     <div class="category">
-                                        Certifications
+                                        Certificate
                                     </div>
                                     <div class="data-amount" id="cert"></div>
                                 </div>
@@ -86,14 +86,14 @@ if(($_SESSION['usertype']!="cashier")){
                                 <div class="color-content" id="content_3"></div>
                                 <div class="data-label">
                                     <div class="category">
-                                        Cert. of Transfer Creditials
+                                        Transcript of Records
                                     </div>
                                     <div class="data-amount" id="cert_t"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="d-flex flex-row justify-content-around btn-category">
+                        <div class="d-flex flex-row justify-content-around mt-3 btn-category">
                             <div id="non_bago" class="focus-1 fucos-class">NON-BAGO FEE</div>
                             <div id="cash_out" class="focus-2">CASH OUT</div>
                             <div id="cash_in" class="focus-3">CASH IN</div>
@@ -149,10 +149,10 @@ if(($_SESSION['usertype']!="cashier")){
                     </div>
                     <hr>
 
-                    <div class="collection-balance-content p-3">
+                    <div class="collection-balance-content p-2">
                         <div class="d-flex flex-row justify-content-between align-items-center total-collection-label">
                             <div class="label-collection-balance">
-                                Cash In Balance
+                               Cash In Collection
                             </div>
                         </div>
 
@@ -162,7 +162,7 @@ if(($_SESSION['usertype']!="cashier")){
                                 <div class="cashIn-collection-color"></div>
                                 <div class="d-flex flex-column">
                                     <div class="cashIn-collection-label">
-                                        Cash In Collection
+                                        Balance
                                     </div>
                                     <div class="cashIn-collection-amount">
                                         
@@ -178,7 +178,7 @@ if(($_SESSION['usertype']!="cashier")){
 
                         <div class="d-flex flex-column total-collection-label">
                             <div class="cashOut-label fw-bold">
-                                Daily Cash Out
+                                Cash Out Balance
                             </div>
                             <div class="d-flex flex-row gap-2 time-two">
                                 <div class="current">Today</div>
@@ -190,7 +190,7 @@ if(($_SESSION['usertype']!="cashier")){
                                 <div class="cashOut-collection-color"></div>
                                 <div class="d-flex flex-column">
                                     <div class="cashOut-collection-label">
-                                        Daily Cash Out
+                                       Total Amount
                                     </div>
                                     <div class="cashOut-collection-amount" id="cashOut"></div>
                                 </div>

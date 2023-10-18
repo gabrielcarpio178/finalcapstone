@@ -6,6 +6,7 @@ $(document).ready(function(){
     cert_e_form();
     $("#non_bago").on('click', function(){
       non_bago_form();
+      cert_e_form();
     });
 
     let i = false;
@@ -21,6 +22,7 @@ $(document).ready(function(){
 
     $("#cert_t").on('click', function(){
       cert_t_form();
+      cert_e_form();
     });
     $(".success-message").hide();
 });
@@ -31,14 +33,18 @@ function non_bago_form(){
   $("#input").val("");
   
   htmlform = `
-      <div class="label-form"><b>Non-Bago Fee</b></div>
+      <div class="label-form"><b class="category_1"></b></div>
       <form class="insert_amount" id="">
         <label for="Input">Enter Amount</label>
         <div class="group">
-            <div class="sign-peso">₱</div>
-            <input type="number" id="input" class="form-control input-class">
+          <div class="sign-peso">₱</div>
+          <input type="number" id="input" class="form-control input-class">
         </div>
-        <button type="submit" id="submit_amount" class="btn btn-primary">Send</button>
+        <div class="d-flex flex-row align-self-end gap-2">
+          <div>Exp: </div>
+          <div class="price_1"></div>
+        </div>
+        <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
       </form>`
   $(".forms-method").html(htmlform);
   $(".forms-method").fadeIn().show();
@@ -57,46 +63,82 @@ function cert_e_form(){
     data: {user: 'user'},
     cache: false,
     success: function(res){
-      console.log(res);
+      var categories = JSON.parse(res);
+      //content_1
+      var content_1 = `${(categories[0]).cashierRates_amount}.00`;
+      var content_1_parts = content_1.toString().split(".");
+      var content_1_num = content_1_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_1_parts[1] ? "." + content_1_parts[1] : "");
+      $(".category_1").text((categories[0]).cashierRatesCertificate);
+      $(".price_1").text(`₱ ${content_1_num}`);
+      //content_2
+      db_cert = '';
+      for(let x = 2; x<categories.length; x++){
+        db_cert += `<div class="db-cert" onclick="cert('${(categories[x]).cashierRates_amount}','${(categories[x]).cashierRatesCertificate}')">${(categories[x]).cashierRatesCertificate}</div>
+        <hr>`;
+      }
+      $(".certificate-label").html(db_cert);
+      //content_3
+      var content_3 = `${(categories[1]).cashierRates_amount}.00`;
+      var content_3_parts = content_3.toString().split(".");
+      var content_3_num = content_3_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_3_parts[1] ? "." + content_3_parts[1] : "");
+      $(".category_2").text((categories[1]).cashierRatesCertificate);
+      $(".price_2").text(`₱ ${content_3_num}`);
+
     }
   })
-  // $(".forms-method").css('background-color','rgba(247, 0, 255, 0.253)');
-  // $(".sumbit_password").css('background-color','rgba(247, 0, 255, 0.253)');
-  // $("#input").val("");
-  // htmlform = `
-  //     <div class="label-form"><b>Certificate</b></div>
-  //     <form class="insert_amount">
-  //       <label for="Input">Enter Amount</label>
-  //       <div class="group">
-  //           <div class="sign-peso">₱</div>
-  //           <input type="number" id="input" class="form-control input-class">
-  //       </div>
-  //       <button type="submit" id="submit_amount" class="btn btn-primary">Send</button>
-  //     </form>`;
-  
-  // $(".forms-method").html(htmlform);
-  // $(".forms-method").fadeIn().show();
-  // $(".sumbit_password").fadeOut().hide();
-  // $(".forms-method .insert_amount").attr('id','cert_e-submit');
-  // getbalance();
-  // $(".forms-method").fadeIn().show();
-  // $(".success-message").fadeOut().hide();
-  // $("#input").val("");
 }
-
-function cert_t_form(){
-  $(".forms-method").css('background-color','rgba(255, 0, 55, 0.253)');
-  $(".sumbit_password").css('background-color','rgba(255, 0, 55, 0.253)');
+function cert(cashierRates_amount, cashierRatesCertificate){
+  $(".forms-method").css('background-color','rgba(247, 0, 255, 0.253)');
+  $(".sumbit_password").css('background-color','rgba(247, 0, 255, 0.253)');
   $("#input").val("");
+  var content = `${cashierRates_amount}.00`;
+      var content_parts = content.toString().split(".");
+      var content_num = content_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_parts[1] ? "." + content_parts[1] : "");
   htmlform = `
-      <div class="label-form"><b>Transcript Of Record</b></div>
+      <div class="d-flex flex-column label-form">
+        <b>Certificate</b>
+        <div>${cashierRatesCertificate}</div>
+      </div>
       <form class="insert_amount">
         <label for="Input">Enter Amount</label>
         <div class="group">
             <div class="sign-peso">₱</div>
             <input type="number" id="input" class="form-control input-class">
         </div>
-        <button type="submit" id="submit_amount" class="btn btn-primary">Send</button>
+
+        <div class="d-flex flex-row align-self-end gap-2">
+          <div>Exp: </div>
+          <div class="price_3">₱ ${content_num}</div>
+        </div>
+        <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
+      </form>`;
+  
+  $(".forms-method").html(htmlform);
+  $(".forms-method").fadeIn().show();
+  $(".sumbit_password").fadeOut().hide();
+  $(".forms-method .insert_amount").attr('id','cert_e-submit');
+  getbalance();
+  $(".forms-method").fadeIn().show();
+  $(".success-message").fadeOut().hide();
+  $("#input").val("");
+}
+function cert_t_form(){
+  $(".forms-method").css('background-color','rgba(255, 0, 55, 0.253)');
+  $(".sumbit_password").css('background-color','rgba(255, 0, 55, 0.253)');
+  $("#input").val("");
+  htmlform = `
+      <div class="label-form"><b class="category_2"></b></div>
+      <form class="insert_amount">
+        <label for="Input">Enter Amount</label>
+        <div class="group">
+            <div class="sign-peso">₱</div>
+            <input type="number" id="input" class="form-control input-class">
+        </div>
+        <div class="d-flex flex-row align-self-end gap-2">
+          <div>Exp: </div>
+          <div class="price_2"></div>
+        </div>
+        <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
       </form>`
   $(".forms-method").html(htmlform);
   $(".forms-method").fadeIn().show();

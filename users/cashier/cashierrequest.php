@@ -85,7 +85,7 @@ if(($_SESSION['usertype']!="cashier")){
               </div>
 
               <div class="d-flex flex-row justify-content-between rate-content">
-                <div class="rate-label">Certificate of Transfer Credentials</div>
+                <div class="rate-label">Transcript of Record</div>
                 <div class="rate-label" id="certTCre"></div>
               </div>
 

@@ -48,7 +48,7 @@ function cert_e_form(){
   $(".sumbit_password").css('background-color','rgba(247, 0, 255, 0.253)');
   $("#input").val("");
   htmlform = `
-      <div class="label-form"><b>Certificate of Enrollment</b></div>
+      <div class="label-form"><b>Certificate</b></div>
       <form class="insert_amount">
         <label for="Input">Enter Amount</label>
         <div class="group">
@@ -72,7 +72,7 @@ function cert_t_form(){
   $(".sumbit_password").css('background-color','rgba(255, 0, 55, 0.253)');
   $("#input").val("");
   htmlform = `
-      <div class="label-form"><b>Certificate of Transfer Crendentials</b></div>
+      <div class="label-form"><b>Transcript Of Record</b></div>
       <form class="insert_amount">
         <label for="Input">Enter Amount</label>
         <div class="group">

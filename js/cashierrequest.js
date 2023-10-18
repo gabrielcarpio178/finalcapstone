@@ -136,7 +136,7 @@ function editRate(result){
   </div>
   <div class="d-flex flex-row justify-content-between align-items-center gap-3 w-100">
     <input type="hidden" name="category_id[]" class="form-control category_amount" value="${(result[1]).cashierRates_id}">
-    <input type="text" name="category_name[]" class="form-control category_name" readonly value="Certificate of Transfer Credentials">
+    <input type="text" name="category_name[]" class="form-control category_name" readonly value="Transcript of Record">
     <input type="number" name="category_amount[]" class="form-control category_amount" value="${(result[1]).cashierRates_amount}">
   </div>
   `;

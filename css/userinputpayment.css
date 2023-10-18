@@ -132,7 +132,11 @@
     justify-content: center;
     border: 2px solid rgb(199, 185, 185);
 }
-
+.icon-font{
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
 .amount-peso{
     font-size: 25px;
     font-weight: bold;
@@ -160,6 +164,17 @@
 }
 .btn-ok{
     width: 100%;
+}
+.cert-data{
+    position: relative;
+}
+.certificate-label{
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 1px 1px 1px #616161;
+    font-size: 18px;
+    padding: 10px;
+    left: 40%;
 }
 @media screen and (min-width: 320px) {
     .content-info {

@@ -49,13 +49,28 @@ $id = $_SESSION['id'];
                         <div class="non-bago-color"></div>
                         <div>Non-Bago Fee</div>
                     </div>
-                    <div class="payment" id="cert_e">
-                        <div class="cert_e-color"></div>
-                        <div>Certificate of Enrollment</div>               
+
+                    <div class="d-flex flex-column cert-data">
+                        <div class="payment" id="cert_e">
+                            <div class="cert_e-color"></div>
+                            <div class="d-flex flex-row justify-content-between">
+                                <div>Certificate</div>
+                                <div id="show_certificate">
+                                    <i class="fa-solid fa-angle-down icon-font"></i>
+                                </div>
+                            </div>               
+                        </div>
+                        <div class="d-flex flex-row justify-content-between available-certificate w-75">
+                            <div></div>
+                            <div class="d-flex flex-column justify-content-end text-start certificate-label">
+                                <div class="db-cert">Certificate of Enrollment</div>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="payment" id="cert_t">
                         <div class="cert_t-color"></div>
-                        <div>Certificate of Transfer Crendentials</div>
+                        <div>Transcript Of Record</div>
                     </div>
                 </div>
 

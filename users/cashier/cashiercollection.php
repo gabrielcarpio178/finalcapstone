@@ -77,7 +77,7 @@ if(($_SESSION['usertype']!="cashier")){
                                 <div class="color-content" id="content_2"></div>
                                 <div class="data-label">
                                     <div class="category">
-                                        Certificate
+                                        Certifications
                                     </div>
                                     <div class="data-amount" id="cert"></div>
                                 </div>
@@ -178,7 +178,7 @@ if(($_SESSION['usertype']!="cashier")){
 
                         <div class="d-flex flex-column total-collection-label">
                             <div class="cashOut-label fw-bold">
-                                Cash Out Balance
+                                Daily Cash Out
                             </div>
                             <div class="d-flex flex-row gap-2 time-two">
                                 <div class="current">Today</div>

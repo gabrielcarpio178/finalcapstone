@@ -176,12 +176,16 @@ if(($_SESSION['usertype']!="cashier")){
                     <hr>
                     <div class="cashout-data p-3"> 
 
-                        <div class="d-flex flex-row justify-content-between align-items-center total-collection-label">
+                        <div class="d-flex flex-column total-collection-label">
                             <div class="cashOut-label fw-bold">
                                 Cash Out Balance
                             </div>
+                            <div class="d-flex flex-row gap-2 time-two">
+                                <div class="current">Today</div>
+                                <div class="today"></div>
+                            </div>
                         </div>
-                        <div class="d-flex flex-column gap-2">
+                        <div class="d-flex flex-column gap-2 mt-1">
                             <div class="d-flex flex-row align-items-center gap-2 cashOut-collection">
                                 <div class="cashOut-collection-color"></div>
                                 <div class="d-flex flex-column">

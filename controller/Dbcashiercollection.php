@@ -66,7 +66,7 @@ if(isset($_POST['cashier'])){
     } catch (\Throwable $th) {
         echo $th;
     }
-    $datas = array('cashin'=>$cashin_data, 'payment_nonBago'=>$payment_nonBago, 'cert_t'=>$cert_t, 'cert'=>$cert, 'payment_sum'=>$payment_sum, 'cashout'=>$cashOut,  "total_payment"=>$total_payment, "collection_cashin"=>$collection_cashin);
+    $datas = array('cashin'=>$cashin_data, 'payment_nonBago'=>$payment_nonBago, 'cert_t'=>$cert_t, 'cert'=>$cert, 'payment_sum'=>$payment_sum, 'cashout'=>$cashOut, "collection_cashin"=>$collection_cashin);
     print_r(json_encode($datas));
 }
 ?>

@@ -174,7 +174,7 @@ function sumbit_amount(user_id){
                 background: 'rgb(150, 150, 236)',
                 cancelButtonColor: '#5cb85c',
                 confirmButtonText: 'Send now'
-          }).then((result) => {
+            }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
                     url: '../../controller/Dbcashierinsent_amount.php',

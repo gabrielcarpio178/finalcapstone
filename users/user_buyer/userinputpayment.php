@@ -62,6 +62,7 @@ $id = $_SESSION['id'];
             </div>
 
             <div class="forms-method">
+                
             </div>
 
             <div class="sumbit_password">

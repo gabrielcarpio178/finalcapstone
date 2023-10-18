@@ -88,9 +88,6 @@
 #content_3{
     background-color: rgba(247, 0, 255, 0.253);
 }
-#content_4{
-    background-color: rgb(143, 52, 52);
-}
 
 .content_2{
     padding-top: 25px;
@@ -142,10 +139,13 @@
 .table-content{
     margin: 0px 1rem;
 }
-.school-fee-color, .cashIn-collection-color{
+.cashOut-collection-color, .cashIn-collection-color{
     width: 30px;
     height: 30px;
     border-radius: 2px/2px;
+}
+.cashOut-collection-color{
+    background-color: rgb(143, 52, 52);
 }
 .school-fee-color{
     background-color: rgb(255, 208, 0);
@@ -157,6 +157,9 @@
     font-weight: bold;
     font-size: 17px;
 }
-.school-fee-label ,.cashIn-collection-label, .school-fee-amount, .cashIn-collection-amount{
+.cashIn-collection-label, .cashOut-collection-label, .cashIn-collection-amount, .cashOut-collection-amount{
     font-size: 15px;
+}
+.total-collection-label .time-two{
+    font-size: 15   px;
 }

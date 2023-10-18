@@ -29,7 +29,7 @@ if(($_SESSION['usertype']!="cashier")){
     <div id="nav"></div>
     <div class="containder-fluid">
         <div class="row">
-            <div class="col-8">
+            <div class="col-9">
                 <div class="content">
                     <div class="content-label">
                         Collection
@@ -91,15 +91,6 @@ if(($_SESSION['usertype']!="cashier")){
                                     <div class="data-amount" id="cert_t"></div>
                                 </div>
                             </div>
-                            <div class="data"> 
-                                <div class="color-content" id="content_4"></div>
-                                <div class="data-label">
-                                    <div class="category">
-                                        Cash Out
-                                    </div>
-                                    <div class="data-amount" id="cashOut"></div>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="d-flex flex-row justify-content-around btn-category">
@@ -129,16 +120,18 @@ if(($_SESSION['usertype']!="cashier")){
 
                 </div>
             </div>
-            <div class="col-4 total-collection">
+            <div class="col-3 total-collection">
 
                 <div class="content_2">
                     <div class="d-flex flex-row justify-content-between align-items-center total-collection-label">
-                        <div class="label-collection">
-                            Total Collection
-                        </div>
-                        <div class="d-flex flex-column date-icon">
-                            <div class="current">Today</div>
-                            <div class="today"></div>
+                        <div class="d-flex flex-column">
+                            <div class="label-collection">
+                                Total Collection
+                            </div>
+                            <div class="d-flex flex-row gap-2 time-two">
+                                <div class="current">Today</div>
+                                <div class="today"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="total-collection-amount">
@@ -159,23 +152,12 @@ if(($_SESSION['usertype']!="cashier")){
                     <div class="collection-balance-content p-3">
                         <div class="d-flex flex-row justify-content-between align-items-center total-collection-label">
                             <div class="label-collection-balance">
-                                Collection Balance
+                                Cash In Balance
                             </div>
                         </div>
 
                         <div class="d-flex flex-column gap-2">
 
-                            <div class="d-flex flex-row align-items-center gap-2 school-fee">
-                                <div class="school-fee-color"></div>
-                                <div class="d-flex flex-column">
-                                    <div class="school-fee-label">
-                                        School Fee Collection
-                                    </div>
-                                    <div class="school-fee-amount">
-                                        
-                                    </div>
-                                </div>
-                            </div>
                             <div class="d-flex flex-row align-items-center gap-2 cashIn-collection">
                                 <div class="cashIn-collection-color"></div>
                                 <div class="d-flex flex-column">
@@ -190,12 +172,30 @@ if(($_SESSION['usertype']!="cashier")){
 
                         </div>
                     </div>
-                    
                         
                     <hr>
-                    <div class="graph">
-                        <canvas id="graph_data"></canvas>
+                    <div class="cashout-data p-3"> 
+
+                        <div class="d-flex flex-row justify-content-between align-items-center total-collection-label">
+                            <div class="cashOut-label fw-bold">
+                                Cash Out Balance
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="d-flex flex-row align-items-center gap-2 cashOut-collection">
+                                <div class="cashOut-collection-color"></div>
+                                <div class="d-flex flex-column">
+                                    <div class="cashOut-collection-label">
+                                        Daily Cash Out
+                                    </div>
+                                    <div class="cashOut-collection-amount" id="cashOut"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
                     </div>
+                    
                 </div>
 
             </div>
@@ -209,9 +209,6 @@ if(($_SESSION['usertype']!="cashier")){
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
-<script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 <script src="../../js/cashiercollection.js"></script>
 </html>

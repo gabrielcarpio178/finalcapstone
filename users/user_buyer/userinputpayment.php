@@ -60,7 +60,7 @@ $id = $_SESSION['id'];
                                 </div>
                             </div>               
                         </div>
-                        <div class="d-flex flex-row justify-content-between available-certificate w-75">
+                        <div class="d-flex flex-row justify-content-between available-certificate w-75" style="display: none !important;" id="available_display">
                             <div></div>
                             <div class="d-flex flex-column justify-content-end text-start certificate-label">
                                 <div class="db-cert">Certificate of Enrollment</div>

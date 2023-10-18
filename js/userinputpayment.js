@@ -3,13 +3,20 @@ $(document).ready(function(){
     $(".eye-icon").hide();
     $("#navbar").load("usernav.php");
     non_bago_form();
-    
+    cert_e_form();
     $("#non_bago").on('click', function(){
       non_bago_form();
     });
 
-    $("#cert_e").on('click', function(){
-      cert_e_form();
+    let i = false;
+    $("#show_certificate").on('click', function(){
+      if(i==false){
+        $("#available_display").removeAttr('style');
+        i=true;
+      }else{
+        $("#available_display").attr('style', 'display: none !important;');
+        i=false;
+      }
     });
 
     $("#cert_t").on('click', function(){
@@ -44,27 +51,37 @@ function non_bago_form(){
 }
 
 function cert_e_form(){
-  $(".forms-method").css('background-color','rgba(247, 0, 255, 0.253)');
-  $(".sumbit_password").css('background-color','rgba(247, 0, 255, 0.253)');
-  $("#input").val("");
-  htmlform = `
-      <div class="label-form"><b>Certificate</b></div>
-      <form class="insert_amount">
-        <label for="Input">Enter Amount</label>
-        <div class="group">
-            <div class="sign-peso">₱</div>
-            <input type="number" id="input" class="form-control input-class">
-        </div>
-        <button type="submit" id="submit_amount" class="btn btn-primary">Send</button>
-      </form>`
-  $(".forms-method").html(htmlform);
-  $(".forms-method").fadeIn().show();
-  $(".sumbit_password").fadeOut().hide();
-  $(".forms-method .insert_amount").attr('id','cert_e-submit');
-  getbalance();
-  $(".forms-method").fadeIn().show();
-  $(".success-message").fadeOut().hide();
-  $("#input").val("");
+  $.ajax({
+    url:'../../controller/Dbuserinputpayment_categories.php',
+    type: 'POST',
+    data: {user: 'user'},
+    cache: false,
+    success: function(res){
+      console.log(res);
+    }
+  })
+  // $(".forms-method").css('background-color','rgba(247, 0, 255, 0.253)');
+  // $(".sumbit_password").css('background-color','rgba(247, 0, 255, 0.253)');
+  // $("#input").val("");
+  // htmlform = `
+  //     <div class="label-form"><b>Certificate</b></div>
+  //     <form class="insert_amount">
+  //       <label for="Input">Enter Amount</label>
+  //       <div class="group">
+  //           <div class="sign-peso">₱</div>
+  //           <input type="number" id="input" class="form-control input-class">
+  //       </div>
+  //       <button type="submit" id="submit_amount" class="btn btn-primary">Send</button>
+  //     </form>`;
+  
+  // $(".forms-method").html(htmlform);
+  // $(".forms-method").fadeIn().show();
+  // $(".sumbit_password").fadeOut().hide();
+  // $(".forms-method .insert_amount").attr('id','cert_e-submit');
+  // getbalance();
+  // $(".forms-method").fadeIn().show();
+  // $(".success-message").fadeOut().hide();
+  // $("#input").val("");
 }
 
 function cert_t_form(){

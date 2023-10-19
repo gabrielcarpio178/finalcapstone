@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2023 at 10:48 AM
+-- Generation Time: Oct 19, 2023 at 02:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -84,11 +84,11 @@ CREATE TABLE `cashierrates_tb` (
 --
 
 INSERT INTO `cashierrates_tb` (`cashierRates_id`, `cashierRates_request`, `cashierRatesCertificate`, `cashierRates_amount`) VALUES
-(1, 'Non Bago Fee', 'Certificate of Transfer Credentials', 500),
-(2, 'Certificate  of Transfers', 'Certificate of Transfer Credentials', 50),
-(3, 'certificate', 'Certificate of enrollment', 50),
-(4, 'certificate', 'Certificate of authentication ', 100),
-(6, 'certificate', 'Certificate of TOR', 50);
+(1, 'Non Bago Fee', 'Non Bago Fee', 500),
+(2, 'Transcript of Record', 'Transcript of Record', 50),
+(3, 'certificate', 'Certificate of Enrollment', 50),
+(4, 'certificate', 'Certificate of Transfer Crendential', 100),
+(7, 'certificate', 'Grades', 50);
 
 -- --------------------------------------------------------
 
@@ -148,7 +148,11 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (39, 79, 50, '1947386052', 1, '2023-10-15 12:54:12'),
 (40, 65, 500, '0496132785', 0, '2023-10-15 12:54:31'),
 (41, 63, 50, '3054967281', 0, '2023-10-15 12:59:11'),
-(42, 79, 500, '2793541608', 0, '2023-10-16 22:49:12');
+(42, 79, 500, '2793541608', 1, '2023-10-16 22:49:12'),
+(43, 79, 500, '0458739612', 1, '2023-10-17 16:56:57'),
+(44, 79, 300, '3816027594', 1, '2023-10-18 00:20:08'),
+(45, 63, 150, '2086745319', 0, '2023-10-19 00:36:48'),
+(46, 79, 500, '4085623719', 1, '2023-10-19 08:26:54');
 
 -- --------------------------------------------------------
 
@@ -172,7 +176,9 @@ CREATE TABLE `cashout_tb` (
 INSERT INTO `cashout_tb` (`cashout_id`, `teller_id`, `cashout_date`, `cashout_amount`, `cashout_status`, `cashout_refnum`) VALUES
 (1, 1, '2023-10-10 23:53:20', 50, 'accepted', '4971032586'),
 (5, 1, '2023-10-15 11:39:48', 20, 'accepted', '8620973145'),
-(6, 1, '2023-10-16 11:42:29', 100, 'accepted', '7143580962');
+(6, 1, '2023-10-16 11:42:29', 100, 'accepted', '7143580962'),
+(7, 1, '2023-10-18 12:43:14', 100, 'accepted', '2104953786'),
+(8, 1, '2023-10-19 00:35:29', 10, 'accepted', '8971630245');
 
 -- --------------------------------------------------------
 
@@ -224,16 +230,19 @@ CREATE TABLE `digitalpayment_tb` (
 --
 
 INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `payment_ref`, `requestType`, `payment_date`) VALUES
-(5, 65, '500', 'Non Bago Fee', '2398567410', 'accepted', '2023-10-11 15:01:32'),
-(6, 79, '50', 'Certificate  of Transfers', '5684290173', 'accepted', '2023-10-11 23:03:28'),
-(7, 79, '500', 'Non Bago Fee', '5769403218', 'accepted', '2023-10-12 11:24:42'),
-(8, 79, '50', 'Certificate of Enrollment', '9783215604', 'accepted', '2023-10-14 23:52:57'),
-(9, 79, '500', 'Non Bago Fee', '8945167302', 'accepted', '2023-10-15 11:43:57'),
-(10, 79, '50', 'Certificate  of Transfers', '8053916274', 'accepted', '2023-10-15 11:45:05'),
-(11, 79, '50', 'Certificate of Enrollment', '1486092375', 'accepted', '2023-10-15 11:45:21'),
-(12, 79, '50', 'Certificate  of Transfers', '0869254731', 'accepted', '2023-10-15 12:20:02'),
-(16, 79, '500', 'Non Bago Fee', '7039614285', 'accepted', '2023-10-16 00:32:15'),
-(17, 79, '500', 'Non Bago Fee', '6893705421', 'accepted', '2023-10-16 00:40:09');
+(1, 79, '50', 'Transcript of Record', '9501486237', 'accepted', '2023-10-18 23:15:37'),
+(2, 79, '500', 'Non Bago Fee', '6104538792', 'accepted', '2023-10-18 23:15:50'),
+(3, 79, '100', 'Certificate of Transfer Crendential', '1245309768', 'accepted', '2023-10-18 23:17:32'),
+(4, 79, '50', 'Certificate of Enrollment', '4901578263', 'accepted', '2023-10-19 00:06:50'),
+(5, 79, '100', 'Certificate of Transfer Crendential', '6835172904', 'accepted', '2023-10-19 00:07:07'),
+(6, 79, '100', 'Certificate of Transfer Crendential', '9427810356', 'accepted', '2023-10-19 00:14:05'),
+(7, 79, '50', 'Certificate of Enrollment', '3158460297', 'accepted', '2023-10-19 00:14:36'),
+(8, 79, '50', 'Certificate of Enrollment', '1742695038', 'accepted', '2023-10-19 00:14:56'),
+(9, 79, '500', 'Non Bago Fee', '7106498235', 'accepted', '2023-10-19 00:37:26'),
+(10, 79, '50', 'Transcript of Record', '7361204985', 'accepted', '2023-10-19 00:37:34'),
+(11, 79, '500', 'Non Bago Fee', '9815027634', 'accepted', '2023-10-19 08:27:50'),
+(12, 79, '100', 'Certificate of Transfer Crendential', '5327081649', 'accepted', '2023-10-19 08:28:07'),
+(13, 79, '50', 'Transcript of Record', '0615982347', 'accepted', '2023-10-19 08:28:18');
 
 -- --------------------------------------------------------
 
@@ -297,7 +306,9 @@ INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `order
 (269, 79, 1, 56, 'Le Minerale', '2960831754', 'Drinks', '2023-10-13 15:54:23', '2023-10-13 15:54:54', 20, 1, 1, 'CANCELED'),
 (270, 79, 1, 16, 'mountain dew', '8470132659', 'Drinks', '2023-10-13 15:55:34', '2023-10-13 15:55:59', 20, 1, 1, 'CANCELED'),
 (271, 79, 1, 56, 'Le Minerale', '0893647125', 'Drinks', '2023-10-13 15:56:59', '2023-10-13 16:28:33', 20, 1, 1, 'PROCEED'),
-(272, 79, 1, 19, 'showbear', '0893647125', 'Candy', '2023-10-13 15:56:59', '2023-10-13 16:28:33', 2, 1, 1, 'PROCEED');
+(272, 79, 1, 19, 'showbear', '0893647125', 'Candy', '2023-10-13 15:56:59', '2023-10-13 16:28:33', 2, 1, 1, 'PROCEED'),
+(273, 79, 1, 56, 'Le Minerale', '7098635142', 'Drinks', '2023-10-18 11:14:17', '2023-10-18 11:15:14', 20, 1, 1, 'CANCELED'),
+(274, 79, 1, 16, 'mountain dew', '7098635142', 'Drinks', '2023-10-18 11:14:17', '2023-10-18 11:15:14', 20, 1, 1, 'CANCELED');
 
 -- --------------------------------------------------------
 
@@ -683,7 +694,7 @@ ALTER TABLE `admin_tb`
 -- AUTO_INCREMENT for table `cashierrates_tb`
 --
 ALTER TABLE `cashierrates_tb`
-  MODIFY `cashierRates_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cashierRates_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `cashier_tb`
@@ -695,13 +706,13 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
 --
 ALTER TABLE `cashout_tb`
-  MODIFY `cashout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cashout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `category_tb`
@@ -713,13 +724,13 @@ ALTER TABLE `category_tb`
 -- AUTO_INCREMENT for table `digitalpayment_tb`
 --
 ALTER TABLE `digitalpayment_tb`
-  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
 --
 ALTER TABLE `order_tb`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=275;
 
 --
 -- AUTO_INCREMENT for table `personnel_tb`

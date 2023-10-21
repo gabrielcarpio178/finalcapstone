@@ -129,7 +129,6 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                             <p class="name">
                                 BCC Digital Payment System
                             </p>   
-                                                                                
                         </div>  
                         
                         <div class="d-flex flex-column justify-content-center align-items-center wallet-balances">

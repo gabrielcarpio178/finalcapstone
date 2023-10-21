@@ -45,7 +45,7 @@ if(($_SESSION['usertype']!="cashier")){
                             </div>
                             <div class="collection" id="cash-in">
                                 <div class="label-info d-flex flex-row justify-content-between">
-                                    <div class="daily-collection">Cash In Collection</div>
+                                    <div class="daily-collection">Daily Cash In Collection</div>
                                     <div class="collection-date"></div>
                                 </div>
                                 <div class="amount-collection" id="cashin"></div>

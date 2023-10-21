@@ -85,9 +85,9 @@ user-scalable=no"
               </div>
               <div class="mt-2">
                 <center>
-                  <h5>
+                  <!-- <h5>
                     Don't have account? <strong><a id="signup">Sign up</a></strong>
-                  </h5>
+                  </h5> -->
                 </center>
                 <center><div id="forgotform"> Forgot Account </div></center>
               </div>

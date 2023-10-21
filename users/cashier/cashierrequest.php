@@ -58,7 +58,7 @@ if(($_SESSION['usertype']!="cashier")){
           <div class="modal-body">
 
             <div class="d-flex gap-3 flex-row-reverse p-2">
-              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add_certificate">Add Certificate</button>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add_certificate">Add Payment</button>
               <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#edit_certificate">Edit</button>
             </div> 
             <div class="content-rate p-2">
@@ -75,7 +75,7 @@ if(($_SESSION['usertype']!="cashier")){
 
               <div class="d-flex flex-column rate-content">
                 <div class="d-flex flex-row justify-content-between w-100">
-                  <div class="rate-label">Certificate</div>
+                  <div class="rate-label">Certifications</div>
                   <div class="rate-label" id="certificate_show"><i class="fa-solid fa-angle-up"></i></div>
                 </div>
 
@@ -102,7 +102,7 @@ if(($_SESSION['usertype']!="cashier")){
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add Certificate</h5>
+            <h5 class="modal-title">Add Payment</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true"></span>
             </button>
@@ -112,7 +112,7 @@ if(($_SESSION['usertype']!="cashier")){
             <form id="addCertificate_submit" class="d-flex flex-column gap-2 p-2">
 
               <div class="d-flex flex-row justify-content-between addCertificate-label">
-                <div class="certificate-name">Certificate Name</div>
+                <div class="certificate-name">Payment Name</div>
                 <div class="certificate-amount">Amount</div>
                 <div></div>
               </div>

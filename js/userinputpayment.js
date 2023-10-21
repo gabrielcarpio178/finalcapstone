@@ -32,10 +32,10 @@ function show_cert(x){
 }
 
 function non_bago_form(){
+  isInBago();
   $(".forms-method").css('background-color','rgba(0, 174, 255, 0.253)');
   $(".sumbit_password").css('background-color','rgba(0, 174, 255, 0.253)');
   $("#input").val("");
-  
   htmlform = `
       <div class="label-form"><b class="category_1"></b></div>
       <form class="insert_amount" id="">
@@ -48,6 +48,7 @@ function non_bago_form(){
           <div>Exp: </div>
           <div class="price_1"></div>
         </div>
+        <div class="message text-center"></div>
         <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
       </form>`
   $(".forms-method").html(htmlform);
@@ -58,6 +59,22 @@ function non_bago_form(){
   $(".forms-method").fadeIn().show();
   $(".success-message").fadeOut().hide();
   $("#input").val("");
+}
+
+function isInBago(){
+  var user_id = $("#user_id").val();
+  $.ajax({
+    url: '../../controller/DbusergetAddress.php',
+    type: 'POST',
+    data: {user_id:user_id},
+    cache: false,
+    success: function(res){
+      if(res=="paid"){
+        $("#non_bago-submit :input").val(500).prop("disabled", "disabled");
+        $(".message").text('Paid');
+      }
+    }
+  });
 }
 
 function cert_e_form(){
@@ -424,3 +441,5 @@ function btn_ok(){
     getbalance();
   });
 }
+
+

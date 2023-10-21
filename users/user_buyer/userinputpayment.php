@@ -54,7 +54,7 @@ $id = $_SESSION['id'];
                         <div class="payment" id="cert_e">
                             <div class="cert_e-color"></div>
                             <div class="d-flex flex-row justify-content-between certificate_content">
-                                <div>Certificate</div>
+                                <div>Certifications</div>
                                 <div id="show_certificate">
                                     <i class="fa-solid fa-angle-down icon-font"></i>
                                 </div>

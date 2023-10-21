@@ -6,7 +6,11 @@ $(document).ready(function () {
   $("#cash_in").on('click', function(){
     window.location = "cashiercashin.php";
   });
-  
+
+  $("#account_balance").on('click', function(){
+    window.location = "cashieraccount_balance.php";
+  });
+
   $("#logout").on("click", function () {
     // console.log('click');
 

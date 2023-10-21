@@ -18,7 +18,7 @@ if(isset($_POST['sortBy'])&&isset($_POST['category'])&&isset($_POST['num_page'])
     
     if($category=='Non Bago Fee'){
         try {
-            $non_bago_sql = mysqli_query($connect, "SELECT digitalpayment_tb.payment_amount, digitalpayment_tb.payment_ref, CAST(digitalpayment_tb.payment_date AS DATE) AS paymentDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number FROM digitalpayment_tb INNER JOIN user_tb ON digitalPayment_tb.user_id = user_tb.user_id INNER JOIN student_tb ON digitalPayment_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type = 'Non Bago Fee' AND CAST(digitalpayment_tb.payment_date AS DATE) = CAST(now() AS DATE) AND digitalpayment_tb.`requestType` = 'accepted' LIMIT $offset,3;");
+            $non_bago_sql = mysqli_query($connect, "SELECT digitalpayment_tb.payment_amount, digitalpayment_tb.payment_ref, CAST(digitalpayment_tb.payment_date AS DATE) AS paymentDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number FROM digitalpayment_tb INNER JOIN user_tb ON digitalPayment_tb.user_id = user_tb.user_id INNER JOIN student_tb ON digitalPayment_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type = 'Non Bago Fee' AND CAST(digitalpayment_tb.payment_date AS DATE) = CAST(now() AS DATE) AND digitalpayment_tb.`requestType` = 'accepted' ORDER BY digitalPayment_tb.user_id DESC LIMIT $offset,3;");
             $array_non_bago = array();
             $empty = 1;
             while($non_bago_row = mysqli_fetch_assoc($non_bago_sql)){
@@ -89,7 +89,7 @@ if(isset($_POST['sortBy'])&&isset($_POST['category'])&&isset($_POST['num_page'])
     }
     elseif($category=='cash_out'){
         try {
-            $cash_out_sql = mysqli_query($connect, "SELECT CAST(cashout_tb.cashout_date AS DATE) AS cashOutDate, CAST(cashout_tb.cashout_date AS TIME) AS cashOutTime, cashout_tb.cashout_amount, telleruser_tb.store_name, cashout_tb.cashout_refnum FROM cashout_tb INNER JOIN telleruser_tb ON cashout_tb.teller_id = telleruser_tb.teller_id WHERE cashout_tb.cashout_status = 'accepted' AND CAST(cashout_tb.cashout_date AS DATE) = CAST(now() AS DATE) LIMIT $offset,3;");
+            $cash_out_sql = mysqli_query($connect, "SELECT CAST(cashout_tb.cashout_date AS DATE) AS cashOutDate, CAST(cashout_tb.cashout_date AS TIME) AS cashOutTime, cashout_tb.cashout_amount, telleruser_tb.store_name, cashout_tb.cashout_refnum FROM cashout_tb INNER JOIN telleruser_tb ON cashout_tb.teller_id = telleruser_tb.teller_id WHERE cashout_tb.cashout_status = 'accepted' AND CAST(cashout_tb.cashout_date AS DATE) = CAST(now() AS DATE) ORDER BY cashout_tb.cashout_id DESC LIMIT $offset,3;");
             $array_cash_out = array();
             $empty = 1;
             while($cashout_row = mysqli_fetch_assoc($cash_out_sql)){
@@ -159,7 +159,7 @@ if(isset($_POST['sortBy'])&&isset($_POST['category'])&&isset($_POST['num_page'])
         }
     }elseif($category=='cash_in'){
         try {
-            $cash_in_sql = mysqli_query($connect, "SELECT CAST(cashin_tb.cashin_date AS DATE) AS cashInDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number, cashin_tb.ref_num, cashin_tb.cashin_amount FROM cashin_tb INNER JOIN user_tb ON cashin_tb.user_id = user_tb.user_id INNER JOIN student_tb ON cashin_tb.user_id = student_tb.user_id WHERE CAST(cashin_tb.cashin_date AS DATE) = CAST(now() AS DATE) LIMIT $offset,3;");
+            $cash_in_sql = mysqli_query($connect, "SELECT CAST(cashin_tb.cashin_date AS DATE) AS cashInDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number, cashin_tb.ref_num, cashin_tb.cashin_amount FROM cashin_tb INNER JOIN user_tb ON cashin_tb.user_id = user_tb.user_id INNER JOIN student_tb ON cashin_tb.user_id = student_tb.user_id WHERE CAST(cashin_tb.cashin_date AS DATE) = CAST(now() AS DATE) ORDER BY cashin_tb.cashin_id DESC LIMIT $offset,3;");
             $array_cash_in = array();
             $empty = 1;
             while($cashIn_row = mysqli_fetch_assoc($cash_in_sql)){
@@ -229,7 +229,7 @@ if(isset($_POST['sortBy'])&&isset($_POST['category'])&&isset($_POST['num_page'])
         }
     }elseif($category=='tor'){
         try {
-            $non_bago_sql = mysqli_query($connect, "SELECT digitalpayment_tb.payment_amount, digitalpayment_tb.payment_ref, CAST(digitalpayment_tb.payment_date AS DATE) AS paymentDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number FROM digitalpayment_tb INNER JOIN user_tb ON digitalPayment_tb.user_id = user_tb.user_id INNER JOIN student_tb ON digitalPayment_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type = 'Transcript of Record' AND CAST(digitalpayment_tb.payment_date AS DATE) = CAST(now() AS DATE) AND digitalpayment_tb.`requestType` = 'accepted' LIMIT $offset,3;");
+            $non_bago_sql = mysqli_query($connect, "SELECT digitalpayment_tb.payment_amount, digitalpayment_tb.payment_ref, CAST(digitalpayment_tb.payment_date AS DATE) AS paymentDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number FROM digitalpayment_tb INNER JOIN user_tb ON digitalPayment_tb.user_id = user_tb.user_id INNER JOIN student_tb ON digitalPayment_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type = 'Transcript of Record' AND CAST(digitalpayment_tb.payment_date AS DATE) = CAST(now() AS DATE) AND digitalpayment_tb.`requestType` = 'accepted' ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT $offset,3;");
             $array_non_bago = array();
             $empty = 1;
             while($non_bago_row = mysqli_fetch_assoc($non_bago_sql)){
@@ -299,7 +299,7 @@ if(isset($_POST['sortBy'])&&isset($_POST['category'])&&isset($_POST['num_page'])
         }
     }elseif($category=='Certificate'){
 
-        $query = "SELECT digitalpayment_tb.payment_amount, digitalpayment_tb.payment_ref, CAST(digitalpayment_tb.payment_date AS DATE) AS paymentDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number, digitalpayment_tb.payment_type FROM digitalpayment_tb INNER JOIN user_tb ON digitalPayment_tb.user_id = user_tb.user_id INNER JOIN student_tb ON digitalPayment_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Transcript of Record' AND digitalpayment_tb.payment_type != 'Non Bago Fee' AND CAST(digitalpayment_tb.payment_date AS DATE) = CAST(now() AS DATE) AND digitalpayment_tb.`requestType` = 'accepted'".$sortBy_type. " LIMIT $offset,3;";
+        $query = "SELECT digitalpayment_tb.payment_amount, digitalpayment_tb.payment_ref, CAST(digitalpayment_tb.payment_date AS DATE) AS paymentDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number, digitalpayment_tb.payment_type FROM digitalpayment_tb INNER JOIN user_tb ON digitalPayment_tb.user_id = user_tb.user_id INNER JOIN student_tb ON digitalPayment_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Transcript of Record' AND digitalpayment_tb.payment_type != 'Non Bago Fee' AND CAST(digitalpayment_tb.payment_date AS DATE) = CAST(now() AS DATE) AND digitalpayment_tb.`requestType` = 'accepted'".$sortBy_type. " ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT $offset,3;";
 
         $query_num = "SELECT digitalpayment_tb.payment_amount, digitalpayment_tb.payment_ref, CAST(digitalpayment_tb.payment_date AS DATE) AS paymentDate, user_tb.firstname, user_tb.lastname, student_tb.studentID_number FROM digitalpayment_tb INNER JOIN user_tb ON digitalPayment_tb.user_id = user_tb.user_id INNER JOIN student_tb ON digitalPayment_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Transcript of Record' AND digitalpayment_tb.payment_type != 'Non Bago Fee' AND CAST(digitalpayment_tb.payment_date AS DATE) = CAST(now() AS DATE) AND digitalpayment_tb.`requestType` = 'accepted'".$sortBy_type.";";
 

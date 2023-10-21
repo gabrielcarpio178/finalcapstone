@@ -16,14 +16,13 @@
 .teller,
 .menu-purchase {
   border-radius: 10px/10px;
-  box-shadow: 0 1px 1px 1px #616161;
+  box-shadow: 0 1px 1px 1px #6161619f;
   background-color: white;
   padding: 2px;
   margin-top: 8px;
   cursor: pointer;
-  
 }
-.teller{
+.teller {
   height: 10vh;
   width: 100%;
   text-align: center;
@@ -66,7 +65,7 @@
 .order-list {
   background-color: white;
   border-radius: 10px/10px;
-  box-shadow: 0 1px 1px 1px #616161;
+  box-shadow: 0 1px 1px 1px #616161b0;
   margin-top: 20px;
 }
 .input_qty {
@@ -79,16 +78,16 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-
 .plus,
-.minus, #cancel{
+.minus,
+#cancel {
   cursor: pointer;
 }
 .plus,
 .minus,
 .input_qty {
   border-radius: 3px/3px;
-  background-color: #b4e6f8;
+  background-color: #d2d2d2c6;
 }
 .selected-menu {
   overflow: scroll;

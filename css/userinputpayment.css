@@ -1,248 +1,258 @@
 /* *{
     outline: 1px solid;
 } */
-.label-content h1{
-    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+.label-content h1 {
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
 }
-.wallet-balance{
-    background-color: white;
-    box-shadow: 0 1px 1px 1px #616161;
-    padding: 10px;
-    width: 200px;
+.wallet-balance {
+  background-color: white;
+  box-shadow: 0 1px 1px 1px #6161617c;
+  padding: 10px;
+  width: 200px;
 }
-.wallet-balance b{
-    font-size: 1.5em;
-    text-shadow: 0px 1px, 1px 0px, 1px 1px;
-}
-
-.payment{
-    box-shadow: 0 1px 1px 1px #616161; 
-    width: 75%;
-    white-space: nowrap;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-.certificate_content{
-    width: 90%;
-}
-.non-bago-color, .cert_e-color, .cert_t-color{
-    width: 20px;
-    height: 75px;
-}
-.non-bago-color{
-    background-color: rgba(0, 174, 255, 0.253);
-}
-.cert_e-color{
-    background-color: rgba(247, 0, 255, 0.253);
-}
-.cert_t-color{
-    background-color: rgba(255, 0, 55, 0.253);
-}
-.forms-method, .sumbit_password{
-    background-color: rgba(0, 174, 255, 0.253);
-    border-radius: 10px/10px;
-    box-shadow: 0 1px 1px 1px #616161;
-    width: 30%;
-    height: 45vh;
-    padding: 20px 30px;
-    display: flex;
-    flex-direction: column;
-}
-.insert_amount, .insert_password{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-}
-.group{
-    position: relative;
-}
-.sign-peso{
-    position: absolute;
-    top: -1px;
-    font-size: 30px;
-    font-weight: bold;
-    left: 4px;
-}
-.eye-icon{
-    position: absolute;
-    top: 8px;
-    right: 15px;
-    cursor: pointer;
-}
-#input{
-    text-align: center;
-}
-.input-class{
-    text-align: center;
-}
-.success-message{
-    position: absolute;
-    width: 26%;
-    height: 100vh;
-    background-color: white;
-    right: 0px;
-    top: 0px;
-    box-shadow: 0 1px 1px 1px #616161;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.title-name{
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(46, 46, 156);
-}
-.success-icon{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 25px;
-}
-.success-image{
-    text-align: center;
-}
-.success-image img{
-    max-width: 25%;
-}
-.success-label{
-    font-size: 20px;
-    font-weight: bold;
-}
-.message-succes{
-    text-align: center;
-}
-.type-of-payment{
-    font-size: 20px;
-    font-weight: bold;
+.wallet-balance b {
+  font-size: 1.5em;
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
 }
 
-.amount-pament{
-    margin-top: 20px;
-    background-color: whitesmoke;
-    border-radius: 10px/10px;
-    width: 85%;
-    height: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgb(199, 185, 185);
+.payment {
+  box-shadow: 0 1px 1px 1px #6161617c;
+  width: 75%;
+  white-space: nowrap;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
-.icon-font{
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
+.payment:hover {
+  transform: scale(1.1) translateY(1px);
+  transition: 0.4s;
 }
-.amount-peso{
-    font-size: 25px;
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+.certificate_content {
+  width: 90%;
 }
-.payment-info{
-    padding: 15px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.non-bago-color,
+.cert_e-color,
+.cert_t-color {
+  width: 20px;
+  height: 75px;
 }
-.date-payment, .ref-no{
-    display: flex;
-    flex-direction: row;
-    font-size: 14px;
-    gap: 10px;
+.non-bago-color {
+  background-color: #c6d8de;
 }
-.date-label, .ref-label{
-    white-space: nowrap;
+.cert_e-color {
+  background-color: #d5b1d6;
 }
-.ref, .date{
-    text-align: end;
+.cert_t-color {
+  background-color: #eb6897;
 }
-.btn-ok{
-    width: 100%;
+.forms-method,
+.sumbit_password {
+  background-color: #ffffff;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #6161617c;
+  width: 30%;
+  height: 45vh;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
 }
-.cert-data{
-    position: relative;
+.insert_amount,
+.insert_password {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
-.certificate-label{
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 1px 1px 1px #616161;
-    font-size: 18px;
-    padding: 10px;
-    left: 38.5%;
+.group {
+  position: relative;
 }
-.certificate-label{
-    cursor: pointer;
+.sign-peso {
+  position: absolute;
+  top: -1px;
+  font-size: 30px;
+  font-weight: bold;
+  left: 4px;
+}
+.eye-icon {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  cursor: pointer;
+}
+#input {
+  text-align: center;
+}
+.input-class {
+  text-align: center;
+}
+.success-message {
+  position: absolute;
+  width: 26%;
+  height: 100vh;
+  background-color: white;
+  right: 0px;
+  top: 0px;
+  box-shadow: 0 1px 1px 1px #616161;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #253958;
+}
+.success-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+.success-image {
+  text-align: center;
+}
+.success-image img {
+  max-width: 25%;
+}
+.success-label {
+  font-size: 20px;
+  font-weight: bold;
+}
+.message-succes {
+  text-align: center;
+}
+.type-of-payment {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.amount-pament {
+  margin-top: 20px;
+  background-color: whitesmoke;
+  border-radius: 10px/10px;
+  width: 85%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgb(199, 185, 185);
+}
+.icon-font {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.amount-peso {
+  font-size: 25px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.payment-info {
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.date-payment,
+.ref-no {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  gap: 10px;
+}
+.date-label,
+.ref-label {
+  white-space: nowrap;
+}
+.ref,
+.date {
+  text-align: end;
+}
+.btn-ok {
+  width: 100%;
+}
+.cert-data {
+  position: relative;
+}
+.certificate-label {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 1px 1px #6161617c;
+  font-size: 18px;
+  padding: 10px;
+  left: 38.5%;
+}
+.certificate-label {
+  cursor: pointer;
 }
 @media screen and (min-width: 320px) {
-    .content-info {
-        padding: 100px 10px 0px 10px;
-    }
+  .content-info {
+    padding: 100px 10px 0px 10px;
+  }
 
-    .label{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .label-content{
-        align-self: right;
-    }
-    .wallet-balance{
-        align-self: center;
-        text-align: center;
-    }
+  .label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .label-content {
+    align-self: right;
+  }
+  .wallet-balance {
+    align-self: center;
+    text-align: center;
+  }
 
-    .info{
-        display: flex;
-        flex-direction: column;
-        margin-top: 10px;
-    }
+  .info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
 
-    .payment-method{
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-    .payment{
-        width: 100%;
-    }
-
+  .payment-method {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .payment {
+    width: 100%;
+  }
 }
 @media screen and (min-width: 760px) {
-    .content-info {
-        padding-top: 110px;
-    }
+  .content-info {
+    padding-top: 110px;
+  }
 }
 @media screen and (min-width: 1020px) {
-    .content-info{
-        padding: 20px 0px 0px 120px;
-    }
+  .content-info {
+    padding: 20px 0px 0px 120px;
+  }
 
-    .label{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .info{
-        margin-top: 100px;
-        display: flex;
-        flex-direction: row;
-    }
-    .method{
-        width: 50%;
-    }
-    .payment-method{
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-    .payment{
-        width: 75%;
-    }
+  .label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .info {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+  }
+  .method {
+    width: 50%;
+  }
+  .payment-method {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .payment {
+    width: 75%;
+  }
 }

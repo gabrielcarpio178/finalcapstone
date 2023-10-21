@@ -104,7 +104,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                             </div>                           
                         </div>
                         <div class="d-flex flex-column category" id="accountbalance">
-                            <img src="../../image/accountbalance.png" alt="Account balance">
+                            <img src="../../image/cashier_accountbalance.png" alt="Account balance">
                             <div class="label">
                                 Account Balance
                             </div>                           

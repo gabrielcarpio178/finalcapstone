@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 02:42 AM
+-- Generation Time: Oct 24, 2023 at 06:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -85,10 +85,10 @@ CREATE TABLE `cashierrates_tb` (
 
 INSERT INTO `cashierrates_tb` (`cashierRates_id`, `cashierRates_request`, `cashierRatesCertificate`, `cashierRates_amount`) VALUES
 (1, 'Non Bago Fee', 'Non Bago Fee', 500),
-(2, 'Transcript of Record', 'Transcript of Record', 50),
-(3, 'certificate', 'Certificate of Enrollment', 50),
+(2, 'Transcript of Record', 'Transcript of Record', 130),
+(3, 'certificate', 'Certificate of Enrollment', 20),
 (4, 'certificate', 'Certificate of Transfer Crendential', 100),
-(7, 'certificate', 'Grades', 50);
+(7, 'certificate', 'Grades', 20);
 
 -- --------------------------------------------------------
 
@@ -135,9 +135,8 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (12, 36, 40, '9726843150', 0, '2023-10-03 12:54:03'),
 (20, 36, 30, '7489526310', 0, '2023-10-03 13:32:12'),
 (28, 65, 500, '6578241930', 0, '2023-10-11 15:01:09'),
-(29, 63, 1000, '3721809546', 0, '2023-10-11 15:07:21'),
 (30, 79, 500, '1365890742', 1, '2023-10-11 23:02:57'),
-(31, 81, 500, '8135206479', 0, '2023-10-12 11:21:18'),
+(31, 81, 500, '8135206479', 1, '2023-10-12 11:21:18'),
 (32, 79, 500, '7283651049', 1, '2023-10-12 11:23:11'),
 (33, 79, 500, '3479621085', 1, '2023-10-13 10:32:41'),
 (34, 79, 200, '4158632970', 1, '2023-10-13 12:42:37'),
@@ -147,12 +146,11 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (38, 79, 50, '2846719503', 1, '2023-10-15 12:54:00'),
 (39, 79, 50, '1947386052', 1, '2023-10-15 12:54:12'),
 (40, 65, 500, '0496132785', 0, '2023-10-15 12:54:31'),
-(41, 63, 50, '3054967281', 0, '2023-10-15 12:59:11'),
 (42, 79, 500, '2793541608', 1, '2023-10-16 22:49:12'),
 (43, 79, 500, '0458739612', 1, '2023-10-17 16:56:57'),
 (44, 79, 300, '3816027594', 1, '2023-10-18 00:20:08'),
-(45, 63, 150, '2086745319', 0, '2023-10-19 00:36:48'),
-(46, 79, 500, '4085623719', 1, '2023-10-19 08:26:54');
+(46, 79, 500, '4085623719', 1, '2023-10-19 08:26:54'),
+(47, 83, 1000, '0645719823', 1, '2023-10-19 09:01:25');
 
 -- --------------------------------------------------------
 
@@ -178,7 +176,8 @@ INSERT INTO `cashout_tb` (`cashout_id`, `teller_id`, `cashout_date`, `cashout_am
 (5, 1, '2023-10-15 11:39:48', 20, 'accepted', '8620973145'),
 (6, 1, '2023-10-16 11:42:29', 100, 'accepted', '7143580962'),
 (7, 1, '2023-10-18 12:43:14', 100, 'accepted', '2104953786'),
-(8, 1, '2023-10-19 00:35:29', 10, 'accepted', '8971630245');
+(8, 1, '2023-10-19 00:35:29', 10, 'accepted', '8971630245'),
+(9, 1, '2023-10-19 08:58:19', 50, 'accepted', '9681532047');
 
 -- --------------------------------------------------------
 
@@ -231,18 +230,19 @@ CREATE TABLE `digitalpayment_tb` (
 
 INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `payment_ref`, `requestType`, `payment_date`) VALUES
 (1, 79, '50', 'Transcript of Record', '9501486237', 'accepted', '2023-10-18 23:15:37'),
-(2, 79, '500', 'Non Bago Fee', '6104538792', 'accepted', '2023-10-18 23:15:50'),
 (3, 79, '100', 'Certificate of Transfer Crendential', '1245309768', 'accepted', '2023-10-18 23:17:32'),
 (4, 79, '50', 'Certificate of Enrollment', '4901578263', 'accepted', '2023-10-19 00:06:50'),
 (5, 79, '100', 'Certificate of Transfer Crendential', '6835172904', 'accepted', '2023-10-19 00:07:07'),
 (6, 79, '100', 'Certificate of Transfer Crendential', '9427810356', 'accepted', '2023-10-19 00:14:05'),
 (7, 79, '50', 'Certificate of Enrollment', '3158460297', 'accepted', '2023-10-19 00:14:36'),
 (8, 79, '50', 'Certificate of Enrollment', '1742695038', 'accepted', '2023-10-19 00:14:56'),
-(9, 79, '500', 'Non Bago Fee', '7106498235', 'accepted', '2023-10-19 00:37:26'),
 (10, 79, '50', 'Transcript of Record', '7361204985', 'accepted', '2023-10-19 00:37:34'),
-(11, 79, '500', 'Non Bago Fee', '9815027634', 'accepted', '2023-10-19 08:27:50'),
 (12, 79, '100', 'Certificate of Transfer Crendential', '5327081649', 'accepted', '2023-10-19 08:28:07'),
-(13, 79, '50', 'Transcript of Record', '0615982347', 'accepted', '2023-10-19 08:28:18');
+(13, 79, '50', 'Transcript of Record', '0615982347', 'accepted', '2023-10-19 08:28:18'),
+(14, 83, '20', 'Certificate of Enrollment', '9732540861', 'accepted', '2023-10-19 09:09:36'),
+(17, 79, '100', 'Certificate of Transfer Crendential', '2389041576', 'pending', '2023-10-19 09:47:10'),
+(18, 79, '20', 'Grades', '3284719650', 'accepted', '2023-10-20 22:11:15'),
+(21, 79, '500', 'Non Bago Fee', '4028673591', 'accepted', '2023-10-21 00:46:07');
 
 -- --------------------------------------------------------
 
@@ -273,14 +273,11 @@ CREATE TABLE `order_tb` (
 INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `orderproduct_name`, `order_num`, `order_productcategory`, `order_time`, `deadline_time`, `order_amount`, `order_quantity`, `num_noti`, `statues`) VALUES
 (18, 38, 1, 1, 'Mountain dew', '6383295511', 'Drinks', '2023-08-24 13:05:36', '2023-08-24 13:33:21', 20, 1, 0, 'PROCEED'),
 (20, 38, 1, 1, 'Mountain dew', '6383295512', 'Drinks', '2023-08-24 13:31:34', '2023-08-24 13:41:58', 20, 1, 0, 'PROCEED'),
-(26, 37, 1, 1, 'Mountain dew', '6383295515', 'Drinks', '2023-08-25 13:25:50', '2023-08-25 13:36:17', 20, 1, 0, 'PROCEED'),
 (28, 36, 1, 10, 'Coke', '6383295516', 'Drinks', '2023-08-26 00:01:47', '2023-08-27 10:43:51', 20, 1, 0, 'PROCEED'),
 (34, 34, 1, 10, 'Coke', '7914538602', 'Drinks', '2023-08-26 12:14:10', '2023-08-26 12:24:35', 20, 1, 0, 'PROCEED'),
 (36, 34, 1, 1, 'Mountain dew', '7914538602', 'Drinks', '2023-08-26 12:14:10', '2023-08-26 12:24:35', 20, 1, 0, 'PROCEED'),
 (41, 35, 1, 1, 'Mountain dew', '1605379842', 'Drinks', '2023-08-27 10:18:10', '2023-08-27 10:58:37', 20, 1, 0, 'PROCEED'),
-(61, 37, 1, 1, 'Mountain dew', '2398165704', 'Drinks', '2023-08-27 22:33:34', '2023-08-27 22:43:55', 20, 1, 0, 'PROCEED'),
 (65, 36, 1, 1, 'Mountain dew', '8063592417', 'Drinks', '2023-08-27 22:40:46', '2023-08-27 22:43:07', 20, 1, 0, 'PROCEED'),
-(73, 37, 1, 10, 'Coke', '8352196740', 'Drinks', '2023-08-28 00:21:22', '2023-08-28 00:26:42', 20, 1, 0, 'PROCEED'),
 (79, 34, 1, 1, 'Mountain dew', '6041327895', 'Drinks', '2023-08-28 00:37:00', '2023-08-28 00:48:11', 20, 1, 0, 'PROCEED'),
 (96, 46, 2, 26, 'Fita', '1935867402', 'Biscuit', '2023-09-11 13:56:08', NULL, 16, 2, 0, NULL),
 (97, 46, 2, 23, 'Iced Coffee', '1935867402', 'Coolers', '2023-09-11 13:56:08', NULL, 30, 1, 0, NULL),
@@ -308,7 +305,9 @@ INSERT INTO `order_tb` (`order_id`, `user_id`, `teller_id`, `product_id`, `order
 (271, 79, 1, 56, 'Le Minerale', '0893647125', 'Drinks', '2023-10-13 15:56:59', '2023-10-13 16:28:33', 20, 1, 1, 'PROCEED'),
 (272, 79, 1, 19, 'showbear', '0893647125', 'Candy', '2023-10-13 15:56:59', '2023-10-13 16:28:33', 2, 1, 1, 'PROCEED'),
 (273, 79, 1, 56, 'Le Minerale', '7098635142', 'Drinks', '2023-10-18 11:14:17', '2023-10-18 11:15:14', 20, 1, 1, 'CANCELED'),
-(274, 79, 1, 16, 'mountain dew', '7098635142', 'Drinks', '2023-10-18 11:14:17', '2023-10-18 11:15:14', 20, 1, 1, 'CANCELED');
+(274, 79, 1, 16, 'mountain dew', '7098635142', 'Drinks', '2023-10-18 11:14:17', '2023-10-18 11:15:14', 20, 1, 1, 'CANCELED'),
+(275, 79, 1, 19, 'showbear', '2814603975', 'Candy', '2023-10-23 15:40:20', NULL, 2, 1, NULL, NULL),
+(276, 79, 1, 18, 'Hansel', '2814603975', 'Biscuit', '2023-10-23 15:40:20', NULL, 7, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -357,7 +356,7 @@ CREATE TABLE `product_tb` (
 --
 
 INSERT INTO `product_tb` (`product_id`, `category_id`, `teller_id`, `product_name`, `price`, `quantity`, `producer_price`, `date_post`, `image`) VALUES
-(16, 13, 1, 'mountain dew', 20, 195, 500, '2023-08-29', 'mountain_dew-64dc37f0c3a84-64e4c4caab3aa-64e6b8087f1b0.jpg'),
+(16, 13, 1, 'mountain dew', 15, 195, 500, '2023-08-29', 'mountain_dew-64dc37f0c3a84-64e4c4caab3aa-64e6b8087f1b0.jpg'),
 (17, 15, 1, 'Fita', 8, 201, 150, '2023-08-29', 'fita-64fdd6e8d8944.jpeg'),
 (18, 15, 1, 'Hansel', 7, 199, 180, '2023-08-29', 'hansel-choco-sandwich-64ee0ae77871c.jpg'),
 (19, 16, 1, 'showbear', 2, 192, 200, '2023-09-10', 'snowbear-64fdd755b51b4.jpg'),
@@ -394,6 +393,32 @@ INSERT INTO `product_tb` (`product_id`, `category_id`, `teller_id`, `product_nam
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sendbalance_tb`
+--
+
+CREATE TABLE `sendbalance_tb` (
+  `sendBalance_id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` int(11) NOT NULL,
+  `send_amount` int(11) NOT NULL,
+  `sendBalance_ref` varchar(50) NOT NULL,
+  `sendBalance_Date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sendbalance_tb`
+--
+
+INSERT INTO `sendbalance_tb` (`sendBalance_id`, `sender_id`, `receiver_id`, `send_amount`, `sendBalance_ref`, `sendBalance_Date`) VALUES
+(1, 79, 36, 100, '1976438502', '2023-10-24 11:44:12'),
+(2, 79, 81, 100, '7590861243', '2023-10-24 11:51:51'),
+(3, 79, 83, 50, '1593076284', '2023-10-24 11:55:43'),
+(4, 79, 65, 105, '4285379016', '2023-10-24 12:04:41'),
+(5, 81, 79, 100, '2849167305', '2023-10-24 12:15:32');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_tb`
 --
 
@@ -410,11 +435,9 @@ CREATE TABLE `student_tb` (
 --
 
 INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `user_id`) VALUES
-(2020115740, 'BSED', '4th', '', 37),
 (1164973821, 'BSOA', '3rd', '', 46),
 (1234567891, 'BSCRIM', '3rd', '', 47),
 (2020590400, 'BEED', '4th', '', 50),
-(2020114925, 'BSIS', '4th', '0478138897', 63),
 (2023019305, 'BSED', '1st', '2059831325', 64),
 (2020115558, 'BSIS', '4th', '0477300257', 65),
 (2021117366, 'BSOA', '3rd', '0463113411', 66),
@@ -430,7 +453,8 @@ INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `
 (2020115761, 'BSIS', '4th', '0437282034', 76),
 (2020115752, 'BSIS', '4th', '0472321553', 79),
 (2020115166, 'BSIS', '4th', '0476723473', 80),
-(2020115048, 'BSIS', '4th', '0442750691', 81);
+(2020115048, 'BSIS', '4th', '0442750691', 81),
+(2020114925, 'BSIS', '4th', '0478138897', 83);
 
 -- --------------------------------------------------------
 
@@ -513,7 +537,9 @@ INSERT INTO `userwebusages_tb` (`userWebUsages_id`, `user_id`, `user_category`, 
 (31, 1, 'teller', '2023-10-03'),
 (32, 61, 'user_buyer', '2023-10-03'),
 (33, 63, 'user_buyer', '2023-10-11'),
-(34, 79, 'user_buyer', '2023-10-11');
+(34, 79, 'user_buyer', '2023-10-11'),
+(35, 81, 'user_buyer', '2023-10-19'),
+(36, 83, 'user_buyer', '2023-10-19');
 
 -- --------------------------------------------------------
 
@@ -545,14 +571,12 @@ INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber
 (34, 'Ninang', 'Dela Cruz', 'ninang@gmail.com', 9987123654, 'female', 'non-bago', 'personnel', 'user_buyer', 'not-active', '2023-09-09', 'ninang', 'd54fd1674b1e312cba3cec56add7e00a'),
 (35, 'Pablo', 'San jose', 'pablo@gmail.com', 9159357246, 'other', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-06', 'pablo', '7e4b64eb65e34fdfad79e623c44abd94'),
 (36, 'Jia mae', 'Gaspar', 'jiabadgirl@gmail.com', 9725468164, 'female', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'jia', 'a6907acf5b337a322193f19b6698c867'),
-(37, 'Abegail', 'Eparosa', 'abegail@gmail.com', 9158497685, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-10', 'abegail', '7eb036d95efd0ec315606393479aec4a'),
 (38, 'Angelo', 'Cortez', 'angelo@gmail.com', 9873465982, 'male', 'bago', 'personnel', 'user_buyer', 'not-active', '2023-09-10', 'angelo', '98a8d3f11b400ddc06d7343375b71a84'),
 (46, 'Koa', 'Montelibano', 'koaknox8210@gmail.com', 9493582858, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-09-11', 'KoaKnox', '8028d74fe6ae33700bad6be602886890'),
 (47, 'Keam', 'Casseus', 'keamcasseus8210@gmail.com', 9103199898, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-11', 'keamcasseus', '9dd736dbbbec565cfe90e38e93c5e3cd'),
 (48, 'sherly', 'carpio', 'sherly@gmail.com', 9759872245, 'female', 'non-bago', 'personnel', 'user_buyer', 'not-active', '2023-09-12', 'sherly', '1c8b06358890d6c512859b21557315b4'),
 (50, 'ashly', 'sunga', 'ashly@gmail.com', 9582349023, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-09-18', 'ashly', 'c114e447529c910fb405cc586adabe8f'),
 (51, 'Rogaciano', 'Carpio', 'Rogaciano@gmail.com', 9531248312, 'male', 'non-bago', NULL, 'user_buyer', 'not-active', '2023-09-30', 'Rogaciano', 'd84f5ebdbb0138d19376fead142c9ae4'),
-(63, 'KENNY', 'BELARTE', 'KNYBELARTE1120@GMAIL.COM', 9777180551, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020114925', 'f72fd7e00b06968afabedb8e28713ffb'),
 (64, 'KISSHA VERONICA', 'BELARTE', '', 9810552536, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2023019305', '3fd0f9eb0dee1fa44f22cec8d806a07a'),
 (65, 'KIAN', 'SADIO', 'KIANSADIO283@GMAIL.COM', 9939064484, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020115558', '9d0fdff0a7ca1f9cbe0b7553ee887719'),
 (66, 'ROSALY', 'BARREDO', 'BARREDOROSALY@GMAIL.COM', 9301020253, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2021117366', 'a9eb8cb1236b1ff06141a564f9a71381'),
@@ -566,9 +590,10 @@ INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber
 (74, 'CLARENCE', 'GALEA', '', 9369448732, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2020115739', '8f465e4dfb551860ff6b3cc8212ab6c8'),
 (75, 'BIANCA MARIE', 'SION', '', 9388042554, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', '2022118767', '911ff67ab51513c03af3127f7c755592'),
 (76, 'ARIEL', 'GABIANDAN', 'COLUMNAARIEL460@GMAIL.COM', 9922073188, 'male', 'non-bago', 'student', 'user_buyer', 'not-active\n', '2023-10-11', '2020115761', 'ed1a085c3eba34485679181c9a4c19c0'),
-(79, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-11', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d'),
+(79, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d'),
 (80, 'ABEGAIL', 'EPAROSA', 'AEEPAROSA@GMAIL.COM', 9302442883, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-12', '2020115166', '448d581442ea70e5b3d7a5e04bc2a56d'),
-(81, 'JULIE', 'VILLACRUSIS', 'VILLACRUSISJULIE6@GMAIL.COM', 9107855364, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-12', '2020115048', '6387aad62f1ab08512bd362113430a92');
+(81, 'JULIE', 'VILLACRUSIS', 'VILLACRUSISJULIE6@GMAIL.COM', 9107855364, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-12', '2020115048', '6387aad62f1ab08512bd362113430a92'),
+(83, 'KENNY', 'BELARTE', 'KNYBELARTE1120@GMAIL.COM', 9777180551, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-19', '2020114925', '88594835d20004f1de8c2b9fdf7cf942');
 
 --
 -- Indexes for dumped tables
@@ -651,6 +676,14 @@ ALTER TABLE `product_tb`
   ADD KEY `teller_id` (`teller_id`);
 
 --
+-- Indexes for table `sendbalance_tb`
+--
+ALTER TABLE `sendbalance_tb`
+  ADD PRIMARY KEY (`sendBalance_id`),
+  ADD KEY `sender_id` (`sender_id`),
+  ADD KEY `receiver_id` (`receiver_id`);
+
+--
 -- Indexes for table `student_tb`
 --
 ALTER TABLE `student_tb`
@@ -706,13 +739,13 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
 --
 ALTER TABLE `cashout_tb`
-  MODIFY `cashout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cashout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `category_tb`
@@ -724,13 +757,13 @@ ALTER TABLE `category_tb`
 -- AUTO_INCREMENT for table `digitalpayment_tb`
 --
 ALTER TABLE `digitalpayment_tb`
-  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
 --
 ALTER TABLE `order_tb`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=275;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=277;
 
 --
 -- AUTO_INCREMENT for table `personnel_tb`
@@ -745,6 +778,12 @@ ALTER TABLE `product_tb`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
+-- AUTO_INCREMENT for table `sendbalance_tb`
+--
+ALTER TABLE `sendbalance_tb`
+  MODIFY `sendBalance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `telleruser_tb`
 --
 ALTER TABLE `telleruser_tb`
@@ -754,13 +793,13 @@ ALTER TABLE `telleruser_tb`
 -- AUTO_INCREMENT for table `userwebusages_tb`
 --
 ALTER TABLE `userwebusages_tb`
-  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `user_tb`
 --
 ALTER TABLE `user_tb`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- Constraints for dumped tables
@@ -809,6 +848,13 @@ ALTER TABLE `personnel_tb`
 ALTER TABLE `product_tb`
   ADD CONSTRAINT `product_tb_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category_tb` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `product_tb_ibfk_2` FOREIGN KEY (`teller_id`) REFERENCES `telleruser_tb` (`teller_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `sendbalance_tb`
+--
+ALTER TABLE `sendbalance_tb`
+  ADD CONSTRAINT `sendbalance_tb_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `user_tb` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `sendbalance_tb_ibfk_2` FOREIGN KEY (`receiver_id`) REFERENCES `user_tb` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student_tb`

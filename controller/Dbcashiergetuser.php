@@ -48,7 +48,31 @@ if(isset($_POST['user_id'])){
         $total_payment_user = $total_payment['total_payment'];
     }
 
-    $row['user_balance'] = $total_cashin_user - ($total_purchase_user+$total_payment_user);
+    try {
+        $sended_amount_sql = mysqli_query($connect, "SELECT SUM(send_amount) AS sended_amount FROM `sendbalance_tb` WHERE `sender_id` = '$user_id' GROUP BY sender_id;");
+        $count_data = mysqli_num_rows($sended_amount_sql);
+        $sended_amount = 0;
+        if($count_data!=0){
+            $sended_row = mysqli_fetch_assoc($sended_amount_sql);
+            $sended_amount = $sended_row['sended_amount'];
+        }
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    try {
+        $receiver_amount_sql = mysqli_query($connect, "SELECT SUM(send_amount) AS receiver_amount FROM `sendbalance_tb` WHERE `receiver_id` = '$user_id' GROUP BY receiver_id;");
+        $count_data = mysqli_num_rows($receiver_amount_sql);
+        $receiver_amount = 0;
+        if($count_data!=0){
+            $receiver_row = mysqli_fetch_assoc($receiver_amount_sql);
+            $receiver_amount = $receiver_row['receiver_amount'];
+        }
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    $row['user_balance'] = ($total_cashin_user+$receiver_amount) - ($total_purchase_user+$total_payment_user+$sended_amount);
     print_r(json_encode($row));
 }
 

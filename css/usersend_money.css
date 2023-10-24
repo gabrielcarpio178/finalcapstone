@@ -48,7 +48,7 @@
 .profile-content{
     height: 100vh;
 }
-.user-profile{
+.user-profile, .success-message{
     background-color: white;
     box-shadow: 0 1px 1px 1px #616161;
     height: 100vh;
@@ -81,6 +81,30 @@
     left: 5px;
     font-size: 30px;
 }
+.success-icon .success-text{
+    font-weight: bold;
+    font-size: 20px;
+}
+.success-icon img{
+    max-width: 20%;
+}
+.image img{
+    max-width: 40%;
+}
+.name-receiver h5{
+    font-size: 30px;
+    font-weight: bold;
+}
+.amount-sent{
+    background-color: #9d9d9d;
+    border-radius: 5px/5px;
+    padding: 10px 20px;
+}
+.peso-sign .sign, .amount-sended{
+    font-size: 35px;
+    font-weight: bold;
+}
+
 .swal-label{
     text-align: left;
 }
@@ -109,3 +133,19 @@
     width: 60px;
     height: auto;
 }
+.insert_form{
+    position: relative;
+}
+#eye-icon{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.modal-data{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+

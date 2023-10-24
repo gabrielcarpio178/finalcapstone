@@ -55,49 +55,35 @@ $id = $_SESSION['id'];
                 </div>
             </div>
             <div class="col-4 profile-content" style="display: none">
-                <div class="d-flex flex-column p-4 user-profile">
-                    <p>Profile</p>
-                    <div class="d-flex flex-column align-items-center profile-name">
-                        <img src="../../image/avatar.jpg" alt="">
-                        <h2 class="user-name mt-4"></h2>
-                        <div class="d-flex flex-row user-info">
-                            <div class="user-info-label">
-                                STUDENT ID:
+                <!-- info_data -->
+            </div>
+        </div>
+    </div>   
+    <button type="button" style="display: none;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insert_pass" id="show_modal">
+        hidden
+    </button>
+
+    <!-- modal password -->
+    <div class="modal fade" id="insert_pass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="submit_password">
+                        <p class="inputpass-label text-center">Please enter your password</p>
+                        <div class="d-flex flex-column gap-2 submit_pass_content p-1">
+                            <div class="insert_form">
+                                <center><input type="password" id="insert_password" class="form-control"></center>
+                                <i class="fa-solid fa-eye-slash" id="eye-icon" onclick="showHidePass()"></i>
                             </div>
-                            <div class="user-id">
-                                
-                            </div>
-                        </div>
-                        <div class="user_type">
+                            <button type="submit" class="btn btn-primary w-100">Okay</button>
                             
                         </div>
-                    </div>
-                    <div class="d-flex flex-column data-info">
-                        <div class="label-content">
-                            Department:
-                        </div>
-                        <div class="label-data" id="department"></div>
-                    </div>
-                    <div class="d-flex flex-column data-info">
-                        <div class="label-content">
-                            Phone Number:
-                        </div>
-                        <div class="label-data" id="pnumber"></div>
-                    </div>
-                    <div class="d-flex flex-column data-info">
-                        <div class="label-content">
-                            Address
-                        </div>
-                        <div class="label-data" id="address"></div>
-                    </div>
-                    <center>
-                        <button class="btn btn-danger w-25 mt-3" id="btn_cancel">Cancel</button>
-                    </center>
+                    </form>
+                    <button style="display: none;" id="close_modal" data-bs-dismiss="modal" aria-label="Close">close</button>
                 </div>
             </div>
         </div>
-    </div>    
-
+    </div>
     
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

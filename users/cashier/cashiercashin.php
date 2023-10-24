@@ -88,9 +88,9 @@ if(($_SESSION['usertype']!="cashier")){
               <div class="profile-info">
                 <img id="profile_image">
                 <div class="user-name">
-                  <h2 class="name">
+                  <h4 class="name">
 
-                  </h2>
+                  </h4>
                 </div>
                 <div class="user_id">
                   

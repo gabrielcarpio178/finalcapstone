@@ -1,0 +1,111 @@
+/* * {
+    outline: 1px solid black;
+} */
+
+.content-data{
+    position: relative;
+    left: 100px;
+    width: 92%;
+
+}
+.content-info{
+    margin-top: 30px;
+}
+.label-info{
+    font-size: 30px;
+}
+.wallet-balance{
+    background-color: white;
+    box-shadow: 0 1px 1px 1px #616161;
+    border-radius: 5px/5px;
+    width: 200px;
+    padding: 10px;
+}
+.balance-amount{
+    font-size: 20px;
+    font-weight: bold;
+}
+.form-content{
+    height: 65vh;
+}
+.form-input{
+    background-color: white;
+    box-shadow: 0 1px 1px 1px #616161;
+    border-radius: 5px/5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px 20px 30px;
+    width: 35%;
+}
+.insert-forms{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+.profile-content{
+    height: 100vh;
+}
+.user-profile{
+    background-color: white;
+    box-shadow: 0 1px 1px 1px #616161;
+    height: 100vh;
+}
+.profile-name img{
+    max-width: 30%;
+}
+.profile-name .user-name{
+    font-size: 30px;
+    font-weight: bold;
+}
+.user_type{
+    font-size: 20px;
+}
+.data-info{
+    margin-top: 10px;
+}
+.label-data{
+    width: 100%;
+    padding: 5px 5px;
+    background-color: rgb(179, 171, 171);
+}
+
+.input-piso{
+    position: relative;
+}
+.piso-sign{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 30px;
+}
+.swal-label{
+    text-align: left;
+}
+.swal-review-amount{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 20px;
+    border-radius: 10px/10px;
+    gap: 20px;
+    margin: 10px;
+}
+.amount-info{
+    font-size: 32px;
+    font-weight: bold;
+}
+.swal-name-user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    padding-bottom: 20px;
+}
+.swal-image{
+    width: 60px;
+    height: auto;
+}

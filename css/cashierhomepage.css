@@ -48,17 +48,17 @@ img{
 }
 
 #request{
- background-color: rgb(78, 173, 78);  
- position: relative;
+  background-color: rgb(78, 173, 78);  
+  position: relative;
 }
 #cashin{
- background-color: rgb(160, 80, 80);
+  background-color: rgb(160, 80, 80);
 }
 #account-balance{
- background-color: rgb(179, 115, 126);
+  background-color: rgb(179, 115, 126);
 }
 #collection-div{
- background-color: rgb(87, 51, 51);
+  background-color: rgb(87, 51, 51);
 }
 
 .data-set{

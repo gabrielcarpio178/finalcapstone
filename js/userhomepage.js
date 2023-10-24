@@ -25,6 +25,10 @@ $(document).ready(function () {
     window.location = "userinputpayment.php";
   });
 
+  $("#send_money").on('click',function(){
+    window.location = "usersend_money.php";
+  })
+
   notification();
   
   $(".bell").on('click', function(){

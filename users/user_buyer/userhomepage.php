@@ -109,6 +109,12 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                                 Account Balance
                             </div>                           
                         </div>
+                        <div class="d-flex flex-column category" id="send_money">
+                            <img src="../../image/send_money.png" alt="Send Money">
+                            <div class="label">
+                                Send Money
+                            </div>                           
+                        </div>
                         <div class="d-flex flex-column category" id="scanqr">
                             <img src="../../image/qrcode.png" alt="Scan Qr">
                             <div class="label">

@@ -7,13 +7,15 @@
 
 .category {
   border-radius: 10px/10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   box-shadow: 0 1px 1px 1px #616161;
   cursor: pointer;
+  max-width: 80%;
+  min-height: 3vh;
 }
 #inputpayment {
   background-color: #ffde81;
@@ -27,7 +29,9 @@
 #scanqr {
   background-color: #ffeabb;
 }
-
+#send_money{
+  background-color: rgb(68, 172, 103);
+}
 .anouncement {
   background-color: #2a325470;
   border-radius: 10px/10px;

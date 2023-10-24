@@ -74,7 +74,7 @@ if(($_SESSION['usertype']!="cashier")){
                 <form id="input-sumbit">
                   <div class="input-class">
                     <p>₱</p>
-                    <input type="number" name="input_amount" id="input_amount" class="form-control">
+                    <input type="number" name="input_amount" id="input_amount" class="form-control" min="0">
                   </div>
                   <button type="submit" class="btn btn-primary" id="signin" value="submit">Okay</button>
                 </form>

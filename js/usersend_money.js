@@ -32,6 +32,7 @@ function searchForm(){
                 Send to:
             </div>
             <input type="text" id="search_input" placeholder="Enter Name Or User ID" class="mt-2 form-control">
+            <div class="result" id="result_data"></div>
             <div class="m-2 search-result">
 
             </div>
@@ -82,6 +83,7 @@ function searchForm(){
             })
         }else{
             $(".search-result").html("");
+            $("#result_data").text("");
         }
         
     });
@@ -94,7 +96,9 @@ function searchForm(){
             type: 'POST',
             data: {search:search},
             success: function(res){
-                console.log(res);
+                if(parseInt(res)!=0){
+                    $("#result_data").text(`Result count: ${res}`);
+                }
             }
         })
     })
@@ -224,6 +228,7 @@ function cancel_okay(){
     $("#input_balance").attr("readonly", false);
     $("#send_btn").removeProp("disabled");
     $("#insert_password").val("");
+    $("#result_data").text("");
 }
 
 function getbalanceinputed(inputed_balance, sendToId){

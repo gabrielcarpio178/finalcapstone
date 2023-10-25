@@ -12,9 +12,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 0 1px 1px 1px #616161;
+  box-shadow: 0 1px 1px 1px #616161a1;
   cursor: pointer;
-  max-width: 80%;
+  max-width: 100%;
   min-height: 3vh;
 }
 #inputpayment {
@@ -24,18 +24,18 @@
   background-color: #fda784;
 }
 #accountbalance {
-  background-color: #90b7b6;
+  background-color: #90b7b6e9;
 }
 #scanqr {
   background-color: #ffeabb;
 }
-#send_money{
-  background-color: rgb(68, 172, 103);
+#send_money {
+  background-color: #a6a883;
 }
 .anouncement {
-  background-color: #2a325470;
+  background-color:#2a325436;
   border-radius: 10px/10px;
-  box-shadow: 0 1px 1px 1px #616161;
+  box-shadow: 0 1px 1px 1px #616161a1;
 }
 .announce h1 {
   font-weight: bold;
@@ -43,7 +43,7 @@
 .wallet-balance {
   background-color: white;
   font-weight: bold;
-  box-shadow: 0 1px 1px 1px #616161;
+  box-shadow: 0 1px 1px 1px #616161a1;
   border-radius: 10px/10px;
 }
 .wallet-balance .balance h1 {
@@ -53,15 +53,15 @@
   background-color: white;
 }
 
-.bell{
+.bell {
   cursor: pointer;
 }
 
-.notification-bell{
+.notification-bell {
   position: relative;
 }
 
-.notification{
+.notification {
   position: absolute;
   top: 10px;
   display: flex;
@@ -71,20 +71,20 @@
   display: none;
 }
 
-.noti-data{
+.noti-data {
   height: 60vh;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }
-.button{
+.button {
   cursor: pointer;
-  box-shadow: 0 1px 1px 1px #616161;
+  box-shadow: 0 1px 1px 1px #616161a1;
   width: 100%;
   text-align: center;
   font-weight: bold;
   padding: 10px 0px;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 }
 /* .message_info :hover{
   background-color: #D9D9D9;
@@ -150,7 +150,7 @@
   .profile-data {
     padding: 40px;
     height: 100vh;
-    box-shadow: 0 1px 1px 1px #616161;
+    box-shadow: 0 1px 1px 1px #616161a1;
     display: none;
   }
   .icon img {
@@ -242,7 +242,7 @@
   .wallet-balance {
     padding: 25px;
     width: 250px;
-    box-shadow: 0 1px 1px 1px #616161;
+    box-shadow: 0 1px 1px 1px #616161a1;
   }
   #profile {
     position: static;
@@ -269,14 +269,14 @@
     display: none !important;
   }
 
-  .notification{
+  .notification {
     height: 70vh;
-    padding-top: 5px; 
+    padding-top: 5px;
     width: 400px;
     font-size: 20px;
   }
 
-  .messages{
+  .messages {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -284,22 +284,20 @@
     cursor: pointer;
     align-items: center;
   }
-  .message_info{
+  .message_info {
     display: flex;
     flex-direction: column;
   }
-  .message_info p{
+  .message_info p {
     font-size: 14px;
     padding-left: 60px;
   }
-  .message_info .canteen-staff-pp{
+  .message_info .canteen-staff-pp {
     width: 50px;
     height: 50px;
   }
 
-
-  .none_view{
-    background-color: #D9D9D9;
+  .none_view {
+    background-color: #d9d9d9;
   }
-
 }

@@ -77,11 +77,10 @@ if(($_SESSION['usertype']!="cashier")){
                 </div>
                 <div class="d-flex flex-column gap-1 align-items-center dateyear-sem w-25">
                   <div class="year-sem">
-                    A.Y 2023-2024
                   </div>
                   <div class="d-flex flex-row gap-2 justify-content-between align-items-center month-sem">
                     <div class="school-month">
-                      Aug 22 -Jan 5
+                      
                     </div>
                     <i class="fa-solid fa-calendar fa-sm"></i>
                   </div>
@@ -89,8 +88,8 @@ if(($_SESSION['usertype']!="cashier")){
 
                   <div class="select_option">
                     <select name="" id="semester-year">
-                      <option value="first-sem">First Sem</option>
-                      <option value="second-sem">Second Sem</option>
+                      <option value="first-semister" id="first-semister">First Sem.</option>
+                      <option value="second-semister" id="second-semister">Second Sem.</option>
                     </select>
                   </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2023 at 06:20 AM
+-- Generation Time: Oct 25, 2023 at 10:01 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -88,7 +88,7 @@ INSERT INTO `cashierrates_tb` (`cashierRates_id`, `cashierRates_request`, `cashi
 (2, 'Transcript of Record', 'Transcript of Record', 130),
 (3, 'certificate', 'Certificate of Enrollment', 20),
 (4, 'certificate', 'Certificate of Transfer Crendential', 100),
-(7, 'certificate', 'Grades', 20);
+(7, 'certificate', 'Grades', 50);
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,6 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (20, 36, 30, '7489526310', 0, '2023-10-03 13:32:12'),
 (28, 65, 500, '6578241930', 0, '2023-10-11 15:01:09'),
 (30, 79, 500, '1365890742', 1, '2023-10-11 23:02:57'),
-(31, 81, 500, '8135206479', 1, '2023-10-12 11:21:18'),
 (32, 79, 500, '7283651049', 1, '2023-10-12 11:23:11'),
 (33, 79, 500, '3479621085', 1, '2023-10-13 10:32:41'),
 (34, 79, 200, '4158632970', 1, '2023-10-13 12:42:37'),
@@ -150,7 +149,8 @@ INSERT INTO `cashin_tb` (`cashin_id`, `user_id`, `cashin_amount`, `ref_num`, `ca
 (43, 79, 500, '0458739612', 1, '2023-10-17 16:56:57'),
 (44, 79, 300, '3816027594', 1, '2023-10-18 00:20:08'),
 (46, 79, 500, '4085623719', 1, '2023-10-19 08:26:54'),
-(47, 83, 1000, '0645719823', 1, '2023-10-19 09:01:25');
+(47, 83, 1000, '0645719823', 1, '2023-10-19 09:01:25'),
+(48, 84, 1000, '5601378924', 0, '2023-10-25 12:38:45');
 
 -- --------------------------------------------------------
 
@@ -393,6 +393,26 @@ INSERT INTO `product_tb` (`product_id`, `category_id`, `teller_id`, `product_nam
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `semesteryear_tb`
+--
+
+CREATE TABLE `semesteryear_tb` (
+  `semesterYear_id` int(11) NOT NULL,
+  `semister` varchar(100) NOT NULL,
+  `semister_start` date NOT NULL DEFAULT current_timestamp(),
+  `semister_end` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `semesteryear_tb`
+--
+
+INSERT INTO `semesteryear_tb` (`semesterYear_id`, `semister`, `semister_start`, `semister_end`) VALUES
+(1, 'first-semister', '2023-10-25', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sendbalance_tb`
 --
 
@@ -410,11 +430,10 @@ CREATE TABLE `sendbalance_tb` (
 --
 
 INSERT INTO `sendbalance_tb` (`sendBalance_id`, `sender_id`, `receiver_id`, `send_amount`, `sendBalance_ref`, `sendBalance_Date`) VALUES
-(1, 79, 36, 100, '1976438502', '2023-10-24 11:44:12'),
-(2, 79, 81, 100, '7590861243', '2023-10-24 11:51:51'),
-(3, 79, 83, 50, '1593076284', '2023-10-24 11:55:43'),
-(4, 79, 65, 105, '4285379016', '2023-10-24 12:04:41'),
-(5, 81, 79, 100, '2849167305', '2023-10-24 12:15:32');
+(3, 79, 83, 100, '3928164750', '2023-10-24 23:18:21'),
+(4, 79, 65, 100, '0473861925', '2023-10-24 23:25:47'),
+(6, 79, 83, 100, '9134607285', '2023-10-24 23:31:44'),
+(9, 79, 84, 55, '6831279045', '2023-10-25 12:44:14');
 
 -- --------------------------------------------------------
 
@@ -453,8 +472,8 @@ INSERT INTO `student_tb` (`studentID_number`, `course`, `year`, `rfid_number`, `
 (2020115761, 'BSIS', '4th', '0437282034', 76),
 (2020115752, 'BSIS', '4th', '0472321553', 79),
 (2020115166, 'BSIS', '4th', '0476723473', 80),
-(2020115048, 'BSIS', '4th', '0442750691', 81),
-(2020114925, 'BSIS', '4th', '0478138897', 83);
+(2020114925, 'BSIS', '4th', '0478138897', 83),
+(2020115048, 'BSIS', '4th', '0442750691', 84);
 
 -- --------------------------------------------------------
 
@@ -539,7 +558,8 @@ INSERT INTO `userwebusages_tb` (`userWebUsages_id`, `user_id`, `user_category`, 
 (33, 63, 'user_buyer', '2023-10-11'),
 (34, 79, 'user_buyer', '2023-10-11'),
 (35, 81, 'user_buyer', '2023-10-19'),
-(36, 83, 'user_buyer', '2023-10-19');
+(36, 83, 'user_buyer', '2023-10-19'),
+(37, 84, 'user_buyer', '2023-10-25');
 
 -- --------------------------------------------------------
 
@@ -592,8 +612,8 @@ INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber
 (76, 'ARIEL', 'GABIANDAN', 'COLUMNAARIEL460@GMAIL.COM', 9922073188, 'male', 'non-bago', 'student', 'user_buyer', 'not-active\n', '2023-10-11', '2020115761', 'ed1a085c3eba34485679181c9a4c19c0'),
 (79, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d'),
 (80, 'ABEGAIL', 'EPAROSA', 'AEEPAROSA@GMAIL.COM', 9302442883, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-12', '2020115166', '448d581442ea70e5b3d7a5e04bc2a56d'),
-(81, 'JULIE', 'VILLACRUSIS', 'VILLACRUSISJULIE6@GMAIL.COM', 9107855364, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-12', '2020115048', '6387aad62f1ab08512bd362113430a92'),
-(83, 'KENNY', 'BELARTE', 'KNYBELARTE1120@GMAIL.COM', 9777180551, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-19', '2020114925', '88594835d20004f1de8c2b9fdf7cf942');
+(83, 'KENNY', 'BELARTE', 'KNYBELARTE1120@GMAIL.COM', 9777180551, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-19', '2020114925', '88594835d20004f1de8c2b9fdf7cf942'),
+(84, 'JULIE', 'VILLACRUSIS', 'VILLACRUSISJULIE6@GMAIL.COM', 9107855364, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-25', '2020115048', 'b417b37ca4a6ef42fc8924ce6d9f323c');
 
 --
 -- Indexes for dumped tables
@@ -676,6 +696,12 @@ ALTER TABLE `product_tb`
   ADD KEY `teller_id` (`teller_id`);
 
 --
+-- Indexes for table `semesteryear_tb`
+--
+ALTER TABLE `semesteryear_tb`
+  ADD PRIMARY KEY (`semesterYear_id`);
+
+--
 -- Indexes for table `sendbalance_tb`
 --
 ALTER TABLE `sendbalance_tb`
@@ -739,7 +765,7 @@ ALTER TABLE `cashier_tb`
 -- AUTO_INCREMENT for table `cashin_tb`
 --
 ALTER TABLE `cashin_tb`
-  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `cashin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `cashout_tb`
@@ -778,10 +804,16 @@ ALTER TABLE `product_tb`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
+-- AUTO_INCREMENT for table `semesteryear_tb`
+--
+ALTER TABLE `semesteryear_tb`
+  MODIFY `semesterYear_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `sendbalance_tb`
 --
 ALTER TABLE `sendbalance_tb`
-  MODIFY `sendBalance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sendBalance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `telleruser_tb`
@@ -793,13 +825,13 @@ ALTER TABLE `telleruser_tb`
 -- AUTO_INCREMENT for table `userwebusages_tb`
 --
 ALTER TABLE `userwebusages_tb`
-  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `user_tb`
 --
 ALTER TABLE `user_tb`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- Constraints for dumped tables

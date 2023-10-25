@@ -47,11 +47,113 @@ $(document).ready(function () {
     
   })
 
+  $(".txt, #semester-year, .checkbox").each(function() {
+    $(this).change(function(){
+        sem_year = $(this).val();
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "Do want to change this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, change it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
+              url: '../../controller/DbcashierSetsemester.php',
+              type: 'POST',
+              data: {sem_year : sem_year},
+              cache: false,
+              success: function(){
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Save success',
+                  showConfirmButton: false,
+                  timer: 1000
+                }).then(function(){
+                  semisterYear();
+                })
+              }
+            });
+          }
+        })
+    }); 
+});
+
   addCertificateRow();
   submitcertificate();
   displayRate();
   editSave();
+  semisterYear();
+  semisterYear();
+  semisterYear();
 });
+
+function yearPicker(month, day ,year){
+  if(day.toString().length==1){
+    day = `0${day}`;
+  }
+  option = `
+  <input type="date" value="${year}-${month+1}-${day}" class="form-control"  id="date_edit_sem"> 
+  `;
+  return option;
+}
+
+function semisterInfo(semister_db){
+  semister = `
+  <option value="first-semister" ${(semister_db=="first-semister")?"selected":""}>First Sem.</option>
+  <option value="second-semister" ${(semister_db=="second-semister")?"selected":""}>Second Sem.</option>
+  `;
+  return semister;
+}
+
+function semisterYear(){
+  $.ajax({
+    url: '../../controller/DbcashierGetSemister.php',
+    type: 'POST',
+    data: {cashier : 'cashier'},
+    cache: false,
+    success: function(res){
+      var latest_semester = JSON.parse(res);
+      var date_db = new Date(latest_semester.semister_start);
+      var mounth_db = date_db.getMonth();
+      var day_db = date_db.getDate();
+      var year_db = date_db.getFullYear();
+      //current
+      var date = new Date();
+      var mounth = date.getMonth();
+      var day = date.getDate();
+      var monthFull = [
+        "Jan.",
+        "Feb.",
+        "Mar.",
+        "Apr.",
+        "May",
+        "June.",
+        "July.",
+        "Aug.",
+        "Sept.",
+        "Oct.",
+        "Nov.",
+        "Dec.",
+        ];
+
+      if(latest_semester.semister=="first-semister"){
+        year_display = parseInt(year_db);
+      }else{
+        year_display = parseInt(year_db)-1;
+      }
+      $(".year-sem").text(`A.Y ${year_display} - ${year_display+1}`);
+      $(".school-month").text(`${monthFull[mounth_db]} ${day_db} - ${monthFull[mounth]} ${day}`);
+      $(`#${latest_semester.semister}`).attr("selected","true");
+      $("#year_edit_sem").html(yearPicker(mounth_db, day_db, year_db));
+      $("#edit_semister").html(semisterInfo(latest_semester.semister));
+    }
+  })
+}
+
 let i = 0;
 function addCertificateRow(){
   input = 
@@ -121,7 +223,7 @@ function displayRate(){
         $("#certTCre").text(`${(result[1]).cashierRates_amount}.00`);
         for(let x = 2; x<result.length; x++){
           certificate_rate += `
-          <div class="d-flex flex-row justify-content-between w-75">
+          <div class="d-flex flex-row justify-content-between w-751">
             <div class="rate-label">${(result[x]).cashierRatesCertificate}</div>
             <div class="rate-label">${(result[x]).cashierRates_amount}.00</div>
           </div>`;
@@ -134,13 +236,20 @@ function displayRate(){
 }
 
 function editRate(result){
-
+  
   edit = 
   `
   <div class="d-flex flex-row justify-content-between align-items-center gap-3 w-100">
     <input type="hidden" name="category_id[]" class="form-control category_amount" value="${(result[0]).cashierRates_id}">
-    <input type="text" name="category_name[]" class="form-control category_name" readonly value="Non Bago Fee">
-    <input type="number" name="category_amount[]" class="form-control category_amount" value="${(result[0]).cashierRates_amount}">
+    <input type="text" name="category_name[]" class="form-control w-50 category_name" readonly value="Non Bago Fee">
+    <div class="d-flex flex-row gap-2 w-50 edit-non-bago-year">
+      <input type="number" name="category_amount[]" class="form-control category_amount w-25" value="${(result[0]).cashierRates_amount}">
+      <div id="year_edit_sem" class="w-50">
+      </div>
+      <select id="edit_semister" class="form-select form-select-sm w-25">
+      </select>
+    </div>
+    
   </div>
   <div class="d-flex flex-row justify-content-between align-items-center gap-3 w-100">
     <input type="hidden" name="category_id[]" class="form-control category_amount" value="${(result[1]).cashierRates_id}">
@@ -182,14 +291,27 @@ function editSave(){
           cache: false,
           success: function(res){
             if(res=="success"){
-              Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Save success',
-                showConfirmButton: false,
-                timer: 1000
-              }).then(function(){
-                location.reload(true);
+              var edit_year = $("#date_edit_sem").val();
+              var semister_year = $("#edit_semister").val();
+              $.ajax({
+                url: '../../controller/DbcashierEditSemisterSave.php',
+                type: 'POST',
+                data: {
+                  edit_year : edit_year,
+                  semister_year : semister_year
+                },
+                cache: false, 
+                success: function(){
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Save success',
+                    showConfirmButton: false,
+                    timer: 1000
+                  }).then(function(){
+                    location.reload(true);
+                  })
+                }
               })
             }else{
               Swal.fire({

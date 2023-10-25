@@ -70,7 +70,7 @@ else{
             }else{
                 $address = "non-bago";
             }
-            $passwordmd = md5($password);
+            $passwordmd = md5(strtolower($password));
             try {
                 mysqli_query($connect,"INSERT INTO `user_tb`(`firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `user_category`, `usertype`, `statues`, `username`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber', '$gender', '$address', 'user_buyer', 'student', 'active', '$username','$passwordmd');");
             } catch (\Throwable $th) {

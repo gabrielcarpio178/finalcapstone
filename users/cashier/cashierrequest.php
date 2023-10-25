@@ -63,31 +63,60 @@ if(($_SESSION['usertype']!="cashier")){
             </div> 
             <div class="content-rate p-2">
 
-              <div class="d-flex flex-row justify-content-between header-rate">
-                <div class="rate-label">Request Type</div>
-                <div class="rate-label">Amount</div>
-              </div>
-
-              <div class="d-flex flex-row justify-content-between rate-content">
-                <div class="rate-label">Non Bago Fee</div>
-                <div class="rate-label" id="non_bago_fee"></div>
-              </div>
-
-              <div class="d-flex flex-column rate-content">
-                <div class="d-flex flex-row justify-content-between w-100">
-                  <div class="rate-label">Certifications</div>
-                  <div class="rate-label" id="certificate_show"><i class="fa-solid fa-angle-up"></i></div>
+              <div class="header-rate">
+                <div class="d-flex flex-row justify-content-between align-items-center w-75">
+                  <div class="rate-label">Request Type</div>
+                  <div class="rate-label">Amount</div>
                 </div>
-
-                <div class="d-flex flex-column gap-2" id="cert-content" style="display: none !important">
-                  
-                </div>
-
               </div>
 
-              <div class="d-flex flex-row justify-content-between rate-content">
-                <div class="rate-label">Transcript of Record</div>
-                <div class="rate-label" id="certTCre"></div>
+              <div class="d-flex flex-row gap-2 non-bago-content">
+                <div class="d-flex flex-row justify-content-between align-items-center w-75 rate-content">
+                  <div class="rate-label">Non Bago Fee</div>
+                  <div class="rate-label" id="non_bago_fee"></div>
+                </div>
+                <div class="d-flex flex-column gap-1 align-items-center dateyear-sem w-25">
+                  <div class="year-sem">
+                    A.Y 2023-2024
+                  </div>
+                  <div class="d-flex flex-row gap-2 justify-content-between align-items-center month-sem">
+                    <div class="school-month">
+                      Aug 22 -Jan 5
+                    </div>
+                    <i class="fa-solid fa-calendar fa-sm"></i>
+                  </div>
+                  <div class="line w-100"></div>
+
+                  <div class="select_option">
+                    <select name="" id="semester-year">
+                      <option value="first-sem">First Sem</option>
+                      <option value="second-sem">Second Sem</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="rate-content-certifications">
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row justify-content-between align-items-center w-75">
+                      <div class="rate-label">Certifications</div>
+                      <div class="rate-label" id="certificate_show"><i class="fa-solid fa-angle-up"></i></div>
+                    </div>
+
+                    <div class="d-flex flex-column gap-2" id="cert-content" style="display: none !important">
+                      
+                    </div>
+                  </div>
+              </div>
+
+              
+
+              <div class="rate-content">
+                <div class="d-flex flex-row justify-content-between align-items-center w-75">
+                  <div class="rate-label">Transcript of Record</div>
+                  <div class="rate-label" id="certTCre"></div>
+                </div>
               </div>
 
             </div>

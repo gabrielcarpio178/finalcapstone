@@ -121,7 +121,7 @@ function displayRate(){
         $("#certTCre").text(`${(result[1]).cashierRates_amount}.00`);
         for(let x = 2; x<result.length; x++){
           certificate_rate += `
-          <div class="d-flex flex-row justify-content-between w-100">
+          <div class="d-flex flex-row justify-content-between w-75">
             <div class="rate-label">${(result[x]).cashierRatesCertificate}</div>
             <div class="rate-label">${(result[x]).cashierRates_amount}.00</div>
           </div>`;

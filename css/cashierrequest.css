@@ -37,14 +37,41 @@ ul {
 .header-rate{
   background-color: rgb(174, 174, 243);
 }
-.header-rate, .rate-content{
+.header-rate, .rate-content, .rate-content-certifications, .dateyear-sem{
   padding: 10px;
   border-radius: 5px/5px;
   box-shadow: 0 1px 1px 1px #616161;
+}
+.header-rate, .rate-content, .dateyear-sem{
+  height: 60px;
+}
+.dateyear-sem{
+  padding: 0px;
 }
 #certificate_show{
   cursor: pointer;
 }
 #input-content{
   height: inherit;
+}
+.year-sem{
+  font-size: 9px;
+}
+.school-month{
+  font-size: 10px;
+}
+.line{
+  background-color: rgb(128, 122, 122);
+  height: 1px;
+}
+.non-bago-content{
+  position: relative;
+}
+.select_option{
+  position: absolute;
+  bottom: 0px;
+}
+#semester-year{
+  border: none;
+  font-size: 14px;
 }

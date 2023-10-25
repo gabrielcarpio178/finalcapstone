@@ -3,7 +3,7 @@ session_start();
 sleep(1);
 require('Dbconnection.php');
 $username=$_POST['username'];
-$password=md5($_POST['password']);
+$password=md5(strtolower($_POST['password']));
 $_SESSION['error'] = array();
 
 try{

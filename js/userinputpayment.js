@@ -439,6 +439,7 @@ function btn_ok(){
     $(".success-message").fadeOut().hide();
     $("#input").val("");
     getbalance();
+    isInBago();
   });
 }
 

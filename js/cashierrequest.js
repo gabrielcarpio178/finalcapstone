@@ -1,6 +1,11 @@
 $(document).ready(function () {
   $("#nav").load("cashiernav.php");
   displayTable('non_bago_table', 0);
+  addCertificateRow();
+  submitcertificate();
+  displayRate();
+  editSave();
+  semisterYear();
   let i;
   $("#non_bago").on("click", function () {
     $(this).addClass("fucos-class");
@@ -81,33 +86,8 @@ $(document).ready(function () {
         })
     }); 
 });
-
-  addCertificateRow();
-  submitcertificate();
-  displayRate();
-  editSave();
-  semisterYear();
-  semisterYear();
-  semisterYear();
 });
 
-function yearPicker(month, day ,year){
-  if(day.toString().length==1){
-    day = `0${day}`;
-  }
-  option = `
-  <input type="date" value="${year}-${month+1}-${day}" class="form-control"  id="date_edit_sem"> 
-  `;
-  return option;
-}
-
-function semisterInfo(semister_db){
-  semister = `
-  <option value="first-semister" ${(semister_db=="first-semister")?"selected":""}>First Sem.</option>
-  <option value="second-semister" ${(semister_db=="second-semister")?"selected":""}>Second Sem.</option>
-  `;
-  return semister;
-}
 
 function semisterYear(){
   $.ajax({
@@ -145,11 +125,18 @@ function semisterYear(){
       }else{
         year_display = parseInt(year_db)-1;
       }
+      day = day_db;
+      if(day_db.toString().length==1){
+        day = `0${day}`;
+      }
+
       $(".year-sem").text(`A.Y ${year_display} - ${year_display+1}`);
       $(".school-month").text(`${monthFull[mounth_db]} ${day_db} - ${monthFull[mounth]} ${day}`);
       $(`#${latest_semester.semister}`).attr("selected","true");
-      $("#year_edit_sem").html(yearPicker(mounth_db, day_db, year_db));
-      $("#edit_semister").html(semisterInfo(latest_semester.semister));
+      $("#year_edit_sem").html(`<input type="date" value="${year_db}-${mounth_db+1}-${day}" class="form-control" id="date_edit_sem"> 
+      `);
+      $("#edit_semister").html(`<option value="first-semister" ${(latest_semester.semister=="first-semister")?"selected":""}>First Sem.</option>
+      <option value="second-semister" ${(latest_semester.semister=="second-semister")?"selected":""}>Second Sem.</option>`);
     }
   })
 }

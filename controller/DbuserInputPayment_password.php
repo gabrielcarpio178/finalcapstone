@@ -1,7 +1,7 @@
 <?php
 require('Dbconnection.php');
 if(isset($_POST['password'])&&isset($_POST['user_id'])){
-    $password = md5($_POST['password']);
+    $password = md5(strtolower($_POST['password']));
     $user_id = $_POST['user_id'];
     try {
         $sql = mysqli_query($connect, "SELECT password FROM user_tb WHERE user_id = '$user_id';");

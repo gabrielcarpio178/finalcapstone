@@ -20,7 +20,7 @@ if(isset($_POST['user_id'])){
             $sql_semister = mysqli_query($connect, "SELECT `semister`, semister_start FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
             $semister_row = mysqli_fetch_assoc($sql_semister);
             $semister = $semister_row['semister'];
-            $semister_start = $semister_row['semister'];
+            $semister_start = $semister_row['semister_start'];
         } catch (\Throwable $th) {
             echo $th;
         }

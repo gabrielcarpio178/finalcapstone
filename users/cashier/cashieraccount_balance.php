@@ -39,15 +39,34 @@ if(($_SESSION['usertype']!="cashier")){
             <input type="text" name="search_user" id="search_user" class="form-control w-25" placeholder="Search Name Or ID">
         </div>
 
-        <div class="d-flex flex-row justify-content-end sort-content">
+        <div class="d-flex flex-row justify-content-end sort-content gap-2">
+
+            <select name="sortByYear" id="sortByYear" class="form-select form-select-sm w-25">
+                <option disabled selected>Sort By Year:</option>
+            </select>
+
+            <select name="sortBySemister" id="sortBySemister" class="form-select form-select-sm w-25">
+                <option disabled selected>Sort By Semister:</option>
+                <option value="current">Current</option>
+                <option value="first-semister">First sem.</option>
+                <option value="second-semister">Second sem.</option>
+            </select>
+
             <select name="sortBy" id="sortBy" class="form-select form-select-sm w-25">
                 <option disabled selected>Sort By:</option>
                 <option value="all">All</option>
                 <option value="paid">Paid</option>
                 <option value="unpaid">Unpaid</option>
             </select>
+
         </div>
 
+        <div class="d-flex flex-row semister-year-label">
+            <div class="semister-year">
+                First Semister
+            </div>
+        </div>
+        
         <div class="table-content">
             
         </div>

@@ -26,9 +26,18 @@ if(isset($_POST['search'])&&isset($_POST['sortBy'])&&isset($_POST['page_num'])){
         $sortBy = " AND (digitalpayment_tb.requestType = 'pending' OR digitalpayment_tb.payment_type IS NULL)";
     }
 
-    $query = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy." ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT ".$offset." , 5";
+    try {
+        $sql_semister = mysqli_query($connect, "SELECT `semister`, `semister_start` FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
+        $semister_row = mysqli_fetch_assoc($sql_semister);
+        $semister = $semister_row['semister'];
+        $semister_start = $semister_row['semister_start'];
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    $query = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$semister_start' AND CAST(NOW() AS DATE) OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT ".$offset." , 5";
     
-    $query_count = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy." ORDER BY digitalpayment_tb.digitalPayment_id DESC";
+    $query_count = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$semister_start' AND CAST(NOW() AS DATE) OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC";
 
     try {
         $sql_count = mysqli_query($connect, $query_count);

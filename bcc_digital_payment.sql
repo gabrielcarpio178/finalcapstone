@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2023 at 10:01 AM
+-- Generation Time: Nov 01, 2023 at 05:43 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -220,6 +220,7 @@ CREATE TABLE `digitalpayment_tb` (
   `payment_amount` varchar(100) NOT NULL,
   `payment_type` varchar(100) NOT NULL,
   `payment_ref` varchar(100) NOT NULL,
+  `semester_year` varchar(50) NOT NULL,
   `requestType` varchar(100) NOT NULL,
   `payment_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -228,21 +229,21 @@ CREATE TABLE `digitalpayment_tb` (
 -- Dumping data for table `digitalpayment_tb`
 --
 
-INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `payment_ref`, `requestType`, `payment_date`) VALUES
-(1, 79, '50', 'Transcript of Record', '9501486237', 'accepted', '2023-10-18 23:15:37'),
-(3, 79, '100', 'Certificate of Transfer Crendential', '1245309768', 'accepted', '2023-10-18 23:17:32'),
-(4, 79, '50', 'Certificate of Enrollment', '4901578263', 'accepted', '2023-10-19 00:06:50'),
-(5, 79, '100', 'Certificate of Transfer Crendential', '6835172904', 'accepted', '2023-10-19 00:07:07'),
-(6, 79, '100', 'Certificate of Transfer Crendential', '9427810356', 'accepted', '2023-10-19 00:14:05'),
-(7, 79, '50', 'Certificate of Enrollment', '3158460297', 'accepted', '2023-10-19 00:14:36'),
-(8, 79, '50', 'Certificate of Enrollment', '1742695038', 'accepted', '2023-10-19 00:14:56'),
-(10, 79, '50', 'Transcript of Record', '7361204985', 'accepted', '2023-10-19 00:37:34'),
-(12, 79, '100', 'Certificate of Transfer Crendential', '5327081649', 'accepted', '2023-10-19 08:28:07'),
-(13, 79, '50', 'Transcript of Record', '0615982347', 'accepted', '2023-10-19 08:28:18'),
-(14, 83, '20', 'Certificate of Enrollment', '9732540861', 'accepted', '2023-10-19 09:09:36'),
-(17, 79, '100', 'Certificate of Transfer Crendential', '2389041576', 'pending', '2023-10-19 09:47:10'),
-(18, 79, '20', 'Grades', '3284719650', 'accepted', '2023-10-20 22:11:15'),
-(21, 79, '500', 'Non Bago Fee', '4028673591', 'accepted', '2023-10-21 00:46:07');
+INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount`, `payment_type`, `payment_ref`, `semester_year`, `requestType`, `payment_date`) VALUES
+(1, 79, '50', 'Transcript of Record', '9501486237', 'first-semester', 'accepted', '2023-10-18 23:15:37'),
+(3, 79, '100', 'Certificate of Transfer Crendential', '1245309768', 'first-semester', 'accepted', '2023-10-18 23:17:32'),
+(4, 79, '50', 'Certificate of Enrollment', '4901578263', 'first-semester', 'accepted', '2023-10-19 00:06:50'),
+(5, 79, '100', 'Certificate of Transfer Crendential', '6835172904', 'first-semester', 'accepted', '2023-10-19 00:07:07'),
+(6, 79, '100', 'Certificate of Transfer Crendential', '9427810356', 'first-semester', 'accepted', '2023-10-19 00:14:05'),
+(7, 79, '50', 'Certificate of Enrollment', '3158460297', 'first-semester', 'accepted', '2023-10-19 00:14:36'),
+(8, 79, '50', 'Certificate of Enrollment', '1742695038', 'first-semester', 'accepted', '2023-10-19 00:14:56'),
+(10, 79, '50', 'Transcript of Record', '7361204985', 'first-semester', 'accepted', '2023-10-19 00:37:34'),
+(12, 79, '100', 'Certificate of Transfer Crendential', '5327081649', 'first-semester', 'accepted', '2023-10-19 08:28:07'),
+(13, 79, '50', 'Transcript of Record', '0615982347', 'first-semester', 'accepted', '2023-10-19 08:28:18'),
+(14, 83, '20', 'Certificate of Enrollment', '9732540861', 'first-semester', 'accepted', '2023-10-19 09:09:36'),
+(17, 79, '100', 'Certificate of Transfer Crendential', '2389041576', 'first-semester', 'pending', '2023-10-19 09:47:10'),
+(24, 79, '500', 'Non Bago Fee', '7241986503', 'first-semester', 'accepted', '2023-10-27 11:45:34'),
+(31, 79, '500', 'Non Bago Fee', '3409812576', 'first-semester', 'pending', '2023-11-01 12:12:10');
 
 -- --------------------------------------------------------
 
@@ -398,17 +399,28 @@ INSERT INTO `product_tb` (`product_id`, `category_id`, `teller_id`, `product_nam
 
 CREATE TABLE `semesteryear_tb` (
   `semesterYear_id` int(11) NOT NULL,
-  `semister` varchar(100) NOT NULL,
-  `semister_start` date NOT NULL DEFAULT current_timestamp(),
-  `semister_end` datetime DEFAULT NULL
+  `semester` varchar(100) NOT NULL,
+  `semester_start` date NOT NULL DEFAULT current_timestamp(),
+  `semester_end` date DEFAULT NULL,
+  `semester_pair` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `semesteryear_tb`
 --
 
-INSERT INTO `semesteryear_tb` (`semesterYear_id`, `semister`, `semister_start`, `semister_end`) VALUES
-(1, 'first-semister', '2023-10-25', NULL);
+INSERT INTO `semesteryear_tb` (`semesterYear_id`, `semester`, `semester_start`, `semester_end`, `semester_pair`) VALUES
+(1, 'first-semester', '2018-10-27', '2018-11-01', 1),
+(14, 'second-semester', '2018-11-01', '2018-11-01', 1),
+(15, 'first-semester', '2019-11-01', '2019-11-01', 2),
+(16, 'second-semester', '2019-11-01', '2019-11-01', 2),
+(17, 'first-semester', '2020-11-01', '2020-11-01', 3),
+(18, 'second-semester', '2020-11-01', '2020-11-01', 3),
+(19, 'first-semester', '2021-11-01', '2021-11-01', 4),
+(20, 'second-semester', '2021-11-01', '2021-11-01', 4),
+(21, 'first-semester', '2022-11-01', '2022-11-01', 5),
+(22, 'second-semester', '2022-11-01', '2022-11-01', 5),
+(23, 'first-semester', '2023-11-01', NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -433,7 +445,9 @@ INSERT INTO `sendbalance_tb` (`sendBalance_id`, `sender_id`, `receiver_id`, `sen
 (3, 79, 83, 100, '3928164750', '2023-10-24 23:18:21'),
 (4, 79, 65, 100, '0473861925', '2023-10-24 23:25:47'),
 (6, 79, 83, 100, '9134607285', '2023-10-24 23:31:44'),
-(9, 79, 84, 55, '6831279045', '2023-10-25 12:44:14');
+(9, 79, 84, 55, '6831279045', '2023-10-25 12:44:14'),
+(10, 79, 83, 500, '9286351704', '2023-10-26 07:46:54'),
+(11, 79, 84, 300, '6405139827', '2023-10-26 08:04:40');
 
 -- --------------------------------------------------------
 
@@ -559,7 +573,9 @@ INSERT INTO `userwebusages_tb` (`userWebUsages_id`, `user_id`, `user_category`, 
 (34, 79, 'user_buyer', '2023-10-11'),
 (35, 81, 'user_buyer', '2023-10-19'),
 (36, 83, 'user_buyer', '2023-10-19'),
-(37, 84, 'user_buyer', '2023-10-25');
+(37, 84, 'user_buyer', '2023-10-25'),
+(38, 1, 'cashier', '2023-11-01'),
+(39, 79, 'user_buyer', '2023-11-01');
 
 -- --------------------------------------------------------
 
@@ -613,7 +629,7 @@ INSERT INTO `user_tb` (`user_id`, `firstname`, `lastname`, `email`, `phonenumber
 (79, 'GABRIEL', 'CARPIO', 'GABRIELCARPIO178@GMAIL.COM', 9708038647, 'male', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-11', 'gabrielcarpio', '505df4a053be83dbe1d6675d4c22031d'),
 (80, 'ABEGAIL', 'EPAROSA', 'AEEPAROSA@GMAIL.COM', 9302442883, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-12', '2020115166', '448d581442ea70e5b3d7a5e04bc2a56d'),
 (83, 'KENNY', 'BELARTE', 'KNYBELARTE1120@GMAIL.COM', 9777180551, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-19', '2020114925', '88594835d20004f1de8c2b9fdf7cf942'),
-(84, 'JULIE', 'VILLACRUSIS', 'VILLACRUSISJULIE6@GMAIL.COM', 9107855364, 'female', 'bago', 'student', 'user_buyer', 'not-active', '2023-10-25', '2020115048', 'b417b37ca4a6ef42fc8924ce6d9f323c');
+(84, 'JULIE', 'VILLACRUSIS', 'VILLACRUSISJULIE6@GMAIL.COM', 9107855364, 'female', 'non-bago', 'student', 'user_buyer', 'not-active', '2023-10-25', '2020115048', 'b417b37ca4a6ef42fc8924ce6d9f323c');
 
 --
 -- Indexes for dumped tables
@@ -783,7 +799,7 @@ ALTER TABLE `category_tb`
 -- AUTO_INCREMENT for table `digitalpayment_tb`
 --
 ALTER TABLE `digitalpayment_tb`
-  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `digitalPayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
@@ -807,13 +823,13 @@ ALTER TABLE `product_tb`
 -- AUTO_INCREMENT for table `semesteryear_tb`
 --
 ALTER TABLE `semesteryear_tb`
-  MODIFY `semesterYear_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `semesterYear_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `sendbalance_tb`
 --
 ALTER TABLE `sendbalance_tb`
-  MODIFY `sendBalance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `sendBalance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `telleruser_tb`
@@ -825,7 +841,7 @@ ALTER TABLE `telleruser_tb`
 -- AUTO_INCREMENT for table `userwebusages_tb`
 --
 ALTER TABLE `userwebusages_tb`
-  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `userWebUsages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user_tb`

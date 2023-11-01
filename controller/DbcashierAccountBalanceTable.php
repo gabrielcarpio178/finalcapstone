@@ -27,10 +27,10 @@ if(isset($_POST['search'])&&isset($_POST['sortBy'])&&isset($_POST['page_num'])){
     }
 
     try {
-        $sql_semister = mysqli_query($connect, "SELECT `semister`, `semister_start` FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
+        $sql_semister = mysqli_query($connect, "SELECT `semester`, `semester_start` FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
         $semister_row = mysqli_fetch_assoc($sql_semister);
-        $semister = $semister_row['semister'];
-        $semister_start = $semister_row['semister_start'];
+        $semister = $semister_row['semester'];
+        $semister_start = $semister_row['semester_start'];
     } catch (\Throwable $th) {
         echo $th;
     }

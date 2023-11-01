@@ -37,15 +37,15 @@ if(isset($_POST['user_id'])&&isset($_POST['input_amount'])&&isset($_POST['type_p
 
 
     try {
-        $sql_semister = mysqli_query($connect, "SELECT `semister` FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
+        $sql_semister = mysqli_query($connect, "SELECT `semester` FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
         $semister_row = mysqli_fetch_assoc($sql_semister);
-        $semister = $semister_row['semister'];
+        $semister = $semister_row['semester'];
     } catch (\Throwable $th) {
         echo $th;
     }
 
     try {
-        mysqli_query($connect, "INSERT INTO `digitalpayment_tb`(`user_id`, `payment_amount`, `payment_type`, `requestType`, `payment_ref`, `semister_year`) VALUES ('$user_id','$input_amount','$type_payment', 'pending', '$uniq', '$semister')");
+        mysqli_query($connect, "INSERT INTO `digitalpayment_tb`(`user_id`, `payment_amount`, `payment_type`, `requestType`, `payment_ref`, `semester_year`) VALUES ('$user_id','$input_amount','$type_payment', 'pending', '$uniq', '$semister')");
     } catch (\Throwable $th) {
         echo $th;
     }

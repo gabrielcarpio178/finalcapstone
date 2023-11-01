@@ -17,16 +17,16 @@ if(isset($_POST['user_id'])){
 
 
         try {
-            $sql_semister = mysqli_query($connect, "SELECT `semister`, semister_start FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
+            $sql_semister = mysqli_query($connect, "SELECT `semester`, semester_start FROM semesteryear_tb ORDER BY semesterYear_id DESC LIMIT 1");
             $semister_row = mysqli_fetch_assoc($sql_semister);
-            $semister = $semister_row['semister'];
-            $semister_start = $semister_row['semister_start'];
+            $semister = $semister_row['semester'];
+            $semister_start = $semister_row['semester_start'];
         } catch (\Throwable $th) {
             echo $th;
         }
 
         try {
-            $sql_ispaid = mysqli_query($connect, "SELECT COUNT(`payment_type`) AS isPaid FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `payment_type` = 'Non Bago fee' AND (CAST(payment_date AS DATE) BETWEEN '$semister_start' AND CAST(NOW() AS DATE)) AND semister_year = '$semister';");
+            $sql_ispaid = mysqli_query($connect, "SELECT COUNT(`payment_type`) AS isPaid FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `payment_type` = 'Non Bago fee' AND (CAST(payment_date AS DATE) BETWEEN '$semister_start' AND CAST(NOW() AS DATE)) AND semester_year = '$semister';");
             $ispaid = mysqli_fetch_assoc($sql_ispaid);
             if($ispaid['isPaid']==1){
                 $isInbago = 'paid';

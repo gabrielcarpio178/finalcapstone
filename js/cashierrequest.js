@@ -97,7 +97,7 @@ function semisterYear(){
     cache: false,
     success: function(res){
       var latest_semester = JSON.parse(res);
-      var date_db = new Date(latest_semester.semister_start);
+      var date_db = new Date(latest_semester.semester_start);
       var mounth_db = date_db.getMonth();
       var day_db = date_db.getDate();
       var year_db = date_db.getFullYear();
@@ -132,11 +132,11 @@ function semisterYear(){
 
       $(".year-sem").text(`A.Y ${year_display} - ${year_display+1}`);
       $(".school-month").text(`${monthFull[mounth_db]} ${day_db} - ${monthFull[mounth]} ${day}`);
-      $(`#${latest_semester.semister}`).attr("selected","true");
+      $(`#${latest_semester.semester}`).attr("selected","true");
       $("#year_edit_sem").html(`<input type="date" value="${year_db}-${mounth_db+1}-${day}" class="form-control" id="date_edit_sem"> 
       `);
-      $("#edit_semister").html(`<option value="first-semister" ${(latest_semester.semister=="first-semister")?"selected":""}>First Sem.</option>
-      <option value="second-semister" ${(latest_semester.semister=="second-semister")?"selected":""}>Second Sem.</option>`);
+      $("#edit_semister").html(`<option value="first-semester" ${(latest_semester.semester=="first-semester")?"selected":""}>First Sem.</option>
+      <option value="second-semester" ${(latest_semester.semester=="second-semester")?"selected":""}>Second Sem.</option>`);
     }
   })
 }
@@ -234,6 +234,7 @@ function editRate(result){
       <div id="year_edit_sem" class="w-50">
       </div>
       <select id="edit_semister" class="form-select form-select-sm w-25">
+      
       </select>
     </div>
     

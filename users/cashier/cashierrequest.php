@@ -88,8 +88,8 @@ if(($_SESSION['usertype']!="cashier")){
 
                   <div class="select_option">
                     <select name="" id="semester-year">
-                      <option value="first-semister" id="first-semister">First Sem.</option>
-                      <option value="second-semister" id="second-semister">Second Sem.</option>
+                      <option value="first-semester" id="first-semester">First Sem.</option>
+                      <option value="second-semester" id="second-semester">Second Sem.</option>
                     </select>
                   </div>
 

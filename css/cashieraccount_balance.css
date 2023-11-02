@@ -1,7 +1,7 @@
-/* body {
+body {
     overflow-x: hidden;
     overflow-y: hidden;
-} */
+}
 .content{
     position: absolute;
     inset: 100px 0px 0px 250px;
@@ -17,4 +17,16 @@
     font-size: 15px;
     color: blue;
     font-weight: bold;
+}
+
+tr .paid{
+    background-color: green;
+    border-radius: 10px/10px;
+    padding: 5px;
+}
+
+tr .unpaid{
+    background-color: red;
+    border-radius: 10px/10px;
+    padding: 5px;
 }

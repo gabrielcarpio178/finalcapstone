@@ -72,7 +72,7 @@ if(($_SESSION['usertype']!="cashier")){
 
         <div class="d-flex flex-row semister-year-label">
             <div class="semister-year">
-                First Semester
+                
             </div>
         </div>
         

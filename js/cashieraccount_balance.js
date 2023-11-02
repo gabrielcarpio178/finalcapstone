@@ -6,7 +6,7 @@ $(document).ready(function(){
     $("#nav").load("cashiernav.php");
     yearSemester();
     displaydata('', year, 'all', 'all', 0);
-
+    semester_label(semester_category);
     $("#search_user").on("keyup", function(){
         search = $(this).val();
         displaydata(search, year, 'all', sortBy, 0);
@@ -24,6 +24,7 @@ $(document).ready(function(){
             year = $(this).val();
             getSemBy(year);
             displaydata(search, year, 'all', sortBy, 0);
+            semester_label("all");
         }); 
     });
 
@@ -31,11 +32,19 @@ $(document).ready(function(){
         $(this).change(function(){
             semester = $(this).val();
             displaydata(search, year, semester_category, sortBy, 0);
+            semester_label($(this).find(":selected").text());
         }); 
     });
 
 });
-
+function semester_label(semesterLabel_category){
+    if(semesterLabel_category=='all'||semesterLabel_category=='All'){
+        $(".semister-year").text("First-semester/Second-semester");
+    }else{
+        $(".semister-year").text(semesterLabel_category);
+    }
+    
+}
 function yearSemester(){
     $.ajax({
         url: '../../controller/DbcashierGetYearData.php',

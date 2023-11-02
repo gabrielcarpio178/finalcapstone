@@ -1,7 +1,7 @@
 let search = '';
 let year = 'current_year';
 let sortBy = 'all';
-let semester = 'all';
+let semester_category = 'all';
 $(document).ready(function(){
     $("#nav").load("cashiernav.php");
     yearSemester();
@@ -30,7 +30,7 @@ $(document).ready(function(){
     $(".txt, #sortBySemister, .checkbox").each(function() {
         $(this).change(function(){
             semester = $(this).val();
-            displaydata(search, year, semester, sortBy, 0);
+            displaydata(search, year, semester_category, sortBy, 0);
         }); 
     });
 
@@ -83,11 +83,11 @@ function displaydata(search, semesterYear_data, semester_category, sortBy, page_
         url:'../../controller/DbcashierAccountBalanceTable.php',
         type: 'POST',
         data:{
-            search:search,
+            search : search,
             semesterYear_data : semesterYear_data,
             semester_category : semester_category,
-            sortBy:sortBy,
-            page_num:page_num
+            sortBy : sortBy,
+            page_num : page_num
         },
         cache: false,
         success:function(res){
@@ -97,5 +97,5 @@ function displaydata(search, semesterYear_data, semester_category, sortBy, page_
 }
 
 function page(num){
-    displaydata(search, year, semester, sortBy, num);
+    displaydata(search, year, semester_category, sortBy, num);
 }

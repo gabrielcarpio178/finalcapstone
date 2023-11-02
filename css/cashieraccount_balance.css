@@ -1,7 +1,7 @@
-body {
+/* body {
     overflow-x: hidden;
     overflow-y: hidden;
-}
+} */
 .content{
     position: absolute;
     inset: 100px 0px 0px 250px;

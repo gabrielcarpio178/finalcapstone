@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2023 at 05:43 AM
+-- Generation Time: Nov 02, 2023 at 08:22 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -242,8 +242,7 @@ INSERT INTO `digitalpayment_tb` (`digitalPayment_id`, `user_id`, `payment_amount
 (13, 79, '50', 'Transcript of Record', '0615982347', 'first-semester', 'accepted', '2023-10-19 08:28:18'),
 (14, 83, '20', 'Certificate of Enrollment', '9732540861', 'first-semester', 'accepted', '2023-10-19 09:09:36'),
 (17, 79, '100', 'Certificate of Transfer Crendential', '2389041576', 'first-semester', 'pending', '2023-10-19 09:47:10'),
-(24, 79, '500', 'Non Bago Fee', '7241986503', 'first-semester', 'accepted', '2023-10-27 11:45:34'),
-(31, 79, '500', 'Non Bago Fee', '3409812576', 'first-semester', 'pending', '2023-11-01 12:12:10');
+(24, 79, '500', 'Non Bago Fee', '7241986503', 'first-semester', 'accepted', '2023-10-27 11:45:34');
 
 -- --------------------------------------------------------
 
@@ -410,17 +409,17 @@ CREATE TABLE `semesteryear_tb` (
 --
 
 INSERT INTO `semesteryear_tb` (`semesterYear_id`, `semester`, `semester_start`, `semester_end`, `semester_pair`) VALUES
-(1, 'first-semester', '2018-10-27', '2018-11-01', 1),
-(14, 'second-semester', '2018-11-01', '2018-11-01', 1),
-(15, 'first-semester', '2019-11-01', '2019-11-01', 2),
-(16, 'second-semester', '2019-11-01', '2019-11-01', 2),
-(17, 'first-semester', '2020-11-01', '2020-11-01', 3),
-(18, 'second-semester', '2020-11-01', '2020-11-01', 3),
-(19, 'first-semester', '2021-11-01', '2021-11-01', 4),
-(20, 'second-semester', '2021-11-01', '2021-11-01', 4),
-(21, 'first-semester', '2022-11-01', '2022-11-01', 5),
-(22, 'second-semester', '2022-11-01', '2022-11-01', 5),
-(23, 'first-semester', '2023-11-01', NULL, 6);
+(1, 'first-semester', '2018-06-27', '2018-11-01', 1),
+(14, 'second-semester', '2018-11-01', '2019-04-01', 1),
+(15, 'first-semester', '2019-06-01', '2019-11-01', 2),
+(16, 'second-semester', '2019-11-01', '2020-04-01', 2),
+(17, 'first-semester', '2020-06-01', '2020-11-01', 3),
+(18, 'second-semester', '2020-11-01', '2021-04-01', 3),
+(19, 'first-semester', '2021-06-01', '2021-11-01', 4),
+(20, 'second-semester', '2021-11-01', '2022-04-01', 4),
+(21, 'first-semester', '2022-06-01', '2022-11-01', 5),
+(22, 'second-semester', '2022-11-01', '2023-04-01', 5),
+(23, 'first-semester', '2023-04-01', NULL, 6);
 
 -- --------------------------------------------------------
 

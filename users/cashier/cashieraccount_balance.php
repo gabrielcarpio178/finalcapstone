@@ -35,18 +35,23 @@ if(($_SESSION['usertype']!="cashier")){
                 <div class="label-data fw-bold">Account Balance</div>
                 <div class="label-info">( Non Bago Fee )</div>
             </div>
-
-            <div class="d-flex flex-row align-items-center print-btn justify-content-end" id="print_report">
-                Print
-            </div>
+            <button class="d-flex flex-row align-items-center justify-content-center  gap-2 btn btn-primary print-btn">
+                <i class="fa-solid fa-print"></i>
+                <div class="fw-bold">Print</div>    
+            </button>
         </div>
 
-        <div class="search-content">
-            <input type="text" name="search_user" id="search_user" class="form-control w-25" placeholder="Search Name Or ID">
-        </div>
+        
 
         <div class="d-flex flex-row justify-content-end sort-content gap-2">
 
+            <div class="sort-data w-100">
+                <label for="search_user">Search Name Or ID:</lebel>
+                <div class="search-content">
+                    <input type="text" name="search_user" id="search_user" class="form-control form-select-sm w-50" placeholder="Search">
+                </div>
+            </div>
+            
             <div class="sort-data w-100">
                 <label for="sortByYear">Sort By Year:</label>
                 <select name="sortByYear" id="sortByYear" class="form-select form-select-sm w-50">
@@ -88,6 +93,9 @@ if(($_SESSION['usertype']!="cashier")){
 
         
     </div>
+
+    <!-- modal_print -->
+
 </body>
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"

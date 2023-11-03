@@ -27,6 +27,10 @@ body {
     height:300px;
 }
 
+.print-btn{
+    width: 10%;
+}
+
 tr .paid{
     background-color: green;
     border-radius: 10px/10px;

@@ -36,6 +36,10 @@ $(document).ready(function(){
         }); 
     });
 
+    // $("#print_report").on('click', function(){
+    //     window.location = "cashierprint_report.php";
+    // })
+
 });
 function semester_label(semesterLabel_category){
     if(semesterLabel_category=='all'||semesterLabel_category=='All'){

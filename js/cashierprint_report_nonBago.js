@@ -1,23 +1,6 @@
-let search = '';
-let year = 'current_year';
-let sortBy = 'all';
-let semester_category = 'all';
 $(document).ready(function(){
     $("#nav").load("cashiernav.php");
     yearSemester();
-    displaydata('', year, 'all', 'all', 0);
-    semester_label(semester_category);
-    $("#search_user").on("keyup", function(){
-        search = $(this).val();
-        displaydata(search, year, 'all', sortBy, 0);
-    });
-
-    $(".txt, #sortBy, .checkbox").each(function() {
-        $(this).change(function(){
-            sortBy = $(this).val();
-            displaydata(search, year, 'all', sortBy, 0);
-        }); 
-    });
 
     $(".txt, #sortByYear, .checkbox").each(function() {
         $(this).change(function(){
@@ -27,28 +10,9 @@ $(document).ready(function(){
             semester_label("all");
         }); 
     });
-
-    $(".txt, #sortBySemister, .checkbox").each(function() {
-        $(this).change(function(){
-            semester = $(this).val();
-            displaydata(search, year, semester_category, sortBy, 0);
-            semester_label($(this).find(":selected").text());
-        }); 
-    });
-
-    $("#print_report_nonBago").on('click', function(){
-        window.location = "cashierprint_report_nonBago.php";
-    });
-
-});
-function semester_label(semesterLabel_category){
-    if(semesterLabel_category=='all'||semesterLabel_category=='All'){
-        $(".semister-year").text("First-semester/Second-semester");
-    }else{
-        $(".semister-year").text(semesterLabel_category);
-    }
     
-}
+});
+
 function yearSemester(){
     $.ajax({
         url: '../../controller/DbcashierGetYearData.php',
@@ -89,26 +53,4 @@ function getSemBy(semester_pair){
             $("#sortBySemister").html(semester);
         }
     })
-}
-
-function displaydata(search, semesterYear_data, semester_category, sortBy, page_num){
-    $.ajax({
-        url:'../../controller/DbcashierAccountBalanceTable.php',
-        type: 'POST',
-        data:{
-            search : search,
-            semesterYear_data : semesterYear_data,
-            semester_category : semester_category,
-            sortBy : sortBy,
-            page_num : page_num
-        },
-        cache: false,
-        success:function(res){
-            $(".table-content").html(res);
-        }
-    })
-}
-
-function page(num){
-    displaydata(search, year, semester_category, sortBy, num);
 }

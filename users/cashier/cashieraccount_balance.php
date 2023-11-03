@@ -35,7 +35,7 @@ if(($_SESSION['usertype']!="cashier")){
                 <div class="label-data fw-bold">Account Balance</div>
                 <div class="label-info">( Non Bago Fee )</div>
             </div>
-            <button class="d-flex flex-row align-items-center justify-content-center  gap-2 btn btn-primary print-btn">
+            <button class="d-flex flex-row align-items-center justify-content-center  gap-2 btn btn-primary print-btn" data-bs-toggle="modal" data-bs-target="#print_modal">
                 <i class="fa-solid fa-print"></i>
                 <div class="fw-bold">Print</div>    
             </button>
@@ -48,7 +48,7 @@ if(($_SESSION['usertype']!="cashier")){
             <div class="sort-data w-100">
                 <label for="search_user">Search Name Or ID:</lebel>
                 <div class="search-content">
-                    <input type="text" name="search_user" id="search_user" class="form-control form-select-sm w-50" placeholder="Search">
+                    <input type="text" name="search_user" id="search_user" class="form-control form-select-sm w-75" placeholder="Search">
                 </div>
             </div>
             
@@ -95,7 +95,23 @@ if(($_SESSION['usertype']!="cashier")){
     </div>
 
     <!-- modal_print -->
-
+    <div class="modal fade" id="print_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Print</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-row justify-content-between">
+                    <button class="btn btn-primary" id="print_report_nonBago">Non-Bago Fee</button>
+                    <button class="btn btn-primary">TOR</button>
+                    <button class="btn btn-primary">Certifacate</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
@@ -103,6 +119,12 @@ if(($_SESSION['usertype']!="cashier")){
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
 ></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"
+></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 <script src="../../js/cashieraccount_balance.js"></script>
 </html>

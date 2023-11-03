@@ -10,7 +10,7 @@ if(isset($_POST['search'])&&isset($_POST['sortBy'])&&isset($_POST['page_num'])&&
     if($page_num==0){
         $offset = 0;
     }else{
-        $offset = ($page_num-1)*5;
+        $offset = ($page_num-1)*30;
     }
 
     if($search == ''){
@@ -67,18 +67,18 @@ if(isset($_POST['search'])&&isset($_POST['sortBy'])&&isset($_POST['page_num'])&&
     $end_sem = $array_year[count($array_year)-1];
 
     if($year=='current_year'){
-        $query = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType, CAST(digitalpayment_tb.payment_date AS DATE) AS paid_date, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$start_sem' AND CAST(NOW() AS DATE) OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT ".$offset." , 5";
+        $query = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType, CAST(digitalpayment_tb.payment_date AS DATE) AS paid_date, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$start_sem' AND CAST(NOW() AS DATE) OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT ".$offset." , 30";
     
         $query_count = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$start_sem' AND CAST(NOW() AS DATE) OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC";
     }else {
-        $query = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType, CAST(digitalpayment_tb.payment_date AS DATE) AS paid_date, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$start_sem' AND '$end_sem' OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT ".$offset." , 5";
+        $query = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType, CAST(digitalpayment_tb.payment_date AS DATE) AS paid_date, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$start_sem' AND '$end_sem' OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC LIMIT ".$offset." , 30";
     
         $query_count = "SELECT student_tb.studentID_number, user_tb.firstname, user_tb.lastname, student_tb.course, user_tb.address, digitalpayment_tb.payment_type, digitalpayment_tb.requestType FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id WHERE (CAST(digitalpayment_tb.payment_date AS DATE) BETWEEN '$start_sem' AND '$end_sem' OR digitalpayment_tb.payment_type IS NULL) AND ((digitalpayment_tb.payment_type = 'Non Bago Fee' OR digitalpayment_tb.payment_type IS NULL) AND (user_tb.address = 'non-bago' OR digitalpayment_tb.requestType = 'accepted')".$search_data.$sortBy.") ORDER BY digitalpayment_tb.digitalPayment_id DESC";
     }
     
     try {
         $sql_count = mysqli_query($connect, $query_count);
-        $countRow_non_bago = ceil(mysqli_num_rows($sql_count)/5);
+        $countRow_non_bago = ceil(mysqli_num_rows($sql_count)/30);
     } catch (\Throwable $th) {
         echo $th;
     }
@@ -94,35 +94,37 @@ if(isset($_POST['search'])&&isset($_POST['sortBy'])&&isset($_POST['page_num'])&&
         echo "No Record";
     }else{
         ?>
-        <table id="table_result" class="table table-hover text-center">
-            <thead>
-                <tr>
-                    <th>Status</th>
-                    <th>Student ID</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Reference #</th>
-                    <th>Date Paid</th>
-                </tr>
-            </thead>
-            <tbody id="table_info">
-                <?php
-
-                while($row = mysqli_fetch_assoc($sql)){
-                    ?>
+        <div class="table-scroll">
+            <table id="table_result" class="table table-hover text-center">
+                <thead>
                     <tr>
-                        <td><div class="<?=($row['requestType']==NULL||$row['requestType']=="pending")?"unpaid":"paid"?>"><?=($row['requestType']==NULL||$row['requestType']=="pending")?"Unpaid":"Paid" ?></td>
-                        <td><?=$row['studentID_number'] ?></div></td>
-                        <td><?=$row['firstname']." ".$row['lastname'] ?></td>
-                        <td><?=$row['course'] ?></td>
-                        <td><?=($row['payment_ref']==NULL)?"-- -- --": $row['payment_ref']?></td>
-                        <td><?=($row['paid_date']==NULL)?"-- -- --":  $row['paid_date']?></td>
+                        <th>Status</th>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Reference #</th>
+                        <th>Date Paid</th>
                     </tr>
+                </thead>
+                <tbody id="table_info">
                     <?php
-                }
-                ?>
-            </tbody>
-        </table>
+
+                    while($row = mysqli_fetch_assoc($sql)){
+                        ?>
+                        <tr>
+                            <td><div class="<?=($row['requestType']==NULL||$row['requestType']=="pending")?"unpaid":"paid"?>"><?=($row['requestType']==NULL||$row['requestType']=="pending")?"Unpaid":"Paid" ?></td>
+                            <td><?=$row['studentID_number'] ?></div></td>
+                            <td><?=$row['firstname']." ".$row['lastname'] ?></td>
+                            <td><?=$row['course'] ?></td>
+                            <td><?=($row['payment_ref']==NULL)?"-- -- --": $row['payment_ref']?></td>
+                            <td><?=($row['paid_date']==NULL)?"-- -- --":  $row['paid_date']?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
         <ul class="pagination pagination-sm">
             <li class="page-item" >
                 <a class="page-link" href="javascript:void(0)" <?php if($page_num == 0){ echo "disabled"; }else{ ?> onclick = "page(<?=$page_num-1 ?>);" <?php } ?>>&laquo;</a>

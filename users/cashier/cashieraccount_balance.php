@@ -30,9 +30,15 @@ if(($_SESSION['usertype']!="cashier")){
     <div id="nav"></div>
     <div class="content">
 
-        <div class="d-flex flex-column content-label">
-            <div class="label-data fw-bold">Account Balance</div>
-            <div class="label-info">( Non Bago Fee )</div>
+        <div class="d-flex flex-row justify-content-between align-items-center header-label w-100">
+            <div class="d-flex flex-column content-label">
+                <div class="label-data fw-bold">Account Balance</div>
+                <div class="label-info">( Non Bago Fee )</div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center print-btn justify-content-end" id="print_report">
+                Print
+            </div>
         </div>
 
         <div class="search-content">

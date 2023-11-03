@@ -1,3 +1,6 @@
+/* *{
+    outline: 1px solid;
+} */
 body {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -17,6 +20,11 @@ body {
     font-size: 15px;
     color: blue;
     font-weight: bold;
+}
+
+.table-scroll{
+    overflow-y: scroll;
+    height:300px;
 }
 
 tr .paid{

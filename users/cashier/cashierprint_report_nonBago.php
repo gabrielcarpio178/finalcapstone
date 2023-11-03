@@ -41,10 +41,10 @@ if(($_SESSION['usertype']!="cashier")){
                 (Non Bago Fee List Report)
             </div>
             <div class="school-year">
-                A.Y. 2023-2024, First Semester
+                <!-- A.Y. 2023-2024, First Semester -->
             </div>
         </div>
-        <div class="d-flex flex-row align-items-between justify-content-end mt-3 filter-data">
+        <div class="d-flex flex-row align-items-between justify-content-center mt-3 filter-data">
             <div class="sort-data">
                 <label for="sortByYear">Sort By Year:</label>
                 <select name="sortByYear" id="sortByYear" class="form-select form-select-sm w-50">
@@ -60,7 +60,20 @@ if(($_SESSION['usertype']!="cashier")){
                 <select name="sortBySemister" id="sortBySemister" class="form-select form-select-sm w-50">
                 </select>
             </div>
+
+            <div class="sort-data">
+                <label for="start_date">
+                    Start Date:
+                </label>
+                <input type="date" name="" id="start_date" class="form-control form-control-sm">
+            </div>
             
+            <div class="sort-data">
+                <label for="end_date">
+                    End Date:
+                </label>
+                <input type="date" name="" id="end_date" class="form-control form-control-sm">
+            </div>
 
             <div class="sort-data">
                 <label for="sortBy">Sort By Statues:</label>

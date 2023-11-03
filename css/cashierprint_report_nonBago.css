@@ -19,3 +19,6 @@
 .sort-data{
     width: 25%;
 }
+#start_date, #end_date{
+    width: 50%;
+}

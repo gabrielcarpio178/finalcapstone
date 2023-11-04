@@ -29,56 +29,57 @@ if(($_SESSION['usertype']!="cashier")){
 <body>
     <div id="nav"></div>
     <div class="content">
-
+        
         <div class="d-flex flex-row justify-content-between align-items-center header-label w-100">
             <div class="d-flex flex-column content-label">
                 <div class="label-data fw-bold">Account Balance</div>
                 <div class="label-info">( Non Bago Fee )</div>
             </div>
-            <button class="d-flex flex-row align-items-center justify-content-center  gap-2 btn btn-primary print-btn" id="print_report_nonBago">
+            <button class="d-flex flex-row align-items-center justify-content-center btn btn-primary print-btn" id="print_report_nonBago">
                 <i class="fa-solid fa-print"></i>
                 <div class="fw-bold">Print</div>    
             </button>
         </div>
 
-        
+        <div class="d-flex flex-row align-items-between content-filter w-100">
 
-        <div class="d-flex flex-row justify-content-end sort-content gap-2">
-
-            <div class="sort-data w-100">
+            <div class="sort-data w-50">
                 <label for="search_user">Search Name Or ID:</lebel>
                 <div class="search-content">
-                    <input type="text" name="search_user" id="search_user" class="form-control form-select-sm w-75" placeholder="Search">
+                    <input type="text" name="search_user" id="search_user" class="form-control form-select-sm w-100" placeholder="Search">
                 </div>
             </div>
-            
-            <div class="sort-data w-100">
-                <label for="sortByYear">Sort By Year:</label>
-                <select name="sortByYear" id="sortByYear" class="form-select form-select-sm w-50">
 
-                </select>
+            <div class="d-flex flex-row justify-content-end sort-content gap-2 w-50">
+
+                <div class="sort-data w-100">
+                    <label for="sortByYear">Sort By Year:</label>
+                    <select name="sortByYear" id="sortByYear" class="form-select form-select-sm w-100">
+
+                    </select>
+                </div>
+                
+
+                <div class="sort-data w-100">
+                    <label for="sortBySemister">
+                        Sort By Semester:
+                    </label>
+                    <select name="sortBySemister" id="sortBySemister" class="form-select form-select-sm w-100">
+                    </select>
+                </div>
+                
+
+                <div class="sort-data w-100">
+                    <label for="sortBy">Sort By Statues:</label>
+                    <select name="sortBy" id="sortBy" class="form-select form-select-sm w-100">
+                        <option value="all">All</option>
+                        <option value="paid">Paid</option>
+                        <option value="unpaid">Unpaid</option>
+                    </select>
+                </div>
+                
+
             </div>
-            
-
-            <div class="sort-data w-100">
-                <label for="sortBySemister">
-                    Sort By Semester:
-                </label>
-                <select name="sortBySemister" id="sortBySemister" class="form-select form-select-sm w-50">
-                </select>
-            </div>
-            
-
-            <div class="sort-data w-100">
-                <label for="sortBy">Sort By Statues:</label>
-                <select name="sortBy" id="sortBy" class="form-select form-select-sm w-50">
-                    <option value="all">All</option>
-                    <option value="paid">Paid</option>
-                    <option value="unpaid">Unpaid</option>
-                </select>
-            </div>
-            
-
         </div>
 
         <div class="d-flex flex-row semister-year-label">

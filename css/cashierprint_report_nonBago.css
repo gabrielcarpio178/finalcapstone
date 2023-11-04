@@ -22,3 +22,15 @@
 #start_date, #end_date{
     width: 50%;
 }
+.space{
+    width: 33.33%;
+    white-space: nowrap;
+}
+.current-date{
+    text-align: end;
+}
+
+.table-scroll{
+    overflow-y: scroll;
+    height:300px;
+}

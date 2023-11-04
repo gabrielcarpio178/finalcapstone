@@ -29,10 +29,17 @@ if(($_SESSION['usertype']!="cashier")){
 <body>
     <div id="nav"></div>
     <div class="content">
-        <div class="d-flex flex-column align-items-center content-info p-1 gap-1">
-            <div class="label-content header-info">
+        <div class="d-flex flex-row justify-content-between header-date">
+            <div class="space"></div>
+            <div class="label-content header-info space">
                 Bago City Digital Payment System
             </div>
+            <div class="current-date space">
+
+            </div>
+        </div>
+        <div class="d-flex flex-column align-items-center content-info p-1 gap-1">
+            
             <img src="../../image/bcc_logo.png" alt="Bcc logo" class="bcc-logo">
             <div class="account-balance">
                 Account Balance
@@ -41,7 +48,10 @@ if(($_SESSION['usertype']!="cashier")){
                 (Non Bago Fee List Report)
             </div>
             <div class="school-year">
-                <!-- A.Y. 2023-2024, First Semester -->
+                
+            </div>
+            <div class="range-date">
+                
             </div>
         </div>
         <div class="d-flex flex-row align-items-between justify-content-center mt-3 filter-data">
@@ -83,6 +93,9 @@ if(($_SESSION['usertype']!="cashier")){
                     <option value="unpaid">Unpaid</option>
                 </select>
             </div>
+        </div>
+        <div class="table-content">
+            
         </div>
     </div>
 </body>

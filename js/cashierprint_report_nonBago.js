@@ -2,9 +2,13 @@ let semester_label = 'First-semester/Second-semester';
 let year_label = '';
 let semester_label_val = '';
 let year = '';
+let start_date = '';
+let end_date = '';
+let current_dateInfo = '';
+let sortBy = 'all';
 $(document).ready(function(){
     $("#nav").load("cashiernav.php");
-    yearSemester();
+    
     $(".txt, #sortByYear, .checkbox").each(function() {
         $(this).change(function(){
             year = $(this).val();
@@ -24,6 +28,31 @@ $(document).ready(function(){
             getDateRange(year, semester_label_val);
         }); 
     });
+
+    $(".txt, #start_date, .checkbox").each(function() {
+        $(this).change(function(){
+            start_date = $(this).val();
+            getRangedate(start_date, end_date);
+        }); 
+    });
+
+    $(".txt, #end_date, .checkbox").each(function() {
+        $(this).change(function(){
+            end_date = $(this).val();
+            getRangedate(start_date, end_date);
+        }); 
+    });
+
+    $(".txt, #sortBy, .checkbox").each(function() {
+        $(this).change(function(){
+            sortBy = $(this).val();
+            displayTable(start_date, end_date, semester_label, current_dateInfo, sortBy);
+        }); 
+    });
+
+
+    yearSemester();
+    getCurrentDate();
     
 });
 
@@ -87,9 +116,63 @@ function getDateRange(year_pair, sem_category){
             var year_res = JSON.parse(res);
             $("#start_date").val(year_res.start);
             $("#end_date").val(year_res.end);
+            
             $("#start_date").attr({"max" : year_res.end,"min" : year_res.start});
             $("#end_date").attr({"max" : year_res.end,"min" : year_res.start});
+            getRangedate(year_res.start, year_res.end);
         }
     });
 
+}
+
+function getRangedate(start, end){
+    start_date = start;
+    end_date = end;
+    $(".range-date").text(`Date: ${start} to ${end}`);
+    displayTable(start_date, end_date, semester_label, current_dateInfo, sortBy);
+
+}
+
+function getCurrentDate(){
+    var date = new Date();
+    var mounth = date.getMonth();
+    var day = date.getDate();
+    if(day<10){
+        day="0"+day;
+    }
+    var year = date.getFullYear();
+    var monthFull = [
+        "Jan.",
+        "Feb.",
+        "Mar.",
+        "Apr.",
+        "May.",
+        "Jun.",
+        "July",
+        "Aug.",
+        "Sept.",
+        "Oct.",
+        "Nov.",
+        "Dec.",
+    ];
+    $(".current-date").text(monthFull[mounth]+" "+day+" - "+year);
+    current_dateInfo = monthFull[mounth]+" "+day+" - "+year;
+}
+
+function displayTable(start_date, end_date, semester, currentDate, isPaid){
+    $.ajax({
+        url: '../../controller/DbcashierPrintTable.php',
+        type: 'POST',
+        data: {
+            start_date : start_date,
+            end_date : end_date,
+            semester : semester,
+            currentDate : currentDate,
+            isPaid : isPaid
+        },
+        cache: false,
+        success: function(res){
+            $(".table-content").html(res);
+        }
+    })
 }

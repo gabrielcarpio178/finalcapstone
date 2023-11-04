@@ -46,6 +46,5 @@ if(isset($_POST['year_pair'])&&isset($_POST['sem_category'])){
     }
     print_r(json_encode($date_range));
     
-    
 }
 ?>

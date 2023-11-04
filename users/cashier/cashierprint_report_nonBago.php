@@ -32,7 +32,7 @@ if(($_SESSION['usertype']!="cashier")){
         <div class="d-flex flex-row justify-content-between header-date">
             <div class="space"></div>
             <div class="label-content header-info space">
-                Bago City Digital Payment System
+                BCC Digital Payment System
             </div>
             <div class="current-date space">
 
@@ -97,6 +97,10 @@ if(($_SESSION['usertype']!="cashier")){
         <div class="table-content">
             
         </div>
+
+        <button class="btn btn-outline-primary" id="view_pdf">View PDF</button>
+        <button class="btn btn-outline-primary" id="export_pdf">Export to PDF</button>
+        
     </div>
 </body>
 <script

@@ -50,6 +50,9 @@ $(document).ready(function(){
         }); 
     });
 
+    $("#view_pdf").on('click', function(){
+        window.location = "../../cashierReportNon_bago.php";
+    });
 
     yearSemester();
     getCurrentDate();

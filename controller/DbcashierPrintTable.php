@@ -61,6 +61,10 @@ if(isset($_POST['start_date'])&&isset($_POST['end_date'])&&isset($_POST['semeste
             </table>
         </div>
         <?php
+        $_SESSION['query'] = $query;
+        $_SESSION['isPaid'] = $isPaid;
+        $_SESSION['start_date'] = $_POST['start_date'];
+        $_SESSION['end_date'] = $_POST['end_date'];
     }
 }
 ?>

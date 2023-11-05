@@ -24,3 +24,13 @@ h3{
 .bcc-logo{
     max-width: 15%;
 }
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td, tr{
+    border: 1px solid black;
+}
+.nonBagoFee_sum{
+    margin-top: 10px;
+}

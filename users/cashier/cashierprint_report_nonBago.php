@@ -98,9 +98,7 @@ if(($_SESSION['usertype']!="cashier")){
             
         </div>
 
-        <button class="btn btn-outline-primary" id="view_pdf">View PDF</button>
-        <button class="btn btn-outline-primary" id="export_pdf">Export to PDF</button>
-        
+        <button class="btn btn-outline-primary" id="view_pdf">Export PDF</button>
     </div>
 </body>
 <script

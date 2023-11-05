@@ -39,6 +39,8 @@ else{
             $addressapi = $decoded->address;
             $rfid = $decoded->rfid;
             $department = $decoded->program_code;
+            $program_description = $decoded->program_description;
+
             if(($decoded->program_code)=="IS"){
                 $department = "BSIS";
             }elseif(($decoded->program_code)=="BSOA"){
@@ -72,7 +74,7 @@ else{
             }
             $passwordmd = md5(strtolower($password));
             try {
-                mysqli_query($connect,"INSERT INTO `user_tb`(`firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `user_category`, `usertype`, `statues`, `username`, `password`) VALUES ('$firstname','$lastname','$email','$phonenumber', '$gender', '$address', 'user_buyer', 'student', 'active', '$username','$passwordmd');");
+                mysqli_query($connect,"INSERT INTO `user_tb`(`firstname`, `lastname`, `email`, `phonenumber`, `gender`, `address`, `user_category`, `usertype`, `statues`, `username`, `password`, `complete_address`) VALUES ('$firstname','$lastname','$email','$phonenumber', '$gender', '$address', 'user_buyer', 'student', 'active', '$username','$passwordmd', '$addressapi');");
             } catch (\Throwable $th) {
                 echo $th;
             }
@@ -88,7 +90,7 @@ else{
             $id = $row['user_id'];
 
             try {
-                mysqli_query($connect, "INSERT INTO `student_tb`(`studentID_number`, `user_id`, `course`, `year`, `rfid_number`) VALUES ('$student_id','$id','$department','$year', '$rfid');");
+                mysqli_query($connect, "INSERT INTO `student_tb`(`studentID_number`, `user_id`, `course`, `year`, `rfid_number`, `program_description`) VALUES ('$student_id','$id','$department','$year', '$rfid', '$program_description');");
             } catch (\Throwable $th) {
                 echo $th;
             }

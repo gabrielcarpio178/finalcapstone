@@ -54,7 +54,7 @@ function searchForm(){
                         tbody = ``;
                         for(let i = 0; i<data.length; i++){
                             tbody += `
-                            <tr onclick="getuser('${(data[i]).user_id}', '${(data[i]).name}', '${(data[i]).department}', '${(data[i]).phonenumber}', '${(data[i]).address}', '${(data[i]).id}', '${(data[i]).usertype}')">
+                            <tr onclick="getuser('${(data[i]).user_id}', '${(data[i]).name}', '${(data[i]).department}', '${(data[i]).phonenumber}', '${(data[i]).address}', '${(data[i]).id}', '${(data[i]).usertype}', '${data[i].complete_address}')">
                                 <td>${(data[i]).name}</td>
                                 <td>${(data[i]).department}</td>
                                 <td>${(data[i]).id}</td>
@@ -105,7 +105,7 @@ function searchForm(){
 
 }
 
-function getuser(user_id, name, department, phonenumber, address, id, usertype){
+function getuser(user_id, name, department, phonenumber, address, id, usertype, complete_address){
     html_getuser_data =`
     <div class="d-flex flex-column p-4 user-profile">
         <p>Profile</p>
@@ -140,6 +140,12 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype){
             <div class="label-content">
                 Address
             </div>
+            <div class="label-data" id="complete_address"></div>
+        </div>
+        <div class="d-flex flex-column data-info">
+            <div class="label-content">
+                Address
+            </div>
             <div class="label-data" id="address"></div>
         </div>
         <center>
@@ -160,6 +166,7 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype){
     $("#department").text(department);
     $("#pnumber").text('0'+phonenumber);
     $("#address").text(address);
+    $("#complete_address").text(complete_address);
     forms = `   
     <form id="input_amount" class="insert-forms">
         <div class="d-flex flex-column search-content">

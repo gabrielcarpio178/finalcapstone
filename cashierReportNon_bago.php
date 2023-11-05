@@ -98,7 +98,8 @@ $end_date = $_SESSION['end_date'];
                         Number of Unpaid: <?=$total_unpiad ?>
                     </div>
                     <div class="nonBagoFee_sum">
-                        Total paid: <span style="font-family: DejaVu Sans;">&#8369;</span> <?=$sumNon_bagoFee_paid ?>
+                        
+Total Collection for Non Bago Fee: <span style="font-family: DejaVu Sans;">&#8369;</span> <?=$sumNon_bagoFee_paid ?>
                     </div>
                 </div>
             </div>

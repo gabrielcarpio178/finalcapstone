@@ -27,7 +27,11 @@ $(document).ready(function () {
 
   $("#send_money").on('click',function(){
     window.location = "usersend_money.php";
-  })
+  });
+
+  $("#accountbalance").on('click', function(){
+    window.location = "useraccount_balance.php";
+  });
 
   notification();
   

@@ -20,7 +20,7 @@ $id = $_SESSION['id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/bootstrap.min.css"> 
     <link rel="stylesheet" href="../../css/usersend_money.css">
-    <title>Send Money</title>
+    <title>Transfer Funds</title>
 </head>
 <body>
     <div id="navbar"></div>
@@ -32,7 +32,7 @@ $id = $_SESSION['id'];
                     <div class="d-flex flex-row justify-content-between header-content">
                         <div class="d-flex flex-column content-label">
                             <div class="label-info fw-bold">
-                                Send Money
+                                Transfer Funds
                             </div>
                             <p>Send money to other user's account</p>
                         </div>

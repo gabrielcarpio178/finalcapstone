@@ -95,7 +95,7 @@ function getuser(user_id){
             }
 
             $("#phonenumber_user").text(`0${data_user.phonenumber}`);
-            $("#address_user").text(`${data_user.address}`);
+            $("#address_user").text(`${data_user.complete_address}`);
             $(".balance_amount").text(`${data_user.user_balance}.00`);
             
         }

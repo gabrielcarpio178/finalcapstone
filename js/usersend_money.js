@@ -142,12 +142,6 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype, 
             </div>
             <div class="label-data" id="complete_address"></div>
         </div>
-        <div class="d-flex flex-column data-info">
-            <div class="label-content">
-                Address
-            </div>
-            <div class="label-data" id="address"></div>
-        </div>
         <center>
             <button class="btn btn-danger w-25 mt-3" id="btn_cancel" onclick="cancel_okay();">Cancel</button>
         </center>

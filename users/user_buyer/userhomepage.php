@@ -213,7 +213,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                         <?php if($row['usertype']=='student'){ ?>
                         <div class="profile-info">
                             <label>Address:</label>
-                            <b><?=ucfirst($row['address'])." City" ?></b>
+                            <b><?=ucfirst($row['complete_address']) ?></b>
                         </div>
                         <?php }elseif($row['usertype']=='personnel'){ ?>
                             <div class="profile-info">

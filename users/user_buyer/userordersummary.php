@@ -5,13 +5,12 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
     if(!isset($_SERVER['HTTP_REFERER'])){
         header('location: ../../index.php');
         exit;
-   }
+    }
 }else{
     $id = $_SESSION['id'];
     $firstname = $_SESSION['firstname'];
     try{
         $sql = mysqli_query($connect, "SELECT order_tb.user_id, order_tb.teller_id, order_tb.order_time, telleruser_tb.store_name FROM order_tb INNER JOIN telleruser_tb ON order_tb.teller_id = telleruser_tb.teller_id WHERE `user_id` = '$id' GROUP BY `teller_id`, `order_time` ORDER BY `order_time` DESC");
-        $sqlinfo = mysqli_fetch_assoc($sql);
     }catch(\Throwable $th){
         echo $th;
     }
@@ -30,7 +29,7 @@ user-scalable=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/bootstrap.min.css"> 
     <style>
-       /**{
+    /**{
             outline: 1px solid;
         }*/        
         .profile-name{
@@ -132,7 +131,6 @@ user-scalable=no">
             }
         }       
     </style>
-   
 </head>
 <body>
     <div id="navbar"></div>  
@@ -152,7 +150,7 @@ user-scalable=no">
                         <div class="name"><?=$firstname ?></div>                        
                     </div>                                      
                 </div>
-                <?php $i=1; do{ ?>
+                <?php $i=1; while($sqlinfo=mysqli_fetch_array($sql)){ ?>
                 <div class="table-data">
                     <div class="d-flex flex-row justify-content-between  mt-lg-5 table-head" onclick="table_info('<?=$sqlinfo['order_time']; ?>', '<?=$id; ?>', '<?=$i ?>', <?=$sqlinfo['teller_id'] ?>)" >
                     
@@ -162,57 +160,55 @@ user-scalable=no">
                 </div>
                 
                 <div class="table-order_<?=$i ?> table-order">
-                                                                                                   
+
                 </div>
-                <?php $i++; }while($sqlinfo=mysqli_fetch_array($sql)); ?>
+                <?php $i++; } ?>
                 
             </div>
             
         </div>
         
     </div>
-                                       
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 <script>
     $(document).ready(function(){
-       $("#navbar").load("usernav.php");  
-                                         
+        $("#navbar").load("usernav.php");  
     });
     
     let r;
     
     function table_info(time, user_id, i, teller_id){
-       if(r==i){
+        if(r==i){
             $(".table-order_"+r).slideUp("slow", function(){
                 $(this).hide();
             });
             r = undefined;
-       }else{
-           $(".table-order_"+r).slideUp("slow", function(){
+        }else{
+            $(".table-order_"+r).slideUp("slow", function(){
                 $(this).hide();
             });
             $.ajax({
                 url: '../../controller/Dbusershoworder.php',
                 type: 'POST',
                 data:{
-                   teller_id : teller_id,              
-                   time : time,
-                   user_id : user_id 
+                    teller_id : teller_id,              
+                    time : time,
+                    user_id : user_id 
                 },
                 cache: false,
                 success: function(res){              
-                   $(".table-order_"+i).html(res);                         
+                    $(".table-order_"+i).html(res);                         
                 }                
             });
-             $(".table-order_"+i).slideDown("slow" , function(){
-                 $(this).show();
-             }) 
-             r = i;
-       }      
-      
+            $(".table-order_"+i).slideDown("slow" , function(){
+            $(this).show();
+        }) 
+            r = i;
+        }      
+
     }
     
 </script>

@@ -13,12 +13,14 @@ $(document).ready(function () {
       });
       $("span").show();
       a = false;
+      $(".bell").css({visibility: 'hidden'});
     } else {
       $("#sidebar").animate({
-        width: "6%",
+        width: "5%",
       });
       a = true;
       $("span").hide();
+      $(".bell").css({visibility: 'visible'});
     }
   });
 

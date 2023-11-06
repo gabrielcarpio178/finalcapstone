@@ -40,9 +40,11 @@ if(isset($_POST['user_id'])&&isset($_POST['time'])){
                     <td class="amount"><?=$order_item['order_amount'] ?></td>
                     <td class="quantity"><?php echo ($order_item['order_quantity']!=NULL)?$order_item['order_quantity']: "PURCHASE"; ?></td>                                      
             </tr>
-                                                                                                        
+
             <?php $total = $order_item['order_amount'] + $total;
-            $qty = $order_item['order_quantity'] + $qty; }while($order_item = mysqli_fetch_array($sql)); ?>
+            $qty = $order_item['order_quantity'] + $qty;
+            $statues = $order_item['statues'];
+            }while($order_item = mysqli_fetch_array($sql)); ?>
         </tbody>
             <tr>
                 <td class="fw-bold">Total</td>
@@ -56,7 +58,7 @@ if(isset($_POST['user_id'])&&isset($_POST['time'])){
     
     
     <center>
-        <button class="btn btn-primary">Order Received</button>
+        <button class="btn btn-primary" <?=($statues==NULL||$statues=='ACCEPTED')? 'disabled= "disabled" ':''?>>Order Received</button>
     </center>                       
     
 </div>

@@ -5,7 +5,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
     if(!isset($_SERVER['HTTP_REFERER'])){
         header('location: ../../index.php');
         exit;
-   }
+    }
 }else{
     $gender = $_SESSION['gender'];
     $id = $_SESSION['id'];
@@ -83,12 +83,8 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                                 Clear Notification
                             </div>
                         </div>
-
-                        
-
                     </div>
 
-                    
                     <div class="d-flex flex-row flex-lg-column justify-content-around">
                         
                         <div class="d-flex flex-column category" id="inputpayment">

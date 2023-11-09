@@ -103,7 +103,7 @@ $name = $_SESSION['teller_name'];
                                         ?>
                                     </td>
                                     <td><?=$row['total_amount'].".00" ?></td>
-                                    <td><?=date_format(date_create($row['order_time']), "m:d:Y h:i") ?></td>
+                                    <td><?=date_format(date_create($row['order_time']), "m/d/Y h:i A") ?></td>
                                 </tr>
                             <?php }while($row = mysqli_fetch_array($sql)); ?>
 

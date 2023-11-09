@@ -77,10 +77,10 @@ $end_date = $_SESSION['end_date'];
                                 }
                         ?>
                         <tr>
-                            <td><?=($row['requestType']==NULL||$row['requestType']=="pending")?"Unpaid":"Paid" ?></td>
+                            <td><?=($row['requestType']==NULL||$row['requestType']=="pending")?strtoupper("Unpaid"):strtoupper("Paid") ?></td>
                             <td><?=$row['studentID_number'] ?></td>
-                            <td><?=$row['firstname']." ".$row['lastname'] ?></td>
-                            <td><?=$row['course'] ?></td>
+                            <td><?=strtoupper($row['firstname'])." ".strtoupper($row['lastname']) ?></td>
+                            <td><?=strtoupper($row['course']) ?></td>
                             <td><?=($row['payment_ref']==NULL)?"-- -- --": $row['payment_ref']?></td>
                             <td><?=($row['paid_date']==NULL)?"-- -- --":  $row['paid_date']?></td>
                         </tr>

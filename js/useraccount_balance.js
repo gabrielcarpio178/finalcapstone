@@ -13,7 +13,7 @@ function getdate(){
         success: function(res){
             var result = JSON.parse(res);
             $(".name-stundet_id").html(`<b>${result.lastname}, ${result.firstname}</b> | ${result.studentID_number}`);
-            $(".course-year").text(`${result.course} | ${result.program_description} | ${result.year}`);
+            $(".course-year").text(`${result.course} | ${result.program_description} | ${result.year}-${parseInt(result.year)+1}`);
             $(".address").text(`${result.complete_address}`);
             $(".school-year").text(`A.Y. ${result.year}-${parseInt(result.year)+1} - ${result.semester}`);
 

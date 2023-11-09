@@ -4,7 +4,7 @@ if(isset($_POST['user_id'])){
     $user_id = $_POST['user_id'];
 
     try {
-        $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.course, student_tb.program_description, student_tb.year, user_tb.complete_address FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE user_tb.user_id = '$user_id';");
+        $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.course, student_tb.program_description, student_tb.year, user_tb.complete_address, user_tb.address FROM user_tb INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE user_tb.user_id = '$user_id';");
         $row = mysqli_fetch_assoc($sql);
     } catch (\Throwable $th) {
         echo $th;
@@ -41,17 +41,22 @@ if(isset($_POST['user_id'])){
         echo $th;
     }
 
-    try {
-        $sql_ispaid = mysqli_query($connect, "SELECT COUNT(`payment_type`) AS isPaid FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `payment_type` = 'Non Bago fee' AND (CAST(payment_date AS DATE) BETWEEN '$semister_startdate' AND CAST(NOW() AS DATE)) AND semester_year = '$semisterdate';");
-        $ispaid = mysqli_fetch_assoc($sql_ispaid);
-        if($ispaid['isPaid']==1){
-            $payment_amount = 0;
-        }else{
-            $payment_amount = $amount_row['cashierRates_amount'];
+    if($row['address']=='non-bago'){
+        try {
+            $sql_ispaid = mysqli_query($connect, "SELECT COUNT(`payment_type`) AS isPaid FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `payment_type` = 'Non Bago fee' AND (CAST(payment_date AS DATE) BETWEEN '$semister_startdate' AND CAST(NOW() AS DATE)) AND semester_year = '$semisterdate';");
+            $ispaid = mysqli_fetch_assoc($sql_ispaid);
+            if($ispaid['isPaid']==1){
+                $payment_amount = 0;
+            }else{
+                $payment_amount = $amount_row['cashierRates_amount'];
+            }
+        } catch (\Throwable $th) {
+            echo $th;
         }
-    } catch (\Throwable $th) {
-        echo $th;
+    }elseif($row['address']=='bago'){
+        $payment_amount = 0;
     }
+
     $user_data = array("firstname"=>$row['firstname'], "lastname"=>$row['lastname'], "studentID_number"=>$row['studentID_number'], "course"=>$row['course'], "program_description"=>$row['program_description'], "year"=>$row['year'], "complete_address"=>$row['complete_address'], "non_bago_payment" => $payment_amount, "amount_payment"=>$amount_row['cashierRates_amount'], "semester"=>$semister, "year"=>date('Y', strtotime($semister_start)));
     print_r(json_encode($user_data));
 }

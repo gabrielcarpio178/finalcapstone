@@ -24,8 +24,69 @@ $id = $_SESSION['id'];
 </head>
 <body>
     <div id="navbar"></div>
-    <div class="content-info">
+    <div class="content-info w-75">
+        <div class="label-content">
+            <h1>
+                <b>HISTORY</b>
+            </h1>
+        </div>
 
+        <div class="d-flex flex-row justify-content-end align-items-center gap-4 w-100 p-3">
+            <input type="date" class="form-control form-control-sm w-25" id="date_filter">
+            <div class="selected-filter">
+                
+            </div>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#btn_filter"><i class="fa-solid fa-filter"></i>Filter</button>
+        </div>
+
+        <div class="history-data" id="history_info">
+
+            <!-- data_info -->
+
+        </div>
+    </div>
+    <!-- modal -->
+    <div class="modal fade" id="btn_filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Categories</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="request_payment" value="Request Payment">
+                            <label class="form-check-label" for="request_payment">
+                                Request Payment
+                            </label>
+                        </div>
+                        <select name="payment" id="payment" class="form-select form-select-sm w-25" aria-label=".form-select-sm example" disabled='disabled'>
+
+                        </select>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="purchase" value="Purchase">
+                        <label class="form-check-label" for="purchase">
+                            Purchase
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="cash_in" value="Cash In">
+                        <label class="form-check-label" for="cash_in">
+                            Cash In
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="transfers_funds" value="Transfers Funds">
+                        <label class="form-check-label" for="transfers_funds">
+                            Transfers Funds
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

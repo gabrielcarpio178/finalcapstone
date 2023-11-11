@@ -1,0 +1,34 @@
+/* *{
+    outline: 1px solid;
+} */
+.content-info{
+    position: absolute;
+    left: 150px;
+    padding: 2%;
+}
+label{
+    cursor: pointer;
+}
+#date_filter{
+    display: none;
+}
+.selected-filter{
+    background-color: #c6d8de;
+    border: 1px solid rgba(14, 88, 185, 0.856);
+    border-radius: 5px/5px;
+    padding: 0.5%;
+    display: none;
+}
+.fa-x{
+    cursor: pointer;
+}
+#history_info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.history-info{
+    background-color: white;
+    border-radius: 5px/5px;
+    border: 2px solid rgba(224, 219, 219, 0.712);
+}

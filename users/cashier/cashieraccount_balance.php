@@ -44,9 +44,9 @@ if(($_SESSION['usertype']!="cashier")){
         <div class="d-flex flex-row align-items-between content-filter w-100">
 
             <div class="sort-data w-50">
-                <label for="search_user">Search Name Or ID:</lebel>
+                <label for="search_user">Search:</lebel>
                 <div class="search-content">
-                    <input type="text" name="search_user" id="search_user" class="form-control form-select-sm w-100" placeholder="Search">
+                    <input type="text" name="search_user" id="search_user" class="form-control form-select-sm w-100" placeholder="Search  Name Or ID">
                 </div>
             </div>
 
@@ -70,7 +70,7 @@ if(($_SESSION['usertype']!="cashier")){
                 
 
                 <div class="sort-data w-100">
-                    <label for="sortBy">Sort By Statues:</label>
+                    <label for="sortBy">Sort By Status:</label>
                     <select name="sortBy" id="sortBy" class="form-select form-select-sm w-100">
                         <option value="all">All</option>
                         <option value="paid">Paid</option>

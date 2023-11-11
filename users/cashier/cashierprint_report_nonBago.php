@@ -86,7 +86,7 @@ if(($_SESSION['usertype']!="cashier")){
             </div>
 
             <div class="sort-data">
-                <label for="sortBy">Sort By Statues:</label>
+                <label for="sortBy">Sort By Status:</label>
                 <select name="sortBy" id="sortBy" class="form-select form-select-sm w-50">
                     <option value="all">All</option>
                     <option value="paid">Paid</option>

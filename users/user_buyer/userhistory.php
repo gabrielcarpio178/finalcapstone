@@ -32,7 +32,18 @@ $id = $_SESSION['id'];
         </div>
 
         <div class="d-flex flex-row justify-content-end align-items-center gap-4 w-100 p-3">
-            <input type="date" class="form-control form-control-sm w-25" id="date_filter">
+            <div class="d-flex flex-column" id="date_div">
+                <label for="date_filter">Sort By Date:</label>
+                <input type="date" class="form-control form-control-sm w-100" id="date_filter">
+            </div>
+            <div class="d-flex flex-column" id="trans_div">
+                <label for="category_transfers">Sort By Transfers Funds:</label>
+                <select name="category_transfers" id="category_transfers" class="form-select form-select-sm w-75 align-self-end" aria-label=".form-select-sm example">
+                    <option value="all">All</option>
+                    <option value="sent">Sent</option>
+                    <option value="receive">Receive</option>
+                </select>
+            </div>
             <div class="selected-filter">
                 
             </div>

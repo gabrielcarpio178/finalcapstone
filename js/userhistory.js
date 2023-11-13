@@ -77,7 +77,8 @@ $(document).ready(function(){
 
 function cancelFilter(){
     $(".selected-filter").hide();
-    $("#date_filter").hide();
+    $("#trans_div, #date_div").prop("style", "display: none !important");
+    getHistoryByDate('all','0000-00-00',"all");
 }
 
 function getRequestPayment(){

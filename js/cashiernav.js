@@ -10,6 +10,10 @@ $(document).ready(function () {
   $("#account_balance").on('click', function(){
     window.location = "cashieraccount_balance.php";
   });
+  
+  $("#history").on('click', function(){
+    window.location = "cashierhistory.php";
+  });
 
   $("#logout").on("click", function () {
     // console.log('click');

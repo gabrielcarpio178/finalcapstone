@@ -30,20 +30,20 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
         }
         //Sent tranfers funds
         try {
-            $send_transFunds_sql = mysqli_query($connect, "SELECT `send_amount`, `sendBalance_Date`, `sendBalance_ref` FROM `sendbalance_tb` WHERE `sender_id` = '$user_id' LIMIT 20;");
+            $send_transFunds_sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, sendbalance_tb.send_amount, sendbalance_tb.sendBalance_Date, sendbalance_tb.sendBalance_ref FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.receiver_id WHERE sendbalance_tb.sender_id = '$user_id' LIMIT 20;");
             $send_transFunds_array = array();
             while($send_transFund_row = mysqli_fetch_assoc($send_transFunds_sql)){
-                $send_transFunds_array[] = array('trans_type'=>'sent','send_amount'=>$send_transFund_row['send_amount'], 'date_info'=>$send_transFund_row['sendBalance_Date'], 'sendBalance_ref'=>$send_transFund_row['sendBalance_ref']);
+                $send_transFunds_array[] = array('trans_type'=>'sent','send_amount'=>$send_transFund_row['send_amount'], 'date_info'=>$send_transFund_row['sendBalance_Date'], 'sendBalance_ref'=>$send_transFund_row['sendBalance_ref'], 'fullname'=>$send_transFund_row['firstname']." ".$send_transFund_row['lastname']);
             }
         } catch (\Throwable $th) {
             echo $th;
         }
         //receiver tranfers funds
         try {
-            $receiver_transFunds_sql = mysqli_query($connect, "SELECT `send_amount`, `sendBalance_Date`, `sendBalance_ref` FROM `sendbalance_tb` WHERE `receiver_id` = '$user_id' LIMIT 20;");
+            $receiver_transFunds_sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, sendbalance_tb.send_amount, sendbalance_tb.sendBalance_Date, sendbalance_tb.sendBalance_ref FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.sender_id WHERE sendbalance_tb.receiver_id = '$user_id' LIMIT 20;");
             $receiver_transFunds_array = array();
             while($receiver_transFund_row = mysqli_fetch_assoc($receiver_transFunds_sql)){
-                $receiver_transFunds_array[] = array('trans_type'=>'receiver','send_amount'=>$receiver_transFund_row['send_amount'], 'date_info'=>$receiver_transFund_row['sendBalance_Date'], 'type'=>'receiver', 'revBalance_ref'=>$receiver_transFund_row['sendBalance_ref']);
+                $receiver_transFunds_array[] = array('trans_type'=>'receiver','send_amount'=>$receiver_transFund_row['send_amount'], 'date_info'=>$receiver_transFund_row['sendBalance_Date'], 'type'=>'receiver', 'revBalance_ref'=>$receiver_transFund_row['sendBalance_ref'], 'fullname'=>$receiver_transFund_row['firstname']." ".$receiver_transFund_row['lastname']);
             }
         } catch (\Throwable $th) {
             echo $th;
@@ -51,10 +51,10 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
         
         //payment request
         try {
-            $payment_sql = mysqli_query($connect, "SELECT `payment_type`, `payment_amount`, `payment_date` FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND 	`requestType` = 'accepted' LIMIT 20;");
+            $payment_sql = mysqli_query($connect, "SELECT `payment_type`, `payment_amount`, `payment_date`, `payment_ref` FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND 	`requestType` = 'accepted' LIMIT 20;");
             $payment_array = array();
             while($payment_row = mysqli_fetch_assoc($payment_sql)){
-                $payment_array[] = array('trans_type'=>'payment','payment_type'=>$payment_row['payment_type'], 'payment_amount'=>$payment_row['payment_amount'], 'date_info'=>$payment_row['payment_date']);
+                $payment_array[] = array('trans_type'=>'payment','payment_type'=>$payment_row['payment_type'], 'payment_amount'=>$payment_row['payment_amount'], 'date_info'=>$payment_row['payment_date'], 'payment_ref'=>$payment_row['payment_ref']);
             }
         } catch (\Throwable $th) {
             echo $th;
@@ -103,20 +103,20 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
              //Sent tranfers funds
             if($trans=="all"){
                 try {
-                    $send_transFunds_sql = mysqli_query($connect, "SELECT `send_amount`, `sendBalance_Date`, `sendBalance_ref` FROM `sendbalance_tb` WHERE `sender_id` = '$user_id'". $date_info);
+                    $send_transFunds_sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, sendbalance_tb.send_amount, sendbalance_tb.sendBalance_Date, sendbalance_tb.sendBalance_ref FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.receiver_id WHERE sendbalance_tb.sender_id = '$user_id'". $date_info);
                     $send_transFunds_array = array();
                     while($send_transFund_row = mysqli_fetch_assoc($send_transFunds_sql)){
-                        $send_transFunds_array[] = array('trans_type'=>'sent','send_amount'=>$send_transFund_row['send_amount'], 'date_info'=>$send_transFund_row['sendBalance_Date'], 'sendBalance_ref'=>$send_transFund_row['sendBalance_ref']);
+                        $send_transFunds_array[] = array('trans_type'=>'sent','send_amount'=>$send_transFund_row['send_amount'], 'date_info'=>$send_transFund_row['sendBalance_Date'], 'sendBalance_ref'=>$send_transFund_row['sendBalance_ref'], 'fullname'=>$send_transFund_row['firstname']." ".$send_transFund_row['lastname']);
                     }
                 } catch (\Throwable $th) {
                     echo $th;
                 }
                 //receiver tranfers funds
                 try {
-                    $receiver_transFunds_sql = mysqli_query($connect, "SELECT `send_amount`, `sendBalance_Date`, `sendBalance_ref` FROM `sendbalance_tb` WHERE `receiver_id` = '$user_id'".$date_info);
+                    $receiver_transFunds_sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, sendbalance_tb.send_amount, sendbalance_tb.sendBalance_Date, sendbalance_tb.sendBalance_ref FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.sender_id WHERE sendbalance_tb.receiver_id = '$user_id'".$date_info);
                     $receiver_transFunds_array = array();
                     while($receiver_transFund_row = mysqli_fetch_assoc($receiver_transFunds_sql)){
-                        $receiver_transFunds_array[] = array('trans_type'=>'receiver','send_amount'=>$receiver_transFund_row['send_amount'], 'date_info'=>$receiver_transFund_row['sendBalance_Date'], 'type'=>'receiver', 'revBalance_ref'=>$receiver_transFund_row['sendBalance_ref']);
+                        $receiver_transFunds_array[] = array('trans_type'=>'receiver','send_amount'=>$receiver_transFund_row['send_amount'], 'date_info'=>$receiver_transFund_row['sendBalance_Date'], 'type'=>'receiver', 'revBalance_ref'=>$receiver_transFund_row['sendBalance_ref'], 'fullname'=>$receiver_transFund_row['firstname']." ".$receiver_transFund_row['lastname']);
                     }
                 } catch (\Throwable $th) {
                     echo $th;
@@ -126,10 +126,10 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
                 print_r(json_encode($data_array));
             }else if($trans=='sent'){
                 try {
-                    $send_transFunds_sql = mysqli_query($connect, "SELECT `send_amount`, `sendBalance_Date`, `sendBalance_ref` FROM `sendbalance_tb` WHERE `sender_id` = '$user_id'". $date_info);
+                    $send_transFunds_sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, sendbalance_tb.send_amount, sendbalance_tb.sendBalance_Date, sendbalance_tb.sendBalance_ref FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.receiver_id WHERE sendbalance_tb.sender_id = '$user_id'". $date_info);
                     $send_transFunds_array = array();
                     while($send_transFund_row = mysqli_fetch_assoc($send_transFunds_sql)){
-                        $send_transFunds_array[] = array('trans_type'=>'sent','send_amount'=>$send_transFund_row['send_amount'], 'date_info'=>$send_transFund_row['sendBalance_Date'], 'sendBalance_ref'=>$send_transFund_row['sendBalance_ref']);
+                        $send_transFunds_array[] = array('trans_type'=>'sent','send_amount'=>$send_transFund_row['send_amount'], 'date_info'=>$send_transFund_row['sendBalance_Date'], 'sendBalance_ref'=>$send_transFund_row['sendBalance_ref'],'fullname'=>$send_transFund_row['firstname']." ".$send_transFund_row['lastname']);
                     }
                 } catch (\Throwable $th) {
                     echo $th;
@@ -139,10 +139,10 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
 
             else if($trans=='receive'){
                 try {
-                    $receiver_transFunds_sql = mysqli_query($connect, "SELECT `send_amount`, `sendBalance_Date`, `sendBalance_ref` FROM `sendbalance_tb` WHERE `receiver_id` = '$user_id'".$date_info);
+                    $receiver_transFunds_sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, sendbalance_tb.send_amount, sendbalance_tb.sendBalance_Date, sendbalance_tb.sendBalance_ref FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.sender_id WHERE sendbalance_tb.receiver_id = '$user_id'".$date_info);
                     $receiver_transFunds_array = array();
                     while($receiver_transFund_row = mysqli_fetch_assoc($receiver_transFunds_sql)){
-                        $receiver_transFunds_array[] = array('trans_type'=>'receiver','send_amount'=>$receiver_transFund_row['send_amount'], 'date_info'=>$receiver_transFund_row['sendBalance_Date'], 'type'=>'receiver', 'revBalance_ref'=>$receiver_transFund_row['sendBalance_ref']);
+                        $receiver_transFunds_array[] = array('trans_type'=>'receiver','send_amount'=>$receiver_transFund_row['send_amount'], 'date_info'=>$receiver_transFund_row['sendBalance_Date'], 'type'=>'receiver', 'revBalance_ref'=>$receiver_transFund_row['sendBalance_ref'],'fullname'=>$receiver_transFund_row['firstname']." ".$receiver_transFund_row['lastname']);
                     }
                 } catch (\Throwable $th) {
                     echo $th;
@@ -158,10 +158,10 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
             $date_info = ($date!="0000-00-00")?" AND CAST(`payment_date` AS DATE) = '".$date."'":"";
             $cot_type = " AND `payment_type` = '".$type."'";
             try {
-                $payment_sql = mysqli_query($connect, "SELECT `payment_type`, `payment_amount`, `payment_date` FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND 	`requestType` = 'accepted'".$cot_type.$date_info);
+                $payment_sql = mysqli_query($connect, "SELECT `payment_type`, `payment_amount`, `payment_date`, `payment_ref` FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `requestType` = 'accepted'".$cot_type.$date_info);
                 $payment_array = array();
                 while($payment_row = mysqli_fetch_assoc($payment_sql)){
-                    $payment_array[] = array('trans_type'=>'payment','payment_type'=>$payment_row['payment_type'], 'payment_amount'=>$payment_row['payment_amount'], 'date_info'=>$payment_row['payment_date']);
+                    $payment_array[] = array('trans_type'=>'payment','payment_type'=>$payment_row['payment_type'], 'payment_amount'=>$payment_row['payment_amount'], 'date_info'=>$payment_row['payment_date'], 'payment_ref'=>$payment_row['payment_ref']);
                 }
             } catch (\Throwable $th) {
                 echo $th;

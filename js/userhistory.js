@@ -140,7 +140,7 @@ function getHistoryByDate(type,date, trans){
                     var strTime = hour + ':' + min + ampm;
                     var insert_date = `${monthFull[mounth]}-${day}-${year} ${strTime}`;
                     if((data[i]).trans_type=='purchase'){
-                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info">
+                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info" onclick="getmodaldata('${(data[i]).trans_type}', '${(data[i]).store_name}', '${insert_date}', '${(data[i]).order_amount}', '${(data[i]).order_num}')">
                                 <div class="d-flex flex-column gap-2">
                                     <b>${(data[i]).store_name}</b>
                                     <div class="date">${insert_date}</div>
@@ -148,7 +148,7 @@ function getHistoryByDate(type,date, trans){
                                 <div class="amount">₱ ${(data[i]).order_amount}.00</div>
                             </div>`
                     }else if((data[i]).trans_type=='cashin'){
-                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info">
+                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info" onclick="getmodaldata('${(data[i]).trans_type}', 'Cash In', '${insert_date}', '${(data[i]).cashin_amount}', '${(data[i]).ref_num}')">
                                 <div class="d-flex flex-column gap-2">
                                     <b>Cash In</b>
                                     <div class="date">${insert_date}</div>
@@ -156,7 +156,7 @@ function getHistoryByDate(type,date, trans){
                                 <div class="amount">₱ ${(data[i]).cashin_amount}.00</div>
                             </div>`
                     }else if((data[i]).trans_type=='sent'){
-                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info">
+                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info" onclick="getmodaldata('${(data[i]).trans_type}', '${(data[i]).fullname}', '${insert_date}', '${(data[i]).send_amount}', '${(data[i]).sendBalance_ref}')">
                                 <div class="d-flex flex-column gap-2">
                                     <b>Sent Funds</b>
                                     <div class="date">${insert_date}</div>
@@ -164,7 +164,7 @@ function getHistoryByDate(type,date, trans){
                                 <div class="amount">₱ ${(data[i]).send_amount}.00</div>
                             </div>`
                     }else if((data[i]).trans_type=='receiver'){
-                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info">
+                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info" onclick="getmodaldata('${(data[i]).trans_type}', '${(data[i]).fullname}', '${insert_date}', '${(data[i]).send_amount}', '${(data[i]).sendBalance_ref}', '${(data[i]).fullname}')">
                                 <div class="d-flex flex-column gap-2">
                                     <b>Receive Funds</b>
                                     <div class="date">${insert_date}</div>
@@ -172,7 +172,7 @@ function getHistoryByDate(type,date, trans){
                                 <div class="amount">₱ ${(data[i]).send_amount}.00</div>
                             </div>`
                     }else if((data[i]).trans_type=='payment'){
-                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info">
+                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info" onclick="getmodaldata('${(data[i]).trans_type}', '${(data[i]).payment_type}', '${insert_date}', '${(data[i]).payment_amount}', '${(data[i]).payment_ref}')">
                                 <div class="d-flex flex-column gap-2">
                                     <b>${(data[i]).payment_type}</b>
                                     <div class="date">${insert_date}</div>
@@ -187,4 +187,50 @@ function getHistoryByDate(type,date, trans){
             }
         }
     })
+}
+
+function getmodaldata(type, name, date, amount, ref){
+    if(type == 'purchase'){
+        var payment_type = `Store name: <b>${name}</b>`;
+    }else if(type == 'cashin'){
+        var payment_type = `<b>${name}</b>`;
+    }else if(type == 'sent'){
+        var payment_type = `Sent to <b>${name}</b>`;
+    }else if(type == 'receiver'){
+        var payment_type = `Receive to <b>${name}</b>`;
+    }else if(type == 'payment'){
+        var payment_type = `<b>${name}</b>`;
+    }
+    var payment_html = `
+        <div class="d-flex flex-row gap-1 payment_data">
+            <p>${payment_type} </p>
+        </div>
+    `;
+    var data_time_html = `
+        <div class="d-flex flex-row justify-content-between date_time w-100">
+            <p>Date & Time: </p>
+            <b>${date}</b>
+        </div>
+    `;
+    var amount_info = `${amount}.00`;
+    var parts = amount_info.toString().split(".");
+    var num = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+    var amount_html = `
+    <div class="d-flex flex-row justify-content-between amount_html w-100">
+        <p>Amount: </p>
+        <b>₱ ${num}</b>
+    </div>
+    `;
+    var ref_html = `
+    <div class="d-flex flex-row justify-content-between amount_html w-100">
+        <p>Reference No.: </p>
+        <b>${ref}</b>
+    </div>
+    `;
+
+    $("#payment_for").html(payment_html);
+    $("#date_and_time").html(data_time_html);
+    $("#amount").html(amount_html);
+    $("#ref_num").html(ref_html);
+    $(".btn-modal").click();
 }

@@ -70,7 +70,7 @@ if(isset($_POST['info'])&&isset($_POST['department'])&&isset($_POST['date'])){
             }
             print_r(json_encode($array_cashout));
         }else if($department=='payment'){
-            $cot_date = ($date!="")?" WHERE CAST(digitalpayment_tb.payment_date AS DATE) = '".$date."'":"";
+            $cot_date = ($date!="")?" AND CAST(digitalpayment_tb.payment_date AS DATE) = '".$date."'":"";
             try {
                 $sql_digitalPayment = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, digitalpayment_tb.payment_ref, digitalpayment_tb.semester_year, digitalpayment_tb.payment_date FROM digitalpayment_tb INNER JOIN user_tb ON digitalpayment_tb.user_id = user_tb.user_id WHERE digitalpayment_tb.requestType='accepted'".$cot_date);
                 $array_digitalPayment = array();

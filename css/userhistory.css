@@ -3,7 +3,7 @@
 } */
 .content-info{
     position: absolute;
-    left: 150px;
+    left: 180px;
     padding: 2%;
 }
 label{
@@ -31,6 +31,7 @@ label{
     background-color: white;
     border-radius: 5px/5px;
     border: 2px solid rgba(224, 219, 219, 0.712);
+    cursor: pointer;
 }
 .btn-modal{
     display: none;

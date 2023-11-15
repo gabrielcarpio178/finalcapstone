@@ -1,0 +1,34 @@
+/* *{
+    outline: 1px solid black;
+} */
+.content-info{
+    position: absolute;
+    inset: 90px 0px 0px 250px;
+}
+.sign-in{
+    width: 100%;
+    height: 50vh;
+}
+form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+.sign-content{
+    background-color: white;
+    border-radius: 10px/10px;
+    width: 50%;
+    padding: 5%;
+    box-shadow: 0 1px 1px 1px #61616191;
+}
+.password-class{
+    position: relative;
+}
+#show_password{
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    cursor: pointer;
+}

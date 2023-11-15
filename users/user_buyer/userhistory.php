@@ -32,8 +32,8 @@ $id = $_SESSION['id'];
         </div>
 
         <div class="d-flex flex-row justify-content-end align-items-center gap-4 w-100 p-3">
-            <div class="d-flex flex-column" id="date_div">
-                <label for="date_filter">Sort By Date:</label>
+            <div class="d-flex flex-row align-items-center gap-2" id="date_div">
+                <label for="date_filter" style="white-space: nowrap;">Sort By Date:</label>
                 <input type="date" class="form-control form-control-sm w-100" id="date_filter">
             </div>
             <div class="d-flex flex-column" id="trans_div">

@@ -31,6 +31,10 @@
             <i class="fa-solid fa-house"></i>
             <p class="label">Home</p>
           </li>
+          <li class="categories" id="request_info">
+            <i class="fa-solid fa-code-pull-request"></i>
+            <p class="label">Request</p>
+          </li>
           <li class="categories" id="cash_in">
             <i class="fas fa-wallet"></i>
             <p class="label">Cash In</p>

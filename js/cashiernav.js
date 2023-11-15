@@ -15,6 +15,10 @@ $(document).ready(function () {
     window.location = "cashierhistory.php";
   });
 
+  $("#request_info").on('click', function(){
+    window.location = "cashierrequest.php";
+  });
+
   $("#logout").on("click", function () {
     // console.log('click');
 

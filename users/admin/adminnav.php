@@ -36,46 +36,13 @@ user-scalable=no">
                         </div>
                     </div>
                 </li>
-                
+                <li class="categories" id="back_up" onclick="window.location = 'adminback_up.php'"><i class="fa-solid fa-database"></i><div class="label-text">Back Up</div></li>
                 <li class="categories" id="logout"><i class="fa-solid fa-right-from-bracket"></i><div class="label-text">Logout</div></li>
             </ul>
-
-            <!-- <div class="flex-user">
-                <ul class="user_btn">
-                    <li class="btn_admin" id="btn_adduser" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-plus"></i><div>Add Users</div></li>
-                    <li class="btn_admin" id="btn_master"><i class="fa-solid fa-list"></i><div>Master List</div></li>
-                </ul>
-            </div> -->
 
         </div>
         
     </div>  
-    
-    <!-- modal -->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
-                     
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -2,10 +2,10 @@
 session_start();
 require('../../controller/Dbconnection.php');
 if(($_SESSION['usertype']!="admin")){
-   if(!isset($_SERVER['HTTP_REFERER'])){
-       header('location: ../../index.php');
+    if(!isset($_SERVER['HTTP_REFERER'])){
+        header('location: ../../index.php');
     exit;
-   }
+    }
 }
 
 ?>
@@ -38,7 +38,7 @@ if(($_SESSION['usertype']!="admin")){
             </div>
             <div class="col-12">
 
-               <div class="information w-100">
+                <div class="information w-100">
 
                 <div class="info bg-success">
                     <div class="date">
@@ -74,7 +74,7 @@ if(($_SESSION['usertype']!="admin")){
                     </div>
                 </div>
                 
-               </div>
+            </div>
 
             </div>
 

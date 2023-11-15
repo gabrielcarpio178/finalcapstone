@@ -11,10 +11,21 @@ $(document).ready(function(){
 
     show_cert(false);
     $("#cert_t").on('click', function(){
+      $("#btn_modal").click();
       cert_t_form();
       cert_e_form();
     });
     $(".success-message").hide();
+
+    $("input[name='purpose']").change(function() {
+      var selected = $(this).val();
+      if(selected=='other'){
+        $('#text_area').removeAttr("disabled");
+      }else{
+        $('#text_area').attr("disabled",'disabled');
+      }
+    });
+    
 });
 function show_cert(x){
   let i = x;

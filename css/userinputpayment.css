@@ -191,6 +191,12 @@
 .certificate-label {
   cursor: pointer;
 }
+label{
+  cursor: pointer;
+}
+textarea{
+  height: 15vh;
+}
 @media screen and (min-width: 320px) {
   .content-info {
     padding: 100px 10px 0px 10px;

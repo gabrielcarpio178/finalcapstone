@@ -164,9 +164,9 @@ function getHistoryByDate(type,date, trans){
                                 <div class="amount">₱ ${(data[i]).send_amount}.00</div>
                             </div>`
                     }else if((data[i]).trans_type=='receiver'){
-                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info" onclick="getmodaldata('${(data[i]).trans_type}', '${(data[i]).fullname}', '${insert_date}', '${(data[i]).send_amount}', '${(data[i]).sendBalance_ref}', '${(data[i]).fullname}')">
+                        html += `<div class="d-flex flex-row justify-content-between align-items-center w-100 p-3 history-info" onclick="getmodaldata('${(data[i]).trans_type}', '${(data[i]).fullname}', '${insert_date}', '${(data[i]).send_amount}', '${(data[i]).revBalance_ref}')">
                                 <div class="d-flex flex-column gap-2">
-                                    <b>Receive Funds</b>
+                                    <b>Received Funds</b>
                                     <div class="date">${insert_date}</div>
                                 </div>
                                 <div class="amount">₱ ${(data[i]).send_amount}.00</div>
@@ -197,7 +197,7 @@ function getmodaldata(type, name, date, amount, ref){
     }else if(type == 'sent'){
         var payment_type = `Sent to <b>${name}</b>`;
     }else if(type == 'receiver'){
-        var payment_type = `Receive to <b>${name}</b>`;
+        var payment_type = `Received to <b>${name}</b>`;
     }else if(type == 'payment'){
         var payment_type = `<b>${name}</b>`;
     }

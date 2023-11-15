@@ -67,18 +67,20 @@ function getDataTable(info, department, date){
                     "Nov",
                     "Dec",
                     ];
-                    var ampm = hour >= 12 ? 'pm' : 'am';
+                    var ampm = hour >= 12 ? 'PM' : 'AM';
                     hour = hour % 12;
                     hour = hour ? hour : 12;
                     min = min < 10 ? '0'+min : min;
-                    var strTime = hour + ':' + min + ampm;
+                    var strTime = hour + ':' + min + " "+ampm;
                     var insert_date = `${monthFull[mounth]}-${day}-${year} ${strTime}`;
                 if((data[i].type)=='digitalPayment'){
                     html += `
-                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].fullname}','${insert_date}','${data[i].payment_amount}', '${data[i].payment_ref}')">
+                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].fullname}','${insert_date}','${data[i].payment_amount}', '${data[i].payment_ref}', '${data[i].payment_type}')">
                             <div class='d-flex flex-column'>
-                                <b>${data[i].fullname}</b>
-                                <div>Payment</div>
+                                <div class="d-flex flex-row">
+                                    <b>${data[i].fullname}</b> 
+                                    <div>,&nbsp;${data[i].payment_type}</div>
+                                </div>
                                 <div>${insert_date}</div>
                             </div>
                             <div class='align-self-center'>
@@ -87,10 +89,9 @@ function getDataTable(info, department, date){
                         </div>`;
                 }else if((data[i].type)=="cashin"){
                     html += `
-                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].fullname}', '${insert_date}', '${data[i].cashin_amount}', '${data[i].ref_num}')">
+                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].fullname}', '${insert_date}', '${data[i].cashin_amount}', '${data[i].ref_num}','')">
                             <div class='d-flex flex-column'>
-                                <b>${data[i].fullname}</b>
-                                <div>Cash In</div>
+                                <div><b>${data[i].fullname}</b>, Cash In</div>
                                 <div>${insert_date}</div>
                             </div>
                             <div class='align-self-center'>
@@ -99,10 +100,10 @@ function getDataTable(info, department, date){
                         </div>`;
                 }else if((data[i].type)=="cashout"){
                     html += `
-                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].store_name}', '${insert_date}', '${data[i].cashout_amount}', '${data[i].cashout_refnum}')">
+                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].store_name}', '${insert_date}', '${data[i].cashout_amount}', '${data[i].cashout_refnum}','')">
                             <div class='d-flex flex-column'>
-                                <b>${data[i].store_name}</b>
-                                <div>Cash Out</div>
+                                <div><b>${data[i].store_name}</b>, Cash Out</div>
+                                
                                 <div>${insert_date}</div>
                             </div>
                             <div class='align-self-center'>
@@ -116,19 +117,19 @@ function getDataTable(info, department, date){
     });
 }
 
-function getdatamodal(type ,fullname, date, amount, ref){
+function getdatamodal(type ,fullname, date, amount, ref, payment_type){
     
     if(type == 'digitalPayment'){
-        var payment_type = `Payment for <b>${fullname}</b>`;
+        var payment_type = `<div class='text-nowrap text-end'><b>${fullname}</b></div><p>Payment for <b>${payment_type}</b></p>`;
     }else if(type == 'cashin'){
-        var payment_type = `Cash In for <b>${fullname}</b>`;
+        var payment_type = `<p>Cash In for <b>${fullname}</b></p>`;
     }else if(type == 'cashout'){
-        var payment_type = `Cash Out for <b>${fullname}</b>`;
+        var payment_type = `<p>Cash Out for <b>${fullname}</b></p>`;
     }
 
     var payment_html = `
-        <div class="d-flex flex-row gap-1 payment_data">
-            <p>${payment_type} </p>
+        <div class="d-flex flex-column justify-content-between w-100 payment_data">
+            ${payment_type}
         </div>
     `;
     var data_time_html = `

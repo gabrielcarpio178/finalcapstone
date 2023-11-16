@@ -31,7 +31,7 @@ function searchForm(){
             <div class="form-label">
                 Send to:
             </div>
-            <input type="text" id="search_input" placeholder="Enter Name Or User ID" class="mt-2 form-control">
+            <input type="text" id="search_input" placeholder="Enter Name or User ID" class="mt-2 form-control">
             <div class="result" id="result_data"></div>
             <div class="m-2 search-result">
 

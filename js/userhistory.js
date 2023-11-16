@@ -62,7 +62,7 @@ $(document).ready(function(){
     $(".txt, #payment, .checkbox").each(function() {
         $(this).change(function(){
             type = $(this).val();
-            $(".selected-filter").html(`<div class="d-flex flex-row align-items-center gap-1"><i class="fa-solid fa-x" onclick="cancelFilter();"></i><div>Request Payment, ${type}</div></div>`);
+            $(".selected-filter").html(`<div class="d-flex flex-row align-items-center gap-2"><i class="fa-solid fa-x fa-sm" onclick="cancelFilter();"></i><div>Request Payment, ${type}</div></div>`);
             $(".selected-filter").show();
             $("#date_filter").show();
             $(".btn-close").click();
@@ -133,7 +133,7 @@ function getHistoryByDate(type,date, trans){
                     "Nov",
                     "Dec",
                     ];
-                    var ampm = hour >= 12 ? 'pm' : 'am';
+                    var ampm = hour >= 12 ? 'PM' : 'AM';
                     hour = hour % 12;
                     hour = hour ? hour : 12;
                     min = min < 10 ? '0'+min : min;
@@ -191,15 +191,15 @@ function getHistoryByDate(type,date, trans){
 
 function getmodaldata(type, name, date, amount, ref){
     if(type == 'purchase'){
-        var payment_type = `Store name: <b>${name}</b>`;
+        var payment_type = `Sent to <b>${name}</b>`;
     }else if(type == 'cashin'){
-        var payment_type = `<b>${name}</b>`;
+        var payment_type = `Recieved <b>${name}</b>`;
     }else if(type == 'sent'){
         var payment_type = `Sent to <b>${name}</b>`;
     }else if(type == 'receiver'){
-        var payment_type = `Received to <b>${name}</b>`;
+        var payment_type = `Received from <b>${name}</b>`;
     }else if(type == 'payment'){
-        var payment_type = `<b>${name}</b>`;
+        var payment_type = `Payment for <b>${name}</b>`;
     }
     var payment_html = `
         <div class="d-flex flex-row gap-1 payment_data">

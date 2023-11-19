@@ -53,7 +53,7 @@ function modalShow(){
     btn_content = `
         <b>Choose how you want to back up and restore your data:</b>
         <button class="btn btn-primary w-100" onclick="sql()">Export to SQL</button>
-        <button class="btn btn-success w-100" id="excel">Export to EXCEL</button>
+        <button class="btn btn-success w-100" onclick="excel()">Export to EXCEL</button>
     `;
     $("#btn_content").html(btn_content);
 }
@@ -61,3 +61,20 @@ function modalShow(){
 function sql(){
     window.open('../../controller/Dbadminback_upSql.php', '_self'); 
 }
+
+function excel(){
+    btn_modal_excel = `
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#excelModal" style="display: none" id="show_excel_modal">
+            Launch demo modal
+        </button>`;
+    $(".btn-modal-excel").html(btn_modal_excel);
+    $("#show_excel_modal").click();
+    $("#close_modal_type").click();
+    
+}
+function selected(table){
+    window.open(`../../controller/Dbadmindownload_excel.php?table=${table}`, '_self');
+}
+
+
+

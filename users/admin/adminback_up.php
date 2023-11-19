@@ -48,6 +48,9 @@ if(($_SESSION['usertype']!="admin")){
             <div class="btn-modal">
 
             </div>
+            <div class="btn-modal-excel">
+
+            </div>
         </div>
     </div>
     <!-- Modal -->
@@ -55,10 +58,62 @@ if(($_SESSION['usertype']!="admin")){
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close_modal_type"></button>
             </div>
             <div class="modal-body">
                 <div class="d-flex flex-column align-items-center gap-2" id="btn_content">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- excel modal table -->
+    <div class="modal fade" id="excelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-column align-items-center gap-2 w-100" id="btn_content_excel">
+                    <b>Select Table</b>
+                    <div class="d-flex flex-column gap-2 select-all w-100">
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`adminannoucement`)">Adminannoucement Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`cashierrates_tb`)">Cashier Rates Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`cashin_tb`)">Cash In Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`cashout_tb`)">Cash Out Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`digitalpayment_tb`)">Digital Payment Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`order_tb`)">Order Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`product_tb`)">Product Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`semesteryear_tb`)">Semester Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`sendbalance_tb`)">Transfer Funds Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`user_tb`)">Student/Personnel User Table </button>
+                        </div>
+                        <div class="d-flex flex-row gap-3">
+                            <button class="btn btn-outline-primary w-100" onclick="selected(`telleruser_tb`)">Canteen Store User Table </button>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             </div>

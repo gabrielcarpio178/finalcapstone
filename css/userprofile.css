@@ -1,0 +1,11 @@
+.label{
+    position:absolute;
+    left: 180px;
+    top: 30px
+}
+.content{
+    display: block;
+}
+.profile-info{
+    background-color: RED;
+}

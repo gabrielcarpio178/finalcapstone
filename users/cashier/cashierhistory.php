@@ -30,7 +30,7 @@
                     <option value="all">All</option>
                     <option value="cashin">Cash In</option>
                     <option value="cashout">Cash Out</option>
-                    <option value="payment">Payment</option>
+                    <option value="payment">Payments</option>
                 </select>
             </div>
             <div class="d-flex flex-column gap-2 date-search">

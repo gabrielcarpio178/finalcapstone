@@ -41,7 +41,7 @@ $id = $_SESSION['id'];
                 <select name="category_transfers" id="category_transfers" class="form-select form-select-sm w-75 align-self-end" aria-label=".form-select-sm example">
                     <option value="all">All</option>
                     <option value="sent">Sent</option>
-                    <option value="receive">Receive</option>
+                    <option value="receive">Received</option>
                 </select>
             </div>
             <div class="selected-filter">

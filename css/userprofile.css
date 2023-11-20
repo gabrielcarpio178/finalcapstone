@@ -1,11 +1,72 @@
-.label{
-    position:absolute;
-    left: 180px;
-    top: 30px
+/* * {
+  outline: 1px solid;
+} */
+.content {
+  position: absolute;
+  left: 100px;
+  top: 10px;
 }
-.content{
-    display: block;
+h2{
+  white-space: nowrap;
 }
-.profile-info{
-    background-color: RED;
+.profile-image img {
+  width: 170px;
+  height: 160px;
 }
+.profile-info {
+  background-color: #fff;
+  box-shadow: 0 1px 1px 1px #777575;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-group {
+  display: inline-block;
+  margin-right: 60px;
+  width: 90px;
+  padding: 20px;
+}
+
+input[type="text"] {
+  border: none;
+}
+
+.change-pass p {
+  color: #fff;
+  font-size: 20px;
+}
+#edit_icon{
+  cursor: pointer;
+}
+#firstname, #lastname{
+  display: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+#upload_profile{
+  display: none;
+}
+.profile_camera{
+  position: relative;
+}
+.camera_icon{
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  max-width: 25%;
+  max-height: 10vh;
+  bottom: 0;
+  right: 40px;
+  padding: 1%;
+  cursor: pointer;
+  box-shadow: 0 1px 1px 1px #616161;
+  display: none;
+}
+
+#profile_img{
+  border-radius: 50%;
+}
+#change_pass{
+  display: none;
+}
+

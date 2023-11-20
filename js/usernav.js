@@ -34,6 +34,11 @@ $(document).ready(function () {
     window.location = "userhistory.php";
   });
 
+  $("#setting").on("click", function (e) {
+    e.preventDefault();
+    window.location = "userprofile.php";
+  });
+
   $("#logout").on("click", function (e) {
     e.preventDefault();
 

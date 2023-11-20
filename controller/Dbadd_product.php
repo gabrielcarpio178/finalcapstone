@@ -12,36 +12,34 @@ if(isset($_POST['product_name'])&&isset($_POST['price'])&&isset($_POST['pcs'])&&
     $category = $_POST['addcategory'];    
     if(!empty($_FILES['fileImg']['name'])){
     
-        $imageName = $_FILES['fileImg']['name'];
-         $tmpName = $_FILES['fileImg']['tmp_name'];
-    $validImageExtension = ['jpg', 'jpeg', 'png'];
-    $imageExtension = explode('.',$imageName);
-   
-    $name = $imageExtension[0];
-    $imageExtension = strtolower(end($imageExtension));
-   
+      $imageName = $_FILES['fileImg']['name'];
+      $tmpName = $_FILES['fileImg']['tmp_name'];
+      $validImageExtension = ['jpg', 'jpeg', 'png'];
+      $imageExtension = explode('.',$imageName);
+      $name = $imageExtension[0];
+      $imageExtension = strtolower(end($imageExtension));
+  
     if(!in_array($imageExtension, $validImageExtension)){
-       echo "not_image";       
-   }else{           
+      echo "not_image";       
+  }else{           
         $newNameImage = $name."-".uniqid();
         $newNameImage .= ".".$imageExtension;
         move_uploaded_file($tmpName, "../upload/".$newNameImage);
         try{
           mysqli_query($connect, "INSERT INTO `product_tb`(`teller_id`, `category_id`, `date_post`, `product_name`, `price`, `quantity`, `producer_price`, `image`) VALUES ('$teller_id','$category','$date','$product_name','$price','$pcs', '$pp',  '$newNameImage')");
-  echo "success";
+          echo "success";
         }catch(\Throwable $th){
           echo $th;
       }
     }                     
     }else{
-       try{
+      try{
           mysqli_query($connect, "INSERT INTO `product_tb`(`teller_id`, `category_id`, `date_post`, `product_name`, `price`, `quantity` , `producer_price`, `image`) VALUES ('$teller_id','$category','$date','$product_name','$price','$pcs','$pp', 'null')");
-           echo "success";
+          echo "success";
         }catch(\Throwable $th){
           echo $th;
       } 
     }        
                             
 }
-   
 ?>

@@ -160,7 +160,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                     </div>
                     <div class="d-flex flex-column">
                         <div class="d-flex flex-row align-items-center icon">
-                            <img src="../../image/avatar.jpg" alt="Profile Picture">
+                            <img src="<?php echo ($row['image_profile']!=NULL)?"profile/".$row['image_profile']:"../../image/avatar.jpg" ?>" alt="Profile Picture" id="profile_pic">
                             <div class="d-flex flex-column">
                                 <b><?=ucfirst($row['firstname'])." ".ucfirst($row['lastname']) ?></b>
                                 <p><?php if($row['usertype']=='student'){ ?>

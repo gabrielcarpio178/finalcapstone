@@ -164,8 +164,15 @@ function submitform(){
                         showConfirmButton: false,
                         timer: 1000
                     });
+                }else if(res=='email_isInvalid'){
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Invalid Email",
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
                 }
-                
             }
         })              
     });

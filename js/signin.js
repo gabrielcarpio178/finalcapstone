@@ -247,7 +247,7 @@ function getresetcode(id, user_buyer){
       user_buyer:user_buyer
     },
     cache: false,
-    success: function(){
+    success: function(res){
       $("#reset_forgot_code").click();
     }
   });

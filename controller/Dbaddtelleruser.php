@@ -3,7 +3,7 @@ require('Dbconnection.php');
 require_once "../phpqrcode/qrlib.php";
 sleep(1);
 session_start();
-if(isset($_POST['firstname'])&&isset($_POST['lastname'])&&isset($_POST['phonenumber'])&&isset($_POST['store_name'])&&isset($_POST['gender'])&&isset($_POST['username'])&&isset($_POST['password'])){
+if(isset($_POST['firstname'])&&isset($_POST['lastname'])&&isset($_POST['phonenumber'])&&isset($_POST['email'])&&isset($_POST['store_name'])&&isset($_POST['gender'])&&isset($_POST['username'])&&isset($_POST['password'])){
 
     function checkqr_num($connect, $qrnum){
         $getqrnum = mysqli_query($connect, "SELECT teller_qr FROM telleruser_tb;");
@@ -37,12 +37,13 @@ if(isset($_POST['firstname'])&&isset($_POST['lastname'])&&isset($_POST['phonenum
     $lastname = $_POST['lastname'];
     $phonenumber = $_POST['phonenumber'];
     $store_name = $_POST['store_name'];
+    $email = strtoupper($_POST['email']);
     $gender = $_POST['gender'];
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
+    $password = md5(strtolower( $_POST['password']));
     
     try {
-        $select = mysqli_query($connect, "SELECT `user_category`, `username`, `password` FROM `user_tb` WHERE username='$username' OR password='$password' UNION ALL SELECT `user_category`, `username`, `password` FROM `telleruser_tb` WHERE username='$username' OR password='$password' UNION ALL SELECT `user_category`, `username`, `password` FROM `cashier_tb` WHERE username='$username' OR password='$password' UNION ALL SELECT `user_category`, `username`, `password` FROM `admin_tb` WHERE username='$username' OR password='$password';");    
+        $select = mysqli_query($connect, "SELECT `user_category`, `username`, `password` FROM `user_tb` WHERE username='$username' OR password='$password' OR email  = '$email' UNION ALL SELECT `user_category`, `username`, `password` FROM `telleruser_tb` WHERE username='$username' OR password='$password' OR email  = '$email' UNION ALL SELECT `user_category`, `username`, `password` FROM `cashier_tb` WHERE username='$username' OR password='$password' OR email  = '$email' UNION ALL SELECT `user_category`, `username`, `password` FROM `admin_tb` WHERE username='$username' OR password='$password' OR email  = '$email';");    
         $row=mysqli_fetch_assoc($select);
         if(!empty($row)){
         echo "invalidinput"; 
@@ -66,7 +67,7 @@ if(isset($_POST['firstname'])&&isset($_POST['lastname'])&&isset($_POST['phonenum
 
             }else{
 
-                mysqli_query($connect,"INSERT INTO `telleruser_tb`(`firstname_teller`, `lastname_teller`, `phonenumber_teller`, `store_name`, `teller_gender`, `user_category`, `teller_qr`, `tellerqr_image`, `username`, `password`) VALUES ('$firstname','$lastname','$phonenumber','$store_name', '$gender', 'teller',$qrkey, '$qrnamimage','$username','$password');");
+                mysqli_query($connect,"INSERT INTO `telleruser_tb`(`firstname_teller`, `lastname_teller`, `phonenumber_teller`, `store_name`, `teller_gender`, `user_category`, `email`, `teller_qr`, `tellerqr_image`, `username`, `password`) VALUES ('$firstname','$lastname','$phonenumber','$store_name', '$gender', 'teller', '$email', '$qrkey', '$qrnamimage','$username','$password');");
                 echo "success";
 
             }

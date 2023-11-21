@@ -1,8 +1,9 @@
 <?php
 require('Dbconnection.php');
-if(isset($_POST['id'])&&isset($_POST['usertype'])){
+if(isset($_POST['id'])&&isset($_POST['user_buyer'])){
     $id = $_POST['id'];
-    if($_POST['usertype']=='buyer'){
+    $user_buyer = $_POST['user_buyer'];
+    if($user_buyer=='personnel'||$user_buyer=='student'){
 
         try {
             $sql = mysqli_query($connect, "SELECT `password` FROM `user_tb` WHERE `user_id`='$id';");
@@ -12,7 +13,7 @@ if(isset($_POST['id'])&&isset($_POST['usertype'])){
         }
         $result = str_split($row['password']);
 
-    }elseif($_POST['usertype']=='teller'){
+    }elseif($user_buyer=='teller'){
 
         try {
             $sql = mysqli_query($connect, "SELECT `password` FROM `telleruser_tb` WHERE `teller_id`='$id';");
@@ -23,7 +24,7 @@ if(isset($_POST['id'])&&isset($_POST['usertype'])){
         $result = str_split($row['password']);
 
     }
-    
+
     $letters = range('a', 'z');
     // $numbers = range('0', '9');
     $array_letters = array();
@@ -47,7 +48,6 @@ if(isset($_POST['id'])&&isset($_POST['usertype'])){
 
     $reset_code = implode("",array_slice($array_numbers, 0, 10));
     echo $reset_code;
-    
-    
+
 }
 ?>

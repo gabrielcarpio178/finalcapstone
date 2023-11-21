@@ -68,7 +68,8 @@ function getdata(){
         success: function(res){
             var user_data = JSON.parse(res);
             if(user_data.usertype=='student'){
-                $("#profile_img").prop('src', `profile/${user_data.image_profile}`)
+                var profile_pic = (user_data.image_profile!=null)? `profile/${user_data.image_profile}`:'../../image/avatar.jpg';
+                $("#profile_img").prop('src', profile_pic);
                 $("#profile_name").text(`${user_data.firstname} ${user_data.lastname}`);
                 $("#stud_id").prop('placeholder', user_data.studentID_number);
                 $("#course").prop('placeholder', user_data.course);
@@ -120,6 +121,7 @@ function editclick(data_user){
     $("#p_num").val(`0${data_user.phonenumber}`);
     $("#address").val(data_user.complete_address);
     $("#usertype").val(data_user.usertype);
+    $("#edit_icon").html(`<i class="fas fa-save"></i><p>Save</p>`);
 }
 
 function reviewprofile(){

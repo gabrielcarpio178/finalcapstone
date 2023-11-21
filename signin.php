@@ -84,11 +84,6 @@ user-scalable=no"
                 </center>
               </div>
               <div class="mt-2">
-                <center>
-                  <!-- <h5>
-                    Don't have account? <strong><a id="signup">Sign up</a></strong>
-                  </h5> -->
-                </center>
                 <center><div id="forgotform"> Forgot Account </div></center>
               </div>
             </form>
@@ -101,13 +96,13 @@ user-scalable=no"
             </h1>
             <form id="forgot_form">
               <div class="form-group">
-                <label for="forgot" class="form-label">Phone Number:</label>
+                <label for="forgot" class="form-label">Email:</label>
                 <input
-                  type="number"
+                  type="email"
                   class="form-control"
-                  id="phone_number"
+                  id="email_input"
                   name="forgot"
-                  placeholder="Enter Phone Number"
+                  placeholder="Email"
                 />
                 <div>
                   <center>
@@ -128,6 +123,9 @@ user-scalable=no"
                   </h5>
                 </center>
                   <center><div id="resetcode" data-bs-toggle="modal" data-bs-target="#exampleModal"> Use Reset Code </div></center>
+                </div>
+                <div id="btn-forgot-pass" style= "display: none;">
+
                 </div>
               </div>  
 
@@ -175,6 +173,28 @@ user-scalable=no"
           <form id="enter_code">
             <div class="modal-body">
               <input type="number" name="input_code" id="input_code" class="form-control" placeholder="Reset code">
+              <span class="message"></span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="close_input_code" data-bs-dismiss="modal">Close</button>
+              <button type="sumbit" value="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+        </div>
+      </div>
+  </div>
+
+  <!-- forgot password -->
+  <div class="modal fade" id="forgot_password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter Your Account Code</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="forgot_enter_code">
+            <div class="modal-body">
+              <input type="number" name="input_code_forgot" id="input_code_forgot" class="form-control" placeholder="Reset code">
               <span class="message"></span>
             </div>
             <div class="modal-footer">

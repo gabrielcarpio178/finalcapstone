@@ -35,12 +35,12 @@ $(document).ready(function(){
         var firstname = $("#firstname").val();
         var lastname = $("#lastname").val();
         var phonenumber = $("#phonenumber").val();
+        var email = $("#email").val();
         var storename = $("#storename").val();
-        var gender = $().val('gender');
+        var gender = $("#gender").val();
         var username = $("#username").val();
         var password = $("#password").val();
         var confirm_pass = $("#confirm_pass").val();
-    
         if (
           firstname == "" ||
           lastname == "" ||
@@ -48,7 +48,9 @@ $(document).ready(function(){
           storename == "" ||
           password == "" ||
           confirm_pass == ""||
-          gender == null
+          gender == null||
+          username == ""||
+          email == ""
         ) {
             Swal.fire({
                 position: 'center',

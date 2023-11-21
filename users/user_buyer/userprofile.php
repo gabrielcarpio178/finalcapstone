@@ -31,7 +31,9 @@ $id = $_SESSION['id'];
                 <div class="row  mt-3 profile-info justify-content-center align-items-center ">
                     <div class="col-4 d-flex flex-column profile-image">
                         <div class="d-flex flex-column align-items-center">
-                            <i class="fas fa-edit align-self-start" id="edit_icon"></i>
+                            <div id="edit_icon" class="text-center align-self-start">
+                                <i class="fas fa-edit"></i>
+                            </div>
                             <div class="d-flex flex-column align-items-center profile_camera w-100">
                                 <img src="" id="profile_img">
                                 <img src="../../image/camera.png" class="camera_icon">

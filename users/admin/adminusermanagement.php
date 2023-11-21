@@ -266,6 +266,11 @@ if(($_SESSION['usertype']!="admin")){
                         <div class="invalid-feedback" id="message">Sorry, input phone number is to short</div>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+
                     <div class="d-flex flex-row justify-content-between mb-3">
                         <div class='w-50'>
                             <label for="storename" class="form-label">Store Name</label>

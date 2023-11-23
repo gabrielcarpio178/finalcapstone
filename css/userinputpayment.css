@@ -9,6 +9,7 @@
   box-shadow: 0 1px 1px 1px #6161617c;
   padding: 10px;
   width: 200px;
+  margin-right: 10px;
 }
 .wallet-balance b {
   font-size: 1.5em;
@@ -185,10 +186,13 @@
   box-shadow: 0 1px 1px 1px #6161617c;
   font-size: 18px;
   padding: 10px;
-  left: 38.5%;
-}
-.certificate-label {
+  left: 29%;
   cursor: pointer;
+  height: 35vh;
+}
+.available-data{
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 label{
   cursor: pointer;
@@ -196,6 +200,8 @@ label{
 textarea{
   height: 15vh;
 }
+
+
 @media screen and (min-width: 320px) {
   .content-info {
     padding: 100px 10px 0px 10px;

@@ -104,7 +104,7 @@ $(document).ready(function () {
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Hi! Welcome Back',
+              title: 'Hi! Welcome',
               showConfirmButton: false,
               timer: 1500
             }).then(function () {
@@ -126,7 +126,7 @@ $(document).ready(function () {
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Hi! teller',
+              title: 'Hi! Canteen',
               showConfirmButton: false,
               timer: 1500
             }).then(function () {

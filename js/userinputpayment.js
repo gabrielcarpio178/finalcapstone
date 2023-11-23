@@ -51,7 +51,7 @@ function non_bago_form(){
         <b class="category_1"></b>
         <div class="message"></div>
       </div>
-      <form class="insert_amount" id="">
+      <form class="insert_amount d-flex flex-column gap-3" id="">
         <label for="Input">Enter Amount</label>
         <div class="group">
           <div class="sign-peso">₱</div>
@@ -61,7 +61,7 @@ function non_bago_form(){
           <div>Exp: </div>
           <div class="price_1"></div>
         </div>
-        <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
+        <button type="submit" id="submit_amount" class="btn btn-primary mt-1">Send</button>
       </form>`
   $(".forms-method").html(htmlform);
   $(".forms-method").fadeIn().show();
@@ -111,7 +111,7 @@ function cert_e_form(){
         db_cert += `<div class="db-cert" onclick="cert('${(categories[x]).cashierRates_amount}','${(categories[x]).cashierRatesCertificate}')">${(categories[x]).cashierRatesCertificate}</div>
         <hr>`;
       }
-      $(".certificate-label").html(db_cert);
+      $(".available-data").html(db_cert);
       //content_3
       var content_3 = `${(categories[1]).cashierRates_amount}.00`;
       var content_3_parts = content_3.toString().split(".");
@@ -139,7 +139,7 @@ function cert(cashierRates_amount, cashierRatesCertificate){
         <b>Certificate</b>
         <div>${cashierRatesCertificate}</div>
       </div>
-      <form class="insert_amount">
+      <form class="insert_amount d-flex flex-column gap-3">
         <label for="Input">Enter Amount</label>
         <div class="group">
             <div class="sign-peso">₱</div>
@@ -150,7 +150,7 @@ function cert(cashierRates_amount, cashierRatesCertificate){
           <div>Exp: </div>
           <div class="price_3">₱ ${content_num}</div>
         </div>
-        <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
+        <button type="submit" id="submit_amount" class="btn btn-primary mt-1">Send</button>
       </form>`;
   
   $(".forms-method").html(htmlform);
@@ -169,7 +169,7 @@ function cert_t_form(){
   $("#input").val("");
   htmlform = `
       <div class="label-form"><b class="category_2"></b></div>
-      <form class="insert_amount">
+      <form class="insert_amount d-flex flex-column gap-3">
         <label for="Input">Enter Amount</label>
         <div class="group">
             <div class="sign-peso">₱</div>
@@ -179,7 +179,7 @@ function cert_t_form(){
           <div>Exp: </div>
           <div class="price_2"></div>
         </div>
-        <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
+        <button type="submit" id="submit_amount" class="btn btn-primary mt-1">Send</button>
       </form>`
   $(".forms-method").html(htmlform);
   $(".forms-method").fadeIn().show();

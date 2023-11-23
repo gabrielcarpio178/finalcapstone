@@ -37,7 +37,7 @@ $id = $_SESSION['id'];
                             <p>Send money to other user's account</p>
                         </div>
                         <div class="d-flex flex-column align-items-center justify-content-center wallet-balance">
-                            <div class="align-self-start balance-label">
+                            <div class="align-self-center balance-label">
                                 Wallet Balance
                             </div>
                             <div class="balance-amount">

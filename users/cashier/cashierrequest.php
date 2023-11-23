@@ -98,7 +98,7 @@ if(($_SESSION['usertype']!="cashier")){
 
               <div class="rate-content-certifications">
                 <div class="d-flex flex-column">
-                    <div class="d-flex flex-row justify-content-between align-items-center w-75">
+                    <div class="d-flex flex-row justify-content-between align-items-center w-100">
                       <div class="rate-label">Certifications</div>
                       <div class="rate-label" id="certificate_show"><i class="fa-solid fa-angle-up"></i></div>
                     </div>

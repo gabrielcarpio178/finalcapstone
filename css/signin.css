@@ -64,10 +64,14 @@ body {
 .forgot-form {
   display: none;
 }
-#forgotform, #resetcode, #login{
+#forgotform,
+#resetcode,
+#login {
   cursor: pointer;
 }
-
+#forgotform:hover {
+  color: #3b83a1;
+}
 @media screen and (min-width: 320px) {
   body {
     background: url("../image/signin_mobile.png") no-repeat center center fixed;
@@ -106,9 +110,9 @@ body {
     padding-top: 100px;
   }
 
-  .image-div img{
-    width: 330px;
-    height: 340px;
+  .image-div img {
+    width: 310px;
+    height: 320px;
   }
 
   .title {
@@ -124,7 +128,4 @@ body {
     margin: 0px 50px;
     gap: 30px;
   }
-
 }
-
-

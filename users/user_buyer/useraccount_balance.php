@@ -26,9 +26,12 @@ $id = $_SESSION['id'];
     <div id="navbar"></div>
     <div class="content-info">
         <input type="hidden" value="<?=$id ?>" id="user_id">
-        <div class="content-label">
-            <h1><b>Account Balance</b></h1>
-            <p>Non-Bago Fee</p>
+        <div class="d-flex flex-row justify-content-between content-label">
+            <div class="content-header">
+                <h1><b>Account Balance</b></h1>
+                <p>Non-Bago Fee</p>
+            </div>
+            
         </div>
         <div class="content-userInfo">
             <div class="d-flex flex-column align-items-center userInfo-header">

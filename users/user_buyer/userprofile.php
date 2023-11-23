@@ -28,61 +28,83 @@ $id = $_SESSION['id'];
                 <h2>Profile</h2> 
             </div>
             <form id="edit_form" enctype="multipart/form-data">
-                <div class="row  mt-3 profile-info justify-content-center align-items-center ">
-                    <div class="col-4 d-flex flex-column profile-image">
-                        <div class="d-flex flex-column align-items-center">
-                            <div id="edit_icon" class="text-center align-self-start">
-                                <i class="fas fa-edit"></i>
-                            </div>
-                            <div class="d-flex flex-column align-items-center profile_camera w-100">
-                                <img src="" id="profile_img">
-                                <img src="../../image/camera.png" class="camera_icon">
-                            </div>
-                            
-                            <label for="name"><h2 id="profile_name"></h2></label>
+                <div class="d-flex flex-column profile-info">
+
+                    <div class="d-flex flex-row">
+                        <div id="edit_icon" class="text-center align-self-start">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center profile_camera">
+                            <img src="" id="profile_img">
+                            <img src="../../image/camera.png" class="camera_icon">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center w-75">
+                            <h2 id="profile_name"></h2>
                             <div class="d-flex flex-row">
                                 <input type="text" value="" id="firstname" name="firstname" class="form-control">
                                 <input type="text" value="" id="lastname" name="lastname" class="form-control">
                                 <input type="file" id="upload_profile" name="upload_profile">
                             </div>
+                            <div class="d-flex flex-row align-items-center justify-content-center profile-group w-100 mt-2">
+                                <label for="stud_id" >STUDENT ID </label>
+                                <input type="text" id="stud_id" name="stud_id" placeholder="" class="form-control w-25" disabled>
+                            </div>
                         </div>
-                        <div class="d-flex flex-row align-items-center justify-content-center profile-group w-100">
-                            <label for="stud_id" >STUDENT ID: </label>
-                            <input type="text" id="stud_id" name="stud_id" placeholder="" class="form-control w-50" disabled>
-                        </div>
+                            
                     </div>
-                    <div class="d-flex flex-column gap-4 p-3 col-8">
-
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="year">Year:</label>
-                                <select name="year" id="year" class="form-control" disabled>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="d-flex flex-column gap-2">
+                                <label for="course" class="course-data">Course</label>
+                                <input type="text" name="course" id="course" value="" class="form-control course-data" disabled>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column gap-2">
+                                <label for="year" class="course-data">Year</label>
+                                <select name="year" id="year" class="form-control course-data" disabled>
                                     <option value="1st"  id="1st">1st</option>
                                     <option value="2nd" id="2nd">2nd</option>
                                     <option value="3rd" id="3rd">3rd</option>
                                     <option value="4th" id="4th">4th</option>
                                 </select>
                             </div>
-                            <div class="col-6">
-                                <label for="gender">Gender:</label>
-                                <select name="gender" id="gender" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="d-flex flex-column gap-2">
+                                <label for="gender" class="course-data">Gender</label>
+                                <select name="gender" id="gender" class="form-control course-data" disabled>
                                     <option value="male" id="male">MALE</option>
                                     <option value="female" id="female">FEMALE</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="email">Email:</label>
-                                <input type="text" id="email" name="email" class="form-control" placeholder="" disabled>
-                            </div>
-                            <div class="col-6">
-                                <label for="p_num" >Phone Number:</label>
-                                <input type="text" id="p_num" name="p_num" class="form-control" placeholder="" disabled>
+                        <div class="col-6">
+                            <div class="d-flex flex-column gap-2">
+                                <label for="p_num" class="course-data">Phone Number</label>
+                                <input type="number" id="p_num" name="p_num" class="form-control course-data" placeholder="" disabled>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="d-flex flex-column gap-2">
+                                <label for="email" class="course-data">Email</label>
+                                <input type="email" id="email" name="email" class="form-control course-data" placeholder="" disabled>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="d-flex flex-column gap-2">
+                                <label for="address" class="course-data">Address</label>
+                                <input type="text" id="address" name="address" class="form-control course-data" placeholder="" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
                 <button style="display: none;" id="saveedit" type="submit">submit</button>
             </form>
             <div class= "mt-3 w-100">
@@ -97,9 +119,15 @@ $id = $_SESSION['id'];
                             <label for="new_password">NEW PASSWORD: </label>
                             <input id="new_password" class="form-control w-50" type="password">
                         </div>
+                        <div class="text-end message-length">
+                            <div class="message-p"></div>
+                        </div>
                         <div class="d-flex flex-row justify-content-between">
                             <label for="confirm_password">CONFIRM PASSWORD: </label>
                             <input id="confirm_password" class="form-control w-50" type="password">
+                        </div>
+                        <div class="text-end confirm-length">
+                            <div class="confirm-message"></div>
                         </div>
                         <div class="d-flex flex-row justify-content-center w-100">
                             <button type="submit" class="btn btn-primary w-25">SUBMIT</button>

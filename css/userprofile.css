@@ -6,67 +6,62 @@
   left: 100px;
   top: 10px;
 }
+
 h2{
   white-space: nowrap;
 }
-.profile-image img {
-  width: 170px;
-  height: 160px;
-}
-.profile-info {
+
+.profile-info{
   background-color: #fff;
   box-shadow: 0 1px 1px 1px #777575;
   padding: 20px;
-  border-radius: 10px;
 }
 
-.form-group {
-  display: inline-block;
-  margin-right: 60px;
-  width: 90px;
-  padding: 20px;
+.profile_camera{
+  width: 40%;
+  position: relative;
 }
 
-input[type="text"] {
-  border: none;
+.profile_camera #profile_img{
+  width: 60%;
+  border-radius: 50%;
 }
 
-.change-pass p {
-  color: #fff;
-  font-size: 20px;
+.camera_icon{
+  position: absolute;
+  width: 20%;
+  right: 40px;
+  bottom: 0px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 1px #777575;  
 }
-#edit_icon{
-  cursor: pointer;
+
+.course-data{
+  text-align: center;
 }
-#firstname, #lastname{
-  display: none;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
+
 #upload_profile{
   display: none;
 }
-.profile_camera{
-  position: relative;
-}
-.camera_icon{
-  position: absolute;
-  background-color: #fff;
-  border-radius: 50%;
-  max-width: 25%;
-  max-height: 10vh;
-  bottom: 0;
-  right: 40px;
-  padding: 1%;
-  cursor: pointer;
-  box-shadow: 0 1px 1px 1px #616161;
+
+#firstname, #lastname{
+  text-align: center;
+  font-weight: bold;
   display: none;
 }
 
-#profile_img{
-  border-radius: 50%;
+.camera_icon{
+  display: none;
+  cursor: pointer;
 }
+
 #change_pass{
   display: none;
 }
-
+.message-length .message-weak{
+  color: red;
+}
+.message-length .message-strong{
+  color: green;
+}

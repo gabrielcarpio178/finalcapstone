@@ -33,6 +33,11 @@ $(document).ready(function () {
     window.location = "useraccount_balance.php";
   });
 
+  $(".image_profile").on('click', function(){
+    window.location = "userprofile.php";
+  });
+  
+
   notification();
   
   $(".bell").on('click', function(){

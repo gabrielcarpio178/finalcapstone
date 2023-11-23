@@ -29,9 +29,9 @@ $id = $_SESSION['id'];
         <div class="row">
             <div class="col-12" id="containner_content">
                 <div class="content-info">
-                    <div class="d-flex flex-row justify-content-between header-content">
+                    <div class="d-flex flex-column flex-lg-row justify-content-between header-content">
                         <div class="d-flex flex-column content-label">
-                            <div class="label-info fw-bold">
+                            <div class="label-info fw-bold text-nowrap">
                                 Transfer Funds
                             </div>
                             <p>Send money to other user's account</p>

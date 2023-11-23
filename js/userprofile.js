@@ -17,46 +17,57 @@ $(document).ready(function(){
         var old_password = $("#old_password").val();
         var new_password = $("#new_password").val();
         var confirm_password = $("#confirm_password").val();
-        $.ajax({
-            url: '../../controller/DbuserChangePassword.php',
-            type: 'POST',
-            data: {
-                old_password : old_password,
-                new_password : new_password,
-                confirm_password : confirm_password
-            },
-            cache: false,
-            success: function(res){
-                if(res=='success'){
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title:"Update Password",
-                        showConfirmButton: false,
-                        timer: 1000
-                    }).then(function(){
-                        location.reload();
-                    });
-                }else if(res=='not_match'){
-                    Swal.fire({
-                        position: "center",
-                        icon: "warning",
-                        title:"Not Match",
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
-                }else if(res=='wrong_old_password'){
-                    Swal.fire({
-                        position: "center",
-                        icon: "error",
-                        title:"Wrong Old Password",
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
+        if(old_password.length == 0||new_password == 0||confirm_password==0){
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title:"Empty Input",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }else{
+            $.ajax({
+                url: '../../controller/DbuserChangePassword.php',
+                type: 'POST',
+                data: {
+                    old_password : old_password,
+                    new_password : new_password,
+                    confirm_password : confirm_password
+                },
+                cache: false,
+                success: function(res){
+                    if(res=='success'){
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title:"Update Password",
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then(function(){
+                            location.reload();
+                        });
+                    }else if(res=='not_match'){
+                        Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title:"Not Match",
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    }else if(res=='wrong_old_password'){
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title:"Wrong Old Password",
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    }
                 }
-            }
-        })
+            })
+        }
     })
+    getlength();
 })
 let x = true;
 function getdata(){
@@ -72,7 +83,7 @@ function getdata(){
                 $("#profile_img").prop('src', profile_pic);
                 $("#profile_name").text(`${user_data.firstname} ${user_data.lastname}`);
                 $("#stud_id").prop('placeholder', user_data.studentID_number);
-                $("#course").prop('placeholder', user_data.course);
+                $("#course").val(user_data.course);
                 if(user_data.year=='1st'){
                     $('#1st').attr('selected',"selected");
                 }else if(user_data.year=='2nd'){
@@ -100,6 +111,7 @@ function getdata(){
                         $("#profile_name").hide();
                         $(".camera_icon").show();
                         $("#stud_id").prop("disabled","disabled");
+                        $("#course").prop("disabled","disabled");
                         x = false;
                     }else{
                         $('#saveedit').click();
@@ -116,7 +128,6 @@ function editclick(data_user){
     $("#firstname").val(data_user.firstname);
     $("#lastname").val(data_user.lastname);
     $("#stud_id").val(data_user.studentID_number);
-    $("#course").val(data_user.course);
     $("#email").val(data_user.email);
     $("#p_num").val(`0${data_user.phonenumber}`);
     $("#address").val(data_user.complete_address);
@@ -133,47 +144,87 @@ function reviewprofile(){
     }
 }
 
+function getlength(){
+    let newPass = "";
+    $("#new_password").keyup(function(){
+        var length_newPass = this.value.length;
+        if(length_newPass==0){
+            $(".message-length .message-p").text("");
+        }
+        else if(length_newPass<6){
+            $(".message-length .message-p").html("<div class='message-weak'>Weak Password</div>");
+        }
+        else if(length_newPass>=6){
+            $(".message-length .message-p").html("<div class='message-strong'>Strong Password</div>");
+        }
+    });
+
+    $('#new_password').focusout(function(){
+        newPass = $("#new_password").val();
+    });
+    
+    $("#confirm_password").keyup(function(){
+        var confirm_password = $(this).val();
+        if(confirm_password!=newPass){
+            $(".confirm-length .confirm-message").html("<div class='message-weak'>password not match</div>");
+        }else if(confirm_password==newPass){
+            $(".confirm-length .confirm-message").html("<div class='message-strong'>Password Match</div>");
+        }
+    });
+}
+
 function submitform(){
     $("#edit_form").on("submit", function(e){
         e.preventDefault();
         var values=$(this)[0];           
         var formData = new FormData(values);
-        $.ajax({
-            url: '../../controller/Dbusereditprofile.php',
-            type: 'post',
-            data: formData,             
-            contentType: false,
-            processData: false,
-            cache: false,
-            success: function(res){
-                if(res=='success'){
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title:"Profile Update",
-                        showConfirmButton: false,
-                        timer: 1000
-                    }).then(function(){
-                        location.reload();
-                    });
-                }else if(res=='not_image'){
-                    Swal.fire({
-                        position: "center",
-                        icon: "error",
-                        title: "Invalid Profile",
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
-                }else if(res=='email_isInvalid'){
-                    Swal.fire({
-                        position: "center",
-                        icon: "error",
-                        title: "Invalid Email",
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
+        var p_num_length = $("#p_num").val().length;
+        if(p_num_length==11){
+            $.ajax({
+                url: '../../controller/Dbusereditprofile.php',
+                type: 'post',
+                data: formData,             
+                contentType: false,
+                processData: false,
+                cache: false,
+                success: function(res){
+                    if(res=='success'){
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title:"Profile Update",
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then(function(){
+                            location.reload();
+                        });
+                    }else if(res=='not_image'){
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "Invalid Profile",
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    }else if(res=='email_isInvalid'){
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "Invalid Email",
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    }
                 }
-            }
-        })              
+            })           
+        }else{
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Invalid Mobile Number",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
     });
 }

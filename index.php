@@ -24,11 +24,11 @@ user-scalable=no">
                                 <button type="button" class="btn btn-primary" id="signin">Sign in</button>
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        <!-- <div class="row mt-2">
                             <div class="col">
                                 <button type="button" class="btn btn-primary" id="signup">Sign up</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

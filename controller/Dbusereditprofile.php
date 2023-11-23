@@ -2,6 +2,7 @@
 require('Dbconnection.php');
 session_start();
 if(isset($_POST['firstname'])&&isset($_POST['lastname'])&&isset($_POST['year'])&&isset($_POST['gender'])&&isset($_POST['email'])&&isset($_POST['p_num'])&&(isset($_FILES['upload_profile']['name'])||!isset($_FILES['upload_profile']['name']))){
+    
     $id = $_SESSION['id'];
     $usertype = $_SESSION['usertype'];
     $firstname = strtoupper($_POST['firstname']);
@@ -27,6 +28,7 @@ if(isset($_POST['firstname'])&&isset($_POST['lastname'])&&isset($_POST['year'])&
     } catch (\Throwable $th) {
         echo $th;
     }
+
     $array_email_key = array_keys($email_set, $row_email['email']);
     $email_set = array_diff($email_set, array($row_email['email']));
     
@@ -40,6 +42,7 @@ if(isset($_POST['firstname'])&&isset($_POST['lastname'])&&isset($_POST['year'])&
         }
         $i++;
     }
+
     if($isValid!=true){
         if($usertype=='student'){
             if(!empty($_FILES['upload_profile']['name'])){

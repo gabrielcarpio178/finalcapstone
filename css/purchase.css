@@ -59,6 +59,12 @@
   border-radius: 10px/10px;
   box-shadow: 0 1px 1px 1px #616161b4;
 }
+.profile-name img{
+  border-radius: 50%;
+}
+.image_profile{
+  cursor: pointer;
+}
 .count-order {
   position: relative;
 }

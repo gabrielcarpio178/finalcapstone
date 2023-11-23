@@ -25,10 +25,11 @@ $id = $_SESSION['id'];
 <body>
     <div id="navbar"></div>
     <div class="content-info w-75">
-        <div class="label-content">
+        <div class="d-flex flex-row justify-content-between label-content">
             <h1>
                 <b>History</b>
             </h1>
+            
         </div>
 
         <div class="d-flex flex-row justify-content-end align-items-center gap-4 w-100 p-3">

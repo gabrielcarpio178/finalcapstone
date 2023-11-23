@@ -255,14 +255,21 @@
     border-radius: 10px/10px;
     display: block;
   }
+  .icon{
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
   .icon img {
-    width: 50px;
-    min-height: 50px;
+    max-width: 50px;
+    max-height: 10px;
   }
   .icon,
   .profile-info {
     font-size: 15px;
     margin-left: 10px;
+  }
+  .image_profile{
+    cursor: pointer;
   }
   .btn-profile,
   #close {

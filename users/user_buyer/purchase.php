@@ -82,7 +82,6 @@ user-scalable=no">
                 <div class="row gy-2" id="category-menu">                                                
                         <!-- category -->
                         <?php include '../../controller/Dbusergetmenu.php'; ?>                                              
-                                                                
                 </div> 
                 
                 <div class="choose-order mt-3 mt-lg-5">
@@ -103,8 +102,8 @@ user-scalable=no">
                 <div class="d-flex flex-column order">
                     <i class="fa-solid fa-x" id="close"></i>
                     <div class="d-flex flex-row justify-content-between profile-info mt-3 p-3">
-                        <div class="d-flex flex-row profile-name">
-                            <img src="../../image/avatar.jpg">
+                        <div class="d-flex flex-row profile-name image_profile">
+                            <img src="<?php echo ($_SESSION['image']!=NULL)?"profile/".$_SESSION['image']:"../../image/avatar.jpg" ?>">
                             <div><?=$firstname ?></div> 
                         </div>                       
                         <i class="fa-solid fa-clipboard" id="user_order"></i>

@@ -9,6 +9,10 @@ $(document).ready(function () {
     });
   });
 
+  $(".image_profile").on('click', function(){
+    window.location = "userprofile.php";
+  });
+
   $("#close").on("click", function () {
     $(".orders").slideUp(function () {
       $(this).hide();

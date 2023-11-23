@@ -146,7 +146,7 @@ user-scalable=no">
                         My Order
                     </div> 
                     <div class="d-flex flex-row justify-content-center profile-name">                        
-                        <img src="../../image/avatar.jpg">
+                        <img src="<?php echo ($_SESSION['image']!=NULL)?"profile/".$_SESSION['image']:"../../image/avatar.jpg" ?>">
                         <div class="name"><?=$firstname ?></div>                        
                     </div>                                      
                 </div>

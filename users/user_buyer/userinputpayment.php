@@ -118,54 +118,7 @@ $id = $_SESSION['id'];
                 <button class="btn btn-primary w-100" id="btn-ok">OK</button>
             </div>
         </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: none;" id="btn_modal">
-            Launch demo modal
-        </button>
 
-    </div>
-
-    <!-- modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Purpose for Request of TOR</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex flex-column gap-2">
-                    <div class="d-flex flex-row gap-2">
-                        <input type="radio" name="purpose" id="trans" class="form-check-input" value="trans">
-                        <label for="trans">Transfers to other school</label>
-                    </div>
-                    <div class="d-flex flex-row gap-2">
-                        <input type="radio" name="purpose" id="ref" class="form-check-input" value="ref">
-                        <label for="ref">Reference</label>
-                    </div>
-                    <div class="d-flex flex-row gap-2">
-                        <input type="radio" name="purpose" id="b_exam" class="form-check-input" value="b_exam">
-                        <label for="b_exam">Board Exam</label>
-                    </div>
-                    <div class="d-flex flex-row gap-2">
-                        <input type="radio" name="purpose" id="employment" class="form-check-input" value="employment">
-                        <label for="employment">Employment</label>
-                    </div>
-                    <div class="d-flex flex-row gap-2">
-                        <input type="radio" name="purpose" id="other" class="form-check-input" value="other">
-                        <label for="other">Other</label>
-                    </div>
-                    <div class="d-flex flex-row gap-2">
-                        <textarea name="text_area" id="text_area" cols="30" rows="10" class="form-control w-100" disabled></textarea>
-                    </div>
-                    <div class="d-flex flex-row gap-2">
-                        <div class="text-end w-100 count_input">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
     </div>
     
 </body>

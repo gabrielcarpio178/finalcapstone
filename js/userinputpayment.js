@@ -11,7 +11,6 @@ $(document).ready(function(){
 
     show_cert(false);
     $("#cert_t").on('click', function(){
-      $("#btn_modal").click();
       cert_t_form();
       cert_e_form();
     });
@@ -48,7 +47,10 @@ function non_bago_form(){
   $(".sumbit_password").css('background-color','rgba(0, 174, 255, 0.253)');
   $("#input").val("");
   htmlform = `
-      <div class="label-form"><b class="category_1"></b></div>
+      <div class="d-flex flex-row justify-content-between label-form">
+        <b class="category_1"></b>
+        <div class="message"></div>
+      </div>
       <form class="insert_amount" id="">
         <label for="Input">Enter Amount</label>
         <div class="group">
@@ -59,7 +61,6 @@ function non_bago_form(){
           <div>Exp: </div>
           <div class="price_1"></div>
         </div>
-        <div class="message text-center"></div>
         <button type="submit" id="submit_amount" class="btn btn-primary mt-4">Send</button>
       </form>`
   $(".forms-method").html(htmlform);

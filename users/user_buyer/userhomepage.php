@@ -57,7 +57,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                     <div class="d-flex flex-row justify-content-end w-100 btn-profile">
 
                     <div class="d-flex flex-column align-items-center profile-icon">
-                        <img src="../../image/<?php echo ($gender=='male')?'avatar.jpg':'female_avatar.png'; ?>">
+                        <img src="<?php echo ($row['image_profile']!=NULL)?"profile/".$row['image_profile']:"../../image/avatar.jpg" ?>">
                         <div><?=$row['firstname'] ?></div>
                     </div>
                 </div>

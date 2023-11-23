@@ -23,9 +23,9 @@ user-scalable=no"
     <div class="container">
       <div class="row">
 
-        <div class="col col-lg-6">
+        <div class="col-12 col-lg-6">
 
-          <div class="d-flex flex-column align-items-center">
+          <div class="d-flex flex-column gap-lg-1 gap-2 align-items-center">
             <div class="title">
               BCC Digital Payment System
             </div>
@@ -36,7 +36,7 @@ user-scalable=no"
 
         </div>
 
-        <div class="col col-lg-6">
+        <div class="col-12 col-lg-6">
 
           <div class="signin-form">
             <h1 class="label-h1">

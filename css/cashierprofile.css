@@ -1,0 +1,34 @@
+/* *{
+    outline: 1px solid;
+} */
+.content-data{
+    position: absolute;
+    inset: 100px 0px 0px 300px;
+}
+.content-info{
+    padding: 2% 10%;
+}
+.profile-content{
+    background-color: white;
+}
+.profile-image{
+    width: 25%;
+    height: 25vh;
+    padding: 1% 5%;
+}
+.cashier-label{
+    font-size: 1.5rem;
+}
+.profile-image i{
+    cursor: pointer;
+    font-size: 1.5em;
+}
+.cashier-name{
+    font-size: 2.5em;
+}
+.row-second{
+    padding: 2% 5%;
+}
+.change-password{
+    display: none;
+}

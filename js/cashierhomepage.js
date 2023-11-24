@@ -1,3 +1,7 @@
+// import Chart from 'chart.js/auto';
+// import { getRelativePosition } from 'chart.js/helpers';
+// import {Chart} from 'chart.js';
+// import ChartDataLabels from 'chartjs-plugin-datalabels';
 $(document).ready(function () {
   $("#nav").load("cashiernav.php");
 

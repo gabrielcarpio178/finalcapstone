@@ -19,6 +19,10 @@ $(document).ready(function () {
     window.location = "cashierrequest.php";
   });
 
+  $(".profile").on('click', function(){
+    window.location = "cashiereditprofile.php";
+  })
+
   $("#logout").on("click", function () {
     // console.log('click');
 

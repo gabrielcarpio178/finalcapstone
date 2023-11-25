@@ -40,7 +40,7 @@ $(document).ready(function () {
 
   notification();
   
-  $(".bell").on('click', function(){
+  $("#btn_bell").on('click', function(){
     
     $(".notification").slideToggle();
     notification();

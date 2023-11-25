@@ -59,19 +59,20 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
         <div class="row">
             <div class="col col-lg-8 info">
 
-                    <div class="d-flex flex-row justify-content-end w-100 btn-profile">
+                <div class="d-flex flex-row justify-content-end w-100">
 
-                    <div class="d-flex flex-column align-items-center profile-icon">
+                    <div class="d-flex flex-column align-items-center profile-icon btn-profile">
                         <img src="<?php echo ($row['image_profile']!=NULL)?"profile/".$row['image_profile']:"../../image/avatar.jpg" ?>">
                         <div><?=$row['firstname'] ?></div>
                     </div>
+                    
                 </div>
                 
                 <div class="d-flex flex-column-reverse flex-lg-row mt-lg-5 categories">
                     <div class="notification-bell">
                         <input type="hidden" value="<?=$id ?>" id="user_id">
                         <div class="bell">
-                            <i class="fa-solid fa-bell"></i>
+                            <i class="fa-solid fa-bell" id="btn_bell"></i>
                             <div class="count-number"></div>
                         </div>
                         <div class="notification">
@@ -86,7 +87,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-row flex-lg-column justify-content-around">
+                    <div class="d-flex flex-row flex-lg-column justify-content-around available-content">
                         
                         <div class="d-flex flex-column category" id="inputpayment">
                             <img src="../../image/inputpayment.png" alt="Input payment">

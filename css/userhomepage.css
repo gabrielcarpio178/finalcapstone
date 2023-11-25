@@ -54,24 +54,9 @@
 .bell {
   cursor: pointer;
 }
-.notification-bell {
-  position: relative;
-}
-.notification {
-  position: absolute;
-  top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  display: none;
-}
 .noti-data {
-  height: 60vh;
-  width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 1% 3%;
 }
 .button {
   cursor: pointer;
@@ -91,10 +76,41 @@
 .messages img{
   border-radius: 50%;
 }
+.notification {
+  position: absolute;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.message_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.message_info p {
+  font-size: 14px;
+  padding-left: 60px;
+}
+
+.none_view {
+  background-color: #d9d9d9;
+}
 @media screen and (min-width: 320px) {
   .bell {
     position: relative;
-    bottom: 26.5em;
+    bottom: 28.98em;
   }
   .bell i {
     font-size: 30px;
@@ -110,7 +126,7 @@
     color: white;
   }
   .info {
-    padding-top: 100px;
+    padding-top: 75px;
   }
   .category {
     width: 55px;
@@ -147,7 +163,7 @@
   }
   #profile {
     position: fixed;
-    top: 87px;
+    top: 58px;
   }
   .profile-data {
     padding: 40px;
@@ -155,9 +171,45 @@
     box-shadow: 0 1px 1px 1px #616161a1;
     display: none;
   }
+
+  .message_info{
+    padding: 1% 5%;
+  }
+
+  .message_info img{
+    width: 40px;
+  }
+
   .icon img {
     width: 50px;
     min-height: 60px;
+  }
+
+  .notification-bell {
+    position: static;
+  }
+
+  .notification{
+    display: none;
+    position: absolute;
+    top: 150px;
+    left: 0px;
+  }
+  .noti-data {
+    height: 55vh;
+    padding: 1% 0%;
+  }
+  .noti-label{
+    padding: 1% 0%;
+  }
+  .noti-label h3{
+    font-size: 1.5rem;
+  }
+  .available-content{
+    margin-top: 40px;
+  }
+  .btn-profile img{
+    border-radius: 50%;
   }
 }
 @media screen and (min-width: 760px) {
@@ -275,27 +327,25 @@
     width: 400px;
     font-size: 20px;
   }
-  .messages {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    align-items: center;
-  }
-  .message_info {
-    display: flex;
-    flex-direction: column;
-  }
-  .message_info p {
-    font-size: 14px;
-    padding-left: 60px;
-  }
+
   .message_info .canteen-staff-pp {
     width: 50px;
     height: 50px;
   }
-  .none_view {
-    background-color: #d9d9d9;
+  .notification-bell {
+    position: relative;
+  }
+
+  .notification {
+    top: 10px;
+    padding: 0%;
+  }
+  .noti-data{
+    height: 60vh;
+    width: 100%;
+    padding: 1% 0%;
+  }
+  .available-content{
+    margin-top: 0px;
   }
 }

@@ -20,16 +20,16 @@ user-scalable=no">
         <div class="logo">
             BCC Digital Payment System         
         </div>
-        <ul class = "list-inline"> 
-            <li id="icon_menu" ><a href="#" id="menu"><i class="fas fa-bars" id="burger"></i></a></li>
+        <ul class = "list-inline">
+            <li id="icon_menu" ><a href="#" id="menu"><i class="fas fa-bars" id="burger"></i><span></span></a></li>
 
-            <li id="home" class="select_1"><a href="#"><i class="fas fa-home"></i><span>Home</span> </a></li>                                
+            <li id="home" class="select_1"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>                                
 
-            <li id="history"  class="select_2"> <a href="#"><i class="fa-solid fa-clock-rotate-left"></i>  <span>History</span></a></li> 
+            <li id="history"  class="select_2"><a href="#"><i class="fa-solid fa-clock-rotate-left"></i><span>History</span></a></li> 
 
             <li id="setting"  class ="select_3"><a href="#"><i class="fa-solid fa-gear"></i><span>Setting</span></a></li>         
 
-            <li id="logout"><a href="#"><i class="fa-solid fa-right-from-bracket"></i>  <span>Logout</span></li>                    
+            <li id="logout" class ="select_4"><a href="#"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a></li>                  
         </ul>
         
     </div>      

@@ -3,7 +3,10 @@
 } */
 .content-data{
     position: absolute;
-    inset: 100px 0px 0px 300px;
+    inset: 80px 0px 0px 300px;
+}
+.sidebar {
+    height: 125vh;
 }
 .content-info{
     padding: 2% 10%;
@@ -31,4 +34,11 @@
 }
 .change-password{
     display: none;
+}
+
+.message-weak{
+    color: red;
+}
+.message-strong{
+    color: green;
 }

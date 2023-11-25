@@ -2,10 +2,10 @@
 session_start();
 require('../../controller/Dbconnection.php');
 if(($_SESSION['usertype']!="teller")){
-   if(!isset($_SERVER['HTTP_REFERER'])){
-       header('location: ../../index.php');
-    exit;
-   }
+    if(!isset($_SERVER['HTTP_REFERER'])){
+        header('location: ../../index.php');
+        exit;
+    }
 }
 $teller_id = $_SESSION['id'];
 $getorder = mysqli_query($connect, "SELECT order_tb.*, user_tb.usertype FROM order_tb JOIN user_tb ON order_tb.user_id = user_tb.user_id WHERE order_tb.teller_id = '$teller_id' AND order_tb.statues = 'PROCEED' GROUP BY order_tb.order_num;") or die(mysqli_error($connect));
@@ -28,7 +28,11 @@ $name = $_SESSION['teller_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="../../fontawesome-free-6.4.2-web/css/fontawesome.css">
+    <link rel="stylesheet" href="../../fontawesome-free-6.4.2-web/css/all.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/sweetalert2.min.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">   
     <link rel="stylesheet" href="../../css/tellerhistory.css">
     <title>teller <?=$name; ?></title>
@@ -190,7 +194,9 @@ $name = $_SESSION['teller_name'];
 
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  -->
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/sweetalert2.all.min.js"></script>
 <script src="../../js/bootstrap.bundle.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 </html>

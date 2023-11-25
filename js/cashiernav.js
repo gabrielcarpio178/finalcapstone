@@ -21,7 +21,7 @@ $(document).ready(function () {
 
   $(".profile").on('click', function(){
     window.location = "cashiereditprofile.php";
-  })
+  });
 
   $("#logout").on("click", function () {
     // console.log('click');

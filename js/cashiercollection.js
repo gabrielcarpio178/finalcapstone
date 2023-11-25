@@ -75,8 +75,6 @@ $(document).ready(function(){
             displayTable(sortBy, categories, 0);
         }); 
     });
-    
-    
 });
 
 function getdate(){

@@ -13,6 +13,8 @@ if(isset($_POST['user_id'])){
     $data_array = array();
     $data_purchase = array();
     $data_cashin = array();
+    $data_sender = array();
+    $data_receiver = array();
     while($row_purchase = mysqli_fetch_assoc($sql_purchase)){ 
         $data_purchase[] = array("date"=>$row_purchase['deadline_time'], "statues"=>$row_purchase['statues'],"store_name"=>ucfirst($row_purchase['store_name']), "teller_gender"=>$row_purchase['teller_gender'], "isSeen"=>$row_purchase['num_noti'], "order_num"=>$row_purchase['order_num'], "type"=>"purchase");
     }
@@ -27,7 +29,29 @@ if(isset($_POST['user_id'])){
         $data_cashin[] = array("date"=>$row_cashin['cashin_date'], "cashin_id"=>$row_cashin['cashin_id'],"cashin_amount"=>$row_cashin['cashin_amount'], "cashin_noti"=>$row_cashin['cashin_noti'], "isSeen"=>$row_cashin['cashin_noti'], "type"=>"cashin");
     }
 
-    $data_array = array_merge($data_purchase, $data_cashin);
+    //sender
+    try {
+        $sql_sender = mysqli_query($connect, "SELECT sendbalance_tb.sendBalance_id, sendbalance_tb.sendBalance_Date, sendbalance_tb.send_amount, sendbalance_tb.sendbalance_noti, user_tb.firstname, user_tb.lastname FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.receiver_id WHERE sendbalance_tb.sender_id = '$user_id';");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    while ($row_sender = mysqli_fetch_assoc($sql_sender)) {
+        $data_sender[] = array("id"=>$row_sender['sendBalance_id'], "date"=>$row_sender['sendBalance_Date'], "name"=>$row_sender['firstname']." ".$row_sender['lastname'], "amount"=>$row_sender['send_amount'], "type"=>"sent", "isSeen"=>$row_sender['sendbalance_noti']);
+    }
+
+    //receiver
+    try {
+        $sql_receiver = mysqli_query($connect, "SELECT sendbalance_tb.sendBalance_id, sendbalance_tb.sendBalance_Date, sendbalance_tb.send_amount, sendbalance_tb.sendbalance_noti, user_tb.firstname, user_tb.lastname FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.sender_id WHERE sendbalance_tb.receiver_id = '$user_id';");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    while ($row_receiver = mysqli_fetch_assoc($sql_receiver)) {
+        $data_receiver[] = array("id"=>$row_receiver['sendBalance_id'], "date"=>$row_receiver['sendBalance_Date'], "name"=>$row_receiver['firstname']." ".$row_receiver['lastname'], "amount"=>$row_receiver['send_amount'], "type"=>"receiver", "isSeen"=>$row_receiver['sendbalance_noti']);
+    }
+
+    $data_array = array_merge($data_purchase, $data_cashin, $data_sender, $data_receiver);
     print_r(json_encode($data_array));
 
 }

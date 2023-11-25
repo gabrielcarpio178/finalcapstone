@@ -75,21 +75,27 @@
             </div>   
             <button class="btn btn-primary w-100 mt-2" id="change_pass">Change Password</button>
             <div class="change-password">
-                <form id="change_password" class="d-flex flex-column gap-2 mt-3">
+                <form id="change_password" class="d-flex flex-column gap-1 mt-1">
                     <div class="d-flex flex-row justify-content-between">
                         <label for="old_password">Old Password</label>
-                        <input type="pasword" name="old_password" id="old_password" class="form-control text-center w-50">
+                        <input type="password" name="old_password" id="old_password" class="form-control text-center w-50">
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <label for="new_password">New Password</label>
                         <input type="password" name="new_password" id="new_password" class="form-control text-center w-50">
                     </div>
+                    <div class="text-end message-length">
+                        <div class="message-p"></div>
+                    </div>
                     <div class="d-flex flex-row justify-content-between">
                         <label for="confirm_password">Confirm Password</label>
                         <input type="password" name="confirm_password" id="confirm_password" class="form-control text-center w-50">
                     </div>
+                    <div class="text-end confirm-length">
+                        <div class="confirm-message"></div>
+                    </div>
                     <center>
-                        <button value="submit" class="btn btn-primary mt-2 w-25">SUBMIT</button>
+                        <button value="submit" class="btn btn-primary mt-1 w-25">SUBMIT</button>
                     </center>
                 </form>
             </div>

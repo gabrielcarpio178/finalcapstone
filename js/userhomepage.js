@@ -213,8 +213,17 @@ function notification(){
                 </div>`;
             }
 
+        }else if((data[i]).type=='sent'){
+          data_show += `
+                <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).id}">
+                  <div class="message-order"><b>${(data[i]).name}, ${(data[i]).amount}, sent</b>.</div>
+                </div>`;
+        }else if((data[i]).type=='receiver'){
+          data_show += `
+                <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).id}">
+                  <div class="message-order"><b>${(data[i]).name}, ${(data[i]).amount}, receiver</b>.</div>
+                </div>`;
         }
-
       }
       
       $(".count-number").text(count);

@@ -43,8 +43,7 @@ $num_page = ceil($num_row['num_post']/ $num_data);
             <img src="../../image/post.png">
             <h3>Post Announcements</h3>
         </div> 
- 
-       <input type="date" class="search-btn" id="search" />
+        <input type="date" class="search-btn" id="search" />
 
         <div class="container">
 
@@ -195,9 +194,12 @@ $num_page = ceil($num_row['num_post']/ $num_data);
                 </div>
     
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../../js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="../../js/sweetalert2.all.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/adminpostanouncement.js"></script>
 </html>

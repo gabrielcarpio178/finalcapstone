@@ -31,6 +31,7 @@ $(document).ready(function(){
         }); 
     });
 
+
 });
 
 function getDataTable(info, department, date){

@@ -71,6 +71,7 @@
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  padding: 1% 3%;
 }
 .button {
   cursor: pointer;
@@ -86,6 +87,9 @@
 }
 .image_profile{
   cursor: pointer;
+}
+.messages img{
+  border-radius: 50%;
 }
 @media screen and (min-width: 320px) {
   .bell {

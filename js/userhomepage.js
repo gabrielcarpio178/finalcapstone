@@ -135,7 +135,7 @@ function notification(){
               <div class="messages">
                 <img src ='../../image/avatar.jpg' class="canteen-staff-pp">
                 <div class="message-order">
-                  <b>${(data[i]).cashin_amount}</b> pesos have been successfully added to your digital wallet.
+                  <b>${(data[i]).cashin_amount}.00</b> pesos have been successfully added to your digital wallet.
                 </div>
               </div>
               <p class="date">${insert_date}</p>
@@ -214,14 +214,26 @@ function notification(){
             }
 
         }else if((data[i]).type=='sent'){
+          var gender_profile = `${((data[i]).gender=="male"||(data[i]).gender=="MALE")?"../../image/avatar.jpg":"../../image/female_avatar.png"}`;
+          var image_userPP = ((data[i]).image_pp!=null)?`profile/${(data[i]).image_pp}`:gender_profile;
           data_show += `
                 <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).id}">
-                  <div class="message-order"><b>${(data[i]).name}, ${(data[i]).amount}, sent</b>.</div>
+                  <div class="messages">
+                    <img src = ${image_userPP} class="canteen-staff-pp">
+                    <div class="message-order">You sent <b>${(data[i]).amount}.00</b> to <b>${(data[i]).name}</b></div>
+                  </div>
+                  <p class="date">${insert_date}</p>
                 </div>`;
         }else if((data[i]).type=='receiver'){
+          var gender_profile = `${((data[i]).gender=="male"||(data[i]).gender=="MALE")?"../../image/avatar.jpg":"../../image/female_avatar.png"}`;
+          var image_userPP = ((data[i]).image_pp!=null)?`profile/${(data[i]).image_pp}`:gender_profile;
           data_show += `
                 <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).id}">
-                  <div class="message-order"><b>${(data[i]).name}, ${(data[i]).amount}, receiver</b>.</div>
+                  <div class="messages">
+                    <img src= ${image_userPP} class="canteen-staff-pp">
+                    <div class="message-order"><b>${(data[i]).name}</b> sent <b>${(data[i]).amount}.00</b> to your account</div>
+                  </div>
+                  <p class="date">${insert_date}</p>
                 </div>`;
         }
       }
@@ -276,7 +288,6 @@ function multipleseen(user_id){
           cache: false,
           success: function(res){
             var orders_num = JSON.parse(res);
-            console.log(orders_num);
             for(let i = 0; i<orders_num.length; i++){
               $(`#${orders_num[i]}`).removeClass("none_view");
               $(".count-number").text(0);

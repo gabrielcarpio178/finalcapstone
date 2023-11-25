@@ -31,24 +31,24 @@ if(isset($_POST['user_id'])){
 
     //sender
     try {
-        $sql_sender = mysqli_query($connect, "SELECT sendbalance_tb.sendBalance_id, sendbalance_tb.sendBalance_Date, sendbalance_tb.send_amount, sendbalance_tb.sendbalance_noti, user_tb.firstname, user_tb.lastname FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.receiver_id WHERE sendbalance_tb.sender_id = '$user_id';");
+        $sql_sender = mysqli_query($connect, "SELECT sendbalance_tb.sendBalance_id, sendbalance_tb.sendBalance_Date, sendbalance_tb.send_amount, sendbalance_tb.sendbalance_noti, user_tb.firstname, user_tb.lastname, user_tb.image_profile, user_tb.gender FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.receiver_id WHERE sendbalance_tb.sender_id = '$user_id';");
     } catch (\Throwable $th) {
         echo $th;
     }
 
     while ($row_sender = mysqli_fetch_assoc($sql_sender)) {
-        $data_sender[] = array("id"=>$row_sender['sendBalance_id'], "date"=>$row_sender['sendBalance_Date'], "name"=>$row_sender['firstname']." ".$row_sender['lastname'], "amount"=>$row_sender['send_amount'], "type"=>"sent", "isSeen"=>$row_sender['sendbalance_noti']);
+        $data_sender[] = array("id"=>$row_sender['sendBalance_id'], "date"=>$row_sender['sendBalance_Date'], "name"=>$row_sender['firstname']." ".$row_sender['lastname'], "amount"=>$row_sender['send_amount'], "type"=>"sent", "isSeen"=>$row_sender['sendbalance_noti'], "image_pp"=>$row_sender['image_profile'], "gender"=>$row_sender['gender']);
     }
 
     //receiver
     try {
-        $sql_receiver = mysqli_query($connect, "SELECT sendbalance_tb.sendBalance_id, sendbalance_tb.sendBalance_Date, sendbalance_tb.send_amount, sendbalance_tb.sendbalance_noti, user_tb.firstname, user_tb.lastname FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.sender_id WHERE sendbalance_tb.receiver_id = '$user_id';");
+        $sql_receiver = mysqli_query($connect, "SELECT sendbalance_tb.sendBalance_id, sendbalance_tb.sendBalance_Date, sendbalance_tb.send_amount, sendbalance_tb.sendbalance_noti, user_tb.firstname, user_tb.lastname, user_tb.image_profile, user_tb.gender FROM sendbalance_tb INNER JOIN user_tb ON user_tb.user_id = sendbalance_tb.sender_id WHERE sendbalance_tb.receiver_id = '$user_id';");
     } catch (\Throwable $th) {
         echo $th;
     }
 
     while ($row_receiver = mysqli_fetch_assoc($sql_receiver)) {
-        $data_receiver[] = array("id"=>$row_receiver['sendBalance_id'], "date"=>$row_receiver['sendBalance_Date'], "name"=>$row_receiver['firstname']." ".$row_receiver['lastname'], "amount"=>$row_receiver['send_amount'], "type"=>"receiver", "isSeen"=>$row_receiver['sendbalance_noti']);
+        $data_receiver[] = array("id"=>$row_receiver['sendBalance_id'], "date"=>$row_receiver['sendBalance_Date'], "name"=>$row_receiver['firstname']." ".$row_receiver['lastname'], "amount"=>$row_receiver['send_amount'], "type"=>"receiver", "isSeen"=>$row_receiver['sendbalance_noti'], "image_pp"=>$row_receiver['image_profile'], "gender"=>$row_receiver['gender']);
     }
 
     $data_array = array_merge($data_purchase, $data_cashin, $data_sender, $data_receiver);

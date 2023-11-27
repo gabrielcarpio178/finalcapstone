@@ -43,7 +43,7 @@ if(isset($_POST['user_id'])){
 
     if($row['address']=='non-bago'){
         try {
-            $sql_ispaid = mysqli_query($connect, "SELECT COUNT(`payment_type`) AS isPaid FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `payment_type` = 'Non Bago fee' AND (CAST(payment_date AS DATE) BETWEEN '$semister_startdate' AND CAST(NOW() AS DATE)) AND semester_year = '$semisterdate';");
+            $sql_ispaid = mysqli_query($connect, "SELECT COUNT(`payment_type`) AS isPaid FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `requestType` = 'accepted' AND `payment_type` = 'Non Bago fee' AND (CAST(payment_date AS DATE) BETWEEN '$semister_startdate' AND CAST(NOW() AS DATE)) AND semester_year = '$semisterdate';");
             $ispaid = mysqli_fetch_assoc($sql_ispaid);
             if($ispaid['isPaid']==1){
                 $payment_amount = 0;

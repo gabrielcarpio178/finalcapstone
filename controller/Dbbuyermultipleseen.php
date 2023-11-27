@@ -17,7 +17,7 @@ if(isset($_POST['user_id'])){
         } catch (\Throwable $th) {
             echo $th;
         }
-        $array_purchase[] = $row['order_num'];
+        $array_purchase[] = array("id"=>$row['order_num'], 'type'=>"purchase");
     }
 
     try {
@@ -34,7 +34,7 @@ if(isset($_POST['user_id'])){
         } catch (\Throwable $th) {
             echo $th;
         }
-        $array_cashIn[] = $row['cashin_id'];
+        $array_cashIn[] = array("id"=>$row['cashin_id'], 'type'=>"cashin");
     }
 
     try {
@@ -51,10 +51,11 @@ if(isset($_POST['user_id'])){
         } catch (\Throwable $th) {
             echo $th;
         }
-        $array_transfer[] = $row['sendBalance_id'];
+        $array_transfer[] = array("id"=>$row['sendBalance_id'], 'type'=>"transfer_funds");
     }
 
     $array = array_merge($array_purchase, $array_cashIn, $array_transfer);
-    print_r(json_encode($array));
+    // print_r(json_encode($array));
+    print_r($array);
 }
 ?>

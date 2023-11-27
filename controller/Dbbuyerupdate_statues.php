@@ -24,7 +24,7 @@ if(isset($_POST['user_id'])&&isset($_POST['num'])&&isset($_POST['type'])){
                 echo $th;
             }
         }
-        $array = array($num ,$row['num_noti']);
+        $array = array($num ,$row['num_noti'], $type);
         print_r(json_encode($array));
     }else if($type=="cashin"){
 
@@ -48,7 +48,7 @@ if(isset($_POST['user_id'])&&isset($_POST['num'])&&isset($_POST['type'])){
                 echo $th;
             }
         }
-        $array = array($num ,$row['cashin_noti']);
+        $array = array($num ,$row['cashin_noti'], $type);
         print_r(json_encode($array));
     }elseif($type=="sent"||$type=="receiver"){
 
@@ -72,7 +72,30 @@ if(isset($_POST['user_id'])&&isset($_POST['num'])&&isset($_POST['type'])){
                 echo $th;
             }
         }
-        $array = array($num ,$row['sendbalance_noti']);
+        $array = array($num ,$row['sendbalance_noti'], $type);
+        print_r(json_encode($array));
+    }elseif($type=="payment"){
+        try {
+            $sql = mysqli_query($connect, "SELECT `request_noti` FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND `digitalPayment_id` = '$num';");
+            $row = mysqli_fetch_assoc($sql);
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+
+        if($row['request_noti']=='1'){
+            try {
+                mysqli_query($connect, "UPDATE `digitalpayment_tb` SET `request_noti`='0' WHERE `user_id` = '$user_id' AND `digitalPayment_id` = '$num';");
+            } catch (\Throwable $th) {
+                echo $th;
+            }
+        }else if($row['request_noti']=='0'){
+            try {
+                mysqli_query($connect, "UPDATE `digitalpayment_tb` SET `request_noti`='1' WHERE `user_id` = '$user_id' AND `digitalPayment_id` = '$num';");
+            } catch (\Throwable $th) {
+                echo $th;
+            }
+        }
+        $array = array($num ,$row['request_noti'], $type);
         print_r(json_encode($array));
     }
     

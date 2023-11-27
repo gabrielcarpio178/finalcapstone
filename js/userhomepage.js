@@ -131,7 +131,7 @@ function notification(){
         
         if((data[i]).type=='cashin'){
           data_show += `
-            <div class="message_info ${none_view}" onclick="update('${(data[i]).cashin_id}','${user_id}','${(data[i]).type}')" id="${(data[i]).cashin_id}">
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).cashin_id}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).cashin_id}">
               <div class="messages">
                 <img src ='../../image/avatar.jpg' class="canteen-staff-pp">
                 <div class="message-order">
@@ -168,7 +168,7 @@ function notification(){
 
           if((data[i]).statues=="ACCEPTED"&&deadline!=0){
             data_show += `
-            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')">
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).order_num}">
                 <div class="messages">
                   <img src ='${image}' class="canteen-staff-pp">
                   <div class="message-order"><b>${(data[i]).store_name}</b> accept your order Pick up time <b>${deadline} minutes.</b> Otherwise your order will automatically be cancelled.</div>
@@ -177,7 +177,7 @@ function notification(){
               </div>`;
           }else if((data[i]).statues=="ACCEPTED"&&deadline==0){
             data_show += `
-            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).order_num}">
               <div class="messages">
                 <img src ='${image}' class="canteen-staff-pp">
                 <div class="message-order">Failed to pick up within the time scheduled <b>${(data[i]).store_name}</b> cancelled your order.</div>
@@ -186,7 +186,7 @@ function notification(){
             </div>`;
           }else if((data[i]).statues=="CANCELED"){
             data_show += `
-            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+            <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).order_num}">
               <div class="messages">
                 <img src ='${image}' class="canteen-staff-pp">
                 <div class="message-order">Failed to pick up with some reason <b>${(data[i]).store_name}</b>.</div>
@@ -195,7 +195,7 @@ function notification(){
             </div>`;
           }else if((data[i]).statues=="PROCEED"){
               data_show += `
-              <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+              <div class="message_info ${none_view}" onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).order_num}">
                 <div class="messages">
                   <img src ='${image}' class="canteen-staff-pp">
                   <div class="message-order">Successfully paid and picked up the order from the <b>${(data[i]).store_name}</b>.</div>
@@ -204,7 +204,7 @@ function notification(){
               </div>`;
             }else if(data[1][i]=="PURCHASE"&&deadline==0){
               data_show += `
-                <div class="message_info onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).order_num}">
+                <div class="message_info onclick="update('${(data[i]).order_num}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).order_num}">
                   <div class="messages">
                     <img src ='${image}' class="canteen-staff-pp">
                     <div class="message-order">Successfully send payment.</div>
@@ -217,7 +217,7 @@ function notification(){
           var gender_profile = `${((data[i]).gender=="male"||(data[i]).gender=="MALE")?"../../image/avatar.jpg":"../../image/female_avatar.png"}`;
           var image_userPP = ((data[i]).image_pp!=null)?`profile/${(data[i]).image_pp}`:gender_profile;
           data_show += `
-                <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).id}">
+                <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).id}">
                   <div class="messages">
                     <img src = ${image_userPP} class="canteen-staff-pp">
                     <div class="message-order">You sent <b>${(data[i]).amount}.00</b> to <b>${(data[i]).name}</b></div>
@@ -228,13 +228,37 @@ function notification(){
           var gender_profile = `${((data[i]).gender=="male"||(data[i]).gender=="MALE")?"../../image/avatar.jpg":"../../image/female_avatar.png"}`;
           var image_userPP = ((data[i]).image_pp!=null)?`profile/${(data[i]).image_pp}`:gender_profile;
           data_show += `
-                <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).id}">
+                <div class="message_info ${none_view}" onclick="update('${(data[i]).id}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).id}">
                   <div class="messages">
                     <img src= ${image_userPP} class="canteen-staff-pp">
                     <div class="message-order"><b>${(data[i]).name}</b> sent <b>${(data[i]).amount}.00</b> to your account</div>
                   </div>
                   <p class="date">${insert_date}</p>
                 </div>`;
+        }else if((data[i]).type=='payment'){
+          if((data[i]).requestType=='accepted'){
+            data_show += `
+                <div class="message_info ${none_view}" onclick="update('${(data[i]).payment_id}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).payment_id}">
+                  <div class="messages">
+                    <img src= "../../image/female_avatar.png" class="canteen-staff-pp">
+                    <div class="message-order">
+                      Your request for payment for (<b>Certifications ${(data[i]).payment_type}</b>) was accepted by the cashier.
+                    </div>
+                  </div>
+                  <p class="date">${insert_date}</p>
+                </div>`;
+          }else{
+            data_show += `
+                <div class="message_info ${none_view}" onclick="update('${(data[i]).payment_id}','${user_id}','${(data[i]).type}')" id="${(data[i]).type}_${(data[i]).payment_id}">
+                  <div class="messages">
+                    <img src= "../../image/female_avatar.png" class="canteen-staff-pp">
+                    <div class="message-order">
+                      Your payment request has been declined by the cashier. Please reach out to the cashier for further assistance or use an alternative payment method. Thank you.
+                    </div>
+                  </div>
+                  <p class="date">${insert_date}</p>
+                </div>`;
+          }
         }
       }
       
@@ -259,10 +283,10 @@ function update(num, user_id, type){
     success: function(res){
       var result = JSON.parse(res);
       if(result[1]=='1'){
-        $(`#${result[0]}`).addClass("none_view");
+        $(`#${result[2]}_${result[0]}`).addClass("none_view");
         $(".count-number").text(parseInt($(".count-number").text())+1);
       }else if(result[1]=='0'){
-        $(`#${result[0]}`).removeClass("none_view");
+        $(`#${result[2]}_${result[0]}`).removeClass("none_view");
         $(".count-number").text(parseInt($(".count-number").text())-1);
       }
     }

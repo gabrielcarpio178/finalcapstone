@@ -45,7 +45,7 @@ if(isset($_POST['user_id'])&&isset($_POST['input_amount'])&&isset($_POST['type_p
     }
 
     try {
-        mysqli_query($connect, "INSERT INTO `digitalpayment_tb`(`user_id`, `payment_amount`, `payment_type`, `requestType`, `payment_ref`, `semester_year`) VALUES ('$user_id','$input_amount','$type_payment', 'pending', '$uniq', '$semister')");
+        mysqli_query($connect, "INSERT INTO `digitalpayment_tb`(`user_id`, `payment_amount`, `payment_type`, `requestType`, `payment_ref`, `semester_year`, `request_noti`) VALUES ('$user_id','$input_amount','$type_payment', 'pending', '$uniq', '$semister', '0')");
     } catch (\Throwable $th) {
         echo $th;
     }

@@ -15,6 +15,7 @@ if(isset($_POST['user_id'])){
     $data_cashin = array();
     $data_sender = array();
     $data_receiver = array();
+    $data_payment = array();
     while($row_purchase = mysqli_fetch_assoc($sql_purchase)){ 
         $data_purchase[] = array("date"=>$row_purchase['deadline_time'], "statues"=>$row_purchase['statues'],"store_name"=>ucfirst($row_purchase['store_name']), "teller_gender"=>$row_purchase['teller_gender'], "isSeen"=>$row_purchase['num_noti'], "order_num"=>$row_purchase['order_num'], "type"=>"purchase");
     }
@@ -51,7 +52,18 @@ if(isset($_POST['user_id'])){
         $data_receiver[] = array("id"=>$row_receiver['sendBalance_id'], "date"=>$row_receiver['sendBalance_Date'], "name"=>$row_receiver['firstname']." ".$row_receiver['lastname'], "amount"=>$row_receiver['send_amount'], "type"=>"receiver", "isSeen"=>$row_receiver['sendbalance_noti'], "image_pp"=>$row_receiver['image_profile'], "gender"=>$row_receiver['gender']);
     }
 
-    $data_array = array_merge($data_purchase, $data_cashin, $data_sender, $data_receiver);
+    //payment_request
+    try {
+        $sql_payment = mysqli_query($connect, "SELECT `digitalPayment_id`, `payment_type`, `requestType`, `request_noti`, `payment_date` FROM `digitalpayment_tb` WHERE `user_id` = '$user_id' AND (`requestType` = 'accepted' OR `requestType` = 'cancel');");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    while ($row_payment = mysqli_fetch_assoc($sql_payment)){
+        $data_payment[] = array("date"=>$row_payment['payment_date'], "payment_id"=>$row_payment['digitalPayment_id'], "requestType"=>$row_payment['requestType'], "isSeen"=>$row_payment['request_noti'], "type"=>"payment", "payment_type"=>$row_payment['payment_type']);
+    }
+
+    $data_array = array_merge($data_purchase, $data_cashin, $data_sender, $data_receiver, $data_payment);
     print_r(json_encode($data_array));
 
 }

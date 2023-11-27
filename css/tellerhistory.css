@@ -1,52 +1,18 @@
 /* * {
   outline: 1px solid;
 } */
-.student,
-.personnel {
-  background-color: #e0e0e0;
-  font-weight: bold;
+.content-info{
+  padding-left: 300px;
+  padding-top: 70px;
+  
+}
+.content_data{
+  border: 1px solid rgba(95, 93, 93, 0.404);
+  border-radius: 5px/5px;
+  padding: 10px;
   cursor: pointer;
 }
-.active-category {
-  border-bottom: 2px solid #8098ff;
-}
-.table-info {
-  background-color: white;
-  padding: 0px 30px 0px 30px;
-  box-shadow: 0 1px 1px 1px #616161;
-}
-thead tr,
-tbody tr {
-  text-align: center;
-}
-.department{
-  height: 30px;
-}
-tr{
-  cursor: pointer;
-}
-p{
-  font-weight: bold;
-}
-@media screen and (min-width: 320px) {
-  .content-info {
-    padding-top: 100px;
-  }
-  .student,
-  .personnel {
-    padding: 3px 40px 3px 40px;
-  }
-}
-
-@media screen and (min-width: 1020px) {
-  body {
-    font-size: 16px;
-  }
-  .content-info {
-    padding: 50px 0px 0px 320px;
-  }
-  .student,
-  .personnel {
-    padding: 3px 60px 3px 60px;
-  }
+.transaction-history{
+  padding-bottom: 30px;
+  font-size: 1.5rem;
 }

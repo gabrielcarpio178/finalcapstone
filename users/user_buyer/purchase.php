@@ -49,14 +49,7 @@ user-scalable=no">
                             <div class="d-flex flex-column info-group">
                             <div class="purchase">PURCHASE</div>
                             <div class="canteen">Canteen</div>
-                            
-                        </div>
-                        <div class="d-flex flex-row">
-                            <div class="count-order">
-                                <i class="fa-solid fa-cart-shopping cart" id="cart"></i>                 
-                                <div class="number-count">0</div>
-                            </div>        
-                        </div>                            
+                    </div>
                     </div>
                     
                     <div class="chooose-teller">
@@ -75,10 +68,9 @@ user-scalable=no">
                         <?php $teller_num++;
                             }while($teller=mysqli_fetch_array($query)); ?>
                         <?php }else{ echo "<b>no teller user</b>"; } ?>
-                        
-                                                                    
+
                     </div> 
-                                                                                            
+
                 <div class="menu-label">
                     Menu
                 </div>
@@ -98,6 +90,12 @@ user-scalable=no">
                 </div>
 
                 </div>
+                
+                <div class="cart-btn">
+                    <i class="fa-solid fa-cart-shopping cart_scroll" id="cart_scoll"></i>                 
+                    <div class="number-count_scroll">0</div>
+                </div>
+
             </div>
             
             <div class="col col-lg-3 orders">

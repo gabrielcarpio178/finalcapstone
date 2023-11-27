@@ -28,7 +28,7 @@ $id = $_SESSION['id'];
 </head>
 <body>
     <div id="navbar"></div>
-    <div class="content-info w-75">
+    <div class="content-info w-100">
         <div class="d-flex flex-row justify-content-between label-content">
             <h1>
                 <b>History</b>
@@ -36,23 +36,26 @@ $id = $_SESSION['id'];
             
         </div>
 
-        <div class="d-flex flex-row justify-content-end align-items-center gap-4 w-100 p-3">
-            <div class="d-flex flex-row align-items-center gap-2" id="date_div">
-                <label for="date_filter" style="white-space: nowrap;">Sort by Date:</label>
-                <input type="date" class="form-control form-control-sm w-100" id="date_filter">
+        <div class="d-flex flex-row justify-content-lg-end justify-content-between  align-items-center gap-4 w-100 p-lg-3 p-2">
+            <div class="d-flex flex-lg-row flex-column">
+                <div class="d-flex flex-lg-row flex-column align-items-start align-items-lg-center gap-lg-2" id="date_div">
+                    <label for="date_filter" style="white-space: nowrap;">Sort by Date:</label>
+                    <input type="date" class="form-control form-control-sm w-100" id="date_filter">
+                </div>
+                <div class="d-flex flex-lg-row flex-column align-items-start align-items-lg-center gap-lg-2" id="trans_div">
+                    <label for="category_transfers" style="white-space: nowrap;" class="label-category_transfers">Sort by Transfers Funds:</label>
+                    <select name="category_transfers" id="category_transfers" class="form-select form-select-sm w-lg-75 w-100 align-self-end" aria-label=".form-select-sm example">
+                        <option value="all">All</option>
+                        <option value="sent">Sent</option>
+                        <option value="receive">Received</option>
+                    </select>
+                </div>
             </div>
-            <div class="d-flex flex-row align-items-center gap-2" id="trans_div">
-                <label for="category_transfers" style="white-space: nowrap;">Sort by Transfers Funds:</label>
-                <select name="category_transfers" id="category_transfers" class="form-select form-select-sm w-75 align-self-end" aria-label=".form-select-sm example">
-                    <option value="all">All</option>
-                    <option value="sent">Sent</option>
-                    <option value="receive">Received</option>
-                </select>
-            </div>
+            
             <div class="selected-filter">
-                
+
             </div>
-            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#btn_filter"><i class="fa-solid fa-filter"></i>Filter</button>
+            <button class="btn btn-outline-primary btn-filter-modal" data-bs-toggle="modal" data-bs-target="#btn_filter"><i class="fa-solid fa-filter"></i>Filter</button>
         </div>
 
         <div class="history-data" id="history_info">

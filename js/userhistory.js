@@ -37,7 +37,7 @@ $(document).ready(function(){
             }
             $("#date_filter").val("");
             getHistoryByDate(type,"0000-00-00","all");
-            
+            $(".btn-filter-modal").hide();
         }
     });
 
@@ -55,7 +55,7 @@ $(document).ready(function(){
         $(this).change(function(){
             trans = $(this).val();
             getHistoryByDate(type, date, trans);
-
+            $(".btn-filter-modal").hide();
         }); 
     });
 
@@ -68,6 +68,7 @@ $(document).ready(function(){
             $(".btn-close").click();
             $("#date_div").prop("style", "");
             getHistoryByDate(type, date, 'all');
+            $(".btn-filter-modal").hide();
         }); 
     });
 
@@ -79,6 +80,7 @@ function cancelFilter(){
     $(".selected-filter").hide();
     $("#trans_div, #date_div").prop("style", "display: none !important");
     getHistoryByDate('all','0000-00-00',"all");
+    $(".btn-filter-modal").show();
 }
 
 function getRequestPayment(){

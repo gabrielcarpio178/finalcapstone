@@ -1,17 +1,10 @@
 /* *{
     outline: 1px solid black;
 } */
-.content-info {
-  position: absolute;
-  left: 100px;
-  width: 92%;
-}
 .content-userInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0% 20%;
-  padding: 4% 5%;
   box-shadow: 0 1px 1px 1px #616161a1;
   border-radius: 10px/10px;
   background-color: white;
@@ -38,17 +31,21 @@
 }
 
 @media screen and (min-width: 320px) {
-  .content-data {
-    position: relative;
-    top: 40px;
-    width: 92%;
+  .content-label{
+    padding: 80px 0px 0px 25px;
+  }
+  .content-userInfo {
+    margin: 0% 10%;
+    padding: 4% 5%;
   }
 }
 
 @media screen and (min-width: 1020px) {
-  .content-data {
-    position: relative;
-    top: 40px;
-    width: 92%;
+  .content-label{
+    padding: 40px 0px 0px 100px;
+  }
+  .content-userInfo {
+    margin: 0% 20%;
+    padding: 4% 5%;
   }
 }

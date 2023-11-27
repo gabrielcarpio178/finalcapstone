@@ -158,7 +158,7 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 1.5em;
   }
   .purchase,
-  choose-order {
+  .choose-order {
     font-size: 1em;
   }
   .canteen,
@@ -183,7 +183,7 @@ input[type="number"]::-webkit-inner-spin-button {
   }
   .orders {
     display: none;
-    margin-top: 85px;
+    margin-top: 55px;
   }
   .count-order .number-count {
     position: absolute;
@@ -218,6 +218,26 @@ input[type="number"]::-webkit-inner-spin-button {
   .selected-menu {
     height: 360px;
     padding: 0px 5px 0px 5px;
+  }
+  .cart-btn{
+    position: fixed;
+    right: 10%;
+    bottom: 5vh;
+    background-color: white;
+    box-shadow: 0 1px 1px 1px #616161b0;
+    padding: 4%;
+    border-radius: 50%;
+  }
+
+  .number-count_scroll{
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    top: 0px;
+    right: 0px;
+    color: white;
+    text-align: center;
   }
 }
 @media screen and (min-width: 760px) {
@@ -323,6 +343,9 @@ input[type="number"]::-webkit-inner-spin-button {
     padding: 0px 15px 0px 15px;
   }
   .count-order .number-count {
+    display: none;
+  }
+  .cart-btn{
     display: none;
   }
 }

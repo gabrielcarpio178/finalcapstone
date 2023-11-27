@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $("#nav").load("usernav.php");
 
-  $("#cart").on("click", function () {
+  $("#cart, .cart-btn").on("click", function () {
     $(".orders").slideDown(function () {
       $(this).show();
       $("#cart").hide();
@@ -115,7 +115,7 @@ function add_selectedClass(id) {
   $(".product_select_" + id).addClass("selected-order");
   selected_list.push(id);
   number_order++;
-  $(".number-count").text(number_order);
+  $(".number-count, .number-count_scroll").text(number_order);
 }
 
 //remove item
@@ -128,7 +128,7 @@ function remove_order() {
     $(remove_item).remove();
     selected_list.splice(remove_id, 1);
     number_order--;
-    $(".number-count").text(number_order);
+    $(".number-count_scroll").text(number_order);
     total_amount();
   });
 }

@@ -45,7 +45,7 @@ $id = $_SESSION['id'];
         </div>
 
         <div class="info">
-
+            
             <div class="method">
 
                 <div class="payment-method">
@@ -82,11 +82,13 @@ $id = $_SESSION['id'];
 
             </div>
             <input type="hidden" id="available_balance">
+
             <div class="forms-method">
                 
             </div>
 
             <div class="sumbit_password">
+                
             </div>
             
         </div>

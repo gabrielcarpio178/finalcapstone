@@ -24,7 +24,6 @@ user-scalable=no">
                 <small class="store_name_label">Store Name</small>
                 <div class="user_name"><?=ucfirst($name); ?></div>
             </div>
-                       
         </div>
                                                 
         <ul class = "list-inline">                    

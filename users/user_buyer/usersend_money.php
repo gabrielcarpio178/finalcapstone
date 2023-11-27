@@ -33,8 +33,8 @@ $id = $_SESSION['id'];
         <div class="row">
             <div class="col-12" id="containner_content">
                 <div class="content-info">
-                    <div class="d-flex flex-column flex-lg-row justify-content-between header-content">
-                        <div class="d-flex flex-column content-label">
+                    <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center header-content">
+                        <div class="d-flex flex-column align-self-start content-label">
                             <div class="label-info fw-bold text-nowrap">
                                 Transfer Funds
                             </div>
@@ -51,7 +51,7 @@ $id = $_SESSION['id'];
                     </div>
                     <div class="d-flex flex-row align-items-center justify-content-center form-content">
 
-                        <div class="form-input">
+                        <div class="form-input w-lg-25 w-100">
                             <!-- forms -->
                         </div>
 

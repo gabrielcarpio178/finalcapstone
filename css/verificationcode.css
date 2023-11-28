@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #f2f2f2;
+}
+.form-logo img{
+    width: 15%;
+}
+.form-logo p{
+    width: 30%;
+    text-align: center;
+}
+.form_forgot{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#form_submit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    padding: 1%;
+    width: 35%;
+    gap: 20px;
+    border-radius: 10px/10px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 1px 1px 1px #616161b0;
+    height: 35vh;
+    margin-top: 10px;
+}
+.fa-x{
+    cursor: pointer;
+}
+span{
+    color: blue;
+    cursor: pointer;
+}

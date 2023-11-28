@@ -31,12 +31,12 @@ $id = $_SESSION['id'];
     <input type="hidden" name="" id="user_id" value="<?=$id ?>">
     <div class="content-data">
         <div class="row">
-            <div class="col-12" id="containner_content">
+            <div class="col-lg-12" id="containner_content">
                 <div class="content-info">
                     <div class="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center header-content">
                         <div class="d-flex flex-column align-self-start content-label">
                             <div class="label-info fw-bold text-nowrap">
-                                Transfer Funds
+                                TRANSFER FUNDS
                             </div>
                             <p>Send money to other user's account</p>
                         </div>
@@ -51,20 +51,20 @@ $id = $_SESSION['id'];
                     </div>
                     <div class="d-flex flex-row align-items-center justify-content-center form-content">
 
-                        <div class="form-input w-lg-25 w-100">
+                        <div class="form-input">
                             <!-- forms -->
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-4 profile-content" style="display: none">
-                <!-- info_data -->
+            <div class="col-lg-4 col-12 profile-content" style="display: none;">
+                <!-- info_data --> 
             </div>
         </div>
     </div>   
     <button type="button" style="display: none;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insert_pass" id="show_modal">
-        hidden
+    hidden
     </button>
 
     <!-- modal password -->

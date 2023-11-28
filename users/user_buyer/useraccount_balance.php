@@ -32,7 +32,7 @@ $id = $_SESSION['id'];
         <input type="hidden" value="<?=$id ?>" id="user_id">
         <div class="d-flex flex-row justify-content-between content-label">
             <div class="content-header">
-                <h1><b>Account Balance</b></h1>
+                <h1><b>ACCOUNT BALANCE</b></h1>
                 <p>Non-Bago Fee</p>
             </div>
             

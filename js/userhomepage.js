@@ -242,7 +242,7 @@ function notification(){
                   <div class="messages">
                     <img src= "../../image/female_avatar.png" class="canteen-staff-pp">
                     <div class="message-order">
-                      Your request for payment for (<b>Certifications ${(data[i]).payment_type}</b>) was accepted by the cashier.
+                      Your request for payment for <b>Certifications</b> (<b> ${(data[i]).payment_type}</b>) was accepted by the cashier.
                     </div>
                   </div>
                   <p class="date">${insert_date}</p>
@@ -253,7 +253,7 @@ function notification(){
                   <div class="messages">
                     <img src= "../../image/female_avatar.png" class="canteen-staff-pp">
                     <div class="message-order">
-                      Your payment request has been declined by the cashier. Please reach out to the cashier for further assistance or use an alternative payment method. Thank you.
+                      Your payment request has been declined by the cashier. Please use an alternative payment method.Thank you!
                     </div>
                   </div>
                   <p class="date">${insert_date}</p>
@@ -313,7 +313,7 @@ function multipleseen(user_id){
           success: function(res){
             var orders_num = JSON.parse(res);
             for(let i = 0; i<orders_num.length; i++){
-              $(`#${orders_num[i]}`).removeClass("none_view");
+              $(`#${(orders_num[i]).type}_${(orders_num[i]).id}`).removeClass("none_view");
               $(".count-number").text(0);
             }
             Swal.fire({

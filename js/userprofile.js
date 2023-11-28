@@ -50,7 +50,7 @@ $(document).ready(function(){
                         Swal.fire({
                             position: "center",
                             icon: "warning",
-                            title:"Not Match",
+                            title:"Password Did Not Match",
                             showConfirmButton: false,
                             timer: 1000
                         });

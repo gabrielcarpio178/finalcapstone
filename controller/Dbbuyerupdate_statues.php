@@ -97,6 +97,7 @@ if(isset($_POST['user_id'])&&isset($_POST['num'])&&isset($_POST['type'])){
         }
         $array = array($num ,$row['request_noti'], $type);
         print_r(json_encode($array));
+        
     }
     
     

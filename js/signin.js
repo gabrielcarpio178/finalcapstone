@@ -1,78 +1,12 @@
 $(document).ready(function () {
-  // change display
-  $("#forgotform").click(function () {
-    $(".signin-form").css('display', 'none');
-    $(".forgot-form").css('display', 'block');
-  });
-
-  $("#login").click(function () {
-    $(".signin-form").css('display', 'block');
-    $(".forgot-form").css('display', 'none');
-  });
-
-  $("#input_code").on('keyup', function(){
-    var input_length = $(this).val().length;
-    if(input_length<=10&&input_length!=0){
-      $(".message").text("Number length: "+input_length);
-      $(".message").css('color', "black");
-    }else if(input_length>10){
-      $(".message").text("Number length: "+input_length);
-      $(".message").css('color', "red");
-    }else if(input_length==0){
-      $(".message").text("");
-    }
-  });
-
-  $("#enter_code").on('submit', function(e){
-    e.preventDefault();
-    var input_length = $("#input_code").val();
-    if(input_length.length==0){
-      Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'Please Input code',
-        showConfirmButton: false,
-        timer: 1000
-      });
-    }else if(input_length.length>10||input_length.length<10){
-      Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'Please Input 10 digits code',
-        showConfirmButton: false,
-        timer: 1000
-      });
-    }else if(input_length.length==10){
-      $.ajax({
-        url: 'controller/Dbuserchangepass.php',
-        type: 'POST',
-        data: {reset_code : input_length},
-        cache: false,
-        beforeSend: function(){
-          $(".loader").show();
-        },
-        success: function (res){
-          $(".loader").hide();
-          if(res=='invalid'){
-            Swal.fire({
-              position: 'center',
-              icon: 'error',
-              title: 'Invalid',
-              showConfirmButton: false,
-              timer: 1000
-            });
-          }else{
-            $("#close_input_code").click();
-          }
-        }
-      });
-    }
-  });
 
   $("#signup").click(function () {
     window.location = "signup.php";
   });
 
+  $("#forgotform").on('click', function(){
+    window.location="forgotEmail.php";
+  })
   // submit
 
   $("#singin").on("submit", function (e) {
@@ -84,11 +18,10 @@ $(document).ready(function () {
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Messing input!',
+        title: 'Missing Input!',
         showConfirmButton: false,
         timer: 1000
       });
-      // Swal.fire("Failed", "", "error");
     } else {
       $.ajax({
         url: "controller/Dbsignin.php",
@@ -174,35 +107,6 @@ $(document).ready(function () {
       $('#password').prop('type', 'password');
       x = true;
     }
-  });
-
-  $("#forgot_form").on('submit',function(e){
-    e.preventDefault();
-    var email_input = $("#email_input").val();
-    $.ajax({
-      url: 'controller/DbuserForgotPassword.php',
-      type: 'POST',
-      data: {email_input:email_input},
-      cache: false,
-      success: function(res){
-        if(res=='invalid'){
-          $(".loader").hide();
-          Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Email Not Found!',
-            showConfirmButton: false,
-            timer: 1000
-          });
-        }else{
-          var result = JSON.parse(res);
-          getresetcode(result.id, result.usertype);
-          $("#btn-forgot-pass").html('<div id="reset_forgot_code" data-bs-toggle="modal" data-bs-target="#forgot_password"> Use Reset Code </div>')
-        }
-      }
-    });
-  })
-
 });
 
 function getdatafromApi(username, password){
@@ -236,21 +140,5 @@ function getdatafromApi(username, password){
     }
   })
 }
-
-function getresetcode(id, user_buyer){
-
-  $.ajax({
-    url: 'controller/Dbgetresetcode.php',
-    type: 'POST',
-    data: {
-      id:id,
-      user_buyer:user_buyer
-    },
-    cache: false,
-    success: function(res){
-      // $("#reset_forgot_code").click();
-      console.log(res);
-    }
-  });
-}
+});
 

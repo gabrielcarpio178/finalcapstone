@@ -54,8 +54,23 @@ if(isset($_POST['user_id'])){
         $array_transfer[] = array("id"=>$row['sendBalance_id'], 'type'=>"transfer_funds");
     }
 
-    $array = array_merge($array_purchase, $array_cashIn, $array_transfer);
-    // print_r(json_encode($array));
-    print_r($array);
+    $array_payment = array();
+
+    try {
+        $sql = mysqli_query($connect, "SELECT `request_noti`, `digitalPayment_id` FROM `digitalpayment_tb` WHERE `user_id`='$user_id' AND  `request_noti`='0';");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
+    while($row = mysqli_fetch_assoc($sql)){
+        try {
+            mysqli_query($connect, "UPDATE `digitalpayment_tb` SET `request_noti`='1' WHERE `digitalPayment_id`=".$row['digitalPayment_id']);
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+        $array_payment[] = array("id"=>$row['digitalPayment_id'], 'type'=>"payment");
+    }
+    $array = array_merge($array_purchase, $array_cashIn, $array_transfer, $array_payment);
+    print_r(json_encode($array));
 }
 ?>

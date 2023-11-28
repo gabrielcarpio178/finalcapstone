@@ -6,7 +6,7 @@ if(isset($_POST['payment_id'])&&isset($_POST['isCashout'])){
     $cashout = filter_var($_POST['isCashout'], FILTER_VALIDATE_BOOLEAN);
     if($cashout==false){
         try {
-            mysqli_query($connect,"DELETE FROM `digitalpayment_tb` WHERE `digitalPayment_id` = '$payment_id';");
+            mysqli_query($connect,"UPDATE `digitalpayment_tb` SET `request_noti`='0',`requestType`='cancel' WHERE  `digitalPayment_id` = '$payment_id';");
             echo "success";
         } catch (\Throwable $th) {
             echo $th;

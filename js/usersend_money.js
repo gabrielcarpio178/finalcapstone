@@ -1,6 +1,7 @@
 let balance = '';
 $(document).ready(function(){
     $("#navbar").load("usernav.php");
+    // console.log(($(window).width()));
     searchForm();
     getbalance();
 });
@@ -25,11 +26,12 @@ function getbalance(){
 }
 
 function searchForm(){
+
     forms = `   
     <form id="search_user" class="insert-forms">
         <div class="d-flex flex-column search-content">
-            <div class="form-label">
-                Send to:
+            <div class="sent-to">
+                Send to
             </div>
             <input type="text" id="search_input" placeholder="Enter Name or User ID" class="mt-2 form-control">
             <div class="result" id="result_data"></div>
@@ -53,9 +55,12 @@ function searchForm(){
                     if(data.length!=0){
                         tbody = ``;
                         for(let i = 0; i<data.length; i++){
+                            var image_gender = ((data[i]).gender=="male")?'../../image/avatar.jpg':'../../image/female_avatar.png';
+                            var image = ((data[i]).image_profile!=null)? `profile/${(data[i]).image_profile}`: image_gender;
                             tbody += `
-                            <tr onclick="getuser('${(data[i]).user_id}', '${(data[i]).name}', '${(data[i]).department}', '${(data[i]).phonenumber}', '${(data[i]).address}', '${(data[i]).id}', '${(data[i]).usertype}', '${data[i].complete_address}')">
-                                <td>${(data[i]).name}</td>
+                            <tr onclick="getuser('${(data[i]).user_id}', '${(data[i]).name}', '${(data[i]).department}', '${(data[i]).phonenumber}', '${(data[i]).address}', '${(data[i]).id}', '${(data[i]).usertype}', '${data[i].complete_address}', '${image}')">
+                                <td class="user_profileInfo"><img src=${image}></td>
+                                <td class="text-nowrap"> ${(data[i]).name}</td>
                                 <td>${(data[i]).department}</td>
                                 <td>${(data[i]).id}</td>
                             <tr>`;
@@ -65,8 +70,9 @@ function searchForm(){
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th>Profile</th>
                                         <th>Name</th>
-                                        <th>Department</th>
+                                        <th>Dept.</th>
                                         <th>User ID</th>
                                     </tr>
                                 </thead>
@@ -105,13 +111,13 @@ function searchForm(){
 
 }
 
-function getuser(user_id, name, department, phonenumber, address, id, usertype, complete_address){
+function getuser(user_id, name, department, phonenumber, address, id, usertype, complete_address, image){
     html_getuser_data =`
     <div class="d-flex flex-column p-4 user-profile">
         <p>Profile</p>
         <div class="d-flex flex-column align-items-center profile-name">
-            <img src="../../image/avatar.jpg" alt="">
-            <h2 class="user-name mt-4"></h2>
+            <img src=${image} alt="" id="user_profile" style="border-radius: 50%">
+            <h2 class="user-name text-center mt-4"></h2>
             <div class="d-flex flex-row user-info">
                 <div class="user-info-label">
                     STUDENT ID:
@@ -142,9 +148,10 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype, 
             </div>
             <div class="label-data" id="complete_address"></div>
         </div>
-        <center>
-            <button class="btn btn-danger w-25 mt-3" id="btn_cancel" onclick="cancel_okay();">Cancel</button>
-        </center>
+        <div class="d-flex flex-row justify-content-center gap-2 mt-3">
+            <button class="btn btn-primary w-25 btn_ok" onclick="btn_ok()">OK</button>
+            <button class="btn btn-danger" id="btn_cancel" onclick="cancel_okay();">Cancel</button>
+        </div>
     </div>
     `;
 
@@ -152,7 +159,7 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype, 
 
     $("#search_input").val("");
     $(".search-result").hide();
-    $("#containner_content").removeClass("col-12").addClass("col-8");
+    $("#containner_content").removeClass("col-lg-12").addClass("col-lg-8");
     $(".profile-content").show();
     $(".user-name").text(name);
     $(".user-id").text(id);
@@ -163,9 +170,12 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype, 
     $("#complete_address").text(complete_address);
     forms = `   
     <form id="input_amount" class="insert-forms">
-        <div class="d-flex flex-column search-content">
+        <div class="d-flex flex-column gap-2 search-content">
+            <div id="mobile_view">
+
+            </div>
             <div class="form-label">
-                Amount:
+                Amount
             </div>
             <div class="input-piso">
                 <input type="number" id="input_balance" placeholder="Enter Amount" class="mt-2 form-control text-center" min="1">
@@ -177,7 +187,28 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype, 
     </form>`; 
     $(".form-input").html(forms);
 
-    
+    var screen_size = $(window).width();
+    var mobile_view = "";
+    if(screen_size>=320||screen_size!=1020){
+        mobile_view = `
+        <div class="d-flex flex-column">
+            <div>
+                Send to
+            </div>
+            <div class="d-flex flex-row justify-content-between align-items-center sender_info">
+                <div class="sender_name">
+                    ${name}
+                </div>
+                <img src=${image} class="sender_image rounded-circle" onclick="send_rev()">
+            </div>
+        </div>`;
+    }else{
+        mobile_view = `
+        <div>
+
+        </div>`;
+    }
+    $("#mobile_view").html(mobile_view);
 
     $("#input_amount").on("submit",function(e){
         e.preventDefault();
@@ -224,12 +255,20 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype, 
 function cancel_okay(){
     searchForm();
     $(".search-result").show();
-    $("#containner_content").removeClass("col-8").addClass("col-12");
+    $("#containner_content").removeClass("col-lg-8").addClass("col-lg-12");
     $(".profile-content").hide();
     $("#input_balance").attr("readonly", false);
     $("#send_btn").removeProp("disabled");
     $("#insert_password").val("");
     $("#result_data").text("");
+}
+
+function btn_ok(){
+    $(".profile-content").hide();
+}
+
+function send_rev(){
+    $(".profile-content").show();
 }
 
 function getbalanceinputed(inputed_balance, sendToId){
@@ -246,7 +285,7 @@ function getbalanceinputed(inputed_balance, sendToId){
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Sent Success!',
+                        title: 'Sent!',
                         showConfirmButton: false,
                         timer: 1000
                     }).then(function(){

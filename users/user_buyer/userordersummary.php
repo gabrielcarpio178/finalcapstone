@@ -147,7 +147,7 @@ user-scalable=no">
                 
                 <div class="d-flex flex-row justify-content-between">
                     <div class="fw-bold myorder">
-                        My Order
+                         ORDER
                     </div> 
                     <div class="d-flex flex-row justify-content-center profile-name">                        
                         <img src="<?php echo ($_SESSION['image']!=NULL)?"profile/".$_SESSION['image']:"../../image/avatar.jpg" ?>">

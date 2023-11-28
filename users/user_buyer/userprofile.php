@@ -29,7 +29,7 @@ $id = $_SESSION['id'];
     <div id="navbar"></div>
         <div class="content w-75">
             <div class="label">
-                <h2>Profile</h2> 
+                <h2>PROFILE</h2> 
             </div>
             <form id="edit_form" enctype="multipart/form-data">
                 <div class="d-flex flex-column profile-info">

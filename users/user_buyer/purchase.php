@@ -47,13 +47,13 @@ user-scalable=no">
                     
                     <div class="d-flex flex-row gy-2 justify-content-between w-100">
                             <div class="d-flex flex-column info-group">
-                            <div class="purchase">PURCHASE</div>
-                            <div class="canteen">Canteen</div>
+                            <h1 class="purchase">PURCHASE</h1>
+                            <div class="canteen">CANTEEN</div>
                     </div>
                     </div>
                     
-                    <div class="chooose-teller">
-                        Choose Canteen Store                  
+                    <div class="chooose-teller mt-3 mb-2">
+                        Choose Canteen Store            
                     </div> 
                     <div class="row gx-5 gy-2">
                         <!-- teller -->
@@ -71,7 +71,7 @@ user-scalable=no">
 
                     </div> 
 
-                <div class="menu-label">
+                <div class="menu-label mt-4">
                     Menu
                 </div>
                 
@@ -102,7 +102,7 @@ user-scalable=no">
                 <input type="hidden" value="<?=$_SESSION['id'] ?>" id="user_id">
                 <input type="hidden" id="balance_amount">
                 <div class="d-flex flex-column order">
-                    <i class="fa-solid fa-x" id="close"></i>
+                    <i class="fa-solid fa-x mt-3" id="close"></i>
                     <div class="d-flex flex-row justify-content-between profile-info mt-3 p-3">
                         <div class="d-flex flex-row profile-name image_profile">
                             <img src="<?php echo ($_SESSION['image']!=NULL)?"profile/".$_SESSION['image']:"../../image/avatar.jpg" ?>">

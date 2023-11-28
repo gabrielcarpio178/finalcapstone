@@ -31,7 +31,7 @@ $id = $_SESSION['id'];
     <div class="content-info w-100">
         <div class="d-flex flex-row justify-content-between label-content">
             <h1>
-                <b>History</b>
+                <b>HISTORY</b>
             </h1>
             
         </div>

@@ -33,7 +33,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
         <div class="content-info w-100 mb-5">
             <h1 class="content-label">QR CODE SCAN</h1>
             <div class="input_search_result w-25">
-                <input type="text" name="search_canteen" id="search_canteen" class="form-control" placeholder="Search Canteen Staff">
+                <input type="text" name="search_canteen" id="search_canteen" class="form-control" placeholder="Search Canteen Store">
                 <div class="result">
                 </div>
             </div>
@@ -79,7 +79,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                 </div>
             </div>
 
-             <main>
+            <main>
                 <div id="reader"></div>
             </main>
             <div class="alert alert-dismissible alert-danger" style="display: none">

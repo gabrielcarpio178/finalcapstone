@@ -18,7 +18,7 @@ if(isset($_POST['user_id'])){
     }
     // SELECT SUM(payment_amount) AS total_payment, user_id FROM digitalpayment_tb WHERE user_id = '$user_id' AND requestType = 'accepted' GROUP BY user_id;
     try {
-        $sql_total_payment = mysqli_query($connect,"SELECT SUM(payment_amount) AS total_payment, user_id FROM digitalpayment_tb WHERE user_id = '$user_id' GROUP BY user_id;");
+        $sql_total_payment = mysqli_query($connect,"SELECT SUM(payment_amount) AS total_payment, user_id FROM digitalpayment_tb WHERE user_id = '$user_id' AND (requestType='pending' OR requestType='accepted') GROUP BY user_id;");
     } catch (\Throwable $th) {
         echo $th;
     }

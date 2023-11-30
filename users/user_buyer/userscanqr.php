@@ -32,7 +32,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
 
         <div class="content-info w-100 mb-5">
             <h1 class="content-label">QR CODE SCAN</h1>
-            <div class="input_search_result w-25">
+            <div class="input_search_result">
                 <input type="text" name="search_canteen" id="search_canteen" class="form-control" placeholder="Search Canteen Store">
                 <div class="result">
                 </div>
@@ -40,36 +40,26 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
             
             
             <div class="demo-btnscan">
-                <div class="qr_instruction">
+                <div class="d-flex flex-row justify-content-around align-items-center qr_instruction">
 
                     <div class="label_instruction">
                         <img src="../../image/step_1.png" class="instruction_image">
-                        <p>GET THE QR CODE OF A SPECIFIC CANTEEN STORE</p>
-                        <p>1</p>
                     </div>
 
                     <div class="label_instruction">
                         <img src="../../image/step_2.png" class="instruction_image">
-                        <p>SCAN QR CODE</p>
-                        <p>2</p>
                     </div>
 
                     <div class="label_instruction">
                         <img src="../../image/step_3.png" class="instruction_image">
-                        <p>WAIT FOR PAYMENT PAGE TO LOAD</p>
-                        <p>3</p>
                     </div>
 
                     <div class="label_instruction">
                         <img src="../../image/step_4.png" class="instruction_image">
-                        <p>INPUT PAYMENT</p>
-                        <p>4</p>
                     </div>
 
                     <div class="label_instruction">
-                        <img src="../../image/step_5.png" class="step_5">
-                        <p>ENTER PASSWORD FOR VERIFICATION</p>
-                        <p>5</p>
+                        <img src="../../image/step_5.png" class="instruction_image">
                     </div>
 
                 </div>

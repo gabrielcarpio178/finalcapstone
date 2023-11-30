@@ -11,7 +11,6 @@ if(isset($_POST['reset_code'])&&isset($_POST
     $email_user = strtoupper($_POST['email_user']);
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);                  
     try {
-        //Server settings
         $mail->isSMTP();                                     
         $mail->Host = 'smtp.gmail.com';                      
         $mail->SMTPAuth = true;                             
@@ -27,13 +26,10 @@ if(isset($_POST['reset_code'])&&isset($_POST
         $mail->SMTPSecure = 'ssl';                           
         $mail->Port = 465;                                   
 
-        //Send Email
         $mail->setFrom('bccdigitalpaymentsystem@gmail.com');
 
-        //Recipients
         $mail->addAddress($email_user);              
 $reset_code;
-        //Content
         $mail->isHTML(true);                                  
         $mail->Subject = "BCC DIGITAL PAYMENT SYSTEM";
         $mail->Body    = "Hi ".$email_user.",

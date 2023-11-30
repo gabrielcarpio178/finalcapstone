@@ -61,4 +61,21 @@ $(document).ready(function () {
       },
     });
   });
+
+  $("#change_password").on('click', function(){
+    window.location="userprofile.php";
+  })
 });
+
+function deactivate(user_id){
+  $.ajax({
+    url: '../../controller/DbuserUpdateActive.php',
+    type: 'POST',
+    data: {
+      user_id : user_id
+    },
+    success: function(res){
+      console.log(res);
+    }
+  })
+}

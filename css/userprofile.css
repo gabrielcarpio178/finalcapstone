@@ -1,11 +1,6 @@
 /* * {
   outline: 1px solid;
 } */
-.content {
-  position: absolute;
-  left: 100px;
-  top: 10px;
-}
 
 h2{
   white-space: nowrap;
@@ -14,7 +9,6 @@ h2{
 .profile-info{
   background-color: #fff;
   box-shadow: 0 1px 1px 1px #777575;
-  padding: 20px;
 }
 
 .profile_camera{
@@ -29,12 +23,11 @@ h2{
 
 .camera_icon{
   position: absolute;
-  width: 20%;
-  right: 40px;
-  bottom: 0px;
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 1px 1px 1px #777575;  
+  display: none;
+  cursor: pointer;
 }
 
 .course-data{
@@ -51,10 +44,6 @@ h2{
   display: none;
 }
 
-.camera_icon{
-  display: none;
-  cursor: pointer;
-}
 
 #change_pass{
   display: none;
@@ -64,4 +53,45 @@ h2{
 }
 .message-length .message-strong{
   color: green;
+}
+
+@media screen and (min-width: 320px) {
+  .content {
+    padding: 100px 10px 0px 10px;
+  }
+  .camera_icon{
+    width: 25%;
+    right: 20px;
+    bottom: 25px;
+  }
+  .profile-info{
+    padding: 10px;
+  }
+  h2{
+    font-size: 1em;
+  }
+  .stud_id{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .content {
+    padding: 10px 0px 0px 200px;
+    width: 90%;
+  }
+  .camera_icon{
+    width: 20%;
+    right: 40px;
+    bottom: 0px;
+  }
+  .profile-info{
+    padding: 20px;
+  }
+  h2{
+    font-size: 2.5em;
+  }
+  .stud_id{
+    width: 25%;
+  }
 }

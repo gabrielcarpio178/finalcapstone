@@ -60,6 +60,9 @@ a {
 .sa-icon.sa-success { 
   overflow:hidden 
 } 
+.btn_content{
+  cursor: pointer;
+}
 
 @media screen and (min-width: 320px) {
   .content {

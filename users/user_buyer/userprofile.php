@@ -27,7 +27,7 @@ $id = $_SESSION['id'];
 </head>
 <body>
     <div id="navbar"></div>
-        <div class="content w-75">
+        <div class="content">
             <div class="label">
                 <h2>PROFILE</h2> 
             </div>
@@ -49,9 +49,9 @@ $id = $_SESSION['id'];
                                 <input type="text" value="" id="lastname" name="lastname" class="form-control">
                                 <input type="file" id="upload_profile" name="upload_profile">
                             </div>
-                            <div class="d-flex flex-row align-items-center justify-content-center profile-group w-100 mt-2">
+                            <div class="d-flex flex-lg-row flex-column align-items-center justify-content-center profile-group w-100 mt-2">
                                 <label for="stud_id" >STUDENT ID </label>
-                                <input type="text" id="stud_id" name="stud_id" placeholder="" class="form-control w-25" disabled>
+                                <input type="text" id="stud_id" name="stud_id" placeholder="" class="form-control stud_id" disabled>
                             </div>
                         </div>
                             

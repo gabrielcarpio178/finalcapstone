@@ -71,43 +71,6 @@ try {
             </div>
             
         </div>
-
-        <div class="d-flex flex-column info-table">
-            
-        <div class="d-flex flex-column mt-3"> 
-
-            <?php if(!empty($row)){ ?> 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">NAME</th>
-                        <th scope="col" id="DC">DEPARTMENT</th>
-                        <th scope="col">AMOUNT</th>
-                        <th scope="col">ORDER TIME</th>
-                    </tr>
-                </thead>
-            <?php do{ ?>
-
-                <tr class="info" id="<?=$row['order_num'] ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <td><?=$row['firstname']." ".$row['lastname'] ?></td>
-                    <td>
-                        <?php
-                            if($row['course']!=NULL){
-                                echo $row['course'];
-
-                            }elseif($row['department']!=NULL){
-                                echo $row['department'];
-                            }
-                        ?>
-                    </td>
-                    <td><?=$row['total_amount'].".00" ?></td>
-                    <td><?=date_format(date_create($row['order_time']), "m:d:Y h:i") ?></td>
-                </tr>
-
-            <?php }while($row = mysqli_fetch_array($sql)); }else{ echo "<h1>Empty</h1>";
-            } ?>
-            </table>
-        </div>
         
         
     </div>

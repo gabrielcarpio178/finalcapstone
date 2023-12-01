@@ -6,7 +6,6 @@ $(document).ready(function () {
   pendingview();
   proceed();
   orderview();
-  // decline();
 
 });
 

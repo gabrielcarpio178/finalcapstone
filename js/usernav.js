@@ -83,7 +83,7 @@ function isnot_active(){
         Swal.fire({
           allowOutsideClick: false,
           title: "Account Deactivated",
-          text: "Hi, Welcome Back! Your account has been Deactivated. Logging in will cancel the deactivation. Are you sure?",
+          text: "Hi, Welcome Back! Your account has been deactivated. Logging in will cancel the deactivation. Are you sure?",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
@@ -92,7 +92,7 @@ function isnot_active(){
           cancelButtonText: "No",
         }).then((result) => {
           if (result.isConfirmed) {
-            deactivate_data(results.user, 'activate', false);
+            deactivate_data(results.user, 'Activate', false);
           }else{
             logout(user_id);
           }
@@ -126,7 +126,7 @@ function deactivate_data(user_id, isActive, islogin){
           Swal.fire({
             position: "center",
             icon: "success",
-            title: `${isActive} success`,
+            title: `${isActive} Success`,
             showConfirmButton: false,
             timer: 1500
           }).then(function(){

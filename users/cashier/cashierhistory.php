@@ -29,7 +29,7 @@
         <div class="d-flex flex-row justify-content-start gap-5">
             <div class="d-flex flex-column gap-2 departmenr-search">
                 <label for="category">
-                    Sort By Category:
+                    Sort By Category
                 </label>
                 <select name="category" id="category" class="form-select category">
                     <option value="all">All</option>
@@ -40,7 +40,7 @@
             </div>
             <div class="d-flex flex-column gap-2 date-search">
                 <label for="date_name">
-                    Date:
+                    Date
                 </label>
                 <input type="date" name="date_name" id="date_name" class="form-control">
             </div>

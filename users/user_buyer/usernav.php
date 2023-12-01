@@ -50,7 +50,7 @@ user-scalable=no">
 
                 <div class="d-flex flex-column p-3 gap-3">
                     
-                    <div class="d-flex flex-row gap-2 btn_content" onclick="deactivate_data('<?=$id ?>', 'deactivate', true)">
+                    <div class="d-flex flex-row gap-2 btn_content" onclick="deactivate_data('<?=$id ?>', 'Deactivate', true)">
                         <i class="fa-solid fa-trash"></i>
                         <div class="text-center">Deactivate Account</div>
                     </div>

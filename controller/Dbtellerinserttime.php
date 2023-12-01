@@ -1,23 +1,21 @@
 <?php
 require('Dbconnection.php');
 session_start();
-// print_r($_POST);
-if(isset($_POST['deadline'])&&isset($_POST['order_date'])){;
+if(isset($_POST['deadline'])&&isset($_POST['order_num'])){;
     $new_datetime = $_POST['deadline'];
-    $order_date = $_POST['order_date'];
-    $id = $_SESSION['id'];
+    $order_num = $_POST['order_num'];
+    $teller_id = $_SESSION['id'];
     try{
-        mysqli_query($connect, "UPDATE `order_tb` set `deadline_time`='$new_datetime', `statues` = 'ACCEPTED', `num_noti` = '0' WHERE order_time = '$order_date' AND `teller_id` = '$id';");
-        echo $new_datetime;
+        mysqli_query($connect, "UPDATE `order_tb` set `deadline_time`='$new_datetime', `statues` = 'ACCEPTED', `num_noti` = '0' WHERE order_num = '$order_num' AND `teller_id` = '$teller_id';");
     }catch(\Throwable $th){
         echo $th;
     }
     
-    $datetime = $_POST['order_date'];
+    $order_num = $_POST['order_num'];
     $teller_id = $_SESSION['id'];
 
     try {
-        $ordersql = mysqli_query($connect, "SELECT order_quantity, order_time, user_id, product_id FROM order_tb WHERE teller_id = '$teller_id' AND order_time = '$datetime';");
+        $ordersql = mysqli_query($connect, "SELECT order_quantity, order_time, user_id, product_id FROM order_tb WHERE teller_id = '$teller_id' AND order_num = '$order_num';");
         $orderrow = mysqli_fetch_assoc($ordersql);    
         
     } catch (\Throwable $th) {
@@ -67,7 +65,7 @@ if(isset($_POST['deadline'])&&isset($_POST['order_date'])){;
     }
 
     try {
-        mysqli_query($connect, "UPDATE `order_tb` SET `statues`='ACCEPTED' WHERE `teller_id`='$teller_id' AND `order_time`='$datetime';");
+        mysqli_query($connect, "UPDATE `order_tb` SET `statues`='ACCEPTED' WHERE `teller_id`='$teller_id' AND order_num = '$order_num';");
     } catch (\Throwable $th) {
         echo $th;
     }

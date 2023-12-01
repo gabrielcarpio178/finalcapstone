@@ -9,29 +9,6 @@ if(($_SESSION['usertype']!="teller")){
 }
 
 $teller_id = $_SESSION['id'];
-
-try {
-    $sql = mysqli_query($connect, "SELECT order_tb.order_time, order_tb.teller_id, order_tb.statues, SUM(order_tb.order_amount) AS total_amount, user_tb.firstname, user_tb.lastname, student_tb.course, personnel_tb.department, order_tb.order_num FROM order_tb INNER JOIN user_tb ON order_tb.user_id = user_tb.user_id LEFT JOIN student_tb ON student_tb.user_id = user_tb.user_id LEFT JOIN personnel_tb ON personnel_tb.user_id = user_tb.user_id WHERE order_tb.teller_id = '$teller_id' AND order_tb.statues IS NULL GROUP BY order_tb.order_num ORDER BY order_tb.order_time DESC;");
-
-    $row = mysqli_fetch_assoc($sql);
-    $num_row = mysqli_num_rows($sql);
-
-    if(!empty($row)){
-        $order_num = $row['order_num'];
-        $order_date = $row['order_time'];
-    }
-
-} catch (\Throwable $th) {
-    echo $th;
-}
-
-try {
-    $sql_accepted = mysqli_query($connect, "SELECT order_tb.order_time, order_tb.teller_id, order_tb.statues, SUM(order_tb.order_amount) AS total_amount, user_tb.firstname, user_tb.lastname, student_tb.course, personnel_tb.department, order_tb.order_num FROM order_tb INNER JOIN user_tb ON order_tb.user_id = user_tb.user_id LEFT JOIN student_tb ON student_tb.user_id = user_tb.user_id LEFT JOIN personnel_tb ON personnel_tb.user_id = user_tb.user_id WHERE order_tb.teller_id = '$teller_id' AND order_tb.statues = 'ACCEPTED' GROUP BY order_tb.order_num ORDER BY order_tb.order_time DESC;");
-    $row_accepted = mysqli_num_rows($sql_accepted);
-} catch (\Throwable $th) {
-    echo $th;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,26 +32,28 @@ try {
             <b class="order-label">ORDER</b> 
         </div>  
 
-        <div class="d-flex flex-row justify-content-start mt-3">
-            <div class="d-flex flex-row justify-content-center fucos-info w-25 info-type" id="btnpending">
-                <div id="pending-student">
-                    PENDING
-                </div>
-                <div class="pending-number number"><?=$num_row ?></div>
+        <div class="d-flex flex-row gap-4 mt-5 btn_content">
+            <div class="pending-info">
+                <div class="pending-count" id="count_pending">1</div>
+                <button class="btn btn-outline-primary" onclick="getContentDate('pending');">Pending<span class="pending-count">1</sp></button>
             </div>
-
-            <div class="d-flex flex-row justify-content-center w-25 info-type" id="btnaccept">
-                <div id="approved-student">
-                    APPROVED
-                </div>
-                <div class="approved-number number"><?=$row_accepted ?></div>
+            <div class="accepted-info">
+                <div class="accepted-count" id="count_accepted">1</div>
+                <button class="btn btn-outline-primary" onclick="getContentDate('accepted');">Accepted</button>
             </div>
-            
         </div>
-        
-        
+
+        <div class="d-flex flex-column gap-2 table-content mt-4 p-3" id="table_content">
+
+            
+
+        </div>
+
+
     </div>
 
+    <input type="hidden" data-bs-toggle="modal" data-bs-target="#exampleModal" id="order_info" >
+    <input type="hidden" data-bs-toggle="modal" data-bs-target="#procced_modal" id="proceed" >
 
     <!-- order summary -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,12 +65,30 @@ try {
             </div>
             <div class="modal-body">
 
-                <div class="table-order"></div>
+                <div class="table-order">
+                    <div class="order-content">
+                        Order
+                    </div>
+                    <div class="table-content">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body-data" id="table_body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 
             </div>
 
             <div class="d-flex flex-row justify-content-center modal-footer">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insert_time">Accept</button>
+                <button type="button" class="btn btn-success accent_btn" data-bs-toggle="modal" data-bs-target="#insert_time">Accept</button>
                 <button type="button" class="btn btn-danger" id="decline_order">Decline</button>
             </div>
 
@@ -111,8 +108,8 @@ try {
             <form id="submitdeadline">
                 <div class="modal-body">
 
-                    <input type="hidden" value="<?=$order_num ?>" class="order_num" id="order_num">
-                    <input type="hidden" value="<?=$order_date ?>" id="order_date" class="order_date">
+                    <input type="hidden" value="" class="order_num" id="order_num">
+                    <input type="hidden" value="" id="order_date" class="order_date">
                     <div class="d-flex flex-row align-items-center">
                         <input type="number" class="form-control" id="inputedtime" name="inputedtime" placeholder="Insert Time"
                         />    

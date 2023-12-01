@@ -1,44 +1,161 @@
-$("#nav").load("storenav.php");
-$(document).ready(function () {
-  
-  submittime();
-  acceptedview();
-  pendingview();
-  proceed();
-  orderview();
-
+$(document).ready(function(){
+  $("#nav").load('storenav.php'); 
+  getContentDate('pending');
 });
 
-let i = false;
+function getContentDate(type_info){
+  $.ajax({
+    url: '../../controller/DbtellerOrder.php',
+    type: 'POST',
+    data: {type_info : type_info},
+    cache: false,
+    success: function(res){
+      var result = JSON.parse(res);
+      table_info = '';
+      for(let i = 0; i<result.length; i++){
+        var date = new Date((result[i]).order_time);
+        var mounth = date.getMonth();
+        var day = date.getDate();
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var monthFull = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "June",
+        "July",
+        "Aug",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Dec",
+        ];
+        var ampm = hour >= 12 ? 'PM' : 'AM';
+        hour = hour % 12;
+        hour = hour ? hour : 12;
+        min = min < 10 ? '0'+min : min;
+        var strTime = hour + ':' + min + ampm;
+        var insert_date = `${monthFull[mounth]}-${day}-${year} ${strTime}`;
+        var amount = `${(result[i]).total_amount}.00`;
+        var parts = amount.toString().split(".");
+        var num = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
 
-function acceptedview(){
-  $("#btnaccept").on('click', function(){
-    $(".info-table").load("../../controller/Dbtelleracceptedtable.php");
-    if(i==false){
-      $("#btnaccept").addClass("fucos-info");
-      $("#btnpending").removeClass("fucos-info");
-      i = true;
+        if((result[i]).order_set_time!='not_set'){
+          var date = new Date((result[i]).order_set_time);
+          var mounth = date.getMonth();
+          var day = date.getDate();
+          var year = date.getFullYear();
+          var hour = date.getHours();
+          var min = date.getMinutes();
+          var monthFull = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "June",
+          "July",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+          ];
+          var ampm = hour >= 12 ? 'PM' : 'AM';
+          hour = hour % 12;
+          hour = hour ? hour : 12;
+          min = min < 10 ? '0'+min : min;
+          var deadline_time = " Deadline-time: "+hour + ':' + min + ampm;
+        }else{
+          var deadline_time = "";
+        }
+        table_info += `
+        <div class="d-flex flex-row align-items-center justify-content-between content_data" onclick="getorder_numModal('${(result[i]).order_num}')">
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-row">
+              <b>
+                ${(result[i]).name}
+              </b>
+              <div>
+                , ${(result[i]).department}
+              </div>
+            </div>
+            <div>
+              ${insert_date} ${deadline_time}
+            </div>
+          </div>
+          <div>
+            ₱${num}
+          </div>
+        </div>
+        `;
+      }
+      $("#table_content").html(table_info);
     }
-  });
+  })
 }
 
-function pendingview(){
-  $("#btnpending").on('click', function(){
-    $(".info-table").load("../../controller/Dbtellerpendingtable.php");
-    if(i==true){
-      $("#btnpending").addClass("fucos-info");
-      $("#btnaccept").removeClass("fucos-info");
-      i = false;
-    }
-  });
+function getorder_numModal(order_num){
+  $.ajax({
+    url: '../../controller/DbtellerGetOrder.php',
+    type: 'POST',
+    data: {
+      order_num : order_num
+    },
+    cache: false,
+    success: function(res){
+      var data_result = JSON.parse(res);
+      table_order = "";
+      let total_amount = parseInt(0);
+      let total_qty = parseInt(0);
+      for(let i = 0; i<data_result.length; i++){
+        total_amount += parseInt((data_result[i]).order_amount);
+        total_qty += parseInt((data_result[i]).order_quantity);
+        table_order += `
+          <tr>
+            <td>
+              <div class="d-flex flex-column">
+                <b>${(data_result[i]).orderproduct_name}</b>
+                <p>${(data_result[i]).order_productcategory}</p>
+              </div>
+            </td>
+            <td>
+              <b>${(data_result[i]).order_amount}<b>
+            </td>
+            <td>
+              <b>${(data_result[i]).order_quantity}<b>
+            </td>
+          </tr>
+        `;
+      }
+      table_order += `
+      <tr>
+        <td class="d-flex flex-column">
+          <b>TOTAL</b>
+        </td>
+        <td>
+          <b>${total_amount}<b>
+        </td>
+        <td>
+          <b>${total_qty}<b>
+        </td>
+      </tr>
+      `;
+      insert_date(order_num);
+      $("#table_body").html(table_order);
+      $("#order_info").click();
+    } 
+  })
+  
 }
 
-function submittime() {
+function insert_date(order_num){
   $("#submitdeadline").on("submit", function (e) {
     e.preventDefault();
-    var order_num = $("#order_num").val();
     var inserted_time = $("#inputedtime").val();
-    var order_date = $("#order_date").val();
     var current_time = moment().format('YYYY-MM-DD HH:mm:ss');
     var deadline = moment(current_time, "YYYY-MM-DD HH:mm:ss").add(inserted_time, 'minutes').format('YYYY-MM-DD HH:mm:ss');
     if(inserted_time!=""){
@@ -47,214 +164,13 @@ function submittime() {
         type: "POST",
         data: {
           deadline: deadline,
-          order_date: order_date
+          order_num : order_num
         },
         cache: false,
         success: function (res) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: "Deadline Time And Date " + res,
-            showConfirmButton: false,
-            timer: 1000
-          }).then(function () {
-            $(".info-table").load("../../controller/Dbtellerpendingtable.php");
-            $("#btnpending").addClass("fucos-info");
-            $("#btnaccept").removeClass("fucos-info");
-            i = false;
-            var pending = $(".pending-number").text();
-            var approved = parseInt($(".approved-number").text());
-            $(".pending-number").text(pending-1);
-            $(".approved-number").text(approved+1);
-            $("#close_modal_summary").click();
-            $("#inputedtime").val("");
-          });
+          console.log(res);
         },
       });
-    }else{
-      Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: "Please input",
-        showConfirmButton: false,
-        timer: 1000
-      })
     }
-  });
-
-}
-
-function orderview(){
-
-  $(".info").on('click', function(){
-
-    var order_num = $(this).attr('id');
-    $.ajax({
-      url: "../../controller/Dbshoworder_info.php",
-      type: "POST",
-      data: {
-        order_num : order_num
-      },
-      cache: false,
-      success: function (res) {
-      $(".table-order").html(res);
-      },
-    });
-
-    decline(order_num);
-    declinereserve(order_num);
-
   })
-
-}
-
-function viewaccepted(order_num){
-    $.ajax({
-      url: "../../controller/Dbshoworder_info.php",
-      type: "POST",
-      data: {
-        order_num : order_num
-      },
-      cache: false,
-      success: function (res) {
-        $(".procced_info").html(res);
-      },
-    });
-
-    decline(order_num);
-    declinereserve(order_num);
-
-}
-
-function proceed() {
-
-  $("#proceed").on("click", function(){
-    var order_ref = $(".order_number").text();
-    Swal.fire({
-      title: "Are you sure?",
-      text: "This order is receive to a customer?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
-      cancelButtonText: "No",
-    }).then((result) => {
-      if (result.isConfirmed) {
-  
-        $.ajax({
-          url: "../../controller/Dbtellerproceed.php",
-          type: "POST",
-          data: {
-            order_ref: order_ref,
-          },
-          cache: false,
-          success: function (res) {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: "Order Proceed!",
-                showConfirmButton: false,
-                timer: 1000
-            }).then(function () {
-                $(".info-table").load("../../controller/Dbtelleracceptedtable.php");       
-                $("#btnaccept").addClass("fucos-info");
-                $("#btnpending").removeClass("fucos-info");
-                i = true;
-                var approved = $(".approved-number").text();
-                $(".approved-number").text(approved-1);
-                $("#close_modal").click();
-            });
-          },
-        });
-
-      }
-    });
-  })
-  
-}
-function decline(order_num) {
-
-  $("#decline_order").on("click", function(){
-      Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to delete this order!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.ajax({
-          url: "../../controller/Dbteller_delete_order.php",
-          type: "POST",
-          data: { order_num: order_num },
-          cache: false,
-          success: function (res) {
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: "Order has been deleted!",
-              showConfirmButton: false,
-              timer: 1000
-            }).then(function () {
-              $(".info-table").load("../../controller/Dbtellerpendingtable.php");
-              $("#btnpending").addClass("fucos-info");
-              $("#btnaccept").removeClass("fucos-info");
-              i = false;
-              var pending = $(".pending-number").text();
-              $(".pending-number").text(pending-1);
-              $("#close_modal_summary").click();
-              window.location.reload();
-            });
-          },
-        });
-      }
-    });
-
-  });
-
-
-  
-}
-
-function declinereserve(order_num) {
-
-  $("#decline_reserve").on("click", function(){
-
-    $.ajax({
-        url: "../../controller/Dbtellerdeleteserve.php",
-        type: "POST",
-        data: {
-          order_num: order_num,
-        },
-        cache: false,
-        success: function (res) {
-          if (res == "success") {
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: "Order Pending",
-              showConfirmButton: false,
-              timer: 1000
-            }).then(function () {
-              
-              $(".info-table").load("../../controller/Dbtelleracceptedtable.php");       
-              $("#btnaccept").addClass("fucos-info");
-              $("#btnpending").removeClass("fucos-info");
-              i = true;
-              var pending = parseInt($(".pending-number").text());
-              var approved = $(".approved-number").text();
-              $(".pending-number").text(pending+1);
-              $(".approved-number").text(approved-1);
-              $("#close_modal").click();
-
-            });
-          }
-        },
-      });
-
-  });
-
 }

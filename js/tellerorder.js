@@ -98,7 +98,7 @@ function orderview(){
       },
       cache: false,
       success: function (res) {
-       $(".table-order").html(res);
+      $(".table-order").html(res);
       },
     });
 

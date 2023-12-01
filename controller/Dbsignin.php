@@ -40,11 +40,13 @@ try{
 
         }
         $user_id_active = $row['user_id']; 
-      try {
-        mysqli_query($connect, "UPDATE `user_tb` SET `statues`='active' WHERE `user_id` = '$user_id_active';");
-      } catch (\Throwable $th) {
-        echo $th;
-      }     
+        if($row['statues']=='not-active'){
+          try {
+            mysqli_query($connect, "UPDATE `user_tb` SET `statues`='active' WHERE `user_id` = '$user_id_active';");
+          } catch (\Throwable $th) {
+            echo $th;
+          } 
+        }
     }
       //admin
       else{

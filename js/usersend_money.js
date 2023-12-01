@@ -290,10 +290,11 @@ function getbalanceinputed(inputed_balance, sendToId){
                         timer: 1000
                     }).then(function(){
                         input_amount(inputed_balance, sendToId);
-                        $("#close_modal").click();
-                        getbalance();
-                        $("#input_balance").attr("readonly", true);
-                        $("#send_btn").prop("disabled", "disabled");
+                        // $("#close_modal").click();
+                        // getbalance();
+                        // $("#input_balance").attr("readonly", true);
+                        // $("#send_btn").prop("disabled", "disabled");
+                        window.location="usersend_money.php";
                     })
                     
                 }else{

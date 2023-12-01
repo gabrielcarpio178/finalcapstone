@@ -190,6 +190,9 @@ ul {
     font-size: 20px;
   }
 
+  .list-inline li{
+    align-items: center;
+  }
   .list-inline li:hover {
     background: #ffffff4f;
     width: 251px;

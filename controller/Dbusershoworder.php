@@ -5,7 +5,7 @@ if(isset($_POST['user_id'])&&isset($_POST['time'])){
     $time = $_POST['time'];
     $user_id = $_POST['user_id'];
     try{
-        $sql = mysqli_query($connect, "SELECT `orderproduct_name`, `order_productcategory`, `order_time`, `deadline_time`, `order_amount`, `order_quantity`, `statues` FROM `order_tb` WHERE `user_id` = '$user_id' AND `order_time` = '$time' AND `teller_id` = '$teller_id';");
+        $sql = mysqli_query($connect, "SELECT `orderproduct_name`, `order_productcategory`, `order_time`, `deadline_time`, `order_amount`, `order_quantity`, `statues`, `order_num` FROM `order_tb` WHERE `user_id` = '$user_id' AND `order_time` = '$time' AND `teller_id` = '$teller_id';");
         $order_item = mysqli_fetch_assoc($sql);
         
     }catch(\Throwable $th){
@@ -54,11 +54,3 @@ if(isset($_POST['user_id'])&&isset($_POST['time'])){
             
     </table>
     
-<div class="table-info">
-    
-    
-    <center>
-        <button class="btn btn-primary" <?=($statues==NULL||$statues=='ACCEPTED')? 'disabled= "disabled" ':''?>>Order Received</button>
-    </center>                       
-    
-</div>

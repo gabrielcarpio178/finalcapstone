@@ -17,6 +17,7 @@ user-scalable=no">
 <link rel="stylesheet" href="../../css/interfont.css">
 </head>
 <body>  
+    <input type="hidden" value="<?=$id ?>" id="user_id">
     <div class="loader"><img src="../../image/loader.gif"></div>  
     <div id="sidebar">
         
@@ -30,7 +31,7 @@ user-scalable=no">
 
             <li id="history"  class="select_2"><a href="#"><i class="fa-solid fa-clock-rotate-left"></i><span>History</span></a></li> 
 
-            <!-- <li id="setting"  class ="select_3"><a href="#" data-bs-toggle="modal" data-bs-target="#procced_modal"><i class="fa-solid fa-gear"></i><span>Setting</span></a></li>          -->
+            <li id="setting"  class ="select_3"><a href="#" data-bs-toggle="modal" data-bs-target="#procced_modal"><i class="fa-solid fa-gear"></i><span>Setting</span></a></li>         
 
             <li id="logout" class ="select_4"><a href="#"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a></li>                  
         </ul>
@@ -49,7 +50,7 @@ user-scalable=no">
 
                 <div class="d-flex flex-column p-3 gap-3">
                     
-                    <div class="d-flex flex-row gap-2 btn_content" onclick="deactivate(<?=$id ?>)">
+                    <div class="d-flex flex-row gap-2 btn_content" onclick="deactivate_data('<?=$id ?>', 'deactivate', true)">
                         <i class="fa-solid fa-trash"></i>
                         <div class="text-center">Deactivate Account</div>
                     </div>

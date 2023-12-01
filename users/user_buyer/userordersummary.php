@@ -10,7 +10,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
     $id = $_SESSION['id'];
     $firstname = $_SESSION['firstname'];
     try{
-        $sql = mysqli_query($connect, "SELECT order_tb.user_id, order_tb.teller_id, order_tb.order_time, telleruser_tb.store_name FROM order_tb INNER JOIN telleruser_tb ON order_tb.teller_id = telleruser_tb.teller_id WHERE `user_id` = '$id' GROUP BY `teller_id`, `order_time` ORDER BY `order_time` DESC");
+        $sql = mysqli_query($connect, "SELECT order_tb.user_id, order_tb.teller_id, order_tb.order_time, telleruser_tb.store_name, order_tb.statues, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON order_tb.teller_id = telleruser_tb.teller_id WHERE `user_id` = '$id' AND (order_tb.statues IS NULL OR order_tb.statues = 'ACCEPTED') GROUP BY order_tb.order_num ORDER BY order_tb.order_id DESC");
     }catch(\Throwable $th){
         echo $th;
     }
@@ -147,13 +147,18 @@ user-scalable=no">
                 
                 <div class="d-flex flex-row justify-content-between">
                     <div class="fw-bold myorder">
-                         ORDER
+                        ORDER
                     </div> 
                     <div class="d-flex flex-row justify-content-center profile-name">                        
                         <img src="<?php echo ($_SESSION['image']!=NULL)?"profile/".$_SESSION['image']:"../../image/avatar.jpg" ?>">
                         <div class="name"><?=$firstname ?></div>                        
                     </div>                                      
                 </div>
+                <?php
+                    if(mysqli_num_rows($sql)==0){
+                        echo "No Record";
+                    }
+                ?>
                 <?php $i=1; while($sqlinfo=mysqli_fetch_array($sql)){ ?>
                 <div class="table-data">
                     <div class="d-flex flex-row justify-content-between  mt-lg-5 table-head" onclick="table_info('<?=$sqlinfo['order_time']; ?>', '<?=$id; ?>', '<?=$i ?>', <?=$sqlinfo['teller_id'] ?>)" >
@@ -164,8 +169,16 @@ user-scalable=no">
                 </div>
                 
                 <div class="table-order_<?=$i ?> table-order">
+                    <div class="content-table_<?=$i ?>">
 
+                    </div>
+                    <div class="table-info">
+                    <center>
+                        <button class="btn btn-primary" <?=($sqlinfo['statues']!='ACCEPTED')? 'disabled= "disabled" ':''?> onclick="receiverOrder('<?=$sqlinfo['order_num'] ?>', '<?=$i ?>')">Order Received</button>
+                    </center>        
+                    </div>
                 </div>
+                
                 <?php $i++; } ?>
                 
             </div>
@@ -206,7 +219,7 @@ user-scalable=no">
                 },
                 cache: false,
                 success: function(res){              
-                    $(".table-order_"+i).html(res);                         
+                    $(".content-table_"+i).html(res);                         
                 }                
             });
             $(".table-order_"+i).slideDown("slow" , function(){
@@ -216,7 +229,38 @@ user-scalable=no">
         }      
 
     }
-    
+    function receiverOrder(order_num, i){
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Order received",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, received it!"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '../../controller/DbuserReceiver_order.php',
+                    type: 'POST',
+                    data: {order_num : order_num},
+                    cache: false,
+                    success: function(res){
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Order Reveicer",
+                            showConfirmButton: false,
+                            timer: 1000
+                        }).then(function(){
+                            window.location = "userordersummary.php"
+                        });
+                    }
+                });
+            }
+        });
+
+    }
 </script>
 
 </html>

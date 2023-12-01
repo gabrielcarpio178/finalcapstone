@@ -32,12 +32,10 @@ user-scalable=no">
             <ul class="list-inline">
                 <li class="categories" id="dashboard" onclick="window.location = 'admindashboard.php'"><i class="fa-solid fa-chart-bar"></i><div class="label-text">Dashboard</div></li>
                 <li class="categories" id="btn_post"><i class="fa-solid fa-bullhorn"></i>Post Announcement</li>
-                <li id="usermanagement">
-                    <div class="categories" id="user_management">
-                        <i class="fas fa-users"></i>
-                        <div class="label-text">
-                            User management 
-                        </div>
+                <li class="categories" id="user_management">
+                    <i class="fas fa-users"></i>
+                    <div class="label-text">
+                        User management 
                     </div>
                 </li>
                 <li class="categories" id="back_up" onclick="window.location = 'adminback_up.php'"><i class="fa-solid fa-database"></i><div class="label-text">Back Up</div></li>

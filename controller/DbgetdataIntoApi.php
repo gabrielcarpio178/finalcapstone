@@ -80,7 +80,7 @@ else{
             }
             
             try {
-                $sql = mysqli_query($connect, "SELECT user_id, email, usertype, gender FROM user_tb WHERE password='$passwordmd';");
+                $sql = mysqli_query($connect, "SELECT user_id, email, usertype, gender, firstname FROM user_tb WHERE password='$passwordmd';");
                 $row = mysqli_fetch_assoc($sql);
             } catch (\Throwable $th) {
                 echo $th;
@@ -98,6 +98,7 @@ else{
             $_SESSION['id']=$id;
             $_SESSION['usertype'] = $row['usertype'];
             $_SESSION['gender'] = $row['gender'];
+            $_SESSION['firstname'] = $row['firstname'];
             echo "login";
         }
         else if($decoded->user_group == "REGISTRAR"){

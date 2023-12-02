@@ -34,12 +34,12 @@ $teller_id = $_SESSION['id'];
 
         <div class="d-flex flex-row gap-4 mt-5 btn_content">
             <div class="pending-info">
-                <div class="pending-count" id="count_pending">1</div>
-                <button class="btn btn-outline-primary" onclick="getContentDate('pending');">Pending<span class="pending-count">1</sp></button>
+                <div class="pending-count" id="count_pending"></div>
+                <button class="btn btn-outline-primary" onclick="getContentData('pending');">Pending</button>
             </div>
             <div class="accepted-info">
-                <div class="accepted-count" id="count_accepted">1</div>
-                <button class="btn btn-outline-primary" onclick="getContentDate('accepted');">Accepted</button>
+                <div class="accepted-count" id="count_accepted"></div>
+                <button class="btn btn-outline-primary" onclick="getContentData('accepted');">Accepted</button>
             </div>
         </div>
 
@@ -69,27 +69,16 @@ $teller_id = $_SESSION['id'];
                     <div class="order-content">
                         Order
                     </div>
-                    <div class="table-content">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-body-data" id="table_body">
-
-                            </tbody>
-                        </table>
+                    <div id="table-content">
+                        
                     </div>
                 </div>
                 
             </div>
 
             <div class="d-flex flex-row justify-content-center modal-footer">
-                <button type="button" class="btn btn-success accent_btn" data-bs-toggle="modal" data-bs-target="#insert_time">Accept</button>
-                <button type="button" class="btn btn-danger" id="decline_order">Decline</button>
+                <button type="button" class="btn btn-success accent_btn"></button>
+                <button type="button" class="btn btn-danger decline">Decline</button>
             </div>
 
             </div>
@@ -103,7 +92,7 @@ $teller_id = $_SESSION['id'];
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Order Summary</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close_time"></button>
             </div>
             <form id="submitdeadline">
                 <div class="modal-body">
@@ -123,29 +112,6 @@ $teller_id = $_SESSION['id'];
                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- proceed -->
-    <div class="modal fade" id="procced_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Order Summary</h5>
-                <button type="button" class="btn-close" id="close_modal" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="procced_info"></div>
-                
-            </div>
-
-            <div class="d-flex flex-row justify-content-center modal-footer">
-                <button type="button" class="btn btn-success" id="proceed">Proceed</button>
-                <button type="button" class="btn btn-danger" id="decline_reserve">Decline</button>
-            </div>
-
             </div>
         </div>
     </div>

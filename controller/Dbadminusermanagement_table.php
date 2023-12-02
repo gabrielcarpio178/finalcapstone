@@ -1,201 +1,42 @@
 <?php
 require('Dbconnection.php');
-if(isset($_POST['category'])&&isset($_POST['usertype'])&&isset($_POST['add_row'])&&isset($_POST['address'])&&isset($_POST['page'])){
+if(isset($_POST['category'])&&isset($_POST['usertype'])&&isset($_POST['address'])&&isset($_POST['search'])){
     $category = $_POST['category'];
     $usertype = $_POST['usertype'];
-    $num_row = $_POST['add_row'];
     $address = $_POST['address'];
-    $page = $_POST['page'];
-    if($category!='teller'){
-        
-        if($page==0){
-            $offset = 0;
-        }else{
-            $offset = ($page-1)*$num_row;
-        }
-        $query = "SELECT user_tb.user_id, user_tb.firstname, user_tb.lastname, user_tb.email, user_tb.phonenumber, user_tb.address, student_tb.course, personnel_tb.department, user_tb.usertype FROM user_tb LEFT JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN personnel_tb ON user_tb.user_id = personnel_tb.user_id";
-        $limit = " LIMIT ".$offset." ,".$num_row;
-        $sql = $query." LIMIT ".$offset.",".$num_row;
+    $search = $_POST['search'];
+    if($usertype = 'user_buyer'){
 
-        if($usertype=='student'){
-            $table = " WHERE student_tb.course = '";
-        }elseif($usertype=='personnel'){
-            $table = " WHERE personnel_tb.department = '";
-        }
-
-        if($category == 'All'&&$address=='ALL'){
-            $sql_num = $query;
-            $sql = $query."".$limit;
-        }elseif($category == 'All'&&$address!='ALL'){
-            $sql_num = $query." WHERE user_tb.address = '".$address."'";
-            $sql = $query." WHERE user_tb.address = '".$address."'".$limit;
+        $category_cot = ($category!='all')?" WHERE (student_tb.course = '$category' OR personnel_tb.department = '$category')":"";
+        if($category=='all'){
+            $address_cot = ($address!='all')?" WHERE user_tb.address = '$address'":"";
         }else{
-            $sql = $query.$table.$category."'".$limit;
+            $address_cot = ($address!='all')?" AND user_tb.address = '$address'":"";
+        }
+        if($category=='all'&&$address=='all'){
+            $search_info = ($search!="")?" WHERE user_tb.firstname LIKE '$search%' OR user_tb.lastname LIKE '$search%'":"";
+        }else{
+            $search_info = ($search!="")?" AND (user_tb.firstname LIKE '$search%' OR user_tb.lastname LIKE '$search%')":"";
         }
         
-        if($address == 'ALL'){
-            $address = "".$limit;
-            $address_num = "";
-        }else{
-            $address = " AND user_tb.address = '".$_POST['address']."'".$limit;
-            $address_num = " AND user_tb.address = '".$_POST['address']."'";
-        }
+        $query = "SELECT user_tb.user_id, user_tb.firstname, user_tb.lastname, user_tb.email, user_tb.phonenumber, user_tb.address, student_tb.course, personnel_tb.department, user_tb.usertype FROM user_tb LEFT JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN personnel_tb ON user_tb.user_id = personnel_tb.user_id".$category_cot.$address_cot.$search_info;
 
-        if($category != 'All'){
-            $sql_num = $query.$table.$category."'".$address_num;
-            $sql = $query.$table.$category."'".$address;
-            
-        }elseif($address == 'ALL'&&!isset($table)){
-            $sql_num = $query."'".$category.$address_num;
-            $sql = $query."'".$category.$address;
-        }elseif($address == 'ALL'&&isset($table)){
-            $sql_num = $query.$table.$category."'".$address_num;
-            $sql = $query.$table.$category."'".$address;
-        }
-            
         try {
-            $sql_row = mysqli_query($connect, $sql);
+            $sql = mysqli_query($connect, $query);
+            $array_data = array();
+            while($row = mysqli_fetch_assoc($sql)){
+                if($row['course']==NULL){
+                    $department = $row['department'];
+                }else{
+                    $department = $row['course'];
+                }
+                $array_data[] = array("name"=>$row['firstname']." ".$row['lastname'], "email"=>$row['email'], "phonenumber"=>$row['phonenumber'], "address"=>$row['address'], "department"=>$department, "user_id"=>$row['user_id']);
+            }
+            print_r(json_encode($array_data));
         } catch (\Throwable $th) {
             echo $th;
         }
 
-        try {
-            $sql_nums = mysqli_query($connect, $sql_num);
-        } catch (\Throwable $th) {
-            echo $th;
-        } 
-
-        $data_num = mysqli_num_rows($sql_nums);
-        $page_num = ceil($data_num/$num_row);
-
-$count = mysqli_num_rows($sql_row);
-
-    if($count>0){
-?>
-
-
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th scope="col">Department</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone number</th>
-            <th scope="col">Address</th>
-            <th scope="col">Reset Password</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-    while($row = mysqli_fetch_assoc($sql_row)){
-    ?>
-        <tr>
-            <td><?php echo ($row['usertype']=='student')?$row['course']: $row['department']?></td>
-            <td><?=ucfirst($row['firstname'])." ".ucfirst($row['lastname']) ?></td>
-            <td><?=$row['email'] ?></td>
-            <td><?="0".$row['phonenumber'] ?></td>
-            <td class="address_class"><?php echo ($row['address']=="bago")?ucfirst($row['address'])." City": ucfirst($row['address']) ?></td>
-            <td class="action" onclick="edit('<?=$row['user_id'] ?>', 'buyer')" ><i class="fas fa-edit" style="#282828de"></i></td>
-        </tr>
-    <?php } }else{ ?>
-        <p>No Record</p>
-        <?php } ?>
-    </tbody>
-</table>
-
-<ul class="pagination">
-    <li class="page-item" >
-        <a class="page-link" href="javascript:void(0)" <?php if($page == 1){ echo "disabled"; }else{ ?> onclick = "page_num('<?=$page-1 ?>');" <?php } ?>>&laquo;</a>
-    </li>
-    <?php for($i = 1; $i <=$page_num; $i++){ ?>
-        <li class="page-item <?=($i==$page)? "active": "" ?>">
-            <a class="page-link" href="javascript:void(0)" onclick="page_num(<?=$i ?>)" ><?=$i ?></a>
-        </li>
-    <?php } ?>
-    <li class="page-item">
-        <a class="page-link" href="javascript:void(0)" <?php if($page == $page_num){ echo "disabled"; }else{ ?> onclick = "page_num('<?=$page+1 ?>');" <?php } ?>>&raquo;</a>
-    </li>
-</ul>
-
-<?php 
-    }else{
-        
-
-        $query = "SELECT `teller_id`, `firstname_teller`, `lastname_teller`, `phonenumber_teller`, `store_name`, `teller_gender`, `teller_qr`, `tellerqr_image`, `user_category` FROM `telleruser_tb` ORDER BY `teller_id` DESC";
-
-        if($page == 0){
-            $offset = 0;
-        }else{
-            $offset = ($page-1)*$num_row;
-        }
-        $sql = $query." LIMIT ".$offset.",".$num_row;
-
-        try {
-            $teller_sql = mysqli_query($connect, $sql);
-        } catch (\Throwable $th) {
-            echo $th;
-        }
-
-        try {
-            $teller_num = mysqli_query($connect, $query);
-        } catch (\Throwable $th) {
-            echo $th;
-        }
-
-        $data_num = mysqli_num_rows($teller_num);
-        $page_num = ceil($data_num/$num_row);
-        
-
-
-        $count = mysqli_num_rows($teller_sql);
-        if($count>0){
-?>
-
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th scope="col">Store Name</th>
-            <th scope="col">Name</th>
-            <th scope="col">Phone number</th>
-            <th scope="col">View QR</th>
-            <th scope="col">Reset Password</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-    while($row = mysqli_fetch_assoc($teller_sql)){
-    ?>
-        <tr>
-            <td><?=ucfirst($row['store_name']) ?></td>
-            <td><?=ucfirst($row['firstname_teller'])." ".ucfirst($row['lastname_teller']) ?></td>
-            <td><?=$row['phonenumber_teller'] ?></td>
-            <td class="action" onclick="viewqr('<?=$row['teller_id'] ?>');"><i class="fa-solid fa-eye"></i></td>
-            <td class="action" onclick="edit('<?=$row['teller_id'] ?>', 'teller')"><i class="fas fa-edit" style="#282828de"></i></td>
-        </tr>
-    <?php } }else{ ?>
-        <p>No Record</p>
-        <?php } ?>
-    </tbody>
-</table>
-
-<ul class="pagination">
-    <li class="page-item" >
-        <a class="page-link" href="javascript:void(0)" <?php if($page == 1){ echo "disabled"; }else{ ?> onclick = "page_num('<?=$page-1 ?>');" <?php } ?>>&laquo;</a>
-    </li>
-    <?php for($i = 1; $i <=$page_num; $i++){ ?>
-        <li class="page-item <?=($i==$page)? "active": "" ?>">
-            <a class="page-link" href="javascript:void(0)" onclick="page_num(<?=$i ?>)" ><?=$i ?></a>
-        </li>
-    <?php } ?>
-    <li class="page-item">
-        <a class="page-link" href="javascript:void(0)" <?php if($page == $page_num){ echo "disabled"; }else{ ?> onclick = "page_num('<?=$page+1 ?>');" <?php } ?>>&raquo;</a>
-    </li>
-</ul>
-
-<?php   
-        }    
     }
-
-
-
+}
 ?>

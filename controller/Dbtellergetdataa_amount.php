@@ -29,7 +29,7 @@ if(isset($_POST['teller_id'])){
 
     //number of unpaid
     try {
-        $sql_unpaid = mysqli_query($connect, "SELECT order_num FROM order_tb WHERE teller_id = '$teller_id' AND statues='ACCEPTED' GROUP BY order_num;");
+        $sql_unpaid = mysqli_query($connect, "SELECT order_num FROM order_tb WHERE teller_id = '$teller_id' AND statues='ACCEPTED' AND CAST(order_time AS DATE) = CAST(NOW() AS DATE) GROUP BY order_num;");
         $unpaid = mysqli_num_rows($sql_unpaid);
     } catch (\Throwable $th) {
         echo $th;
@@ -37,14 +37,15 @@ if(isset($_POST['teller_id'])){
 
     //number of pending
     try {
-        $sql_pending = mysqli_query($connect, "SELECT order_num FROM order_tb WHERE teller_id = '$teller_id' AND statues IS NULL GROUP BY order_num;");
+        $sql_pending = mysqli_query($connect, "SELECT order_num FROM order_tb WHERE teller_id = '$teller_id' AND statues IS NULL AND CAST(order_time AS DATE) = CAST(NOW() AS DATE) GROUP BY order_num;");
         $pending = mysqli_num_rows($sql_pending);
     } catch (\Throwable $th) {
         echo $th;
     };
 
+    //order success
     try {
-        $sql_proceed = mysqli_query($connect, "SELECT order_num FROM order_tb WHERE teller_id = '$teller_id' AND statues='PROCEED' GROUP BY order_num;");
+        $sql_proceed = mysqli_query($connect, "SELECT order_num FROM order_tb WHERE teller_id = '$teller_id' AND statues='PROCEED' AND CAST(order_time AS DATE) = CAST(NOW() AS DATE) GROUP BY order_num;");
         $proceed = mysqli_num_rows($sql_proceed);
     } catch (\Throwable $th) {
         echo $th;

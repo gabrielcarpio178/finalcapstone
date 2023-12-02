@@ -1,6 +1,6 @@
-/**{
+/* *{
             outline: 1px solid;
-        }*/
+        } */
         .announcement {
           background-color: #2a325441;
           border-radius: 15px/15px;
@@ -17,10 +17,6 @@
           border-radius: 15px/15px;
           box-shadow: 0 1px 1px 1px #616161;
           cursor: pointer;
-        }
-        .menu:hover {
-          transform: scale(1.1) translateY(3px);
-          transition: 0.3s;
         }
         .menu p {
           margin-top: 5px;
@@ -57,7 +53,59 @@
           font-size: 2em;
           font-weight: bold;
         }
-        
+        .count_noti{
+          position: relative;
+        }
+        .num_noti{
+          position: absolute;
+          color: white;
+          background-color: red;
+          border-radius: 50%;
+          width: 80%;
+          text-align: center;
+          left: 10px;
+          bottom: 15px;
+        }
+        #btn_bell{
+          font-size: 2em;
+          cursor: pointer;
+        }
+        .header-content{
+          position: relative;
+        }
+        .noti-content{
+          position: absolute;
+          height: 60vh;
+          background-color: white;
+          right: 0px;
+          top: 35px;
+          width: 50%;
+          box-shadow: 0 1px 1px 1px #616161d3;
+        }
+        .btn-clear{
+          background-color: rgba(0, 0, 0, 0.199);
+          box-shadow: 0 1px 1px 1px #616161d3;
+          cursor: pointer;
+          padding: 5px 0px;
+        }
+        .noti-info{
+          overflow-x: hidden;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+        .noti_content_info{
+          cursor: pointer;
+        }
+        .noti_content_info img{
+          width: 10%;
+          height: 5vh;
+          border-radius: 50%;
+        }
+        .none_view{
+          background-color: #d9d9d9;
+        }
         @media screen and (min-width: 320px) {
           .home-info {
             padding-top: 100px;

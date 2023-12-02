@@ -1,9 +1,9 @@
-let category = 'All';
-let usertype = 'all';
-let address = 'ALL';
-let page = 0;
-let add_row = 5;
+let category = 'all';
+let usertype = 'user_buyer';
+let address = 'all';
+let search = '';
 $(document).ready(function(){
+    table_info(category, usertype, address, search);
     $("#nav").load("adminnav.php");
 
     $("#phonenumber").keyup(function () {
@@ -122,55 +122,79 @@ $(document).ready(function(){
       });
     
     num_of_data();
-    table_info('All', 'all', 'ALL', 5, 1);
     $(".txt, #filter, .checkbox").each(function() {
         $(this).change(function(){
-            address = $(this).val();
-            table_info(category, usertype, address, add_row, page);
+          address = $(this).val();
+          table_info(category, usertype, address, search);
         }); 
     });
 
-    $(".txt, #add_row, .checkbox").each(function() {
-        $(this).change(function(){
-            add_row = $(this).val();
-            table_info(category, usertype, address, add_row, page);
-        }); 
-    });
 
     $(".data").on('click', function(){
         category = $(this).attr('id');
         usertype = $(this).attr('name');
-        table_info(category, usertype, address, add_row, page);
+        table_info(category, usertype, address, search);
     });
 
     $('#search').on('keyup', function(){
-        var search = $(this).val();
-        if(search.length != 0){
-
-            $.ajax({
-                url: '../../controller/Dbadminusermanagement_search.php',
-                type: 'POST',
-                data: {
-                    search : search
-                },
-                cache: false, 
-                success: function(res){
-                    $(".table-info").html(res);
-                }
-            });
-
-        }else{
-            table_info(category, usertype, address, add_row, page);
-        }
-            
+      var search = $(this).val();
+      table_info(category, usertype, address, search);
     });
 
 });
-
-function page_num(page_num){
-    table_info(category, usertype, address, add_row, page_num);
+function table_info(category, usertype, address, search){
+  $.ajax({
+    url: '../../controller/Dbadminusermanagement_table.php',
+    type: 'POST',
+    data: {
+      category : category,
+      usertype : usertype,
+      address : address,
+      search : search
+    },
+    cache: false,
+    success: function(res){
+      var result_table = JSON.parse(res);
+      if(result_table.length!=0){
+        table_content = `
+        <table class="table table-hover text-center">
+          <thead>
+              <tr>
+                  <th scope="col">Department</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone #</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Reset Pass.</th>
+              </tr>
+          </thead>
+          <tbody id="tbody_data">
+            
+          </tbody>
+        </table>
+        `;
+        $(".table-info").html(table_content);
+        tbody = '';
+        for(let i = 0; i<result_table.length; i++){
+          tbody += `
+          <tr>
+            <td>${(result_table[i]).department}</td>
+            <td>${(result_table[i]).name}</td>
+            <td>${(result_table[i]).email}</td>
+            <td>${(result_table[i]).phonenumber}</td>
+            <td>${(result_table[i]).address}</td>
+            <td class="action" onclick="edit('${(result_table[i]).user_id}', 'buyer')"><i class="fas fa-edit" style="#282828de"></td>
+          </tr>
+          `
+        }
+        $("#tbody_data").html(tbody);
+      }else{
+        $(".table-info").text('No Record');
+      }
+      
+    }
+  })
 }
-
 function num_of_data(){
     $.ajax({
         url: '../../controller/Dbadminusermanagement_num_of_data.php',
@@ -178,39 +202,21 @@ function num_of_data(){
         data: {info: 'info'},
         cache: false,
         success: function(res){
-            var data_num = JSON.parse(res);
-            $('.num-all').text(parseInt(data_num[2]));
-            $('.num-bsis').text(data_num[0].BSIS);
-            $('.num-bscrim').text(data_num[0].BSCrim);
-            $('.num-bsed').text(data_num[0].BSED);
-            $('.num-bsoa').text(data_num[0].BSOA);
-            $('.num-registerar').text(data_num[0].Registrar);
-            $('.num-saso').text(data_num[0].SASO);
-            $('.num-ssg').text(data_num[0].SSG);
-            $('.num-admin').text(data_num[0].Admin);
-            $('.num-guidance').text(data_num[0].Guidance);
-            $('.num-beed').text(data_num[0].BEED);
-            $('.num-faculty').text(data_num[0].Faculty);
-            $('.num-teller').text(data_num[3]);
-
-        }
-    });
-};
-
-function table_info(category, usertype, address, add_row, page){
-    $.ajax({
-        url: '../../controller/Dbadminusermanagement_table.php',
-        type: 'POST',
-        data: {
-            category : category, 
-            usertype: usertype, 
-            address: address, 
-            add_row : add_row,
-            page: page
-        },
-        cache: false, 
-        success: function(res){
-            $(".table-info").html(res);
+          var data_num = JSON.parse(res);
+          $('.num-all').text(parseInt(data_num[2]));
+          $('.num-bsis').text(data_num[0].BSIS);
+          $('.num-bscrim').text(data_num[0].BSCrim);
+          $('.num-bsed').text(data_num[0].BSED);
+          $('.num-bsoa').text(data_num[0].BSOA);
+          $('.num-registerar').text(data_num[0].Registrar);
+          $('.num-saso').text(data_num[0].SASO);
+          $('.num-ssg').text(data_num[0].SSG);
+          $('.num-admin').text(data_num[0].Admin);
+          $('.num-guidance').text(data_num[0].Guidance);
+          $('.num-beed').text(data_num[0].BEED);
+          $('.num-faculty').text(data_num[0].Faculty);
+          $('.num-teller').text(data_num[3]);
+          $('.num-abe').text(data_num[0].ABE);
         }
     });
 };

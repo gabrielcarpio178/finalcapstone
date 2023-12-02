@@ -134,3 +134,8 @@
     white-space: nowrap;
   }
   
+  .table-info{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 50vh;
+  }

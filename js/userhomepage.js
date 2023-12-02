@@ -143,7 +143,7 @@ function notification(){
           `;
         }
         else if((data[i]).type=='purchase'){
-          var image = (data[0][i]=='male')? '../../image/avatar.jpg':'../../image/female_avatar.png';
+          var image = (data[0][i]=='male'||data[0][i]=='MALE')? '../../image/avatar.jpg':'../../image/female_avatar.png';
           gender_info += "<img src='"+image+"'>";   
           let db_day = String(new Date((data[i]).date).getDate()).padStart(2, '0');
           let db_month = String(new Date((data[i]).date).getMonth()+1).padStart(2,"0");

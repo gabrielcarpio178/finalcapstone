@@ -55,7 +55,7 @@ $num_page = ceil($num_row['num_post']/ $num_data);
                             <select name="post_to_filer" id="post_to_filer" class="form-select form-select-sm">
                                 <option disabled selected value="0">Post to<i class="fa fa-caret-down"></i></option>
                                 <option value="All">All</option>
-                                <option value="Buyer">Buyer Only</option>
+                                <option value="Buyer">Student/Personnel Only</option>
                                 <option value="Canteen Staff">Canteen Staff Only</option>
                             </select>
                         </div>
@@ -144,7 +144,7 @@ $num_page = ceil($num_row['num_post']/ $num_data);
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="post_to" name="post_to">
                             <option selected disabled value="empty">Post to</option>
                             <option value="All">All</option>
-                            <option value="Buyer">Buyer Only</option>
+                            <option value="Buyer">Student/Personnel Only</option>
                             <option value="Cashier">Cashier Only</option>
                             <option value="Canteen Staff">Canteen Staff Only</option>
                         </select>

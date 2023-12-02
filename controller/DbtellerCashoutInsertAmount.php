@@ -36,7 +36,7 @@ if(isset($_POST['amount'])&&isset($_POST['user_id'])){
 
     $uniq = generate_key($connect);
     try {
-        mysqli_query($connect, "INSERT INTO `cashout_tb`(`teller_id`, `cashout_amount`, `cashout_refnum`, `cashout_status`) VALUES ('$user_id','$amount','$uniq', 'pending')");
+        mysqli_query($connect, "INSERT INTO `cashout_tb`(`teller_id`, `cashout_amount`, `cashout_refnum`, `cashout_status`, `cashout_noti`) VALUES ('$user_id','$amount','$uniq', 'pending', '0')");
     } catch (\Throwable $th) {
         echo $th;
     }

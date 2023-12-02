@@ -55,7 +55,7 @@ function searchForm(){
                     if(data.length!=0){
                         tbody = ``;
                         for(let i = 0; i<data.length; i++){
-                            var image_gender = ((data[i]).gender=="male")?'../../image/avatar.jpg':'../../image/female_avatar.png';
+                            var image_gender = ((data[i]).gender=="male"||(data[i]).gender=="MALE")?'../../image/avatar.jpg':'../../image/female_avatar.png';
                             var image = ((data[i]).image_profile!=null)? `profile/${(data[i]).image_profile}`: image_gender;
                             tbody += `
                             <tr onclick="getuser('${(data[i]).user_id}', '${(data[i]).name}', '${(data[i]).department}', '${(data[i]).phonenumber}', '${(data[i]).address}', '${(data[i]).id}', '${(data[i]).usertype}', '${data[i].complete_address}', '${image}')">

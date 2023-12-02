@@ -4,7 +4,7 @@ if(isset($_POST['user_id'])){
     $user_id = $_POST['user_id'];
     //SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id FROM order_tb WHERE order_tb.user_id = '$user_id' AND order_tb.statues IS NOT NULL GROUP BY order_tb.user_id;
     try {
-        $sql_totalPurchase =  mysqli_query($connect, "SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id, order_tb.`statues` FROM order_tb WHERE order_tb.user_id = '$user_id' GROUP BY order_tb.`statues`;");
+        $sql_totalPurchase =  mysqli_query($connect, "SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id, order_tb.`statues` FROM order_tb WHERE order_tb.user_id = '$user_id' OR (order_tb.`statues` IS NULL AND CAST(order_tb.`order_time` AS DATE) = CAST(NOW() AS DATE)) GROUP BY order_tb.`statues`;");
         
     } catch (\Throwable $th) {
         echo $th;

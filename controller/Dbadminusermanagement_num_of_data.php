@@ -2,13 +2,13 @@
 require('Dbconnection.php');
 if(isset($_POST['info'])){
 
-    $allLabel = array('All', 'BSIS', 'BSCrim', 'BSED', 'BEED', 'BSOA', 'SASO', 'Faculty', 'Guidance', 'Registrar', 'Admin', 'SSG');
+    $allLabel = array('All', 'BSIS', 'BSCrim', 'BSED', 'BEED', 'BSOA', 'ABE', 'SASO', 'Faculty', 'Guidance', 'Registrar', 'Admin', 'SSG');
     $array = array();
     $user_category = array();
     $all = array();
     $all['All']  = 0;
     for($i = 0; $i < count($allLabel); $i++){
-         try {
+        try {
             $sql = mysqli_query($connect, "SELECT COUNT(student_tb.course) AS total_course, COUNT(personnel_tb.department) AS total_department, student_tb.course, personnel_tb.department, user_tb.usertype FROM user_tb LEFT JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN personnel_tb ON user_tb.user_id = personnel_tb.user_id WHERE personnel_tb.department='$allLabel[$i]' OR student_tb.course = '$allLabel[$i]' GROUP BY student_tb.course, personnel_tb.department;");
             $row = mysqli_fetch_assoc($sql);
             if(!empty($row)){
@@ -29,11 +29,9 @@ if(isset($_POST['info'])){
             echo $th;
         }
     }
-   
 
     try {
         $total_teller_sql = mysqli_query($connect, "SELECT COUNT(*) AS total_num_teller FROM telleruser_tb;");
-      
     } catch (\Throwable $th) {
         echo $th;
     }

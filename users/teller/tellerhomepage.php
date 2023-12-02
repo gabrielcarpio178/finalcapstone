@@ -52,7 +52,21 @@ if(!empty($amount_cashout)){
                 
                 <div class="d-flex flex-column content-info">
                     
-                    <b class="home">HOME</b>
+                    <div class="d-flex flex-row justify-content-between align-items-center w-100 header-content">
+                        <b class="home">HOME</b>
+                        <div class="count_noti">
+                            <div class="num_noti"></div>
+                            <i class="fa-solid fa-bell" id="btn_bell"></i>
+                        </div>
+                        <div id="noti_content" class="d-flex flex-column p-1 noti-content" style="display: none !important;">
+                            <div class="noti-info h-100">
+
+                            </div>
+                            <div class="btn-clear w-100 text-center" id="btn_clear">
+                                CLEAR
+                            </div>
+                        </div>
+                    </div>
                     <div class="d-flex flex-row justify-content-between announcement mt-3">
                         <div class="d-flex flex-column justify-content-end w-100 message">
                             <b class="welcome"></b> 

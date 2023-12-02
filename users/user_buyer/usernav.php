@@ -25,7 +25,7 @@ user-scalable=no">
             BCC Digital Payment System         
         </div>
         <ul class = "list-inline">
-            <li id="icon_menu" ><a href="#" id="menu"><i class="fas fa-bars" id="burger"></i><span></span></a></li>
+            <!-- <li id="icon_menu" ><a href="#" id="menu"><i class="fas fa-bars" id="burger"></i><span></span></a></li> -->
 
             <li id="home" class="select_1"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>                                
 

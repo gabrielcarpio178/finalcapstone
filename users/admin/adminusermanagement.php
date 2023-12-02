@@ -51,7 +51,7 @@ if(($_SESSION['usertype']!="admin")){
                         <li>
                             <select name="filter" id="filter" class="form-select">
                                 <option disabled selected>Sort By</option>
-                                <option value="ALL">ALL</option>
+                                <option value="all">ALL</option>
                                 <option value="bago">Bago City</option>
                                 <option value="non-bago">Non-Bago</option>
                             </select>
@@ -60,29 +60,13 @@ if(($_SESSION['usertype']!="admin")){
                 </div> 
 
             </div>
-
-            <div class="add-row">
-                <select name="add_row" id="add_row" class="form-select">
-                    <option disabled selected>Number of row</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
-                <!-- <input type="number" name="add_row" id="add_row" placeholder="number of row" min="1" class="form-control"> -->
-            </div>
-
         </div>
 
         <div class="data-info">
 
             <div class="number-of-data">
 
-                <div class="data all" id="All" name="all">
+                <div class="data all" id="all" name="user_buyer">
                     <div class="label label-all">
                         ALL
                     </div>
@@ -93,7 +77,7 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data bsis" id="BSIS" name="student">
+                <div class="data bsis" id="BSIS" name="user_buyer">
                     <div class="label label-bsis">
                         BSIS
                     </div>
@@ -104,7 +88,7 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data bscrim" id="BSCRIM" name="student">
+                <div class="data bscrim" id="BSCRIM" name="user_buyer">
                     <div class="label label-bscrim">
                         BSCrim
                     </div>
@@ -115,7 +99,7 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data bsed" id="BSED" name="student">
+                <div class="data bsed" id="BSED" name="user_buyer">
                     <div class="label label-bsed">
                         BSED
                     </div>
@@ -126,7 +110,7 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data beed" id="BEED" name="student">
+                <div class="data beed" id="BEED" name="user_buyer">
                     <div class="label label-beed">
                         BEED
                     </div>
@@ -137,7 +121,7 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data bsoa" id="BSOA" name="student">
+                <div class="data bsoa" id="BSOA" name="user_buyer">
                     <div class="label label-bsoa">
                         BSOA
                     </div>
@@ -148,7 +132,20 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data registrar" id="Registrar" name="personnel">
+
+                <div class="data bsoa" id="ABE" name="user_buyer">
+                    <div class="label label-bsoa">
+                        ABE
+                    </div>
+                    <div class="num-abe">
+
+                    </div>
+                    <div class="num-label">
+                        Total number of users
+                    </div>
+                </div>
+
+                <div class="data registrar" id="Registrar" name="user_buyer">
                     <div class="label label-registerar">
                         Registrar
                     </div>
@@ -159,18 +156,18 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data saso" id="SASO" name="personnel">
+                <div class="data saso" id="SASO" name="user_buyer">
                     <div class="label label-saso">
                         SASO
                     </div>
-                    <div class="num-saso" name="personnel">
+                    <div class="num-saso" name="user_buyer">
 
                     </div>
                     <div class="num-label">
                         Total number of users
                     </div>
                 </div>
-                <div class="data ssg" id="SSG" name="personnel">
+                <div class="data ssg" id="SSG" name="user_buyer">
                     <div class="label label-ssg">
                         SSG
                     </div>
@@ -181,7 +178,7 @@ if(($_SESSION['usertype']!="admin")){
                         Total number of users
                     </div>
                 </div>
-                <div class="data admin" id="ADMIN" name="personnel">
+                <div class="data admin" id="ADMIN" name="user_buyer">
                     <div class="label label-admin">
                         ADMIN
                     </div>
@@ -193,7 +190,7 @@ if(($_SESSION['usertype']!="admin")){
                     </div>
                 </div>
 
-                <div class="data guidance" id="Guidance" name="personnel">
+                <div class="data guidance" id="Guidance" name="user_buyer">
                     <div class="label label-guidance">
                         Guidance
                     </div>
@@ -205,7 +202,7 @@ if(($_SESSION['usertype']!="admin")){
                     </div>
                 </div>
 
-                <div class="data faculty" id="Faculty" name="personnel">
+                <div class="data faculty" id="Faculty" name="user_buyer">
                     <div class="label label-faculty">
                         Faculty
                     </div>

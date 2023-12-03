@@ -5,7 +5,7 @@ if(isset($_POST['category'])&&isset($_POST['usertype'])&&isset($_POST['address']
     $usertype = $_POST['usertype'];
     $address = $_POST['address'];
     $search = $_POST['search'];
-    if($usertype = 'user_buyer'){
+    if($usertype == 'user_buyer'){
 
         $category_cot = ($category!='all')?" WHERE (student_tb.course = '$category' OR personnel_tb.department = '$category')":"";
         if($category=='all'){
@@ -30,7 +30,23 @@ if(isset($_POST['category'])&&isset($_POST['usertype'])&&isset($_POST['address']
                 }else{
                     $department = $row['course'];
                 }
-                $array_data[] = array("name"=>$row['firstname']." ".$row['lastname'], "email"=>$row['email'], "phonenumber"=>$row['phonenumber'], "address"=>$row['address'], "department"=>$department, "user_id"=>$row['user_id']);
+                $array_data[] = array("name"=>$row['firstname']." ".$row['lastname'], "email"=>$row['email'], "phonenumber"=>$row['phonenumber'], "address"=>$row['address'], "department"=>$department, "user_id"=>$row['user_id'], "usertype"=>"user_buyer");
+            }
+            print_r(json_encode($array_data));
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+
+    }else if($usertype == 'teller'){
+
+        $search_info = ($search!="")?" WHERE `firstname_teller` LIKE '$search%' OR `lastname_teller` LIKE '$search%' OR `store_name` LIKE '$search%'":"";
+        $query = "SELECT `teller_id`, `firstname_teller`, `lastname_teller`, `phonenumber_teller`, `store_name`, `email` FROM `telleruser_tb`".$search_info;
+
+        try {
+            $sql = mysqli_query($connect, $query);
+            $array_data = array();
+            while($row = mysqli_fetch_assoc($sql)){
+                $array_data[] = array("name"=>$row['firstname_teller']." ".$row['lastname_teller'], "email"=>$row['email'], "phonenumber_teller"=>$row['phonenumber_teller'], "store_name"=>$row['store_name'], "usertype"=>"teller", "teller_id"=>$row['teller_id']);
             }
             print_r(json_encode($array_data));
         } catch (\Throwable $th) {

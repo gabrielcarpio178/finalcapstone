@@ -30,12 +30,12 @@ if(isset($_POST['product_id'])){
 
             <div class="minus minus_<?=$order['product_id'] ?>" id="<?=$order['product_id'] ?>" onclick="minusquantity(<?=$order['product_id'] ?>)">-</div>
 
-            <div class="input-amount"><input type="number" name="qty[]" id="numqty_<?=$order['product_id'] ?>" class="input_qty  w-100" value="1" onkeyup="total_amount()" readonly></div>
+            <div class="input-amount"><input type="number" name="qty[]" id="numqty_<?=$order['product_id'] ?>" class="input_qty  w-100" value="1" min="1" max="<?=$order['quantity']+1 ?>" onkeyup="total_amount()" readonly></div>
 
-            <div class="plus plus_<?=$order['product_id'] ?>" id="<?=$order['product_id'] ?>" onclick="addquantity(<?=$order['product_id'] ?>)">+</div>
+            <div class="plus plus_<?=$order['product_id'] ?>" id="<?=$order['product_id'] ?>" name ="<?=$order['quantity'] ?>" onclick="addquantity(<?=$order['product_id'] ?>)">+</div>
                                     
-         </div>
-      </div> 
-      <i class="fa-solid fa-x mr-5 <?=$order['product_id']; ?>" id="cancel" name="<?=$order['product_id']; ?>"></i>                            
-   </div>
-   
+        </div>
+    </div> 
+    <i class="fa-solid fa-x mr-5 <?=$order['product_id']; ?>" id="cancel" name="<?=$order['product_id']; ?>"></i>                            
+</div>
+

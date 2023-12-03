@@ -94,6 +94,9 @@
   .faculty {
     background-color: #EE2E31;
   }
+  .abe{
+    background-color: #933c4e;
+  }
   .data-info {
     display: flex;
     flex-direction: row;

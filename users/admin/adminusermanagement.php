@@ -44,7 +44,7 @@ if(($_SESSION['usertype']!="admin")){
                     Departments
                 </div>
                 <div class="addteller">
-                    <button class="btn btn-primary" id="btn_adduser" data-toggle="modal" data-target="#addteller"><i class="fa-solid fa-plus"></i> Add Canteen Staff</button>
+                    <button class="btn btn-primary" id="btn_adduser" data-toggle="modal" data-target="#addteller"><i class="fa-solid fa-plus"></i> Add Canteen Store</button>
                 </div>
                 <div class="filter-btn">
                     <ul class="ul-list">
@@ -133,8 +133,8 @@ if(($_SESSION['usertype']!="admin")){
                     </div>
                 </div>
 
-                <div class="data bsoa" id="ABE" name="user_buyer">
-                    <div class="label label-bsoa">
+                <div class="data abe" id="ABE" name="user_buyer">
+                    <div class="label label-abe">
                         ABE
                     </div>
                     <div class="num-abe">
@@ -214,9 +214,9 @@ if(($_SESSION['usertype']!="admin")){
                     </div>
                 </div>
 
-                <div class="data teller" id="teller" name="teller">
+                <div class="data teller" id="all" name="teller">
                     <div class="label label-teller">
-                        Canteen Staff
+                        Canteen Store
                     </div>
                     <div class="num-teller">
 
@@ -245,7 +245,7 @@ if(($_SESSION['usertype']!="admin")){
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Sign Up Canteen Staff</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Sign Up Canteen Store</h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="add_teller">
@@ -262,8 +262,8 @@ if(($_SESSION['usertype']!="admin")){
                     </div>
 
                     <div class="mb-3">
-                        <label for="phonenumber" class="form-label">Phonenumber</label>
-                        <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phonenumber">
+                        <label for="phonenumber" class="form-label">Phone Number</label>
+                        <input type="number" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone Number">
                         <div class="invalid-feedback" id="message">Sorry, input phone number is to short</div>
                     </div>
 

@@ -12,7 +12,7 @@ $(document).ready(function(){
             var hour_current = date_current.getHours();
             var min_current = date_current.getMinutes();
             if (day_current < 10) {
-                day_current = '0' + dd;
+                day_current = '0' + day_current;
             }
             
             if (mounth_current < 10) {

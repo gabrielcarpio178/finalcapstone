@@ -135,10 +135,13 @@ function remove_order() {
 
 //add quantity
 function addquantity(id) {
-  var numberqty = $("#numqty_" + id).val();
-  numberqty++;
-  $("#numqty_" + id).val(numberqty);
-  total_amount();
+  var numberqty = parseInt($("#numqty_" + id).val());
+  var qty_count =parseInt($(".plus_"+id).attr('name'));
+  if(numberqty<qty_count){
+    numberqty++;
+    $("#numqty_" + id).val(numberqty);
+    total_amount();
+  }
 }
 
 function removeorderifzero(id){

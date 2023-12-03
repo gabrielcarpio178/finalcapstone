@@ -53,7 +53,6 @@ function getdata(){
 
 }
 function graph(filter){
-    Chart.register(ChartjsPluginStacked100.default);
     var teller_id = $("#teller_id").val();
     $.ajax({
       url: "../../controller/Dbtellergetdatagraph.php",
@@ -74,7 +73,8 @@ function graph(filter){
     
 }
 
- function graphtry(labels, datas){
+function graphtry(labels, datas){
+  
   var dat = [];
   var least = [];
   for(let i = 0; i < labels.length; i++){
@@ -87,8 +87,7 @@ function graph(filter){
     }
   }   
 
-  console.log(dat);
-
+  Chart.register(ChartjsPluginStacked100.default);
   const label = labels;
   const data = {
     labels: label,
@@ -104,7 +103,6 @@ function graph(filter){
   };
 
 
-  console.log(dat);
 
 
   const config = {

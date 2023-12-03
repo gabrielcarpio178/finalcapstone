@@ -91,7 +91,7 @@ $(document).ready(function(){
                 Swal.fire({
                   position: 'center',
                   icon: 'success',
-                  title: "Add Teller!",
+                  title: "Successfully Added!",
                   showConfirmButton: false,
                   timer: 1000
                 }).then(function () {
@@ -131,7 +131,7 @@ $(document).ready(function(){
 
 
     $(".data").on('click', function(){
-        category = $(this).attr('id');
+        category = $(this).attr('id');  
         usertype = $(this).attr('name');
         table_info(category, usertype, address, search);
     });
@@ -140,6 +140,8 @@ $(document).ready(function(){
       var search = $(this).val();
       table_info(category, usertype, address, search);
     });
+
+    
 
 });
 function table_info(category, usertype, address, search){
@@ -155,43 +157,82 @@ function table_info(category, usertype, address, search){
     cache: false,
     success: function(res){
       var result_table = JSON.parse(res);
-      if(result_table.length!=0){
-        table_content = `
-        <table class="table table-hover text-center">
-          <thead>
-              <tr>
-                  <th scope="col">Department</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone #</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">Reset Pass.</th>
-              </tr>
-          </thead>
-          <tbody id="tbody_data">
-            
-          </tbody>
-        </table>
-        `;
-        $(".table-info").html(table_content);
-        tbody = '';
-        for(let i = 0; i<result_table.length; i++){
-          tbody += `
-          <tr>
-            <td>${(result_table[i]).department}</td>
-            <td>${(result_table[i]).name}</td>
-            <td>${(result_table[i]).email}</td>
-            <td>${(result_table[i]).phonenumber}</td>
-            <td>${(result_table[i]).address}</td>
-            <td class="action" onclick="edit('${(result_table[i]).user_id}', 'buyer')"><i class="fas fa-edit" style="#282828de"></td>
-          </tr>
-          `
+      if(usertype=='user_buyer'){
+        if(result_table.length!=0){
+          table_content = `
+          <table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Department</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone #</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Reset Pass.</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_data">
+              
+            </tbody>
+          </table>
+          `;
+          $(".table-info").html(table_content);
+          tbody = '';
+          for(let i = 0; i<result_table.length; i++){
+            tbody += `
+            <tr>
+              <td>${(result_table[i]).department}</td>
+              <td>${(result_table[i]).name}</td>
+              <td>${(result_table[i]).email}</td>
+              <td>${(result_table[i]).phonenumber}</td>
+              <td>${(result_table[i]).address}</td>
+              <td class="action" onclick="edit('${(result_table[i]).user_id}', 'buyer')"><i class="fas fa-edit" style="#282828de"></td>
+            </tr>
+            `
+          }
+          $("#tbody_data").html(tbody);
+        }else{
+          $(".table-info").text('No Record');
         }
-        $("#tbody_data").html(tbody);
+        $("#filter").show();
       }else{
-        $(".table-info").text('No Record');
+        if(result_table.length!=0){
+          table_content = `
+          <table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Store Name</th>
+                    <th scope="col">Owner Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone #</th>
+                    <th scope="col">View QR</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_data">
+              
+            </tbody>
+          </table>
+          `;
+          $(".table-info").html(table_content);
+          tbody = '';
+          for(let i = 0; i<result_table.length; i++){
+            tbody += `
+            <tr>
+              <td>${(result_table[i]).store_name}</td>
+              <td>${(result_table[i]).name}</td>
+              <td>${(result_table[i]).email}</td>
+              <td>${(result_table[i]).phonenumber_teller}</td>
+              <td class="action" onclick="viewqr('${(result_table[i]).teller_id}')"><i class="fa-solid fa-eye"></i></td>
+            </tr>
+            `
+          }
+          $("#tbody_data").html(tbody);
+          
+        }else{
+          $(".table-info").text('No Record');
+        }
+        $("#filter").hide();
       }
-      
     }
   })
 }

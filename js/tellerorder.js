@@ -154,7 +154,7 @@ function getorder_numModal(order_num, statues){
         struc_table = `
         <div id="ref_no" class="d-flex flex-row gap-2 ">
         <div class="label">Reference No.</div>
-        <div>${(data_result[1]).order_num}</div>
+        <div>${order_num}</div>
         </div>
         <table class="table table-hover">
           <thead>

@@ -63,7 +63,7 @@ if(!empty($amount_cashout)){
 
                             </div>
                             <div class="btn-clear w-100 text-center" id="btn_clear">
-                                CLEAR
+                                Mark All as Read
                             </div>
                         </div>
                     </div>

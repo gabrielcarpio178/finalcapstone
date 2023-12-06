@@ -4,10 +4,10 @@ session_start();
 if(isset($_POST['user_id'])){
     $teller_id = $_SESSION['id'];
     try {
-        $sql_order = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, user_tb.image_profile, user_tb.gender, order_tb.order_amount, order_tb.order_time, order_tb.deadline_time, order_tb.num_noti, order_tb.statues, order_tb.order_id FROM order_tb INNER JOIN user_tb ON order_tb.user_id = user_tb.user_id WHERE order_tb.teller_id = '$teller_id';");
+        $sql_order = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, user_tb.image_profile, user_tb.gender, SUM(order_tb.order_amount) AS total_amount, order_tb.order_time, order_tb.deadline_time, order_tb.num_noti, order_tb.statues, order_tb.order_id FROM order_tb INNER JOIN user_tb ON order_tb.user_id = user_tb.user_id WHERE order_tb.teller_id = '$teller_id' GROUP BY order_tb.order_num;");
         $array_order = array();
         while($row_order = mysqli_fetch_assoc($sql_order)){
-            $array_order[] = array("name"=>$row_order['firstname']." ".$row_order['lastname'], "order_amount"=>$row_order['order_amount'], "order_time"=>$row_order['order_time'], "deadline_time"=>$row_order['deadline_time'], "num_noti"=>$row_order['num_noti'], "isSeen"=>$row_order['num_noti'], "image_profile"=>$row_order['image_profile'], "gender"=>$row_order['gender'], "type"=>"order", "order_id"=>$row_order['order_id']);
+            $array_order[] = array("name"=>$row_order['firstname']." ".$row_order['lastname'], "order_amount"=>$row_order['total_amount'], "order_time"=>$row_order['order_time'], "deadline_time"=>$row_order['deadline_time'], "num_noti"=>$row_order['num_noti'], "isSeen"=>$row_order['num_noti'], "image_profile"=>$row_order['image_profile'], "gender"=>$row_order['gender'], "type"=>"order", "order_id"=>$row_order['order_id']);
         }
     } catch (\Throwable $th) {
         echo $th;

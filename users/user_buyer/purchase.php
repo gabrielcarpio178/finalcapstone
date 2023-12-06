@@ -85,8 +85,7 @@ user-scalable=no">
                 </div>
                 <div class="row gy-4 mt-2 mt-lg-3" id="product-list">
                 <?php include '../../controller/Dbusergetproduct.php'; ?>      
-                                                                                
-                    
+
                 </div>
 
                 </div>

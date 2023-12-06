@@ -83,7 +83,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
                                 
                             </div>
                             <div class="button">
-                                Clear Notification
+                                Mark All as Read
                             </div>
                         </div>
                     </div>

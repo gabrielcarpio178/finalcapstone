@@ -4,9 +4,9 @@ if(isset($_POST['category_id'])&&isset($_POST['teller_id'])){
     $teller_id = $_POST['teller_id'];
     $category_id = $_POST['category_id'];
     if($category_id==0){
-       $cot = "WHERE teller_id = ".$teller_id; 
+        $cot = "WHERE teller_id = ".$teller_id; 
     }else{
-       $cot = "WHERE teller_id = ".$teller_id." AND category_id = ".$category_id; 
+        $cot = "WHERE teller_id = ".$teller_id." AND category_id = ".$category_id; 
     }    
 }else{
     $firstteller_id = mysqli_fetch_assoc(mysqli_query($connect, "SELECT teller_id FROM telleruser_tb LIMIT 1"));

@@ -21,7 +21,7 @@ user-scalable=no">
             <img class="profile-img" src="../../image/<?php echo ($_SESSION['gender']=='male')?'avatar.jpg':'female_avatar.png'; ?>" alt="profile" class="rounded" >
 
             <div class="store_name">
-                <small class="store_name_label">Store Name</small>
+                <small class="store_name_label"><center>Store Name</center></small>
                 <div class="user_name"><?=ucfirst($name); ?></div>
             </div>
         </div>

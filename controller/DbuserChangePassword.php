@@ -3,9 +3,9 @@ require('Dbconnection.php');
 session_start();
 if(isset($_POST['old_password'])&&isset($_POST['new_password'])&&isset($_POST['confirm_password'])){
     $id = $_SESSION['id'];
-    $old_password = md5($_POST['old_password']);
-    $new_password = md5($_POST['new_password']);
-    $confirm_password = md5($_POST['confirm_password']);
+    $old_password = md5(strtolower($_POST['old_password']));
+    $new_password = md5(strtolower($_POST['new_password']));
+    $confirm_password = md5(strtolower($_POST['confirm_password']));
 
     try {
         $get_pasword_sql = mysqli_query($connect,"SELECT password FROM user_tb WHERE user_id = '$id';");

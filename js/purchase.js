@@ -260,7 +260,7 @@ function submit(){
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Order sent',
+              title: 'Order Sent',
               showConfirmButton: false,
               timer: 1000
             }).then(function () {

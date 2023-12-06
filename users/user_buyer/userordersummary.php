@@ -232,12 +232,12 @@ user-scalable=no">
     function receiverOrder(order_num, i){
         Swal.fire({
             title: "Are you sure?",
-            text: "Order received",
+            text: "Do you want to receive this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, received it!"
+            confirmButtonText: "Yes, receive it!"
             }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -249,7 +249,7 @@ user-scalable=no">
                         Swal.fire({
                             position: "center",
                             icon: "success",
-                            title: "Order Reveicer",
+                            title: "Order Received",
                             showConfirmButton: false,
                             timer: 1000
                         }).then(function(){

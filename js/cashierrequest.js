@@ -360,7 +360,7 @@ function accept(payment_id, cashout){
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Accepted Success',
+              title: 'Sucessfully Accepted',
               showConfirmButton: false,
               timer: 1000
             }).then(function(){
@@ -401,7 +401,7 @@ function deletePayment(payment_id, isCashout){
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Deleted Success',
+              title: 'Sucessfully Deleted',
               showConfirmButton: false,
               timer: 1000
             }).then(function(){

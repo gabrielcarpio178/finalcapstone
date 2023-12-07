@@ -92,6 +92,7 @@ function notification(){
         let d1 = new Date(a.date), d2 = new Date(b.date);
           return d2 - d1;
       });
+      console.log(data);
       var count = 0;
       for(let i = 0; i<data.length; i++){
         if((data[i]).isSeen=='0'){

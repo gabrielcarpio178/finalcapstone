@@ -10,7 +10,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
     $id = $_SESSION['id'];
     $firstname = $_SESSION['firstname'];
     try{
-        $sql = mysqli_query($connect, "SELECT order_tb.user_id, order_tb.teller_id, order_tb.order_time, telleruser_tb.store_name, order_tb.statues, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON order_tb.teller_id = telleruser_tb.teller_id WHERE `user_id` = '$id' AND (order_tb.statues IS NULL OR order_tb.statues = 'ACCEPTED') AND (CAST(order_tb.order_time AS DATE) = CAST(NOW() AS DATE) OR order_tb.statues = 'ACCEPTED') GROUP BY order_tb.order_num ORDER BY order_tb.order_id DESC");
+        $sql = mysqli_query($connect, "SELECT order_tb.user_id, order_tb.teller_id, order_tb.order_time, telleruser_tb.store_name, order_tb.statues, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON order_tb.teller_id = telleruser_tb.teller_id WHERE `user_id` = '79' AND (order_tb.statues IS NULL OR order_tb.statues = 'ACCEPTED') AND (CAST(order_tb.order_time AS DATE) = CAST(NOW() AS DATE)) GROUP BY order_tb.order_num, order_tb.teller_id ORDER BY order_tb.order_id DESC;");
     }catch(\Throwable $th){
         echo $th;
     }
@@ -174,7 +174,7 @@ user-scalable=no">
                     </div>
                     <div class="table-info">
                     <center>
-                        <button class="btn btn-primary" <?=($sqlinfo['statues']!='ACCEPTED')? 'disabled= "disabled" ':''?> onclick="receiverOrder('<?=$sqlinfo['order_num'] ?>', '<?=$i ?>')">Order Received</button>
+                        <button class="btn btn-primary" <?=($sqlinfo['statues']!='ACCEPTED')? 'disabled= "disabled" ':''?> onclick="receiverOrder('<?=$sqlinfo['order_num'] ?>', '<?=$i ?>', '<?=$sqlinfo['teller_id'] ?>')">Order Received</button>
                     </center>        
                     </div>
                 </div>
@@ -229,7 +229,7 @@ user-scalable=no">
         }      
 
     }
-    function receiverOrder(order_num, i){
+    function receiverOrder(order_num, i, teller_id){
         Swal.fire({
             title: "Are you sure?",
             text: "Do you want to receive this!",
@@ -243,7 +243,10 @@ user-scalable=no">
                 $.ajax({
                     url: '../../controller/DbuserReceiver_order.php',
                     type: 'POST',
-                    data: {order_num : order_num},
+                    data: {
+                        order_num : order_num,
+                        teller_id : teller_id
+                    },
                     cache: false,
                     success: function(res){
                         Swal.fire({

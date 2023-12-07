@@ -54,13 +54,9 @@ $id = $_SESSION['id'];
             <div class="d-flex flex-column gap-2 amount-price w-100 fw-bold">
                 <div class="d-flex flex-row justify-content-between non-bago-fee">
                     <div class="nonBago-label">NON BAGO FEE</div>
-                    <div class="amount-non-bago"></div>
-                </div>
-                <div class="line"></div>
-                <div class="d-flex flex-row justify-content-between non-bago-fee-total">
-                    <div class="nonBago-label-total">TOTAL</div>
                     <div class="amount-non-bago-total"></div>
                 </div>
+                <div class="line"></div>
             </div>
             
         </div>

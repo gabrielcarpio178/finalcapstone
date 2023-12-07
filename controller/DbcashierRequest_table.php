@@ -109,7 +109,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
         $payment_method = array();
         $payment_ref = array();
         try {
-            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.year, user_tb.user_id, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Non Bago Fee' AND requestType = 'pending' AND  digitalpayment_tb.payment_type != 'Transcript of Record' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
+            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.year, user_tb.user_id, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Non Bago Fee' AND requestType = 'pending' AND  digitalpayment_tb.payment_type != 'Transcript of Records' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
             while($row = mysqli_fetch_assoc($sql)){
                 $name[] = $row['firstname']." ".$row['lastname'];
                 $studentID_number[] = $row['studentID_number'];
@@ -281,7 +281,7 @@ if(isset($_POST['content'])&&isset($_POST['num_page'])){
         $digitalPayment_id = array();
         $payment_ref = array();
         try {
-            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.year, user_tb.user_id, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Non Bago Fee' AND requestType = 'pending' AND  digitalpayment_tb.payment_type = 'Transcript of Record' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
+            $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname, student_tb.studentID_number, student_tb.year, user_tb.user_id, digitalpayment_tb.payment_amount, digitalpayment_tb.payment_type, CAST(digitalpayment_tb.payment_date AS DATE) AS payment_dates, digitalpayment_tb.digitalPayment_id, digitalpayment_tb.payment_ref FROM user_tb INNER JOIN digitalpayment_tb ON user_tb.user_id = digitalpayment_tb.user_id INNER JOIN student_tb ON user_tb.user_id = student_tb.user_id WHERE digitalpayment_tb.payment_type != 'Non Bago Fee' AND requestType = 'pending' AND digitalpayment_tb.payment_type = 'Transcript of Records' ORDER BY digitalPayment_id DESC LIMIT $offset,  5;");
             while($row = mysqli_fetch_assoc($sql)){
                 $name[] = $row['firstname']." ".$row['lastname'];
                 $studentID_number[] = $row['studentID_number'];

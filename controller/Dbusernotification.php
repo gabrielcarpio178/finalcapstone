@@ -3,21 +3,22 @@ require('Dbconnection.php');
 date_default_timezone_set("Asia/Manila"); 
 if(isset($_POST['user_id'])){
     $user_id = $_POST['user_id'];
-    
-    try {
-        $sql_purchase = mysqli_query($connect, "SELECT telleruser_tb.teller_gender, telleruser_tb.store_name, order_tb.deadline_time, order_tb.statues, order_tb.order_num, order_tb.user_id, order_tb.num_noti FROM order_tb INNER JOIN telleruser_tb on order_tb.teller_id = telleruser_tb.teller_id WHERE user_id= '$user_id' GROUP BY order_num ORDER BY order_tb.order_id DESC;");
-    } catch (\Throwable $th) {
-        echo $th;
-    }
-
     $data_array = array();
     $data_purchase = array();
     $data_cashin = array();
     $data_sender = array();
     $data_receiver = array();
     $data_payment = array();
+
+    try {
+        $sql_purchase = mysqli_query($connect, "SELECT telleruser_tb.teller_gender, telleruser_tb.store_name, order_tb.deadline_time, order_tb.statues, order_tb.order_num, order_tb.user_id, order_tb.num_noti, order_tb.order_time FROM order_tb INNER JOIN telleruser_tb on order_tb.teller_id = telleruser_tb.teller_id WHERE user_id= '$user_id' GROUP BY order_num ORDER BY order_tb.order_id DESC;");
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+
     while($row_purchase = mysqli_fetch_assoc($sql_purchase)){ 
-        $data_purchase[] = array("date"=>$row_purchase['deadline_time'], "statues"=>$row_purchase['statues'],"store_name"=>ucfirst($row_purchase['store_name']), "teller_gender"=>$row_purchase['teller_gender'], "isSeen"=>$row_purchase['num_noti'], "order_num"=>$row_purchase['order_num'], "type"=>"purchase");
+        $insert_time = ($row_purchase['deadline_time']!=NULL)?$row_purchase['deadline_time']:$row_purchase['deadline_time'];
+        $data_purchase[] = array("date"=>$insert_time, "statues"=>$row_purchase['statues'],"store_name"=>ucfirst($row_purchase['store_name']), "teller_gender"=>$row_purchase['teller_gender'], "isSeen"=>$row_purchase['num_noti'], "order_num"=>$row_purchase['order_num'], "type"=>"purchase");
     }
 
     try {

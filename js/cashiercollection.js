@@ -112,7 +112,7 @@ function displaydata(){
         success: function(res){
             var datas = JSON.parse(res);
             //cashin
-            var cashin_amount = `${parseInt(datas.cashin)-parseInt(datas.cashout)}.00`;
+            var cashin_amount = `${parseInt(datas.cashin)}.00`;
             var cashin_parts = cashin_amount.toString().split(".");
             var cashin = cashin_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (cashin_parts[1] ? "." + cashin_parts[1] : "");
             $("#cashin").text(`₱ ${cashin}`);

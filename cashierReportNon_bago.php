@@ -1,13 +1,13 @@
-<?php
-session_start();
-use Dompdf\Dompdf; 
-use Dompdf\Options;
-require('controller/Dbconnection.php');
-require 'dompdf/autoload.inc.php'; 
-$option = new Options();
-$option->set('chroot', realpath(''));
-$dompdf = new Dompdf($option);
-ob_start();
+    <?php
+    session_start();
+    use Dompdf\Dompdf; 
+    use Dompdf\Options;
+    require('controller/Dbconnection.php');
+    require 'dompdf/autoload.inc.php'; 
+    $option = new Options();
+    $option->set('chroot', realpath(''));
+    $dompdf = new Dompdf($option);
+    ob_start();
 $query = $_SESSION['query'];
 $semester = $_SESSION['semester'];
 $current_date = $_SESSION['currentDate'];

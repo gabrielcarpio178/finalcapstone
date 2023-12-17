@@ -3,44 +3,41 @@ require('Dbconnection.php');
 if(isset($_POST['teller_id'])&&isset($_POST['filter'])){
     $teller_id = $_POST['teller_id'];
     $filter = $_POST['filter'];
-    if($filter == 'daily'){
-        $can_sql = "CAST(order_tb.deadline_time AS DATE) LIKE CAST(now() AS DATE)";
-    }elseif ($filter == 'weekly') {
-        $can_sql = "WEEK(CAST(order_tb.deadline_time AS DATE),0) LIKE WEEK(CAST(now() AS DATE),0)";
-    }elseif($filler='monthly'){
-        $can_sql = "MONTH(order_tb.deadline_time) LIKE MONTH(now())";
+    if($filter=='daily'){
+        $query = "SELECT SUM(`order_amount`) AS total_amount, `order_productcategory` FROM order_tb WHERE CAST(`order_time` AS DATE) = CAST(NOW() AS DATE) AND teller_id = '$teller_id' AND (statues = 'ACCEPTED' OR statues = 'PROCEED') GROUP BY `order_productcategory`;";
+        try {
+            $sql = mysqli_query($connect, $query);
+            $result_array = array();
+            while($row = mysqli_fetch_assoc($sql)){
+                $result_array[] = array('total_amount'=>$row['total_amount'], 'label'=>$row['order_productcategory']); 
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
     }
-    elseif($filler='yearly'){
-        $can_sql = "YEAR(CAST(order_tb.deadline_time AS DATE)) LIKE YEAR(CAST(now() AS DATE))";
+    else if($filter=='monthly'){
+        $query = "SELECT SUM(`order_amount`) AS total_amount, MONTHNAME(`order_time`) AS monthly FROM order_tb WHERE teller_id = '$teller_id' AND (statues = 'ACCEPTED' OR statues = 'PROCEED') GROUP BY MONTH(`order_time`);";
+        try {
+            $sql = mysqli_query($connect, $query);
+            $result_array = array();
+            while($row = mysqli_fetch_assoc($sql)){
+                $result_array[] = array('total_amount'=>$row['total_amount'], 'label'=>$row['monthly']); 
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+    }else if($filter=='yearly'){
+        $query = "SELECT SUM(`order_amount`) AS total_amount, year(`order_time`) AS year FROM order_tb WHERE teller_id = '$teller_id' AND (statues = 'ACCEPTED' OR statues = 'PROCEED') GROUP BY year(`order_time`);";
+        try {
+            $sql = mysqli_query($connect, $query);
+            $result_array = array();
+            while($row = mysqli_fetch_assoc($sql)){
+                $result_array[] = array('total_amount'=>$row['total_amount'], 'label'=>$row['year']); 
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
     }
-    
-    try {
-        $sql_expense = mysqli_query($connect, "SELECT category_id, category_name FROM category_tb WHERE teller_id='$teller_id';");
-    } catch (\Throwable $th) {
-        echo $th;
-    }
-
-
-    try {
-        $sql_revenue = mysqli_query($connect, "SELECT IFNULL(SUM(order_tb.order_amount),0) AS total_amount, order_tb.order_productcategory, order_tb.deadline_time FROM order_tb WHERE order_tb.teller_id='$teller_id' AND statues='PROCEED' AND ".$can_sql." GROUP BY order_tb.order_productcategory;");
-    } catch (\Throwable $th) {
-        echo $th;
-    }
-
-    $array = array();
-    $category = array();
-    $revenue_category = array();
-    $value_category = array();
-    while($expense = mysqli_fetch_assoc($sql_expense)){
-        $category[] = $expense['category_name'];
-    }
-    while($revenue = mysqli_fetch_assoc($sql_revenue)){
-        $revenue_category[] = $revenue['order_productcategory'];
-        $value_category[$revenue['order_productcategory']][] = $revenue['total_amount'];
-    }
-    array_push($array, $category, $value_category);
-    print_r(json_encode($array));
-
-    
+    print_r(json_encode($result_array));
 }
 ?>

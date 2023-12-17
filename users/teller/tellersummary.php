@@ -42,10 +42,10 @@ if(($_SESSION['usertype']!="teller")){
                 <div class="data-graph">
                     <div class="d-flex flex-column btn-with-graph">
                         <div class="d-flex flex-row justify-content-around button">
-                            <button class="btn-infoby 1" id="daily">DAY</button>
+                            <button class="btn-infoby 1" id="daily">DAILY</button>
                             <!-- <button class="btn-infoby 2" id="weekly">WEEK</button> -->
-                            <button class="btn-infoby 3" id="monthly">MONTH</button>
-                            <button class="btn-infoby 4" id="yearly">YEAR</button>
+                            <button class="btn-infoby 3" id="monthly">MONTHLY</button>
+                            <button class="btn-infoby 4" id="yearly">YEARLY</button>
                         </div>
                         <!-- graph -->
                         <canvas id="graph"></canvas>
@@ -101,8 +101,9 @@ if(($_SESSION['usertype']!="teller")){
 </body>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <!-- <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script> -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-stacked100@1.0.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+<script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
 <script src="../../js/jquery.min.js"></script>
 <!-- <script src="../../js/bootstrap.bundle.min.js"></script>
 <script src="../../js/sweetalert2.all.min.js"></script> -->

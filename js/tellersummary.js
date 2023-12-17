@@ -64,9 +64,13 @@ function graph(filter){
       cache: false,
       success: function(res){
         var expense_goods = JSON.parse(res);
-        // console.log(res);
-        // console.log(expense_goods);
-        graphtry(expense_goods[0], expense_goods[1]);
+        var label = [];
+        var total_amount = [];
+        for(let x = 0; x<expense_goods.length;x++){
+          label.push((expense_goods[x]).label);
+          total_amount.push((expense_goods[x]).total_amount);
+        }
+        graphtry(label, total_amount);
         click();
       }
     });
@@ -75,55 +79,62 @@ function graph(filter){
 
 function graphtry(labels, datas){
   
-  var dat = [];
-  var least = [];
-  for(let i = 0; i < labels.length; i++){
-    for(let x = 0; x < Object.keys(datas).length; x++){
-      if(labels[i]==Object.keys(datas)[x]){
-        dat.push(parseInt(Object.values(datas)[x].toString()));
-        least.push(100-parseInt(Object.values(datas)[x]));
-        break;
-      }
-    }
-  }   
 
-  Chart.register(ChartjsPluginStacked100.default);
-  const label = labels;
+  var today = new Date();
+  var mm = today.getMonth();
+  var yyyy = today.getFullYear();
+
+  var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  today = mL[mm] + '-' + yyyy; 
+
+
   const data = {
-    labels: label,
+    labels: labels,
     datasets: [{
-      label: 'Most Buy',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: dat,
-    },{
-      label: 'Least Buy',
-      data: least,
+      data: datas,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)'
+      ],
+      borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)'
+    ],
+      borderWidth: 1
     }]
   };
 
-
-
-
-  const config = {
+  const bar = {
     type: 'bar',
     data: data,
     options: {
       plugins:{
+        legend: {
+          display: false,
+        },
         stacked100: {
           enable: true,
-        }
+        },
+        title: {
+          display: true,
+          text: today,
+        },
+
       },
       scales: {
         y: {
           beginAtZero: true
         }
       }
-    }
+    },
+    plugins: [ChartDataLabels]
   };
 
   var ctx = $("#graph");
-  chart = new Chart(ctx, config);
+  chart = new Chart(ctx, bar);
   
 
 }
@@ -138,15 +149,15 @@ function click(){
       z = 1;
   });
 
-  $("#weekly").on('click', function(){
-      chart.destroy();
-      var weekly = $(this).attr('id');
-      graph(weekly);
-      $(this).addClass('underline');
-      $('.'+z).removeClass('underline');
-      $('.1').removeClass('underline');
-      z = 2;
-  });
+  // $("#weekly").on('click', function(){
+  //     chart.destroy();
+  //     var weekly = $(this).attr('id');
+  //     graph(weekly);
+  //     $(this).addClass('underline');
+  //     $('.'+z).removeClass('underline');
+  //     $('.1').removeClass('underline');
+  //     z = 2;
+  // });
 
   $("#monthly").on('click', function(){
       chart.destroy();

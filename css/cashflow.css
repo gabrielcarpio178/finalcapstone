@@ -1,0 +1,13 @@
+*{
+    /* outline: 1px solid black; */
+}
+.content{
+    position: absolute;
+    left: 275px;
+    top: 100px;
+    width: 60%;
+}
+
+.table-content{
+    width: 60%;
+}

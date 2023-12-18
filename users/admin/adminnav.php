@@ -38,6 +38,7 @@ user-scalable=no">
                         User management 
                     </div>
                 </li>
+                <li class="categories" id="cashflow" onclick="window.location = 'cashflow.php'"><i class="fa-solid fa-peso-sign"></i><div class="label-text">Cash Flow</div></li>
                 <li class="categories" id="back_up" onclick="window.location = 'adminback_up.php'"><i class="fa-solid fa-database"></i><div class="label-text">Back Up</div></li>
                 <li class="categories" id="logout"><i class="fa-solid fa-right-from-bracket"></i><div class="label-text">Logout</div></li>
             </ul>

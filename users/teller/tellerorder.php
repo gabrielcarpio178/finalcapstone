@@ -100,8 +100,7 @@ $teller_id = $_SESSION['id'];
                     <input type="hidden" value="" class="order_num" id="order_num">
                     <input type="hidden" value="" id="order_date" class="order_date">
                     <div class="d-flex flex-row align-items-center">
-                        <input type="number" class="form-control" id="inputedtime" name="inputedtime" placeholder="Insert Time"
-                        />    
+                        <input type="number" class="form-control" id="inputedtime" name="inputedtime" placeholder="Insert Time"/>    
                         <div>MINS</div>
                     </div>
                     

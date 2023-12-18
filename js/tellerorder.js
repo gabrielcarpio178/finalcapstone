@@ -27,6 +27,7 @@ function getContentData(type_info){
     cache: false,
     success: function(res){
       var result = JSON.parse(res);
+      console.log(result);
       table_info = '';
       let count_pending = parseInt(0);
       let count_accepted = parseInt(0);
@@ -140,6 +141,9 @@ function getorder_numModal(order_num, statues){
         <table class="table table-hover">
           <thead>
               <tr>
+                  <th scopre="col">
+                    <input type="checkbox" class="form-check-input" name="select-all" id="select_all" onclick="toggle(this)">
+                  </th>
                   <th scope="col">Product</th>
                   <th scope="col">Amount</th>
                   <th scope="col">Quantity</th>
@@ -173,6 +177,7 @@ function getorder_numModal(order_num, statues){
       
       $("#table-content").html(struc_table);
       table_order = "";
+      // console.log(data_result);
       let total_amount = parseInt(0);
       let total_qty = parseInt(0);
       for(let i = 0; i<data_result.length; i++){
@@ -181,6 +186,9 @@ function getorder_numModal(order_num, statues){
           total_qty += parseInt((data_result[i]).order_quantity);
           table_order += `
             <tr>
+              <td>
+                <input type="checkbox" class="form-check-input" name="type" value="${(data_result[i]).order_id}"/>
+              </td>
               <td>
                 <div class="d-flex flex-column">
                   <b>${(data_result[i]).orderproduct_name}</b>
@@ -247,6 +255,14 @@ function getorder_numModal(order_num, statues){
   
 }
 
+function toggle(source) {
+  var checkboxes = $('input[type="checkbox"]');
+  for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i] != source)
+          checkboxes[i].checked = source.checked;
+  }
+}
+
 function insert_date(order_num){
   $("#submitdeadline").on("submit", function (e) {
     e.preventDefault();
@@ -254,31 +270,40 @@ function insert_date(order_num){
     var current_time = moment().format('YYYY-MM-DD HH:mm:ss');
     var deadline = moment(current_time, "YYYY-MM-DD HH:mm:ss").add(inserted_time, 'minutes').format('YYYY-MM-DD HH:mm:ss');
     if(inserted_time!=""){
-      $.ajax({
-        url: "../../controller/Dbtellerinserttime.php",
-        type: "POST",
-        data: {
-          deadline: deadline,
-          order_num : order_num
-        },
-        cache: false,
-        success: function () {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Order Accepted',
-            showConfirmButton: false,
-            timer: 1000
-          }).then(function(){
-            $("#close_time").click();
-            getContentData('pending');
-          })
-          
-        },
+      $("input:checkbox[name=type]:checked").each(function(){
+        insertOrder($(this).val(), order_num, deadline);
       });
     }
   })
 }
+
+function insertOrder(order_id, order_num, deadline){
+  $.ajax({
+    url: "../../controller/Dbtellerinserttime.php",
+    type: "POST",
+    data: {
+      order_id: order_id, 
+      deadline: deadline,
+      order_num : order_num
+    },
+    cache: false,
+    success: function (res) {
+      console.log(res);
+      // Swal.fire({
+      //   position: 'center',
+      //   icon: 'success',
+      //   title: 'Order Accepted',
+      //   showConfirmButton: false,
+      //   timer: 1000
+      // }).then(function(){
+      //   $("#close_time").click();
+      //   getContentData('pending');
+      // })
+    },
+  });
+}
+
+
 
 function procced(order_num){
   $(`#${order_num}`).on('click', function(){

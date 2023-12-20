@@ -4,9 +4,11 @@ $(document).ready(function(){
     $("#navbar").load("usernav.php");
     non_bago_form();
     cert_e_form();
+    isInBago();
     $("#non_bago").on('click', function(){
       non_bago_form();
       cert_e_form();
+      isInBago();
     });
 
     show_cert(false);
@@ -45,7 +47,6 @@ function non_bago_form(){
   isInBago();
   $(".forms-method").css('background-color','rgba(0, 174, 255, 0.253)');
   $(".sumbit_password").css('background-color','rgba(0, 174, 255, 0.253)');
-  $("#input").val("");
   htmlform = `
       <div class="d-flex flex-row justify-content-between label-form">
         <b class="category_1"></b>
@@ -57,10 +58,6 @@ function non_bago_form(){
           <div class="sign-peso">₱</div>
           <input type="number" id="input" class="form-control input-class">
         </div>
-        <div class="d-flex flex-row align-self-end gap-2">
-          <div>Exp: </div>
-          <div class="price_1"></div>
-        </div>
         <button type="submit" id="submit_amount" class="btn btn-primary mt-1">Send</button>
       </form>`
   $(".forms-method").html(htmlform);
@@ -69,8 +66,8 @@ function non_bago_form(){
   $(".forms-method .insert_amount").attr('id','non_bago-submit');
   getbalance();
   $(".forms-method").fadeIn().show();
-  $(".success-message").fadeOut().hide();
-  $("#input").val("");
+  $(".success-message").fadeOut().hide(); 
+  
 }
 
 function isInBago(){
@@ -104,7 +101,7 @@ function cert_e_form(){
       var content_1_parts = content_1.toString().split(".");
       var content_1_num = content_1_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_1_parts[1] ? "." + content_1_parts[1] : "");
       $(".category_1").text((categories[0]).cashierRatesCertificate);
-      $(".price_1").text(`₱ ${content_1_num}`);
+      // $(".price_1").text(`₱ ${content_1_num}`);
       //content_2
       db_cert = '';
       for(let x = 2; x<categories.length; x++){
@@ -117,7 +114,8 @@ function cert_e_form(){
       var content_3_parts = content_3.toString().split(".");
       var content_3_num = content_3_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_3_parts[1] ? "." + content_3_parts[1] : "");
       $(".category_2").text((categories[1]).cashierRatesCertificate);
-      $(".price_2").text(`₱ ${content_3_num}`);
+      // $(".price_2").text(`₱ ${content_3_num}`);
+      $("#input").val(content_3_num).prop("disabled", "disabled");
       submit_non_bago(balance, (categories[0]).cashierRatesCertificate, user_id, (categories[0]).cashierRates_amount);
       submit_cert_t(balance, (categories[1]).cashierRatesCertificate,  user_id, (categories[1]).cashierRates_amount);
     }
@@ -130,7 +128,6 @@ function cert(cashierRates_amount, cashierRatesCertificate){
   var balance = $("#available_balance").val();
   $(".forms-method").css('background-color','rgba(247, 0, 255, 0.253)');
   $(".sumbit_password").css('background-color','rgba(247, 0, 255, 0.253)');
-  $("#input").val("");
   var content = `${cashierRates_amount}.00`;
   var content_parts = content.toString().split(".");
   var content_num = content_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (content_parts[1] ? "." + content_parts[1] : "");
@@ -145,11 +142,6 @@ function cert(cashierRates_amount, cashierRatesCertificate){
             <div class="sign-peso">₱</div>
             <input type="number" id="input" class="form-control input-class">
         </div>
-
-        <div class="d-flex flex-row align-self-end gap-2">
-          <div>Exp: </div>
-          <div class="price_3">₱ ${content_num}</div>
-        </div>
         <button type="submit" id="submit_amount" class="btn btn-primary mt-1">Send</button>
       </form>`;
   
@@ -160,13 +152,12 @@ function cert(cashierRates_amount, cashierRatesCertificate){
   getbalance();
   $(".forms-method").fadeIn().show();
   $(".success-message").fadeOut().hide();
-  $("#input").val("");
+  $("#input").val(content_num).prop("disabled", "disabled");
   submit_cert_e(balance, cashierRatesCertificate, user_id, cashierRates_amount);
 }
 function cert_t_form(){
   $(".forms-method").css('background-color','rgba(255, 0, 55, 0.253)');
   $(".sumbit_password").css('background-color','rgba(255, 0, 55, 0.253)');
-  $("#input").val("");
   htmlform = `
       <div class="label-form"><b class="category_2"></b></div>
       <form class="insert_amount d-flex flex-column gap-3">
@@ -174,10 +165,6 @@ function cert_t_form(){
         <div class="group">
             <div class="sign-peso">₱</div>
             <input type="number" id="input" class="form-control input-class">
-        </div>
-        <div class="d-flex flex-row align-self-end gap-2">
-          <div>Exp: </div>
-          <div class="price_2"></div>
         </div>
         <button type="submit" id="submit_amount" class="btn btn-primary mt-1">Send</button>
       </form>`

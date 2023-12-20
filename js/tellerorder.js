@@ -27,7 +27,6 @@ function getContentData(type_info){
     cache: false,
     success: function(res){
       var result = JSON.parse(res);
-      console.log(result);
       table_info = '';
       let count_pending = parseInt(0);
       let count_accepted = parseInt(0);
@@ -177,7 +176,6 @@ function getorder_numModal(order_num, statues){
       
       $("#table-content").html(struc_table);
       table_order = "";
-      // console.log(data_result);
       let total_amount = parseInt(0);
       let total_qty = parseInt(0);
       for(let i = 0; i<data_result.length; i++){
@@ -196,7 +194,7 @@ function getorder_numModal(order_num, statues){
                 </div>
               </td>
               <td>
-                <b>${(data_result[i]).order_amount}<b>
+                <b>${(data_result[i]).order_amount}.00<b>
               </td>
               <td>
                 <b>${(data_result[i]).order_quantity}<b>
@@ -204,33 +202,37 @@ function getorder_numModal(order_num, statues){
             </tr>
           `;
         }else{
-          total_amount += parseInt((data_result[i]).order_amount);
-          total_qty += parseInt((data_result[i]).order_quantity);
-          table_order += `
-            <tr>
-              <td>
-                <div class="d-flex flex-column">
-                  <b>${(data_result[i]).orderproduct_name}</b>
-                  <p>${(data_result[i]).order_productcategory}</p>
-                </div>
-              </td>
-              <td>
-                <b>${(data_result[i]).order_amount}<b>
-              </td>
-              <td>
-                <b>${(data_result[i]).order_quantity}<b>
-              </td>
-            </tr>
-          `;
+          if((data_result[i]).statues!='DECLANE'){
+            total_amount += parseInt((data_result[i]).order_amount);
+            total_qty += parseInt((data_result[i]).order_quantity);
+            table_order += `
+              <tr>
+                <td>
+                  <div class="d-flex flex-column">
+                    <b>${(data_result[i]).orderproduct_name}</b>
+                    <p>${(data_result[i]).order_productcategory}</p>
+                  </div>
+                </td>
+                <td>
+                  <b>${(data_result[i]).order_amount}.00<b>
+                </td>
+                <td>
+                  <b>${(data_result[i]).order_quantity}<b>
+                </td>
+              </tr>
+            `;
+          }
         }
       }
+      td_html = (statues=='not_set')?'<td></td>':'';
       table_order += `
       <tr>
+        ${td_html}
         <td class="d-flex flex-column">
           <b>TOTAL</b>
         </td>
         <td>
-          <b>${total_amount}<b>
+          <b>${total_amount}.00<b>
         </td>
         <td>
           <b>${total_qty}<b>
@@ -270,9 +272,13 @@ function insert_date(order_num){
     var current_time = moment().format('YYYY-MM-DD HH:mm:ss');
     var deadline = moment(current_time, "YYYY-MM-DD HH:mm:ss").add(inserted_time, 'minutes').format('YYYY-MM-DD HH:mm:ss');
     if(inserted_time!=""){
+      var selected_array = [];
       $("input:checkbox[name=type]:checked").each(function(){
-        insertOrder($(this).val(), order_num, deadline);
+        // insertOrder($(this).val(), order_num, deadline);
+        // console.log($(this).val());
+        selected_array.push($(this).val());
       });
+      insertOrder(selected_array, order_num, deadline);
     }
   })
 }
@@ -288,17 +294,16 @@ function insertOrder(order_id, order_num, deadline){
     },
     cache: false,
     success: function (res) {
-      console.log(res);
-      // Swal.fire({
-      //   position: 'center',
-      //   icon: 'success',
-      //   title: 'Order Accepted',
-      //   showConfirmButton: false,
-      //   timer: 1000
-      // }).then(function(){
-      //   $("#close_time").click();
-      //   getContentData('pending');
-      // })
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Order Accepted',
+        showConfirmButton: false,
+        timer: 1000
+      }).then(function(){
+        $("#close_time").click();
+        getContentData('pending');
+      })
     },
   });
 }
@@ -317,7 +322,7 @@ function procced(order_num){
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Order Proceed',
+          title: 'Order Success!',
           showConfirmButton: false,
           timer: 1000
         }).then(function(){

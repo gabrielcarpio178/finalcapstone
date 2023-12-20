@@ -55,7 +55,7 @@ if(isset($_POST['menu_id'])&&isset($_POST['teller_id'])){
 }else{
    $id = $_SESSION['id'];
   try{
-    $sqlproduct = mysqli_query($connect, "SELECT product_id, product_name, price, quantity, image FROM product_tb WHERE teller_id = '$id'");
+    $sqlproduct = mysqli_query($connect, "SELECT product_id, product_name, price, quantity, image FROM product_tb WHERE teller_id = '$id' ORDER BY product_id DESC");
     $product = mysqli_fetch_assoc($sqlproduct); ?>
     <div class="row">
   <?php if($product==0){

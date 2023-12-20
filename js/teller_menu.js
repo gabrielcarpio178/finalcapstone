@@ -184,7 +184,7 @@ function delete_item(){
 
     Swal.fire({
       title: "Are you sure?",
-      text: "Do want to delete this product?",
+      text: "You want to delete this product?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -207,7 +207,7 @@ function delete_item(){
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: "Product deleted!",
+              title: "Product Deleted!",
               showConfirmButton: false,
               timer: 1000
             }).then(function () {

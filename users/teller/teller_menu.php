@@ -117,7 +117,7 @@ try{
                                     </div>                                                                                                                                  
                                 </div>     
                                 
-                                                                                        
+
                             </div>
                             
                             <div class="details">

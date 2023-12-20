@@ -36,7 +36,7 @@ function input_amount(balance, user_id){
             </label>
             <div class="insert-amount">
                 <div class="peso-insert">₱</div>
-                <input type="number" id="insert_data" class="form-control">
+                <input type="number" id="insert_data" min='1' class="form-control">
             </div>
         </div>
         <button type="submit" class="btn btn-primary w-100">Send</button>

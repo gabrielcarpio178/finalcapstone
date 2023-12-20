@@ -61,7 +61,7 @@ $id=$_SESSION['id'];
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
-                    title: 'Messing input!',
+                    title: 'Missing Input!',
                     showConfirmButton: false,
                     timer: 1000
                 });

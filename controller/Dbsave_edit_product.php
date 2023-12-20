@@ -1,13 +1,13 @@
 <?php 
 require('Dbconnection.php');
 sleep(1);
-if(isset($_POST['product_name'])&&isset($_POST['price'])&&isset($_POST['pcs'])&&isset($_POST['addcategory'])&&isset($_POST['product_id'])&&isset($_POST['pp'])&&(isset($_FILES['fileImg']['name'])||!isset($_FILES['fileImg']['name']))){
+if(isset($_POST['product_name'])&&isset($_POST['price'])&&isset($_POST['pcs'])&&isset($_POST['addcategory'])&&isset($_POST['product_id'])&&(isset($_FILES['fileImg']['name'])||!isset($_FILES['fileImg']['name']))){
     $product_name = $_POST['product_name'];
     $product_id = $_POST['product_id'];
     $price = $_POST['price'];
     $pcs = $_POST['pcs'];
     $category = $_POST['addcategory'];
-    $pp = $_POST['pp'];
+   
     if(!empty($_FILES['fileImg']['name'])){
         
         $imageName = $_FILES['fileImg']['name'];
@@ -25,7 +25,7 @@ if(isset($_POST['product_name'])&&isset($_POST['price'])&&isset($_POST['pcs'])&&
             $newNameImage .= ".".$imageExtension;
             move_uploaded_file($tmpName, "../upload/".$newNameImage);
             try{
-              mysqli_query($connect, "UPDATE `product_tb` SET `image`='$newNameImage', `product_name`='$product_name', `price`='$price', `quantity`='$pcs', `category_id`='$category', `producer_price`='$pp' WHERE `product_id`='$product_id';");
+              mysqli_query($connect, "UPDATE `product_tb` SET `image`='$newNameImage', `product_name`='$product_name', `price`='$price', `quantity`='$pcs', `category_id`='$category' WHERE `product_id`='$product_id';");
   echo "success";
             }catch(\Throwable $th){
               echo $th;
@@ -35,7 +35,7 @@ if(isset($_POST['product_name'])&&isset($_POST['price'])&&isset($_POST['pcs'])&&
     }else{
     
         try{
-            mysqli_query($connect, "UPDATE `product_tb` SET `product_name`='$product_name', `price`='$price', `quantity`='$pcs', `category_id`='$category', `producer_price`='$pp' WHERE `product_id`='$product_id';");
+            mysqli_query($connect, "UPDATE `product_tb` SET `product_name`='$product_name', `price`='$price', `quantity`='$pcs', `category_id`='$category' WHERE `product_id`='$product_id';");
   echo "success";
         }catch(\Throwable $th){
             echo $th;

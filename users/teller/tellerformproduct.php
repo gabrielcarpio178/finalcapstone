@@ -52,14 +52,14 @@ try{
             <img src="../../image/TELLER_UI.png" alt="Preview" id="img">
             <input type="file" name="fileImg" id="fileImg">
         </div>   
-        <label for="product_name">Product name</label>
+        <label for="product_name">Product Name</label>
         <input type="text" name="product_name" id="product_name">
         <label for="price">Price</label>
         <input type="number" name="price" id="price">
         <label for="pcs">Pieces</label>
         <input type="number" name="pcs" id="pcs">
-        <label for="pp">Whole Sale Price</label>
-        <input type="number" name="pp" id="pp">
+        <!-- <label for="pp">Whole Sale Price</label>
+        <input type="number" name="pp" id="pp"> -->
         <div class="d-flex flex-column">
             <label for="addcategory">Category</label>
             <select name="addcategory" id="addcategory">
@@ -92,7 +92,7 @@ try{
             var product_name = $("#product_name").val();
             var price = $("#price").val();
             var pcs = $("#pcs").val();
-            var pp = $("#pp").val();
+            // var pp = $("#pp").val();
             var sp = $("#sp").val();
             if(product_name.length==0&&price.length==0&&pcs.length==0&&pp.length==0&&sp.length==0){
 

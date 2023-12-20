@@ -66,7 +66,7 @@ if(isset($_POST['product_id'])){
         <label for="pcs">Pieces</label>
         <input type="number" name="pcs" id="pcs" value="<?=$productrow['quantity']; ?>">
         <label for="pp">Whole Sale Price</label>
-        <input type="number" name="pp" id="pp" value="<?=$productrow['producer_price']; ?>">
+        <!-- <input type="number" name="pp" id="pp" value="<?=$productrow['producer_price']; ?>"> -->
         <div class="d-flex flex-column">
             <label for="addcategory">Category</label>
             <select name="addcategory" id="addcategory">

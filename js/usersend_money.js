@@ -132,13 +132,13 @@ function getuser(user_id, name, department, phonenumber, address, id, usertype, 
         </div>
         <div class="d-flex flex-column data-info">
             <div class="label-content">
-                Department:
+                Department
             </div>
             <div class="label-data" id="department"></div>
         </div>
         <div class="d-flex flex-column data-info">
             <div class="label-content">
-                Phone Number:
+                Phone Number
             </div>
             <div class="label-data" id="pnumber"></div>
         </div>
@@ -290,11 +290,11 @@ function getbalanceinputed(inputed_balance, sendToId){
                         timer: 1000
                     }).then(function(){
                         input_amount(inputed_balance, sendToId);
-                        // $("#close_modal").click();
-                        // getbalance();
-                        // $("#input_balance").attr("readonly", true);
-                        // $("#send_btn").prop("disabled", "disabled");
-                        window.location="usersend_money.php";
+                        getbalance();
+                        $("#input_balance").attr("readonly", true);
+                        $("#send_btn").prop("disabled", "disabled");
+                        $(".modal-body > #close_modal").click();
+                        // window.location="usersend_money.php";
                     })
                     
                 }else{

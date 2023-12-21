@@ -300,7 +300,8 @@ function insertOrder(order_id, order_num, deadline){
         title: 'Order Accepted',
         showConfirmButton: false,
         timer: 1000
-      }).then(function(){
+      }).then(function(res){
+        // console.log(res);
         $("#close_time").click();
         getContentData('pending');
       })

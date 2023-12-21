@@ -134,6 +134,7 @@ $id = $_SESSION['id'];
                     <div class="d-flex flex-row" id="ref_num">
 
                     </div>
+                    <a id="download_recept" style="color: black">Download</a>
                 </div>
 
                 <center><button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button></center>

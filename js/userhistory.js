@@ -230,6 +230,10 @@ function getmodaldata(type, name, date, amount, ref){
     </div>
     `;
 
+    var download_html = `../../userprint_recept.php?type=${type}&&ref_num=${ref}`;
+    $("#download_recept").prop('href', download_html);
+
+
     $("#payment_for").html(payment_html);
     $("#date_and_time").html(data_time_html);
     $("#amount").html(amount_html);

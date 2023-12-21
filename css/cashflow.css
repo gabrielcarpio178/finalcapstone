@@ -65,14 +65,14 @@
     color: #fff;   
 }
 .graph-content{
-width: 97%;
-height: 30vh;
-margin: 10px;
-padding: 10px;
-cursor: pointer;
-background-color: #fff;
-border-radius: 5px/5px;
-box-shadow: 0 1px 1px 1px #6161618f;
+    width: 97%;
+    /* height: 30vh; */
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 5px/5px;
+    box-shadow: 0 1px 1px 1px #6161618f;
 }
 .dropbtn {
     background-color: #fff;

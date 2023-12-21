@@ -10,7 +10,7 @@ if(!isset($_SESSION['id'])&&($_SESSION['usertype']!="student"||$_SESSION['userty
     $id = $_SESSION['id'];
     $firstname = $_SESSION['firstname'];
     try{
-        $sql = mysqli_query($connect, "SELECT order_tb.user_id, order_tb.teller_id, order_tb.order_time, telleruser_tb.store_name, order_tb.statues, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON order_tb.teller_id = telleruser_tb.teller_id WHERE `user_id` = '79' AND (order_tb.statues IS NULL OR order_tb.statues = 'ACCEPTED') AND (CAST(order_tb.order_time AS DATE) = CAST(NOW() AS DATE)) GROUP BY order_tb.order_num, order_tb.teller_id ORDER BY order_tb.order_id DESC;");
+        $sql = mysqli_query($connect, "SELECT order_tb.user_id, order_tb.teller_id, order_tb.order_time, telleruser_tb.store_name, order_tb.statues, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON order_tb.teller_id = telleruser_tb.teller_id WHERE `user_id` = '$id' AND (order_tb.statues IS NULL OR order_tb.statues = 'ACCEPTED') AND (CAST(order_tb.order_time AS DATE) = CAST(NOW() AS DATE)) GROUP BY order_tb.order_num, order_tb.teller_id ORDER BY order_tb.order_id DESC;");
     }catch(\Throwable $th){
         echo $th;
     }

@@ -65,7 +65,8 @@
                     <div class="available-label text-center ">Available Balance</div>
                 </div>
                 <div class="graph-content">
-                    <canvas id="myChart"></canvas>
+                    <div class="current_date text-end"></div>
+                    <canvas id="myChart" class="w-100" style="height: 25vh;"></canvas>
                 </div>
             </div>
             <button style="display: none" id="info_btn" data-toggle="modal" data-target="#exampleModalinfo">hidden</button>
@@ -78,26 +79,9 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button> -->
             </div>
             <div class="modal-body">
-                <div class="dropdown">
-                    <button class="dropbtn"><i class="fas fa-list"></i>Categories</button>
-                    <div class="dropdown-content">
-                        <div>All</div>
-                        <div>Cash In</div>
-                        <div>Cash Out</div>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn"><i class="fas fa-list"></i>Date</button>
-                    <div class="dropdown-content">
-                        <div>Start Date</div>
-                        <div>End Date</div>
-                    </div>
-                </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

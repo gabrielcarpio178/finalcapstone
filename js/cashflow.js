@@ -138,26 +138,56 @@ function getdatagraph(){
         cache: false,
         success: function(res){
             var result_data_db = JSON.parse(res);
-            console.log(result_data_db);
+            var array_month = [];
+            for(let i = 0; i<result_data_db.length; i++){
+                array_month.push((result_data_db[i]).month);
+            }
+
+            var label_month = [...new Set(array_month)];
+            var cashin = [];
+            var cashout = [];
+            for(let y = 0; y<label_month.length;y++){
+                var data_cashin = result_data_db.filter(x => x.month === label_month[y]).map(x => x.amount_cashin);
+                if(data_cashin.length!=0){
+                    cashin.push(data_cashin);
+                }else{
+                    cashin.push(0);
+                }
+                var data_cashout = result_data_db.filter(x => x.month === label_month[y]).map(x => x.amount_cashout);
+                if(data_cashout.length!=0){
+                    cashout.push(data_cashout);
+                }
+                else{
+                    cashout.push(0);
+                }
+            }
+            var cashin_info = [];
+            for(var i = 0; i < cashin.length; i++){
+                cashin_info.push((cashin[i])[1]);
+            }
+            var cashout_info = [];
+            for(var i = 0; i < cashout.length; i++){
+                cashout_info.push((cashout[i])[0]);
+            }
+            graph(label_month, cashin_info, cashout_info);
         }
     })
-    graph();
 }
 
-function graph(){
+function graph(label, cashin, cashout){
 
     const ctx = $('#myChart');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: label,
             datasets: [{
                 label: 'Cash in',
-                data: [12, 19, 3, 5, 2, 3],
+                data: cashin,
                 borderWidth: 1
             },{
                 label: 'Cash out',
-                data: [12, 19, 3, 5, 2, 3],
+                data: cashout,
                 borderWidth: 1
             }]
         },

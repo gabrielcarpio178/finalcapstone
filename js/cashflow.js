@@ -1,9 +1,38 @@
+let i = true;
+let x = true;
 $(document).ready(function(){
     $("#nav").load("adminnav.php");
+
+    $("#category_content").on('click', function(){
+        if(i==true){
+            $(".dropdown-list").prop('style', "display: block !important");
+            i=false;
+        }else{
+            $(".dropdown-list").prop('style', "display: none !important");
+            i=true;
+        }
+    });
+
+    $("#date_input").on('click', function(){
+        if(x==true){
+            $(".date-list").prop('style', "display: block !important");
+            x=false;
+        }else{
+            $(".date-list").prop('style', "display: none !important");
+            x=true;
+        }
+    });
+
+    $("#btn_sumbit").on('click', function(){
+        $("#btn_sumbit_request").click();
+    });
+
+    submitrequestform();
     cashflowcati();
     current_date();
     data_table();
     getdatagraph();
+    getdate_request();
 });
 
 function current_date(){
@@ -200,4 +229,91 @@ function graph(label, cashin, cashout){
             },
         }
     });
+}
+
+function getcategory(content) {
+    $("#selected_category").text(content);
+    $(".dropdown-list").prop('style', "display: none !important");
+    $("#category_type").val(content);
+    i = true;
+}
+
+function getdate_request(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    $("#start").prop('max', today);
+    $("#end").prop('max', today);
+    $(".txt, #start, .checkbox").each(function() {
+        $(this).change(function(){
+            var start = $(this).val();
+            $("#end").prop('min', start);
+        }); 
+    });
+}
+
+function submitrequestform(){
+    $("#request_form").on('submit', function(e){
+        e.preventDefault();
+        var category_type = $("#category_type").val();
+        var start_date = $("#start").val();
+        var end_date = $("#end").val();
+        if(category_type.length==0||start_date.length==0||end_date.length==0){
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Select Input Data',
+                showConfirmButton: false,
+                timer: 1000
+            })
+        }else{
+            $("#btn_sign").html(`<button id="account_sign_in" data-toggle="modal" data-target="#sign_in">account_sign_in</button>`);
+            $("#account_sign_in").click();
+            $("#close_filter").click();
+            $("#sign_form_admin").on('submit', function(e){
+                e.preventDefault();
+                var user_name = $("#user_name").val();
+                var password = $("#password").val();
+                if(user_name.length==0||password.length==0){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'warning',
+                        title: 'Select Input Data',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                }else{
+                    $.ajax({
+                        url: '../../controller/Dbcashflow_login.php',
+                        type: 'POST',
+                        data: {
+                            user_name : user_name,
+                            password : password
+                        },
+                        cache: false,
+                        success: function(res){
+                            if(res=='wrong_password'){
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'error',
+                                    title: 'Invalid Credentail',
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                })
+                            }else{
+                                printReport(category_type, start_date, end_date);
+                            }
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
+
+function printReport(category_type, start_date, end_date){
+    window.location = `../../cashflow_request.php?category=${category_type}&&start=${start_date}&&end=${end_date}`;
 }

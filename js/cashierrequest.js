@@ -355,6 +355,7 @@ function accept(payment_id, cashout){
           $(".loader").show();
         },
         success: function(res){
+          console.log(res);
           if(res=="success"){
             $(".loader").hide();
             Swal.fire({

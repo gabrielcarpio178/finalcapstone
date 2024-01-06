@@ -70,6 +70,7 @@
                 </div>
             </div>
             <button style="display: none" id="info_btn" data-toggle="modal" data-target="#exampleModalinfo">hidden</button>
+            <div id="btn_sign" style="display: none"></div>
         </div>
     </div>
 
@@ -81,11 +82,48 @@
                 <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
             </div>
             <div class="modal-body">
-                
+                <div class="d-flex flex-column p-2 gap-4">
+                    <div class="d-flex flex-row align-items-center gap-2" style="cursor: pointer;" id="category_content">
+                        <i class="fas fa-list fa-xl icon-modal"></i>
+                        <div class="d-flex flex-column">
+                            <b class="label-modal fs-5">Category</b>
+                            <div id="selected_category"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column p-1 dropdown-list" style="display: none !important;">
+                        <ul class="d-flex flex-column gap-2">
+                            <li>
+                                <div class="all" id="all" onclick="getcategory('All')">All</div>
+                            </li>
+                            <li>
+                                <div class="cashin" id="cashin" onclick="getcategory('Cashin')">Cashin</div>
+                            </li>
+                            <li>
+                                <div class="cashout" id="cashout" onclick="getcategory('Cashout')">Cashout</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex flex-row align-items-center gap-2" style="cursor: pointer;" id="date_input">
+                        <i class="fas fa-calendar-alt fa-xl icon-modal"></i>
+                        <b class="label-modal fs-5">Date</b>
+                    </div>
+                    <form class="d-flex flex-column p-1 date-list" style="display: none !important;" id="request_form">
+                        <input type="text" name="category_type" id="category_type" style="display: none">
+                        <div class="label-date-input">
+                            <b>Select a Start Date</b>
+                            <input type="date" name="start" id="start" class="form-control">
+                        </div>
+                        <div class="label-date-input">
+                            <b>Select a End Date</b>
+                            <input type="date" name="end" id="end" class="form-control">
+                        </div>
+                        <button type="submit" id='btn_sumbit_request' style="display: none">hidden</button>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_filter">Close</button>
+                <button type="button" class="btn btn-primary" id="btn_sumbit">Submit Request</button>
             </div>
             </div>
         </div>
@@ -97,9 +135,6 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">History Details</h5>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button> -->
             </div>
             <div class="modal-body">
 
@@ -135,6 +170,28 @@
             </div>
         </div>
     </div>
+    
+    <!-- modal sign_in -->
+    <div class="modal fade" id="sign_in" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
+            </div>
+            <div class="modal-body">
+                <form id="sign_form_admin" class="d-flex flex-column gap-3">
+                    <p class="text-center">To continue with the require please <b>Sign in</b></p>
+                    <label for="user_name">Username</label>
+                    <input type="text" class="form-control" id="user_name">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>

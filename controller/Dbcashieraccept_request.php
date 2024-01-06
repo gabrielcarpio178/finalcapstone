@@ -13,7 +13,7 @@ if(isset($_POST['payment_id'])&&isset($_POST['cashout'])){
         }
     }elseif($cashout==true){
         try {
-            mysqli_query($connect,"UPDATE `cashout_tb` SET `cashout_status`='accepted', `payment_date` = NOW() WHERE `cashout_id` = '$payment_id';");
+            mysqli_query($connect,"UPDATE `cashout_tb` SET `cashout_status`='accepted', `cashout_date` = NOW() WHERE `cashout_id` = '$payment_id';");
             echo "success";
         } catch (\Throwable $th) {
             echo $th;

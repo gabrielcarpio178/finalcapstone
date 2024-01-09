@@ -1,6 +1,7 @@
 <?php
     require('controller/Dbconnection.php');
     date_default_timezone_set("Asia/Manila");
+    session_start();
     use Dompdf\Dompdf; 
     use Dompdf\Options;
     require 'dompdf/autoload.inc.php'; 
@@ -8,10 +9,10 @@
     $option->set('chroot', realpath(''));
     $dompdf = new Dompdf($option);
     ob_start();
-    if(isset($_GET['category'])&&isset($_GET['start'])&&isset($_GET['end'])){
-        $category = $_GET['category'];
-        $start_date = $_GET['start'];
-        $end_date = $_GET['end'];
+    if(isset($_SESSION['category'])&&isset($_SESSION['start'])&&isset($_SESSION['end'])){
+        $category = $_SESSION['category'];
+        $start_date = $_SESSION['start'];
+        $end_date = $_SESSION['end'];
 
         try {
             $sql_query = mysqli_query($connect, "SELECT cin.cashin_date as trans_date, 'cashin' as trans_type ,u.firstname as name, cin.ref_num as references_num, cin.cashin_amount as amount FROM cashin_tb as cin INNER JOIN user_tb as U ON u.user_id = cin.user_id UNION ALL SELECT cout.cashout_date as trans_date, 'cashout', t.firstname_teller, cout.cashout_refnum, cout.cashout_amount FROM cashout_tb as cout INNER JOIN telleruser_tb as t ON t.teller_id = cout.teller_id WHERE cout.cashout_status = 'accepted' ORDER BY trans_date DESC");
@@ -66,7 +67,6 @@
 
         function getDisplayData($setOfdate, $alldata){
             $data_display = array();
-            
             for($x=0;$x<count($setOfdate);$x++){
                 for($i=0;$i<count($alldata);$i++){
                     $date_string = strtotime(($alldata[$i])['trans_date']);
@@ -85,7 +85,7 @@
         $dataDisplay = getDisplayData($date_range, $data_result);
         $startBalance = getStartingBalance($end_date, $connect);
         // http://localhost/finalcapstone/cashflow_request.php?category=All&&start=2024-01-01&&end=2024-01-06
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -242,13 +242,16 @@
 </body>
 </html>
 <?php
-$html = ob_get_clean();
-$dompdf->loadHtml($html); 
-$dompdf->setPaper('A4', 'Portrait'); 
-$dompdf->set_option('defaultMediaType', 'all');
-$dompdf->set_option('isFontSubsettingEnabled', true);
-$dompdf->render(); 
-$dompdf->stream('cashflow', array("Attachment" => 0));
+    $html = ob_get_clean();
+    $dompdf->loadHtml($html); 
+    $dompdf->setPaper('A4', 'Portrait'); 
+    $dompdf->set_option('defaultMediaType', 'all');
+    $dompdf->set_option('isFontSubsettingEnabled', true);
+    $dompdf->render(); 
+    $dompdf->stream('cashflow', array("Attachment" => 0));
+}else{
+    header('location: signin.php');
+}
 ?>
 
 

@@ -301,8 +301,7 @@ function insertOrder(order_id, order_num, deadline){
         showConfirmButton: false,
         timer: 1000
       }).then(function(res){
-        // console.log(res);
-        $("#close_time").click();
+        // $("#close_time").click();
         getContentData('pending');
       })
     },

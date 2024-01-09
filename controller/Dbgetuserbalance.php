@@ -4,21 +4,21 @@ if(isset($_POST['user_id'])){
     $user_id = $_POST['user_id'];
     //SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id FROM order_tb WHERE order_tb.user_id = '$user_id' AND order_tb.statues IS NOT NULL GROUP BY order_tb.user_id;
     try {
-        $sql_totalPurchase =  mysqli_query($connect, "SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id, order_tb.`statues` FROM order_tb WHERE order_tb.user_id = '$user_id' OR (order_tb.`statues` IS NULL AND CAST(order_tb.`order_time` AS DATE) = CAST(NOW() AS DATE)) GROUP BY order_tb.`statues`;");
+        $sql_totalPurchase =  mysqli_query($connect, "SELECT SUM(order_tb.order_amount) AS total_purchase, order_tb.user_id FROM order_tb WHERE order_tb.user_id = '$user_id' AND (order_tb.statues = 'PROCEED' OR order_tb.statues = 'ACCEPTED' OR (order_tb.statues IS NULL AND CAST(order_tb.order_time AS DATE) = CAST(NOW() AS DATE)));");
         
     } catch (\Throwable $th) {
         echo $th;
     }
 
     try {
-        $sql_totalCashin = mysqli_query($connect, "SELECT SUM(cashin_amount) AS total_cashin, user_id FROM cashin_tb WHERE user_id = '$user_id' GROUP BY user_id;");
+        $sql_totalCashin = mysqli_query($connect, "SELECT SUM(cashin_amount) AS total_cashin, user_id FROM cashin_tb WHERE user_id = '$user_id'");
 
     } catch (\Throwable $th) {
         echo $th;
     }
     // SELECT SUM(payment_amount) AS total_payment, user_id FROM digitalpayment_tb WHERE user_id = '$user_id' AND requestType = 'accepted' GROUP BY user_id;
     try {
-        $sql_total_payment = mysqli_query($connect,"SELECT SUM(payment_amount) AS total_payment, user_id FROM digitalpayment_tb WHERE user_id = '$user_id' AND (requestType='pending' OR requestType='accepted') GROUP BY user_id;");
+        $sql_total_payment = mysqli_query($connect,"SELECT SUM(payment_amount) AS total_payment, user_id FROM digitalpayment_tb WHERE user_id = '$user_id' AND (requestType='pending' OR requestType='accepted')");
     } catch (\Throwable $th) {
         echo $th;
     }
@@ -29,9 +29,7 @@ if(isset($_POST['user_id'])){
         $total_payment_user = $total_payment['total_payment'];
     }
     while($total_purchase = mysqli_fetch_assoc($sql_totalPurchase)){
-        if($total_purchase['statues']!="CANCELED"){
-            $total_purchase_user += $total_purchase['total_purchase'];
-        }
+        $total_purchase_user += $total_purchase['total_purchase'];
     }
     
     while($total_cashin = mysqli_fetch_assoc($sql_totalCashin)){
@@ -39,7 +37,7 @@ if(isset($_POST['user_id'])){
     }
 
     try {
-        $sended_amount_sql = mysqli_query($connect, "SELECT SUM(send_amount) AS sended_amount FROM `sendbalance_tb` WHERE `sender_id` = '$user_id' GROUP BY sender_id;");
+        $sended_amount_sql = mysqli_query($connect, "SELECT SUM(send_amount) AS sended_amount FROM `sendbalance_tb` WHERE `sender_id` = '$user_id'");
         $count_data = mysqli_num_rows($sended_amount_sql);
         $sended_amount = 0;
         if($count_data!=0){
@@ -51,7 +49,7 @@ if(isset($_POST['user_id'])){
     }
 
     try {
-        $receiver_amount_sql = mysqli_query($connect, "SELECT SUM(send_amount) AS receiver_amount FROM `sendbalance_tb` WHERE `receiver_id` = '$user_id' GROUP BY receiver_id;");
+        $receiver_amount_sql = mysqli_query($connect, "SELECT SUM(send_amount) AS receiver_amount FROM `sendbalance_tb` WHERE `receiver_id` = '$user_id'");
         $count_data = mysqli_num_rows($receiver_amount_sql);
         $receiver_amount = 0;
         if($count_data!=0){

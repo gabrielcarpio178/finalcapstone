@@ -9,7 +9,7 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
     if($type=='all'&&$date=="0000-00-00"&&$trans=='all'){
         //purchase
         try {
-            $purchase_sql = mysqli_query($connect, "SELECT telleruser_tb.store_name, order_tb.order_time, SUM(order_tb.order_amount) AS total_amount, order_tb.user_id, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON telleruser_tb.teller_id = order_tb.teller_id WHERE order_tb.user_id = '$user_id' AND order_tb.statues = 'PROCEED' OR order_tb.statues = 'PURCHASE' GROUP BY order_tb.order_num LIMIT 20;");
+            $purchase_sql = mysqli_query($connect, "SELECT telleruser_tb.store_name, order_tb.order_time, SUM(order_tb.order_amount) AS total_amount, order_tb.user_id, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON telleruser_tb.teller_id = order_tb.teller_id WHERE order_tb.user_id = '$user_id' AND (order_tb.statues = 'PROCEED' OR order_tb.statues = 'PURCHASE') GROUP BY order_tb.order_num LIMIT 20;");
             $purchase_array = array();
             while($purchase_row = mysqli_fetch_assoc($purchase_sql)){
                 $purchase_array[] = array('trans_type'=>'purchase','store_name'=>$purchase_row['store_name'], 'date_info'=>$purchase_row['order_time'], 'order_amount'=>$purchase_row['total_amount'], 'order_num'=>$purchase_row['order_num']);
@@ -68,7 +68,7 @@ if(isset($_POST['date'])&&isset($_POST['type'])&&isset($_POST['trans'])){
 
             $date_info = ($date!="0000-00-00")?" AND CAST(order_tb.order_time AS DATE) = '".$date."'":"";
             try {
-                $purchase_sql = mysqli_query($connect, "SELECT telleruser_tb.store_name, order_tb.order_time, order_tb.order_amount, order_tb.user_id, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON telleruser_tb.teller_id = order_tb.teller_id WHERE order_tb.user_id = '$user_id' AND order_tb.statues = 'PROCEED' OR order_tb.statues = 'PURCHASE' ".$date_info."GROUP BY order_tb.order_num;");
+                $purchase_sql = mysqli_query($connect, "SELECT telleruser_tb.store_name, order_tb.order_time, order_tb.order_amount, order_tb.user_id, order_tb.order_num FROM order_tb INNER JOIN telleruser_tb ON telleruser_tb.teller_id = order_tb.teller_id WHERE order_tb.user_id = '$user_id' AND (order_tb.statues = 'PROCEED' OR order_tb.statues = 'PURCHASE')".$date_info." GROUP BY order_tb.order_num;");
                 $purchase_array = array();
                 while($purchase_row = mysqli_fetch_assoc($purchase_sql)){
                     $purchase_array[] = array('trans_type'=>'purchase','store_name'=>$purchase_row['store_name'], 'date_info'=>$purchase_row['order_time'], 'order_amount'=>$purchase_row['order_amount'], 'order_num'=>$purchase_row['order_num']);

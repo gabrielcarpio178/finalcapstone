@@ -44,9 +44,10 @@ $(document).ready(function(){
     $(".txt, #date_filter, .checkbox").each(function() {
         $(this).change(function(){
             date = $(this).val();
-            getHistoryByDate(type, date, 'all');
             if(date==''){
                 getHistoryByDate(type, "0000-00-00", 'all');
+            }else{
+                getHistoryByDate(type, date, 'all');
             }
         }); 
     });
@@ -112,6 +113,7 @@ function getHistoryByDate(type,date, trans){
                 let d1 = new Date(a.date_info), d2 = new Date(b.date_info);
                 return d2 - d1;
             });
+            console.log(data);  
             html = '';
             if(data.length!=0){
                 for(let i = 0; i<data.length; i++){

@@ -291,20 +291,36 @@ function submitrequestform(){
                         type: 'POST',
                         data: {
                             user_name : user_name,
-                            password : password
+                            password : password,
+                            category : category_type,
+                            start : start_date,
+                            end : end_date
                         },
                         cache: false,
+                        beforeSend: function () {
+                            $(".loader").show();
+                        },
                         success: function(res){
                             if(res=='wrong_password'){
+                                $(".loader").hide();
                                 Swal.fire({
                                     position: 'center',
                                     icon: 'error',
                                     title: 'Invalid Credentail',
                                     showConfirmButton: false,
                                     timer: 1000
-                                })
+                                });
                             }else{
-                                printReport(category_type, start_date, end_date);
+                                $(".loader").hide();
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Success',
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                }).then(()=>{
+                                    printReport();
+                                });
                             }
                         }
                     })
@@ -314,6 +330,6 @@ function submitrequestform(){
     })
 }
 
-function printReport(category_type, start_date, end_date){
-    window.location = `../../cashflow_request.php?category=${category_type}&&start=${start_date}&&end=${end_date}`;
+function printReport(){
+    window.location = '../../cashflow_request.php';
 }

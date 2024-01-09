@@ -27,11 +27,6 @@ ul {
   cursor: pointer;
 }
 
-.fucos-class {
-  color: blue;
-  font-weight: bold;
-}
-
 .content-rate{
   display: flex;
   flex-direction: column;

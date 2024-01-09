@@ -36,10 +36,10 @@ if(($_SESSION['usertype']!="cashier")){
             <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#payment_rate">Payment Rates</button>
           </div>
           <div class="d-flex flex-row justify-content-around align-self-center content-header">
-              <div id="non_bago" class="focus-1 fucos-class">NON-BAGO FEE</div>
-              <div id="tor" class="focus-2">TOR</div>
-              <div id="cash_out" class="focus-3">CASH OUT</div>
-              <div id="certificate" class="focus-4">CERTIFICATE</div>
+              <button id="non_bago" class="btn btn-primary focus-1">NON-BAGO FEE</button>
+              <button id="tor" class="btn btn-outline-primary focus-2">TOR</button>
+              <button id="cash_out" class="btn btn-outline-primary focus-3">CASH OUT</button>
+              <button id="certificate" class="btn btn-outline-primary focus-4">CERTIFICATE</button>
           </div>
 
           <div class="table-content">

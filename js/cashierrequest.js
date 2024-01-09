@@ -8,32 +8,32 @@ $(document).ready(function () {
   semisterYear();
   let i;
   $("#non_bago").on("click", function () {
-    $(this).addClass("fucos-class");
-    $(".focus-" + i).removeClass("fucos-class");
+    $(this).removeClass("btn-outline-primary").addClass("btn-primary");
+    $(".focus-" + i).removeClass("btn-primary").addClass("btn-outline-primary");
     i = 1;
     displayTable('non_bago_table', 0);
   });
 
   $("#tor").on("click", function () {
-    $(this).addClass("fucos-class"); 
-    $(".focus-1").removeClass("fucos-class");
-    $(".focus-" + i).removeClass("fucos-class");
+    $(this).removeClass("btn-outline-primary").addClass("btn-primary"); 
+    $(".focus-1").removeClass("btn-primary").addClass("btn-outline-primary");
+    $(".focus-" + i).removeClass("btn-primary").addClass("btn-outline-primary");
     i = 2;
     displayTable('tor', 0);
   });
 
   $("#cash_out").on("click", function () {
-    $(this).addClass("fucos-class"); 
-    $(".focus-1").removeClass("fucos-class");
-    $(".focus-" + i).removeClass("fucos-class");
+    $(this).removeClass("btn-outline-primary").addClass("btn-primary"); 
+    $(".focus-1").removeClass("btn-primary").addClass("btn-outline-primary");
+    $(".focus-" + i).removeClass("btn-primary").addClass("btn-outline-primary");
     i = 3;
     displayTable('cashout_out_table', 0);
   });
 
   $("#certificate").on("click", function () {
-    $(this).addClass("fucos-class"); 
-    $(".focus-1").removeClass("fucos-class");
-    $(".focus-" + i).removeClass("fucos-class");
+    $(this).removeClass("btn-outline-primary").addClass("btn-primary"); 
+    $(".focus-1").removeClass("btn-primary").addClass("btn-outline-primary");
+    $(".focus-" + i).removeClass("btn-primary").addClass("btn-outline-primary");
     i = 4;
     displayTable('certificate', 0);
   });

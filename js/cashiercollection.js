@@ -142,7 +142,7 @@ function displaydata(){
             var cashOut = cashOut_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (cashOut_parts[1] ? "." + cashOut_parts[1] : "");
             $("#cashOut").text(`₱ ${cashOut}`);
             //total_collection daily
-            var total_amount = `${((parseInt(datas.cashin)+parseInt(datas.payment_sum))-parseInt(datas.cashout))}.00`;
+            var total_amount = `${((parseInt(datas.cashin)+parseInt(datas.payment_sum)))}.00`;
             var total_parts = total_amount.toString().split(".");
             var total = total_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (total_parts[1] ? "." + total_parts[1] : "");
             $(".total-collection-amount").text(`₱ ${total}`);

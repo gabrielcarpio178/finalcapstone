@@ -180,7 +180,7 @@
             </div>
             <div class="modal-body">
                 <form id="sign_form_admin" class="d-flex flex-column gap-3">
-                    <p class="text-center">To continue with the require please <b>Sign in</b></p>
+                    <p class="text-center">To continue with the request please <b>Sign in</b></p>
                     <label for="user_name">Username</label>
                     <input type="text" class="form-control" id="user_name">
                     <label for="password">Password</label>

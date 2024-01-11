@@ -139,6 +139,8 @@ function getorder_numModal(order_num){
       var amount = `${(data_result[0]).total_amount}.00`;
       var parts = amount.toString().split(".");
       var num = "₱"+parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+      var href = `../../tellerhistoryPrint.php?order_num=${order_num}`;
+      $("#download_recept").prop("href", href);
       $("#date_time").text(insert_date);
       $("#amount").text(num);
       $("#reference_num").text((data_result[0]).ref_num);

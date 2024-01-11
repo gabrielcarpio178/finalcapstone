@@ -116,7 +116,7 @@ $name = $_SESSION['teller_name'];
                     <label for="reference_num">Reference no. : </label>
                     <p id="reference_num" class="reference_num"></p>
                 </div>
-                
+                <a id="download_recept" class="btn-download-history">Download</a>
                 <center>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
                 </center>

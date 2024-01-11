@@ -89,6 +89,7 @@ function getnoti(){
       html_noti = '';
       let num_noti = parseInt(0);
       setOfSeen= [];
+      let none_view = '';
       for(let i = 0; i<result_noti.length; i++){
         if((result_noti[i]).isSeen=='0'){
           none_view = "none_view";

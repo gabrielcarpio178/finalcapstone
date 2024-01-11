@@ -15,7 +15,7 @@
         $end_date = $_SESSION['end'];
 
         try {
-            $sql_query = mysqli_query($connect, "SELECT cin.cashin_date as trans_date, 'cashin' as trans_type ,u.firstname as name, cin.ref_num as references_num, cin.cashin_amount as amount FROM cashin_tb as cin INNER JOIN user_tb as U ON u.user_id = cin.user_id UNION ALL SELECT cout.cashout_date as trans_date, 'cashout', t.firstname_teller, cout.cashout_refnum, cout.cashout_amount FROM cashout_tb as cout INNER JOIN telleruser_tb as t ON t.teller_id = cout.teller_id WHERE cout.cashout_status = 'accepted' ORDER BY trans_date DESC");
+            $sql_query = mysqli_query($connect, "SELECT cin.cashin_date as trans_date, 'cashin' as trans_type ,CONCAT(u.firstname, ' ',u.lastname) as name, cin.ref_num as references_num, cin.cashin_amount as amount FROM cashin_tb as cin INNER JOIN user_tb as U ON u.user_id = cin.user_id UNION ALL SELECT cout.cashout_date as trans_date, 'cashout', t.firstname_teller, cout.cashout_refnum, cout.cashout_amount FROM cashout_tb as cout INNER JOIN telleruser_tb as t ON t.teller_id = cout.teller_id WHERE cout.cashout_status = 'accepted' ORDER BY trans_date DESC");
         } catch (\Throwable $th) {
             echo $th;
         }
@@ -172,7 +172,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
+                        <td><?=$start_date ?></td>
                         <td>Starting Balance</td>
                         <td></td>
                         <td></td>
@@ -212,7 +212,7 @@
                             ?>    
                     <?php } ?>
                     <tr>
-                        <td></td>
+                        <td><?=$end_date ?></td>
                         <td>ENDING BALANCE</td>
                         <td></td>
                         <td></td>

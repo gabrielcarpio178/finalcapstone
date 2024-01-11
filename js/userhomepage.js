@@ -34,7 +34,7 @@ $(document).ready(function () {
   });
 
   $(".image_profile").on('click', function(){
-    window.location = "userprofile.php";
+    $("#btn_hidden").click();
   });
   
 
@@ -47,9 +47,93 @@ $(document).ready(function () {
 
   });
 
+  $("#camera_icon").on('click', function(){
+    $("#upload_profile").click();
+  })
+
   announcement('Buyer');
   getbalance();
+  reviewprofile();
+  submitform();
 });
+
+function reviewprofile(){
+  upload_profile.onchange = () => {
+      const [file] = upload_profile.files
+      if (file) {
+        profile_image.src = URL.createObjectURL(file);
+      }
+  }
+}
+
+function submitform(){
+  $("#image_form").on("submit", function(e){
+    e.preventDefault();
+    var values=$(this)[0];           
+    var formData = new FormData(values);
+    // console.log(values);
+    // $.ajax({
+    //   url: '../../controller/Dbusereditprofile.php',
+    //   type: 'post',
+    //   data: formData,             
+    //   contentType: false,
+    //   processData: false,
+    //   cache: false,
+    //   success: function(res){
+    //     console.log(res);
+    //   }
+    // })
+  })
+}
+  //     if(p_num_length==11){
+  //         $.ajax({
+  //             url: '../../controller/Dbusereditprofile.php',
+  //             type: 'post',
+  //             data: formData,             
+  //             contentType: false,
+  //             processData: false,
+  //             cache: false,
+  //             success: function(res){
+  //                 if(res=='success'){
+  //                     Swal.fire({
+  //                         position: "center",
+  //                         icon: "success",
+  //                         title:"Profile Update",
+  //                         showConfirmButton: false,
+  //                         timer: 1000
+  //                     }).then(function(){
+  //                         location.reload();
+  //                     });
+  //                 }else if(res=='not_image'){
+  //                     Swal.fire({
+  //                         position: "center",
+  //                         icon: "error",
+  //                         title: "Invalid Profile",
+  //                         showConfirmButton: false,
+  //                         timer: 1000
+  //                     });
+  //                 }else if(res=='email_isInvalid'){
+  //                     Swal.fire({
+  //                         position: "center",
+  //                         icon: "error",
+  //                         title: "Invalid Email",
+  //                         showConfirmButton: false,
+  //                         timer: 1000
+  //                     });
+  //                 }
+  //             }
+  //         })           
+  //     }else{
+  //         Swal.fire({
+  //             position: "center",
+  //             icon: "error",
+  //             title: "Invalid Mobile Number",
+  //             showConfirmButton: false,
+  //             timer: 1000
+  //         });
+  //     }
+  // });
+//}
 
 function announcement(usertype){
 

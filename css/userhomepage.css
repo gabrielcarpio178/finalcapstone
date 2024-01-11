@@ -107,6 +107,32 @@
 .none_view {
   background-color: #d9d9d9;
 }
+.image-profile{
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.image-profile > .profile-image{
+  width: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+} 
+.image-profile > div{
+  position: absolute;
+  right: 150px;
+  bottom: 60px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+}
+div > .camera-icon{
+  max-width: 60px;
+}
 @media screen and (min-width: 320px) {
   .bell {
     position: relative;

@@ -66,16 +66,29 @@ function table_info(order_num, i){
                 table_row = ''
                 let total_amount = 0;
                 let total_qty = 0;
+                let totalAcct_amount = 0;
+                let totalAcct_qty = 0;
+                let total_cancel = 0;
+                let total_cancel_qty = 0;
+                let statues_class = ''
+                let icon = '';
+                let total_accepted = '';
+                let procced = false;
                 for(let i=0; i<data_res.length;i++){
-                    let statues_class = ''
+                    
                     if((data_res[i]).statues!=null){
                         if((data_res[i]).statues=='PROCEED'||(data_res[i]).statues=='ACCEPTED'){
                             statues_class = 'accepted';
-                            var icon = '<i class="fa-solid fa-check"></i>'
+                            icon = '<i class="fa-solid fa-check"></i>'
+                            totalAcct_amount = parseInt((data_res[i]).order_amount)+parseInt(totalAcct_amount);
+                            totalAcct_qty = parseInt((data_res[i]).order_quantity)+totalAcct_qty;
                         }else if((data_res[i]).statues=='CANCELED'||(data_res[i]).statues=='DECLANE'){
                             statues_class = 'cancel';
-                            var icon = '<i class="fa-solid fa-x"></i>'
+                            icon = '<i class="fa-solid fa-x"></i>'
+                            total_cancel = parseInt((data_res[i]).order_amount)+parseInt(total_cancel);
+                            total_cancel_qty = parseInt((data_res[i]).order_quantity)+total_cancel_qty;
                         }
+                        procced = true;
                     }
 
                     table_row += `
@@ -94,6 +107,22 @@ function table_info(order_num, i){
                     total_amount = parseInt(total_amount) + parseInt((data_res[i]).order_amount);
                     total_qty = parseInt(total_qty) + parseInt((data_res[i]).order_quantity);
                 }
+                if(procced==true){
+                    total_accepted = `
+                    <tr class='accepted'>
+                        <td class=""></td>
+                        <td class="fw-bold">Total Accepted</td>
+                        <td class="amount">${totalAcct_amount}.00</td>
+                        <td class="quantity">${totalAcct_qty}</td>
+                    </tr>
+                    <tr class='cancel'>
+                        <td class=""></td>
+                        <td class="fw-bold">Total Declane</td>
+                        <td class="amount">${total_cancel}.00</td>
+                        <td class="quantity">${total_cancel_qty}</td>
+                    </tr>
+                    `
+                }
                 contenttable = `
                     <table class="table table-hover">
                         <thead>
@@ -106,6 +135,7 @@ function table_info(order_num, i){
                         </thead>
                         <tbody id="table_body">
                             ${table_row}
+                            ${total_accepted}
                             <tr>
                                 <td class=""></td>
                                 <td class="fw-bold">Total</td>
@@ -116,7 +146,7 @@ function table_info(order_num, i){
 
                     </table>
                     <center>
-                        <button class="btn btn-outline-primary">Procced<button>
+                        <button class="btn btn-outline-primary" ${(procced==false)?"disabled":""} onclick="receiverOrder(${order_num})">Procced<button>
                     </center>
                     `;
                 $(`.content-table_${i}`).html(contenttable);
@@ -129,38 +159,38 @@ function table_info(order_num, i){
     }      
 
 }
-// function receiverOrder(order_num, i, teller_id){
-//     Swal.fire({
-//         title: "Are you sure?",
-//         text: "Do you want to receive this!",
-//         icon: "warning",
-//         showCancelButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         confirmButtonText: "Yes, receive it!"
-//         }).then((result) => {
-//         if (result.isConfirmed) {
-//             $.ajax({
-//                 url: '../../controller/DbuserReceiver_order.php',
-//                 type: 'POST',
-//                 data: {
-//                     order_num : order_num,
-//                     teller_id : teller_id
-//                 },
-//                 cache: false,
-//                 success: function(res){
-//                     Swal.fire({
-//                         position: "center",
-//                         icon: "success",
-//                         title: "Order Received",
-//                         showConfirmButton: false,
-//                         timer: 1000
-//                     }).then(function(){
-//                         window.location = "userordersummary.php"
-//                     });
-//                 }
-//             });
-//         }
-//     });
+function receiverOrder(order_num){
+    Swal.fire({
+        title: "Are you sure?",
+        text: "Do you want to receive this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, receive it!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '../../controller/DbuserReceiver_order.php',
+                type: 'POST',
+                data: {
+                    order_num : order_num
+                },
+                cache: false,
+                success: function(res){
+                    console.log(res)
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Order Received",
+                        showConfirmButton: false,
+                        timer: 1000
+                    }).then(function(){
+                        window.location = "userordersummary.php"
+                    });
+                }
+            });
+        }
+    });
 
-// }
+}

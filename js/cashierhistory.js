@@ -90,7 +90,7 @@ function getDataTable(info, department, date){
                         </div>`;
                 }else if((data[i].type)=="cashin"){
                     html += `
-                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].fullname}', '${insert_date}', '${data[i].cashin_amount}', '${data[i].ref_num}','')">
+                        <div class='d-flex flex-row w-100 justify-content-between history-data' onclick="getdatamodal('${data[i].type}','${data[i].fullname}', '${insert_date}', '${data[i].cashin_amount}', '${data[i].ref_num}')">
                             <div class='d-flex flex-column'>
                                 <div><b>${data[i].fullname}</b>, Cash In</div>
                                 <div>${insert_date}</div>
@@ -154,7 +154,8 @@ function getdatamodal(type ,fullname, date, amount, ref, payment_type){
         <b>${ref}</b>
     </div>
     `;
-
+    var href = `../../cashierhistoryPrint.php?ref_num=${ref}&&type_payment=${type}`;
+    $("#download_recept").prop("href",href)
     $("#payment_for").html(payment_html);
     $("#date_and_time").html(data_time_html);
     $("#amount").html(amount_html);

@@ -302,7 +302,8 @@ function insertOrder(order_id, order_num, deadline){
         timer: 1000
       }).then(function(res){
         // $("#close_time").click();
-        getContentData('pending');
+        // getContentData('pending');
+        window.location = 'tellerorder.php';
       })
     },
   });
@@ -326,8 +327,9 @@ function procced(order_num){
           showConfirmButton: false,
           timer: 1000
         }).then(function(){
-          $("#close_modal_summary").click();
-          getContentData('accepted');
+          // $("#close_modal_summary").click();
+          // getContentData('accepted');
+          window.location = 'tellerorder.php';
         })
         
       }
@@ -350,8 +352,9 @@ function declane(order_num){
           showConfirmButton: false,
           timer: 1000
         }).then(function(){
-          getContentData('accepted');
-          $("#close_modal_summary").click();
+          // getContentData('accepted');
+          // $("#close_modal_summary").click();
+          window.location = 'tellerorder.php';
         });
       }else{
         Swal.fire({

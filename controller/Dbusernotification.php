@@ -11,7 +11,7 @@ if(isset($_POST['user_id'])){
     $data_payment = array();
 
     try {
-        $sql_purchase = mysqli_query($connect, "SELECT telleruser_tb.teller_gender, telleruser_tb.store_name, order_tb.deadline_time, order_tb.statues, order_tb.order_num, order_tb.user_id, order_tb.num_noti, order_tb.order_time FROM order_tb INNER JOIN telleruser_tb on order_tb.teller_id = telleruser_tb.teller_id WHERE user_id= '$user_id' GROUP BY order_num ORDER BY order_tb.order_id DESC;");
+        $sql_purchase = mysqli_query($connect, "SELECT telleruser_tb.teller_gender, telleruser_tb.store_name, order_tb.deadline_time, order_tb.statues, order_tb.order_num, order_tb.user_id, order_tb.num_noti, order_tb.order_time FROM order_tb INNER JOIN telleruser_tb on order_tb.teller_id = telleruser_tb.teller_id WHERE user_id= '$user_id' GROUP BY order_num, order_tb.statues ORDER BY order_tb.order_id DESC;");
     } catch (\Throwable $th) {
         echo $th;
     }

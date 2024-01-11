@@ -76,6 +76,7 @@
                     <div class="d-flex flex-row" id="ref_num">
 
                     </div>
+                    <a id="download_recept" class="btn-download-history">Download</a>
                 </div>
 
                 <center><button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button></center>

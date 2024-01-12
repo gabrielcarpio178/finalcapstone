@@ -7,22 +7,13 @@ $option = new Options();
 $option->set('chroot', realpath(''));
 $dompdf = new Dompdf($option);
 ob_start();
-if(isset($_GET['order_num'])){
+if(isset($_GET['order_num'])&&isset($_GET['type_content'])){
     $order_num = $_GET['order_num'];
-    try {
-        $sql = mysqli_query($connect, "SELECT user_tb.firstname, user_tb.lastname,order_tb.orderproduct_name, order_tb.order_quantity, SUM(order_tb.order_amount) AS total_amount, order_tb.order_num, order_tb.order_time, user_tb.usertype, student_tb.course, student_tb.studentID_number, personnel_tb.department FROM user_tb LEFT JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN personnel_tb ON user_tb.user_id = personnel_tb.user_id INNER JOIN order_tb ON user_tb.user_id = order_tb.user_id WHERE order_tb.order_num = '$order_num' GROUP BY order_tb.order_num;");
-        
-        $array_data = array();
-        while($row = mysqli_fetch_assoc($sql)){
-            if($row['course']!=null){
-                $department = $row['course'];
-            }else{
-                $department = $row['department'];
-            }
-            $array_data = array('name'=>$row['firstname']." ".$row['lastname'], 'department'=>$department, 'date'=>$row['order_time'], 'total_amount'=>$row['total_amount'], 'ref_num'=>$row['order_num'], "user_data_id" => $row['studentID_number']);
-        }
-    } catch (\Throwable $th) {
-        echo $th;
+    $type_content = $_GET['type_content'];
+    if($type_content!='cashout'){
+        $sql = "SELECT CONCAT(user_tb.firstname, ' ', user_tb.lastname) AS name, SUM(order_tb.order_amount) AS total_amount, order_tb.order_num, order_tb.order_time, user_tb.usertype, student_tb.course, student_tb.studentID_number, personnel_tb.department, '' AS payment_statues FROM user_tb LEFT JOIN student_tb ON user_tb.user_id = student_tb.user_id LEFT JOIN personnel_tb ON user_tb.user_id = personnel_tb.user_id INNER JOIN order_tb ON user_tb.user_id = order_tb.user_id WHERE order_tb.order_num = '$order_num' GROUP BY order_tb.order_num;";
+    }else{
+        $sql = "SELECT telleruser_tb.store_name AS name, cashout_tb.`cashout_amount` AS total_amount,  cashout_tb.cashout_refnum AS order_num, cashout_tb.`cashout_date` AS order_time, 'Cashout' AS usertype, '' AS course,'' AS studentID_number, '' AS department, cashout_tb.cashout_status AS payment_statues FROM `cashout_tb` INNER JOIN `telleruser_tb` ON telleruser_tb.teller_id = cashout_tb.teller_id WHERE cashout_tb.cashout_refnum = '$order_num';";
     }
     
     function getdisplaydate($type ,$date){
@@ -77,6 +68,47 @@ if(isset($_GET['order_num'])){
         return $cotdatetime;
     }
 
+    function getdata($query, $connect){
+        $array_data = array();
+        try {
+            $sql = mysqli_query($connect, $query);
+            while($row = mysqli_fetch_assoc($sql)){
+                if($row['course']!=null){
+                    $department = $row['course'];
+                }else{
+                    $department = $row['department'];
+                }
+                $array_data = array('name'=>$row['name'], 'department'=>$department, 'date'=>$row['order_time'], 'total_amount'=>$row['total_amount'], 'ref_num'=>$row['order_num'], "user_data_id" => $row['studentID_number'], 'usertype'=>$row['usertype'], 'payment_statues'=>$row['payment_statues']);
+            }
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+        return $array_data;
+    }
+    $array_data = getdata($sql, $connect);
+    if($array_data['usertype']!='Cashout'){
+        $label_name = 'Full Name';
+        $department = "
+        <tr>
+            <td>Department:</td>
+            <td>".$array_data['department'] ."</td>
+        </tr>
+        <tr>
+            <td>User ID:</td>
+            <td>".$array_data['user_data_id']."</td>
+        </tr>
+        ";
+        $payment_type = "Purchase";
+    }else{
+        $label_name = 'Store Name';
+        $department = "
+        <tr>
+            <td>Payment Status:</td>
+            <td>".$array_data['payment_statues']."</td>
+        </tr>
+        ";
+        $payment_type = "Cashout";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -142,20 +174,13 @@ if(isset($_GET['order_num'])){
     <div class='content'>
         <table>
             <tr>
-                <td>Full Name:</td>
+                <td><?= $label_name ?>:</td>
                 <td><?=$array_data['name'] ?></td>
             </tr>
-            <tr>
-                <td>Department:</td>
-                <td><?=$array_data['department'] ?></td>
-            </tr>
-            <tr>
-                <td>User ID:</td>
-                <td><?=$array_data['user_data_id'] ?></td>
-            </tr>
+            <?= $department  ?>
             <tr>
                 <td>Payment for:</td>
-                <td>Purchase</td>
+                <td><?=$payment_type ?></td>
             </tr>
             <tr>
                 <td>Date & Time:</td>
@@ -163,7 +188,7 @@ if(isset($_GET['order_num'])){
             </tr>
             <tr>
                 <td>Amount:</td>
-                <td><?=$array_data['total_amount'] ?></td>
+                <td><?=$array_data['total_amount'] ?>.00</td>
             </tr>
             <tr>
                 <td>Reference no. :</td>

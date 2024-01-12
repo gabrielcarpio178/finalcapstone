@@ -3,7 +3,7 @@ require('Dbconnection.php');
 if(isset($_POST['user'])){
     //cashin
     try {
-        $cashin_sql = mysqli_query($connect, "SELECT SUM(cashin_amount) AS total_cashin_monthly, MONTHNAME(cashin_date) AS month_cashin FROM cashin_tb GROUP BY MONTH(cashin_date)");
+        $cashin_sql = mysqli_query($connect, "SELECT SUM(cashin_amount) AS total_cashin_monthly, MONTHNAME(cashin_date) AS month_cashin FROM cashin_tb WHERE YEAR(CAST(cashin_date AS DATE)) = YEAR(CAST(NOW() AS DATE)) GROUP BY MONTH(cashin_date);");
         $cashin_array = array();
         $cashin_month = array();
         while($cashin_row = mysqli_fetch_assoc($cashin_sql)){
@@ -15,7 +15,7 @@ if(isset($_POST['user'])){
     }
     //cashout
     try {
-        $cashout_sql = mysqli_query($connect, "SELECT SUM(cashout_amount) AS total_cashout_monthly, MONTHNAME(cashout_date) AS month_cashout FROM cashout_tb GROUP BY MONTH(cashout_date)");
+        $cashout_sql = mysqli_query($connect, "SELECT SUM(cashout_amount) AS total_cashout_monthly, MONTHNAME(cashout_date) AS month_cashout FROM cashout_tb WHERE YEAR(CAST(cashout_date AS DATE)) = YEAR(CAST(NOW() AS DATE)) GROUP BY MONTH(cashout_date)");
         $cashout_array = array();
         $cashout_month = array();
         while($cashout_row = mysqli_fetch_assoc($cashout_sql)){

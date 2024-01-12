@@ -39,9 +39,10 @@ $name = $_SESSION['teller_name'];
                 </div>
 
                 <div class="d-flex flex-column sort_by">
-                    <label for="departmenr">Sort by Department</label>
+                    <label for="departmenr">Sort by</label>
                     <select name="department" id="department" class="form-control department">
                         <option  selected value='all'>ALL</option>
+                        <option value='CASHOUT'>CASHOUT</option>
                         <option value="SASO">SASO</option>
                         <option value="Faculty">FACULTY</option>
                         <option value="Guidance">GUIDANCE</option>
@@ -55,7 +56,14 @@ $name = $_SESSION['teller_name'];
                         <option value="BSIS">BSIS</option>
                     </select>
                 </div>
-
+                <div class="d-flex flex-column w-25" id="filter_cashout">
+                    <label for="statues">Cashout Statues</label>
+                    <select name="statues" id="statues" class="form-control">
+                        <option  selected value=''>ALL</option>
+                        <option  selected value='pending'>Pending</option>
+                        <option value='accepted'>ACCEPTED</option>
+                    </select>
+                </div>
                 <div class="d-flex flex-column w-25">
                     <label for="date">Date</label>
                     <input type="date" name="date" id="date" class="form-control">
@@ -88,19 +96,16 @@ $name = $_SESSION['teller_name'];
                     <p class="name" id="name"></p>
                 </div>
 
-                <div class="d-flex flex-row justify-content-between">
-                    <label for="department_info">Department: </label>
-                    <p id="department_info" class="department_info"></p>
+                <div class="d-flex flex-row justify-content-between" id="department_class">
+
                 </div>
                 
-                <div class="d-flex flex-row justify-content-between student_class">
-                    <label for="student_id">User ID: </label>
-                    <p id="student_id" class="student_id"></p>
+                <div class="d-flex flex-row justify-content-between student_class" id="student_class">
+                    
                 </div>
 
-                <div class="d-flex flex-row justify-content-between">
-                    <label for="payment_for">Payment for: </label>
-                    <p id="payment_for">Purchase</p>  
+                <div class="d-flex flex-row justify-content-between" id="payment_for">
+                   
                 </div>
 
                 <div class="d-flex flex-row justify-content-between">

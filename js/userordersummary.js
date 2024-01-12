@@ -117,7 +117,7 @@ function table_info(order_num, i){
                     </tr>
                     <tr class='cancel'>
                         <td class=""></td>
-                        <td class="fw-bold">Total Declane</td>
+                        <td class="fw-bold">Total Declined</td>
                         <td class="amount">${total_cancel}.00</td>
                         <td class="quantity">${total_cancel_qty}</td>
                     </tr>
@@ -146,7 +146,7 @@ function table_info(order_num, i){
 
                     </table>
                     <center>
-                        <button class="btn btn-outline-primary" ${(procced==false)?"disabled":""} onclick="receiverOrder(${order_num})">Procced<button>
+                        <button class="btn btn-outline-primary" ${(procced==false)?"disabled":""} onclick="receiverOrder(${order_num})">Procced</button>
                     </center>
                     `;
                 $(`.content-table_${i}`).html(contenttable);

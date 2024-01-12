@@ -60,7 +60,7 @@ $name = $_SESSION['teller_name'];
                     <label for="statues">Cashout Statues</label>
                     <select name="statues" id="statues" class="form-control">
                         <option  selected value=''>ALL</option>
-                        <option  selected value='pending'>Pending</option>
+                        <option  selected value='pending'>PENDING</option>
                         <option value='accepted'>ACCEPTED</option>
                     </select>
                 </div>
@@ -105,7 +105,7 @@ $name = $_SESSION['teller_name'];
                 </div>
 
                 <div class="d-flex flex-row justify-content-between" id="payment_for">
-                   
+                
                 </div>
 
                 <div class="d-flex flex-row justify-content-between">

@@ -168,14 +168,15 @@ function table_info(category, usertype, address, search){
                     <th scope="col">Email</th>
                     <th scope="col">Phone #</th>
                     <th scope="col">Address</th>
-                    <th scope="col">Reset Pass.</th>
+                   
                 </tr>
             </thead>
             <tbody id="tbody_data">
               
             </tbody>
           </table>
-          `;
+          `; 
+          //<th scope="col">Reset Pass.</th>
           $(".table-info").html(table_content);
           tbody = '';
           for(let i = 0; i<result_table.length; i++){
@@ -186,11 +187,11 @@ function table_info(category, usertype, address, search){
               <td>${(result_table[i]).email}</td>
               <td>${(result_table[i]).phonenumber}</td>
               <td>${(result_table[i]).address}</td>
-              <td class="action" onclick="edit('${(result_table[i]).user_id}', 'buyer')"><i class="fas fa-edit" style="#282828de"></td>
             </tr>
             `
           }
           $("#tbody_data").html(tbody);
+          //<td class="action" onclick="edit('${(result_table[i]).user_id}', 'buyer')"><i class="fas fa-edit" style="#282828de"></td>
         }else{
           $(".table-info").text('No Record');
         }
@@ -205,7 +206,7 @@ function table_info(category, usertype, address, search){
                     <th scope="col">Owner Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone #</th>
-                    <th scope="col">View QR</th>
+                    
                 </tr>
             </thead>
             <tbody id="tbody_data">
@@ -213,6 +214,7 @@ function table_info(category, usertype, address, search){
             </tbody>
           </table>
           `;
+          //<th scope="col">View QR</th>
           $(".table-info").html(table_content);
           tbody = '';
           for(let i = 0; i<result_table.length; i++){
@@ -222,12 +224,12 @@ function table_info(category, usertype, address, search){
               <td>${(result_table[i]).name}</td>
               <td>${(result_table[i]).email}</td>
               <td>${(result_table[i]).phonenumber_teller}</td>
-              <td class="action" onclick="viewqr('${(result_table[i]).teller_id}')"><i class="fa-solid fa-eye"></i></td>
+              
             </tr>
             `
           }
           $("#tbody_data").html(tbody);
-          
+          // <td class="action" onclick="viewqr('${(result_table[i]).teller_id}')"><i class="fa-solid fa-eye"></i></td>
         }else{
           $(".table-info").text('No Record');
         }

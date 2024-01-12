@@ -87,9 +87,9 @@ user-scalable=no"
                   </button>
                 </center>
               </div>
-              <div class="mt-2">
+              <!-- <div class="mt-2">
                 <center><div id="forgotform"> Forgot Account? </div></center>
-              </div>
+              </div> -->
             </form>
             
           </div>

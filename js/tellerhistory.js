@@ -91,14 +91,19 @@ function getdatatable(name, department, date_filter, statues){
           var amount = `${(result[i]).total_amount}.00`;
           var parts = amount.toString().split(".");
           var num = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+          if(((result[i]).type_content)!='cashout'){
+            type_content =(result[i]).name;
+          }else{
+            type_content = 'CASHOUT';
+          }
           data_content += `
             <div class="d-flex flex-row align-items-center justify-content-between content_data" onclick="getorder_numModal('${(result[i]).order_num}', '${(result[i]).type_content}')">
               <div class="d-flex flex-column">
                 <div class="d-flex flex-row">
                   <b>
-                    ${(result[i]).name}
+                    ${type_content}
                   </b>
-                  <div>
+                  <div style="text-transform: uppercase;">
                     , ${(result[i]).department}
                   </div>
                 </div>
@@ -183,8 +188,8 @@ function getorder_numModal(order_num, type_content){
         $("#payment_for").html(payment_for);
       }else{
         student_class = `
-          <label for="student_id">Statues: </label>
-          <p id="student_id" class="student_id">${(data_result[0]).statues}</p>
+          <label for="student_id">Status: </label>
+          <p id="student_id" class="student_id" style="text-transform: uppercase;">${(data_result[0]).statues}</p>
         `
         payment_for = `
           <label for="payment_for">Payment for: </label>

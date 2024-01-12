@@ -54,10 +54,10 @@ user-scalable=no">
                         <i class="fa-solid fa-trash"></i>
                         <div class="text-center">Deactivate Account</div>
                     </div>
-                    <div class="d-flex flex-row gap-2 btn_content" id="change_password">
+                    <!-- <div class="d-flex flex-row gap-2 btn_content" id="change_password">
                         <i class="fa-solid fa-lock"></i>
                         <div class="text-center">Change Password</div>
-                    </div>
+                    </div> -->
 
                 </div>
                 

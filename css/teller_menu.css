@@ -1,0 +1,170 @@
+/* *{
+        outline: 1px solid black;
+    }*/
+    .main-menu {
+      font-size: 1.5rem;
+    }
+    
+    .category-content {
+      text-align: center;
+      background-color: white;
+      box-shadow: 0 1px 1px 1px #61616191;
+      margin-bottom: 10px;
+      border-radius: 2em/5em;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .edit-delete i {
+      display: none;
+    }
+    .edit-delete {
+      padding: 0px 10px 0px 10px;
+    }
+    .action-category .edit {
+      padding: 0% 20%;
+      border-radius: 10px 0px 0px 10px;
+      background-color: white;
+      box-shadow: 0 1px 1px 1px #616161;
+      cursor: pointer;
+    }
+    
+    .action-category .delete {
+      padding: 0% 20%;
+      border-radius: 0px 10px 10px 0px;
+      background-color: white;
+      box-shadow: 0 1px 1px 1px #616161;
+      cursor: pointer;
+    }
+    .action {
+      margin-right: 10px;
+    }
+    .action .edit {
+      padding: 0% 20%;
+      border-radius: 10px 0px 0px 10px;
+      background-color: white;
+      box-shadow: 0 1px 1px 1px #616161;
+      cursor: pointer;
+    }
+    
+    .action .delete {
+      padding: 0% 20%;
+      border-radius: 0px 10px 10px 0px;
+      background-color: white;
+      box-shadow: 0 1px 1px 1px #616161;
+      cursor: pointer;
+    }
+    .detail {
+      margin-top: 10px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 1px 1px 1px #616161;
+      padding: 0px 20px;
+      pointer-events: none;
+    }
+    /*add*/
+    .add-form {
+      background: white;
+      padding: 2% 2% 0% 2%;
+      box-shadow: 0 1px 1px 1px #616161;
+    }
+    
+    .classfocus {
+      background-color: #88b4be;
+    }
+    .edit-delete-category {
+      cursor: pointer;
+      display: none;
+    }
+    
+    .edit-category,
+    .delete-category {
+      width: auto;
+      height: auto;
+      padding: 5%;
+      box-shadow: 0 1px 1px 1px #616161;
+      background-color: white;
+      margin-left: 15px;
+    }
+    .disable-click {
+      pointer-events: none;
+    }
+    .delete_product {
+      cursor: pointer;
+    }
+    .flex-row .delete_product {
+      display: none;
+    }
+    @media screen and (min-width: 320px) {
+      .row {
+        margin-top: 10px;
+      }
+      .add-form {
+        position: fixed;
+        display: none;
+        height: 100vh;
+        padding: 30px;
+      }
+      .edit-delete-category {
+        position: absolute;
+        right: 10px;
+      }
+      .action-category {
+        margin-right: 10px;
+      }
+      .forms img {
+        margin-left: 28%;
+        width: 130px;
+        height: 130px;
+      }
+      .delete_product {
+        font-size: 1em;
+        position: relative;
+        top: 30px;
+        left: 10px;
+      }
+    }
+    
+    @media screen and (min-width: 760px) {
+      .forms img {
+        margin-left: 40%;
+        width: 130px;
+        height: 130px;
+      }
+    }
+    
+    @media screen and (min-width: 1020px) {
+      .row {
+        margin-top: 0px;
+      }
+      .add-form {
+        display: block;
+        position: fixed;
+        right: 10px;
+        width: 270px;
+        height: 100vh;
+      }
+    
+      .edit-delete-category {
+        position: absolute;
+        right: 10px;
+      }
+      .forms img {
+        margin-left: 40px;
+        width: 150px;
+        height: 150px;
+      }
+      .delete_product {
+        font-size: 1.5em;
+        position: relative;
+        top: 30px;
+        left: 10px;
+      }
+    
+      #close {
+        display: none;
+      }
+      .category-content {
+        width: 80px;
+      }
+    }
+    

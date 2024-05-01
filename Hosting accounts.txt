@@ -1,0 +1,11 @@
+filezila account
+
+username: u520834156.digitalpay
+password: Digital#2024
+
+database mysql
+
+username: u520834156_digitalpay
+password: Mydigitalpaysql634
+link: https://auth-db1322.hstgr.io/index.php?db=u520834156_digitalpay
+

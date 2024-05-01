@@ -1,0 +1,69 @@
+/* *{
+    outline: 1px solid black;
+} */
+.content-userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 1px 1px 1px #616161a1;
+  border-radius: 10px/10px;
+  background-color: white;
+  gap: 10px;
+}
+.content-userInfo img {
+  max-width: 35%;
+}
+.content-label p {
+  color: #375076;
+}
+.personal-data {
+  align-self: flex-start;
+}
+.balance_label {
+  background-color: #c6d8de;
+  width: 100%;
+  text-align: center;
+  padding: 1%;
+}
+.line {
+  background-color: black;
+  height: 2px;
+}
+
+@media screen and (min-width: 320px) {
+  .content-label{
+    padding: 80px 0px 0px 25px;
+  }
+  .content-userInfo {
+    margin: 5% 10%;
+    padding: 4% 5%;
+  }
+  .label-data, .school-year{
+    font-size: 0.7em;
+  }
+  .name-stundet_id, .course-year, .address{
+    font-size: 0.7em;
+  }
+  .nonBago-label-total, .amount-non-bago-total, .nonBago-label, .amount-non-bago, .balance_label{
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .content-label{
+    padding: 40px 0px 0px 100px;
+  }
+  .content-userInfo {
+    margin: 0% 20%;
+    padding: 4% 5%;
+  }
+  .label-data, .school-year{
+    font-size: 1em;
+  }
+  .name-stundet_id, .course-year, .address{
+    font-size: 1em;
+  }
+  .nonBago-label-total, .amount-non-bago-total, .nonBago-label, .amount-non-bago, .balance_label{
+    font-size: 1em;
+  }
+}

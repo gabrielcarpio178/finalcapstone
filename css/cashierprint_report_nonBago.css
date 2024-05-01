@@ -1,0 +1,36 @@
+/* *{
+    outline: 1px solid;
+} */
+.content{
+    position: absolute;
+    inset: 100px 0px 0px 280px;
+}
+.header-info, .account-balance{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.content-category{
+    font-weight: bold;
+}
+.bcc-logo{
+    width: 15%;
+    height: 20vh;
+}
+.sort-data{
+    width: 25%;
+}
+#start_date, #end_date{
+    width: 50%;
+}
+.space{
+    width: 33.33%;
+    white-space: nowrap;
+}
+.current-date{
+    text-align: end;
+}
+
+.table-scroll{
+    overflow-y: scroll;
+    height:250px;
+}

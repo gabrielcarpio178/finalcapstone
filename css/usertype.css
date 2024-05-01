@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*outline: 1px solid;*/
+}
+body {
+  font-family: "Inter";
+  background: #f2f2f2;
+}
+.contents {
+  display: flex;
+  justify-content: center;
+}
+.student,
+.personnel {
+  border-radius: 5%/5%;
+  background-color: white;
+  padding: 25%;
+  box-shadow: 0 2px 2px 1px #616161;
+  cursor: pointer;
+}
+.label {
+  text-align: center;
+  font-size: 25px;
+}

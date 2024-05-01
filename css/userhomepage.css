@@ -1,0 +1,377 @@
+/* *{
+    outline: 1px solid black;
+} */
+.profile-icon img {
+  max-width: 2em;
+}
+.category {
+  border-radius: 10px/10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 1px 1px #616161a1;
+  cursor: pointer;
+  max-width: 100%;
+  min-height: 3vh;
+}
+#inputpayment {
+  background-color: #ffde81;
+}
+#purchase {
+  background-color: #fda784;
+}
+#accountbalance {
+  background-color: #90b7b6e9;
+}
+#scanqr {
+  background-color: #ffeabb;
+}
+#send_money {
+  background-color: #a6a883;
+}
+.anouncement {
+  background-color:#2a325436;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #616161a1;
+}
+.announce h1 {
+  font-weight: bold;
+}
+.wallet-balance {
+  background-color: white;
+  font-weight: bold;
+  box-shadow: 0 1px 1px 1px #616161a1;
+  border-radius: 10px/10px;
+}
+.wallet-balance .balance h1 {
+  font-weight: bold;
+}
+.profile-data {
+  background-color: white;
+}
+.bell {
+  cursor: pointer;
+}
+.noti-data {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.button {
+  cursor: pointer;
+  box-shadow: 0 1px 1px 1px #616161a1;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0px;
+  background-color: #d9d9d9;
+}
+#profile_pic{
+  border-radius: 50%;
+}
+.image_profile{
+  cursor: pointer;
+}
+.messages img{
+  border-radius: 50%;
+}
+.notification {
+  position: absolute;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.message_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.message_info p {
+  font-size: 14px;
+  padding-left: 60px;
+}
+
+.none_view {
+  background-color: #d9d9d9;
+}
+.image-profile{
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.image-profile > .profile-image{
+  width: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+} 
+.image-profile > div{
+  position: absolute;
+  right: 150px;
+  bottom: 60px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+}
+div > .camera-icon{
+  max-width: 60px;
+}
+@media screen and (min-width: 320px) {
+  .bell {
+    position: relative;
+    bottom: 28.98em;
+  }
+  .bell i {
+    font-size: 30px;
+  }
+  .bell .count-number {
+    position: absolute;
+    background-color: rgb(214, 36, 36);
+    border-radius: 50%;
+    text-align: center;
+    left: 15px;
+    top: 0px;
+    width: 20px;
+    color: white;
+  }
+  .info {
+    padding-top: 75px;
+  }
+  .category {
+    width: 55px;
+    height: 55px;
+  }
+  .category:hover {
+    transform: scale(1.1) translateY(3px);
+    transition: 0.3s;
+  }
+  .category .label {
+    font-size: 8px;
+  }
+  .category img {
+    width: 20px;
+    height: 20px;
+  }
+  .anouncement {
+    height: 150px;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+  }
+  .announce img {
+    width: 100px;
+    height: 100px;
+  }
+  .wallet-balances {
+    margin-top: 20px;
+    padding: 5px;
+  }
+  .wallet-balance {
+    padding: 20px;
+    width: 200px;
+  }
+  #profile {
+    position: fixed;
+    top: 58px;
+  }
+  .profile-data {
+    padding: 40px;
+    height: 100vh;
+    box-shadow: 0 1px 1px 1px #616161a1;
+    display: none;
+  }
+
+  .message_info{
+    padding: 1% 5%;
+  }
+
+  .message_info img{
+    width: 40px;
+  }
+
+  .icon img {
+    width: 50px;
+    min-height: 60px;
+  }
+
+  .notification-bell {
+    position: static;
+  }
+
+  .notification{
+    display: none;
+    position: absolute;
+    top: 150px;
+    left: 0px;
+  }
+  .noti-data {
+    height: 55vh;
+    padding: 1% 0%;
+  }
+  .noti-label{
+    padding: 1% 0%;
+  }
+  .noti-label h3{
+    font-size: 1.5rem;
+  }
+  .available-content{
+    margin-top: 40px;
+  }
+  .btn-profile img{
+    border-radius: 50%;
+  }
+}
+@media screen and (min-width: 760px) {
+  .info {
+    padding-top: 120px;
+  }
+  .category {
+    width: 90px;
+    height: 90px;
+    margin-top: 20px;
+  }
+  .category .label {
+    font-size: 15px;
+  }
+  .category img {
+    width: 50px;
+    height: 50px;
+  }
+  #profile {
+    top: 117px;
+  }
+  .profile-data {
+    padding: 80px;
+  }
+  .icon img {
+    width: 80px;
+    min-height: 100px;
+  }
+  .icon,
+  .profile-info {
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .bell {
+    position: relative;
+    height: 100px;
+    left: 60px;
+    bottom: 30px;
+  }
+  .bell i {
+    font-size: 30px;
+  }
+  .bell .count-number {
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+    left: 15px;
+    top: 0px;
+    width: 20px;
+    color: white;
+  }
+  .info {
+    padding: 0px 0px 0px 120px;
+  }
+  .category {
+    width: 100px;
+    height: 100px;
+  }
+  .category .label {
+    font-size: 15px;
+  }
+  .category img {
+    width: 50px;
+    height: 50px;
+  }
+  .anouncement {
+    height: 160px;
+    width: 600px;
+    padding: 5px;
+    margin-left: 40px;
+  }
+  .announce img {
+    width: 110px;
+    height: 100px;
+  }
+  .wallet-balances {
+    margin-left: 50px;
+    margin-top: 60px;
+    padding: 25px;
+  }
+  .wallet-balance {
+    padding: 25px;
+    width: 250px;
+    box-shadow: 0 1px 1px 1px #616161a1;
+  }
+  #profile {
+    position: static;
+    margin-top: 0px;
+  }
+  .profile-data {
+    padding: 40px;
+    height: auto;
+    margin-top: 50px;
+    border-radius: 10px/10px;
+    display: block;
+  }
+  .icon img {
+    width: 50px;
+    min-height: 50px;
+  }
+  .icon,
+  .profile-info {
+    font-size: 15px;
+    margin-left: 10px;
+  }
+  .btn-profile,
+  #close {
+    display: none !important;
+  }
+  .notification {
+    height: 70vh;
+    padding-top: 5px;
+    width: 400px;
+    font-size: 20px;
+  }
+
+  .message_info .canteen-staff-pp {
+    width: 50px;
+    height: 50px;
+  }
+  .notification-bell {
+    position: relative;
+  }
+
+  .notification {
+    top: 10px;
+    padding: 0%;
+  }
+  .noti-data{
+    height: 60vh;
+    width: 100%;
+    padding: 1% 0%;
+  }
+  .available-content{
+    margin-top: 0px;
+  }
+}

@@ -1,0 +1,103 @@
+/**{
+            outline: 1px solid;
+        }*/        
+        .profile-name{
+            background-color: white;
+            border-radius: 10px/10px;
+            box-shadow: 0 1px 1px 1px #616161; 
+            gap: 10px;
+        }
+        .profile-name img{
+            border-radius: 50%;   
+        }    
+        .table-head{ 
+            background-color: #aacaff82;
+            border-bottom: 2px solid #93a3c4;                                 
+        }         
+        thead, tbody{
+            text-align: center;
+        }
+        .table{
+            border-spacing: 0 20px;
+            border-collapse: separate;
+        }
+        .table-data{
+            margin-top: 1em;
+        }
+        .table-order{
+            background-color: white;
+            box-shadow: 0 1px 1px 1px #616161; 
+            display: none;
+        }
+        .accepted{
+            background-color: rgba(50, 192, 50, 0.295);
+        }
+        .cancel{
+            background-color:   rgba(245, 81, 81, 0.233);
+        }
+        @media screen and (min-width: 320px) {
+            body{
+                font-size: 1em;
+            }     
+            .content-info{
+                padding-top: 100px;
+            }
+            .myorder{
+                margin-top: 30px;
+                font-size: 1em;
+            }
+            .profile-name{
+                max-height: 2em;
+                padding: 2px;
+            }
+            .profile-name img{
+                max-width: 1.5em;
+                max-height: 1.5em;
+            } 
+
+            .table-head{           
+                padding: 8px;            
+            }    
+            .table-info{
+                padding: 0px 15px 0px 15px;
+            }
+            .table-order{
+                padding: 10px;
+            }         
+        }         
+        @media screen and (min-width: 1020px) {
+            body{
+                font-size: 1.3em;
+            }     
+            .content-info{
+                padding: 10px 10px 10px 100px;
+            }
+            .myorder{
+                margin-top: 50px;
+                font-size: 2em;
+            }
+            .profile-name{
+                max-height: 2em;
+                padding: 3px;
+            }
+            .profile-name img{
+                max-width: 2em;
+                max-height: 2em;
+            } 
+            .profile-name name{
+                align-text: center;
+            }  
+            .table-head{           
+                padding: 10px;    
+                width: 50%;        
+                margin-left: 25%;
+            }                
+            .table-info{
+                padding: 0px 10px 0px 10px;
+            }
+            .table-order{
+                padding: 20px;
+                width: 50%;        
+                margin-left: 25%;
+            }
+        }     

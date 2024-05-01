@@ -1,0 +1,165 @@
+@font-face {
+  font-family: myFirstFont;
+  src:url("../font/Inter-VariableFont_slnt,wght.ttf");
+}
+* {
+  /*outline: 1px solid black;*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f2f2f2;
+  font-family: "myFirstFont";
+}
+.navigation {
+  position: relative;
+}
+.header {
+  background-color: #253958;
+  color: white;
+}
+
+.header .profile {
+  background-color: white;
+  color: black;
+}
+
+.sidebar {
+  background-color: #253958;
+  color: white; 
+}
+ul {
+  list-style: none;
+}
+.categories {
+  font-weight: 400;
+}
+li{
+  cursor: pointer;
+}
+ul li:hover {
+  background-color: #ffffff4f;
+}
+
+.loader {
+  display: none;
+  position: fixed;
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 30001;
+  opacity: 0.8;
+}
+.loader img {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.profile{
+  cursor: pointer;
+}
+@media screen and (min-width: 320px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 0.8em;
+    height: 5vh;
+  }
+  .header .profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    border-radius: 10px/10px;
+    padding: 5px;
+    font-size: 0.4em;
+    height: 3vh;
+  }
+  .profile p {
+    margin-top: 14px;
+  }
+  .profile img {
+    max-width: 15px;
+  }
+  .sidebar {
+    width: 100%;
+    height: 5vh;
+  }
+  .label {
+    display: none;
+  }
+  .categories-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5px;
+  }
+  .categories {
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.5em;
+    height: 10vh;
+    width: 100%;
+  }
+  .header .profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px/10px;
+    font-size: 0.8em;
+    height: 5vh;
+  }
+  .profile p {
+    margin-top: 14px;
+  }
+  .profile img {
+    max-width: 30px;
+  }
+  .sidebar {
+    width: 250px;
+    height: 110vh;
+  }
+  .label {
+    display: block;
+    white-space: nowrap;
+  }
+  .categories-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .categories {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 1.5em;
+    padding: 25px 0px 0px 5px;
+  }
+  .categories p {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,44 @@
+/* *{
+    outline: 1px solid;
+} */
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.content {
+  position: absolute;
+  inset: 100px 0px 0px 250px;
+  padding: 0px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.label-data {
+  font-size: 20px;
+}
+.label-info {
+  font-size: 15px;
+  color: #3b83a1;
+  font-weight: bold;
+}
+
+.table-scroll {
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.print-btn {
+  width: 10%;
+}
+
+tr .paid {
+  background-color: #b3cf99;
+  border-radius: 10px/10px;
+  padding: 5px;
+}
+
+tr .unpaid {
+  background-color: #f66257;
+  border-radius: 10px/10px;
+  padding: 5px;
+}

@@ -1,0 +1,46 @@
+/* *{
+    outline: 1px solid;
+} */
+.btn-infoby{
+    border: none;
+    background-color: white;
+}
+
+.number-data-info{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.data-info{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.btn-with-graph{
+    padding: 10px;
+}
+
+.order-info, .btn-with-graph{
+    background-color: white;
+    border-radius: 5px/5px;
+    box-shadow: 0 1px 1px 1px #616161;
+}
+
+.label-profit{
+    padding: 10px;
+    border-radius: 10px/10px;
+    box-shadow: 0 1px 1px 1px #616161;
+    color: white;
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.underline{
+    text-decoration:underline;
+    text-decoration-thickness: 3px;
+}

@@ -1,0 +1,223 @@
+/* *{
+    outline: 1px solid;
+} */
+body{
+    overflow: hidden;
+}
+.content{
+    position: absolute;
+    inset: 66px 0px 0px 260px;
+}
+.label-title{
+    font-weight: bold;
+    font-size: 20px;
+}
+.content_display{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    cursor: pointer;
+}
+
+
+.logo-id{
+    background-color: #d9d9d9;
+    padding: 10px;
+    width: 40%;
+    border-radius: 10px/10px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 1px 1px #616161;
+}
+
+.id-pic{
+    text-align: center;
+}
+.id-pic p{
+    font-size: 1.5em;
+}
+.id-pic i{
+    font-size: 10em;
+}
+
+.search-table{
+    align-self: flex-start;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+table tr{
+    cursor: pointer;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+.input-amount{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    background-color: #d9d9d9;
+    border-radius: 10px/10px;
+    padding: 30px;
+    gap: 30px;
+    box-shadow: 0 1px 1px 1px #616161;
+}
+.input-amount form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#input_amount{
+    text-align: center;
+}
+.input-class{
+    position: relative;
+}
+
+.input-class p{
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    left: 8px;
+    top: -1px;
+}
+
+.profile-user{
+    padding: 30px;
+    background-color: white;
+    height: 100vh;
+    box-shadow: 0 1px 1px 1px #616161; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.profile-info{
+    align-self: center;
+    text-align: center;
+}
+.profile-info img{
+    max-width: 40%;
+}
+.name{
+    font-weight: 2000;
+}
+.department-info, .phonenumber-user, .addess-user{
+    background-color: #d9d9d98f;
+    padding: 10px;
+}
+.balance{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.swal-label{
+    text-align: left;
+}
+.swal-review-amount{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 20px;
+    border-radius: 10px/10px;
+    gap: 20px;
+    margin: 10px;
+}
+.amount-info{
+    font-size: 32px;
+    font-weight: bold;
+}
+.swal-name-user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    padding-bottom: 20px;
+}
+.swal-image{
+    width: 60px;
+    height: auto;
+}
+.title-info{
+    font-weight: bold;
+}
+.sent-message{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 1px 1px 1px #616161; 
+    gap: 20px;
+    height: 100vh;
+}
+.message-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.success-text{
+    font-weight: bold;
+    font-size: 20px;
+}
+.success-iamge img{
+    max-width: 40px;
+}
+
+.profile-icon{
+    max-width: 100px;
+}
+.message-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+}
+.amount-sent{
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 10px/10px;
+    height: 10vh;
+    width: 100%;
+}
+.amount_data{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.sent-date-ref{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.date-time, .red-num{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.date-info, .ref-info{
+    font-size: 14px;
+}

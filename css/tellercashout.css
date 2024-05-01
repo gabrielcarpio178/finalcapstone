@@ -1,0 +1,229 @@
+/* * {
+  outline: 1px solid;
+} */
+
+#main-content{
+  margin-top: 50px;
+}
+.cashout-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.label{
+  align-self: flex-start;
+  z-index: -1;
+}
+.wallet-balance{
+  margin-top: 25px;
+  background-color: white;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #616161;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  height: 20vh;
+  justify-content: center;
+}
+.label-wallet-balance{
+  align-self: flex-start;
+}
+.label-amount{
+  font-size: 35px;
+  font-weight: bold;
+  color: black;
+}
+
+.forms-input{
+  background-color: white;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #616161;
+  height: 40vh;
+  padding: 10px 15px;
+  font-size: 20px;
+}
+.input-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.insert-amount{
+  position: relative;
+}
+.peso-insert{
+  position: absolute;
+  font-size: 32px;
+  left: 10px;
+  top: -2px;
+  color: black;
+  font-weight: bold;
+}
+#insert_data{
+  text-align: center;
+}
+.form-set{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 20px;
+}
+.password-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  padding: 25px 10px;
+}
+.form-set-password{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0px 20px;
+}
+.label-password{
+  text-align: center;
+  
+}
+
+.set-password{
+  position: relative;
+}
+#insert_password{
+  text-align: center;
+}
+.icon-pass{
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 5px;
+}
+
+#message-info{
+  padding: 15px 20px;
+  box-shadow: 0 1px 1px 1px #616161;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.title-message{
+  font-size: 20px;
+  color: rgb(74, 74, 212);
+  font-weight: bold;
+}
+.icon-success{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.icon-success img{
+  max-width: 25%;
+}
+.icon-success .success-label{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.message-success{
+  text-align: center;
+  margin-top: 15px;
+}
+.message-success .type-request{
+  font-weight: bold;
+  font-size: 20px;
+}
+.amount-info{
+  background-color: #c4c2c2;
+  border-radius: 10px/10px;
+  width: 100%;
+  margin-top: 10px;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.amount-req{
+  font-weight: bold;
+  font-size: 30px;
+  color: black;
+}
+.info-generate{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.date_submit, .ref_number{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.date_submit .date-label, .ref_number .ref-label{
+  width: 75%;
+  white-space: nowrap;
+}
+
+.date, .ref{
+  width: 25%;
+  white-space: nowrap;
+}
+.system-message{
+  text-align: center;
+}
+.row{
+  position: relative;
+}
+@media screen and (min-width: 320px) {
+  .content-info{
+    position: absolute;
+    inset: 60px 0px 0px 0px;
+    padding: 1%;
+  }
+  .forms-input{
+    width: 75%;
+  }
+  .wallet-balance{
+    width: 75%
+  }
+  .amount{
+    font-size: 1.8rem;
+  }
+  .label-wallet-balance{
+    font-size: 0.8rem;
+  }
+  .content-message{
+    position: absolute;
+    top: 4%;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .content-message{
+    top: 0;
+    position: static;
+  }
+  .forms-input{
+    width: 45%;
+  }
+  .wallet-balance{
+    width: 45%
+  }
+  .amount{
+    font-size: 2rem;
+  }
+  .label-wallet-balance{
+    font-size: 1.5rem;
+  }
+  .content-info{
+    position: absolute;
+    inset: 0px 0px 0px 350px;
+    padding: 0;
+  }
+}

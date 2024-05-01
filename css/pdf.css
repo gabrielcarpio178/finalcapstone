@@ -1,0 +1,47 @@
+@page {
+    margin: 0;
+}
+* { padding: 0; margin: 0;}
+@font-face {
+    font-family: 'Licorice';           
+    src: url("../font/Licorice-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: sans-serif; 
+}
+.content{
+    text-align: center;
+    padding: 0.5cm;
+}
+
+.logo{
+     width: 5cm;
+}
+
+.title{
+    font-size: 2cm;
+    font-family: 'Licorice', sans-serif;
+    line-height: 34px;
+    margin-top: 50px;
+}
+
+.qr{
+    width: 15cm;
+    margin-top: 20px;
+    
+}
+
+.store-name{
+    font-size: 1cm;
+    font-weight: bold;
+    line-height: 34px;
+}
+
+.label{
+    font-size: 0.7cm;
+    font-weight: bold;
+    line-height: 34px;
+}  
+

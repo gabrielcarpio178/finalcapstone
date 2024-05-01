@@ -1,0 +1,177 @@
+/* *{
+    outline: 1px solid;
+} */
+.containder-fluid {
+  position: absolute;
+  inset: 0px 0px 0px 260px;
+}
+.content {
+  padding-top: 80px;
+}
+.content-label {
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+
+.collection {
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #6161619c;
+  width: 45%;
+  height: 15vh;
+  padding: 10px;
+}
+.total-collection {
+  box-shadow: 0 1px 1px 1px #6161619c;
+  margin-top: 65px;
+  height: 101vh;
+}
+#daily {
+  background-color: #ffc145;
+}
+#cash-in {
+  background-color: #5b5f97;
+}
+
+.label-info {
+  color: white;
+}
+.amount-collection {
+  text-align: center;
+  padding: 5%;
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+}
+
+.request {
+  font-size: 25px;
+  font-weight: bold;
+}
+.date-current {
+  font-size: 15px;
+}
+.content-category {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.color-content {
+  width: 20px;
+  height: 11vh;
+}
+.data {
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px/5px;
+  box-shadow: 0 1px 1px 1px #6161619c;
+  flex: 50%;
+}
+.category {
+  font-size: 14px;
+}
+.data-label {
+  width: 100%;
+  white-space: nowrap;
+  padding: 1px 3px;
+}
+.data-amount {
+  text-align: center;
+  margin-top: 14px;
+}
+#content_1 {
+  background-color: rgba(0, 174, 255, 0.253);
+}
+#content_2 {
+  background-color: rgba(255, 0, 55, 0.253);
+}
+#content_3 {
+  background-color: rgba(247, 0, 255, 0.253);
+}
+
+.content_2 {
+  padding-top: 25px;
+}
+.label-collection {
+  font-size: 20px;
+  font-weight: bold;
+}
+.total-collection-amount {
+  text-align: center;
+  font-weight: bold;
+  font-size: 35px;
+  padding: 10px 0px;
+  width: 100%;
+}
+.color-label-content {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.color-label {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.label-text {
+  white-space: nowrap;
+  font-size: 12px;
+}
+#collect-color_1 {
+  background-color: #ffc145;
+}
+#collect-color_2 {
+  background-color: #5b5f97;
+}
+.btn-category {
+  background-color: white;
+  box-shadow: 0 1px 1px 1px #6161619c;
+  margin: 0rem 1rem;
+}
+.fucos-class {
+  color: #3b83a1;
+  font-weight: bold;
+}
+.focus-1,
+.focus-2,
+.focus-3,
+.focus-4 {
+  cursor: pointer;
+}
+.table-content {
+  margin: 0px 1rem;
+}
+.cashOut-collection-color,
+.cashIn-collection-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px/2px;
+}
+.cashOut-collection-color {
+  background-color: rgb(143, 52, 52);
+}
+.school-fee-color {
+  background-color: #ffc145;
+}
+.cashIn-collection-color {
+  background-color: #5b5f97;
+}
+.label-collection-balance {
+  font-weight: bold;
+  font-size: 17px;
+}
+.cashIn-collection-label,
+.cashOut-collection-label,
+.cashIn-collection-amount,
+.cashOut-collection-amount {
+  font-size: 15px;
+}
+.total-collection-label .time-two {
+  font-size: 15 px;
+}
+.total-collection{
+  height: 110vh;
+}
+table tbody tr td{
+  white-space: nowrap;
+}

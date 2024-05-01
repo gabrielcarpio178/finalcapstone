@@ -1,0 +1,110 @@
+/* * {
+  outline: 1px solid black;
+} */
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.contents {
+  position: absolute;
+  inset: 80px 0px 0px 280px;
+}
+.label-home {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 30px;
+}
+.content-information {
+  padding: 20px;
+  height: 100vh;
+}
+.post-message {
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #6161618f;
+  height: 25vh;
+  padding: 20px;
+  background-color: #2539583f;
+  margin: 10px;
+}
+img {
+  max-width: 20%;
+}
+.post {
+  font-size: 20px;
+}
+.message h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.click-info {
+  width: 95%;
+  height: 10vh;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px/10px;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 1px 1px 1px #6161618f;
+}
+.click-info:hover {
+  transform: scale(1.1) translateY(1px);
+  transition: 0.4s;
+}
+#request {
+  background-color: #8cac80;
+  position: relative;
+}
+#cashin {
+  background-color: #90553c;
+}
+#account-balance {
+  background-color: #e3bd8d;
+}
+#collection-div {
+  background-color: #a3966a;
+}
+
+.data-set{
+  width: 100%;
+  margin: 10px;
+  height: 35vh;
+}
+.request-count {
+  position: absolute;
+  top: -15px;
+  left: 200px;
+  background-color: red;
+  width: 15%;
+  height: 5vh;
+  text-align: center;
+  border-radius: 50%;
+}
+.collection-amount {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 30%;
+  gap: 10px;
+  border-radius: 10px/10px;
+  box-shadow: 0 1px 1px 1px #6161618f;
+  padding: 10px;
+  margin: 30px;
+}
+.collection-date {
+  text-align: end;
+}
+.label-collection {
+  font-size: 20px;
+}
+.amount-collect {
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+.graph {
+  box-shadow: 0 1px 1px 1px #616161;
+}
+.graph canvas {
+  height: 100vh;
+  width: 100%;
+}

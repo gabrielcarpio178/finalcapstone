@@ -38,6 +38,13 @@ if(isset($_POST['user_id'])){
         }
     }
 
-    echo $isInbago;
+    try {
+        $get_amount = mysqli_query($connect, "SELECT `cashierRates_amount` FROM `cashierrates_tb` WHERE cashierRates_id = 1");
+        $bcc_amount = mysqli_fetch_assoc($get_amount);
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+    
+    print_r(json_encode(['ispaid'=>$isInbago, 'bcc_amount'=>$bcc_amount['cashierRates_amount']]));
 }
 ?>

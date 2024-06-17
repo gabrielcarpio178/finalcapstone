@@ -78,9 +78,12 @@ function isInBago(){
     data: {user_id:user_id},
     cache: false,
     success: function(res){
-      if(res=="paid"){
-        $("#non_bago-submit :input").val(500).prop("disabled", "disabled");
+      var result = JSON.parse(res);
+      if(result.ispaid=="paid"){
+        $("#non_bago-submit :input").val(result.bcc_amount).prop("disabled", "disabled");
         $(".message").text('Paid');
+      }else{
+        $("#non_bago-submit :input").val(result.bcc_amount).prop("disabled", "disabled");
       }
     }
   });
